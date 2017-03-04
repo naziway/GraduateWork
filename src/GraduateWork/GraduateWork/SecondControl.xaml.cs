@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace GraduateWork
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SecondControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SecondControl : UserControl
     {
-        public MainWindow()
+        public SecondControl()
         {
             InitializeComponent();
-        }
-
-        private void ButtonBaseOnClick(object sender, RoutedEventArgs e)
-        {
-            MainContaint.Content = new FirstControl();
-        }
-
-        private void ButtonBase2OnClick(object sender, RoutedEventArgs e)
-        {
-            MainContaint.Content = new SecondControl();
         }
     }
 }
