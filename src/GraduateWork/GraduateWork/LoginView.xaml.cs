@@ -10,19 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace GraduateWork
 {
     /// <summary>
-    /// Interaction logic for FirstControl.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class FirstControl : UserControl
+    public partial class LoginView : Window
     {
-        public FirstControl()
+        private LoginViewModel ViewModel { get; }
+
+        public LoginView(LoginViewModel viewModel)
         {
+            ViewModel = viewModel;
             InitializeComponent();
+            DataContext = ViewModel;
         }
     }
 }
