@@ -26,5 +26,7 @@ namespace DatabaseService
         }
     
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Clients> Clients { get; set; }
+        public virtual DbSet<Devices> Devices { get; set; }
     }
 }

@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients.cs">
+      <DependentUpon>DataEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataService.cs" />
     <Compile Include="DataEntity.Context.cs">
       <AutoGen>True</AutoGen>
@@ -66,6 +69,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Devices.cs">
+      <DependentUpon>DataEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
