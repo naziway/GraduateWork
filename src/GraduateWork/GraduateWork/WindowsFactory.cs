@@ -1,26 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using Model;
+using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Media;
-using Model;
 using ViewModel;
 
 namespace GraduateWork
 {
     public class WindowsFactory
     {
+        private LoginViewModel LoginViewModel { get; set; } = new LoginViewModel();
         private LoginView LoginView { get; set; }
+        private MainWindowViewModel MainWindowViewModel { get; set; } = new MainWindowViewModel();
+        private MainWindowView MainWindowView { get; set; }
+
         private List<Window> OpenedWindows { get; } = new List<Window>();
 
         public WindowsFactory()
         {
-            InitializeServices();
+
         }
         public void OpenLoginWindow()
         {
-            var viewModel = new LoginViewModel();
-            viewModel.OnSuccessLogin += ViewModelOnSuccessLogin;
-            viewModel.OnFailedLogin += ViewModelOnFailedLogin;
-            LoginView = new LoginView(viewModel);
+            LoginViewModel.OnSuccessLogin += ViewModelOnSuccessLogin;
+            LoginViewModel.OnFailedLogin += ViewModelOnFailedLogin;
+            LoginView = new LoginView(LoginViewModel);
             LoginView.Show();
         }
 
@@ -32,16 +34,15 @@ namespace GraduateWork
         private void ViewModelOnSuccessLogin(object sender, User user)
         {
             MessageBox.Show($"Success Log In {user.Login}");
+            LoginViewModel.OnSuccessLogin -= ViewModelOnSuccessLogin;
+            LoginViewModel.OnFailedLogin -= ViewModelOnFailedLogin;
+            OpenMainWindow();
             LoginView.Close();
         }
-
-        private void ChangeHeaderColor(object sender, Color color)
+        public void OpenMainWindow()
         {
-
-        }
-        private void InitializeServices()
-        {
-
+            MainWindowView = new MainWindowView(MainWindowViewModel);
+            MainWindowView.Show();
         }
 
         //private IView OpenWindow(WindowType windowType)
@@ -88,21 +89,6 @@ namespace GraduateWork
         //    OpenedWindows.Add(view);
         //    return view;
         //}
-        //private void WindowClosed(object sender, EventArgs e)
-        //{
-        //    var view = sender as IView;
-        //    if (view == null)
-        //        return;
-        //    view.OnViewClosed -= WindowClosed;
-        //    OpenedWindows.Remove(view);
-        //}
-        //private void CloseAllWindows(object sender, EventArgs e)
-        //{
-        //    foreach (var view in OpenedWindows)
-        //    {
-        //        view.OnViewClosed -= WindowClosed;
-        //        view.CloseView();
-        //    }
-        //}
+
     }
 }

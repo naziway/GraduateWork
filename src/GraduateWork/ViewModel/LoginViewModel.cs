@@ -1,11 +1,9 @@
-﻿using System;
-using System.ComponentModel.Design;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using DatabaseService;
+﻿using DatabaseService;
 using Model;
 using PropertyChanged;
 using Shared;
+using System;
+using System.Windows.Input;
 
 namespace ViewModel
 {
@@ -29,7 +27,7 @@ namespace ViewModel
             var user = service.GetUser(Login, Password);
             if (user == null)
             {
-                OnOnFailedLogin();
+                DoOnFailedLogin();
                 return;
             }
             DoOnSuccessLogin(user);
@@ -41,7 +39,7 @@ namespace ViewModel
         {
             OnSuccessLogin?.Invoke(this, e);
         }
-        private void OnOnFailedLogin()
+        private void DoOnFailedLogin()
         {
             OnFailedLogin?.Invoke(this, EventArgs.Empty);
         }

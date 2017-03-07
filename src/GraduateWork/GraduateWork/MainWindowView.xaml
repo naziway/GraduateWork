@@ -1,0 +1,32 @@
+﻿<Window x:Class="GraduateWork.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraduateWork"
+        mc:Ignorable="d"
+        Title="MainWindowView" Height="600" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="730*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch" Margin="1,1,1,1" HorizontalAlignment="Stretch" Content="Додати діагностику" Command="{Binding AddDiagnosticCommand}"></Button>
+        <Button Grid.Column="0" Grid.Row="1" VerticalAlignment="Stretch" Margin="1,1,1,1" HorizontalAlignment="Stretch" Content="Користувачі" Command="{Binding UsersCommand,IsAsync=True}"></Button>
+        <Button Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" Margin="1,1,1,1" HorizontalAlignment="Stretch" Content="Замовлення" Command="{Binding OrdersCommand}" ></Button>
+        <Button Grid.Column="0" Grid.Row="3" VerticalAlignment="Stretch" Margin="1,1,1,1" HorizontalAlignment="Stretch" Content="Додати діагностику"></Button>
+
+
+
+        <ContentPresenter Grid.Column="1" Grid.RowSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentUserControl}"></ContentPresenter>
+
+    </Grid>
+</Window>
