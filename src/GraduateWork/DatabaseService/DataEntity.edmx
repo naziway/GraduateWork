@@ -4,63 +4,63 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Clients">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PassportData" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="IsAdmin" Type="bit" Nullable="false" />
-          <Property Name="SignInDate" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Devices">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="PhoneModel" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="PhoneMarka" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="DeviceType" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="SerialNumber" Type="nvarchar" MaxLength="14" Nullable="false" />
-          <Property Name="ManufactureDate" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Devices_ToClients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Devices">
-              <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DataBaseModelStoreContainer">
-          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Devices" EntityType="Self.Devices" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Devices_ToClients" Association="Self.FK_Devices_ToClients">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Devices" EntitySet="Devices" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="DataBaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataBaseModelStoreContainer">
+    <EntitySet Name="Users" EntityType="DataBaseModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Clients" EntityType="DataBaseModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devices" EntityType="DataBaseModel.Store.Devices" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Devices_ToClients" Association="DataBaseModel.Store.FK_Devices_ToClients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Login" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PassportData" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="SignInDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="PhoneModel" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="PhoneMarka" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="DeviceType" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="false" MaxLength="14" />
+    <Property Name="ManufactureDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Devices_ToClients">
+    <End Role="Clients" Type="DataBaseModel.Store.Clients" Multiplicity="1" />
+    <End Role="Devices" Type="DataBaseModel.Store.Devices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -141,29 +141,29 @@
     <EntitySetMapping Name="Clients">
       <EntityTypeMapping TypeName="IsTypeOf(DataBaseModel.Clients)">
         <MappingFragment StoreEntitySet="Clients">
-          <ScalarProperty Name="SignInDate" ColumnName="SignInDate" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="PassportData" ColumnName="PassportData" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          </MappingFragment>
+          <ScalarProperty Name="PassportData" ColumnName="PassportData" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="SignInDate" ColumnName="SignInDate" />
+        </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <EntitySetMapping Name="Devices">
-            <EntityTypeMapping TypeName="DataBaseModel.Devices">
-              <MappingFragment StoreEntitySet="Devices">
-                <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
-                <ScalarProperty Name="PhoneMarka" ColumnName="PhoneMarka" />
-                <ScalarProperty Name="PhoneModel" ColumnName="PhoneModel" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="IsTypeOf(DataBaseModel.Devices)">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="PhoneModel" ColumnName="PhoneModel" />
+          <ScalarProperty Name="PhoneMarka" ColumnName="PhoneMarka" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
