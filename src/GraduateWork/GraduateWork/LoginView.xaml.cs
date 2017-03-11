@@ -28,5 +28,24 @@ namespace GraduateWork
             InitializeComponent();
             DataContext = ViewModel;
         }
+
+        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void EventSetter_OnHandler(object sender, MouseEventArgs e)
+        {
+            CloseIcon.Opacity = 1;
+        }
+        private void MouseLeave(object sender, MouseEventArgs e)
+        {
+            CloseIcon.Opacity = 0.5;
+        }
     }
 }

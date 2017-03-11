@@ -119,10 +119,17 @@
       <Project>{DF8A7CC4-ED9F-47CC-9170-469A9352BEEA}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UserControls\UserControls.csproj">
+      <Project>{45977c3a-c6bb-4990-8e44-ebcb202b6373}</Project>
+      <Name>UserControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{8a5d60e2-531e-4e14-a919-1294a6f89231}</Project>
       <Name>ViewModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\CloseIcons.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

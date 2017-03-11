@@ -10,12 +10,12 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-        <ToolBar DockPanel.Dock="Top">
-            <Button Style="{StaticResource toolButtonStyle}" Command="{Binding AddUserCommand}">
-                <StackPanel  Orientation="Horizontal">
+        <ToolBar DockPanel.Dock="Top" Background="Aqua">
+            <Button Height="20" Style="{StaticResource toolButtonStyle}" Command="{Binding AddUserCommand}">
+                <!--<StackPanel  Orientation="Horizontal">
                     <Image Width="20" Height="20" Source="Images/add_user.png"/>
                     <TextBlock Text="Add user"/>
-                </StackPanel>
+                </StackPanel>-->
             </Button>
             <Button  Style="{StaticResource toolButtonStyle}" Command="{Binding RemoveUserCommand}">
                 <StackPanel Orientation="Horizontal">
@@ -30,7 +30,13 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="0.65*"/>
             </Grid.ColumnDefinitions>
-            <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+            <Button BorderThickness="0,0,0,0" Padding="0,9,0,0" Background="{x:Null}" Margin="46,49,19,188">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="20" Height="20" Source="Images/add_user.png"/>
+                    <TextBlock Text="Add user"/>
+                </StackPanel>
+            </Button>
+            <!--<ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type Model:User}">
                         <TextBlock Text="{Binding FullName}"/>
@@ -46,7 +52,7 @@
                         </Style.Triggers>
                     </Style>
                 </ListBox.Style>
-            </ListBox>
+            </ListBox>-->
             <Misc:LoadingAnimation HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Misc:LoadingAnimation.Style>
                     <Style TargetType="{x:Type Misc:LoadingAnimation}">
@@ -60,43 +66,7 @@
                 </Misc:LoadingAnimation.Style>
             </Misc:LoadingAnimation>
 
-            <GridSplitter Width="3" VerticalAlignment="Stretch" Grid.Column="1"/>
-            
-            <Grid Grid.Column="2" DataContext="{Binding SelectedUser}">
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="IsEnabled" Value="True"/>
-                        <Style.Triggers>                            
-                            <DataTrigger Binding="{Binding DataContext.SelectedUser, ElementName=mainWnd}" Value="{x:Null}">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                
-                <TextBlock Margin="3" Text="Full name :"/>
-                <TextBox Grid.Column="1" Margin="3" Text="{Binding FullName}"/>
 
-
-                <TextBlock Grid.Row="1" Margin="3" Text="User address :"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Address}"/>
-
-                <TextBlock Grid.Row="2" Margin="3" Text="Phone :"/>
-                <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding Phone}"/>
-
-                <TextBlock Grid.Row="3" Margin="3" Text="E-mail :"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding Email}"/>
-            </Grid>
         </Grid>
     </DockPanel>
 </Window>

@@ -69,7 +69,6 @@ Partial Public Class LoadingOverlayWindow
 
             AddHandler _window.Closed, AddressOf _window.OnWindowClosed
 
-            Windows.Threading.Dispatcher.Run()
         End Sub
 
         Public Property Window() As LoadingOverlayWindow
