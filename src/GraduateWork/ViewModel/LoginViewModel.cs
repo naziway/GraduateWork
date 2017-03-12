@@ -3,6 +3,7 @@ using Model;
 using PropertyChanged;
 using Shared;
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ViewModel
@@ -18,16 +19,19 @@ namespace ViewModel
         }
 
         public string Login { get; set; }
+        public Visibility State { get; set; } = Visibility.Hidden;
         public string Password { get; set; }
 
         public ICommand LoginCommand => new CommandHandler(CheckLoginAndPassword);
 
         public void CheckLoginAndPassword()
         {
+            State = Visibility.Visible;
             var user = service.GetUser(Login, Password);
             if (user == null)
             {
                 DoOnFailedLogin();
+                State = Visibility.Hidden;
                 return;
             }
             DoOnSuccessLogin(user);

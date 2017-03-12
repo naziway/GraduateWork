@@ -44,45 +44,70 @@
         </Style>
         <Style x:Key="ButtonBorder" TargetType="Border">
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="LightGray"/>
             <Setter Property="Background" Value="#2c3a45"/>
             <Setter Property="Margin" Value="0,0,25,0"/>
         </Style>
+        <Style x:Key="TextButton" TargetType="Label">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Foreground" Value="LightCyan"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
-    <Grid  Background="#1c252a">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="105*"/>
-            <ColumnDefinition Width="187*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="37"/>
-            <RowDefinition Height="4"/>
-            <RowDefinition Height="37"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid  Background="#1c252a">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="105*"/>
+                <ColumnDefinition Width="187*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="37"/>
+                <RowDefinition Height="4"/>
+                <RowDefinition Height="37"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" ></userControls:MoveControl>
-        <Label Style="{StaticResource HeaderName}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
-        <Image Name="CloseIcon" Opacity="0.5" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" Source="Icons/CloseIcons.png" MouseDown="UIElement_OnMouseDown"/>
+            <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" ></userControls:MoveControl>
+            
+            <Label Style="{StaticResource HeaderName}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
+            <Image Name="CloseIcon" Opacity="0.5" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" Source="Icons/CloseIcons.png" MouseDown="UIElement_OnMouseDown"/>
 
-        <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Логін:"></Label>
-        <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Пароль:"></Label>
+            <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Логін:"></Label>
+            <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Пароль:"></Label>
 
-        <Border Style="{StaticResource LabelBorder}" Grid.Column="1" Grid.Row="2">
-            <TextBox Background="{x:Null}"  Text="{Binding Login}"></TextBox>
-        </Border>
-        <Border Style="{StaticResource LabelBorder}" Grid.Column="1" Grid.Row="4">
-            <TextBox Background="{x:Null}" Text="{Binding Password}"></TextBox>
-        </Border>
-        <Border Style="{StaticResource ButtonBorder}" Grid.Column="1" Grid.Row="6">
-            <Button Background="{x:Null}" Command="{Binding LoginCommand}" Content="Ввійти"></Button>
-        </Border>
+            <Border Style="{StaticResource LabelBorder}" Grid.Column="1" Grid.Row="2">
+                <TextBox Background="{x:Null}"  Text="{Binding Login}"></TextBox>
+            </Border>
+            <Border Style="{StaticResource LabelBorder}" Grid.Column="1" Grid.Row="4">
+                <TextBox Background="{x:Null}" Text="{Binding Password}"></TextBox>
+            </Border>
+            <Border Style="{StaticResource ButtonBorder}" Grid.Column="1" Grid.Row="6">
+                <Button Background="{x:Null}" Grid.Column="1" Grid.Row="6" Command="{Binding LoginCommand}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Label Style="{StaticResource TextButton}"  Content="Ввійти">
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Border>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AliceBlue" Grid.RowSpan="7" Grid.ColumnSpan="2" Grid.Row="1" Visibility="{Binding State}">
+            <DataGrid  Template="{StaticResource WaitControlTemplate}"></DataGrid>
+        </Grid>
     </Grid>
+
 </Window>
 
