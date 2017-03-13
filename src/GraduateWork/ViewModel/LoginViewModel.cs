@@ -3,6 +3,7 @@ using Model;
 using PropertyChanged;
 using Shared;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -22,7 +23,7 @@ namespace ViewModel
         public Visibility State { get; set; } = Visibility.Hidden;
         public string Password { get; set; }
 
-        public ICommand LoginCommand => new CommandHandler(CheckLoginAndPassword);
+        public ICommand LoginCommand => new CommandHandler(() => { Task.Factory.StartNew(CheckLoginAndPassword); });
 
         public void CheckLoginAndPassword()
         {
