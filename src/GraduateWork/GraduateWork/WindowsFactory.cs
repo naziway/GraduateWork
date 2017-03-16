@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using ViewModel;
@@ -23,27 +24,16 @@ namespace GraduateWork
             LoginViewModel.OnSuccessLogin += ViewModelOnSuccessLogin;
             LoginViewModel.OnFailedLogin += ViewModelOnFailedLogin;
             LoginView = new LoginView(LoginViewModel);
-            LoginView.Show();
+            InvokeInMainThread(LoginView.Show);
         }
 
-        private void ViewModelOnFailedLogin(object sender, System.EventArgs e)
-        {
-            MessageBox.Show($"Failed Login Or Password");
-        }
-
-        private void ViewModelOnSuccessLogin(object sender, User user)
-        {
-            MessageBox.Show($"Success Log In {user.Login}");
-            LoginViewModel.OnSuccessLogin -= ViewModelOnSuccessLogin;
-            LoginViewModel.OnFailedLogin -= ViewModelOnFailedLogin;
-            OpenMainWindow();
-            LoginView.Close();
-        }
         public void OpenMainWindow()
         {
+            MainWindowViewModel.OnLogOut += MainWindowViewModelOnLogOut;
             MainWindowView = new MainWindowView(MainWindowViewModel);
-            MainWindowView.Show();
+            InvokeInMainThread(MainWindowView.Show);
         }
+
 
         //private IView OpenWindow(WindowType windowType)
         //{
@@ -90,5 +80,31 @@ namespace GraduateWork
         //    return view;
         //}
 
+        private void InvokeInMainThread(Action action)
+        {
+            Application.Current.Dispatcher.Invoke(action);
+        }
+
+        private void MainWindowViewModelOnLogOut(object sender, EventArgs e)
+        {
+            OpenLoginWindow();
+            InvokeInMainThread(MainWindowView.Close);
+        }
+
+        #region ProccessResponseLogin
+        private void ViewModelOnFailedLogin(object sender, System.EventArgs e)
+        {
+            MessageBox.Show($"Failed Login Or Password");
+        }
+        private void ViewModelOnSuccessLogin(object sender, User user)
+        {
+            MessageBox.Show($"Success Log In {user.Login}");
+            LoginViewModel.OnSuccessLogin -= ViewModelOnSuccessLogin;
+            LoginViewModel.OnFailedLogin -= ViewModelOnFailedLogin;
+            OpenMainWindow();
+            InvokeInMainThread(LoginView.Close);
+        }
+
+        #endregion
     }
 }

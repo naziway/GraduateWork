@@ -12,16 +12,12 @@ namespace DatabaseService
     using System;
     using System.Collections.Generic;
     
-    public partial class Devices
+    public partial class User
     {
         public int Id { get; set; }
-        public int ClientId { get; set; }
-        public string PhoneModel { get; set; }
-        public string PhoneMarka { get; set; }
-        public string DeviceType { get; set; }
-        public string SerialNumber { get; set; }
-        public System.DateTime ManufactureDate { get; set; }
-    
-        public virtual Clients Clients { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

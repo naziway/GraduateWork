@@ -13,10 +13,10 @@ namespace DatabaseService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DataBaseEntities : DbContext
+    public partial class DoctorPhoneEntities : DbContext
     {
-        public DataBaseEntities()
-            : base("name=DataBaseEntities")
+        public DoctorPhoneEntities()
+            : base("name=DoctorPhoneEntities")
         {
         }
     
@@ -25,8 +25,8 @@ namespace DatabaseService
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Clients> Clients { get; set; }
-        public virtual DbSet<Devices> Devices { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Device> Devices { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

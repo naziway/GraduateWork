@@ -1,5 +1,6 @@
 ﻿using PropertyChanged;
 using Shared;
+using System;
 using System.Windows.Controls;
 using System.Windows.Input;
 using UserControls;
@@ -25,5 +26,13 @@ namespace ViewModel
         });
 
 
+
+
+        public event EventHandler OnLogOut;
+
+        protected virtual void DoOnLogOut()
+        {
+            OnLogOut?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

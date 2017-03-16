@@ -51,57 +51,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients.cs">
-      <DependentUpon>DataEntity.tt</DependentUpon>
+    <Compile Include="Client.cs">
+      <DependentUpon>DataBaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBaseEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBaseEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBaseEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataService.cs" />
-    <Compile Include="DataEntity.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataEntity.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataEntity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataEntity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataEntity.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Devices.cs">
-      <DependentUpon>DataEntity.tt</DependentUpon>
+    <Compile Include="Device.cs">
+      <DependentUpon>DataBaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Users.cs">
-      <DependentUpon>DataEntity.tt</DependentUpon>
+    <Compile Include="User.cs">
+      <DependentUpon>DataBaseEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="DataEntity.edmx">
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DataBaseEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataEntity.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataBaseEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataEntity.edmx.diagram">
-      <DependentUpon>DataEntity.edmx</DependentUpon>
+    <None Include="DataBaseEntities.edmx.diagram">
+      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataEntity.Context.tt">
+    <Content Include="DataBaseEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataEntity.edmx</DependentUpon>
-      <LastGenOutput>DataEntity.Context.cs</LastGenOutput>
+      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
+      <LastGenOutput>DataBaseEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataBaseEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
+      <LastGenOutput>DataBaseEntities.cs</LastGenOutput>
     </Content>
     <Content Include="DataEntity.edmx.sql" />
-    <Content Include="DataEntity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataEntity.edmx</DependentUpon>
-      <LastGenOutput>DataEntity.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
