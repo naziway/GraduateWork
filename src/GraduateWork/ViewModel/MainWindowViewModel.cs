@@ -24,7 +24,7 @@ namespace ViewModel
         {
             CurrentUserControl = new Orders();
         });
-
+        public ICommand LogOutCommand => new CommandHandler(DoOnLogOut);
 
 
 

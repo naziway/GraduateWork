@@ -7,7 +7,7 @@
         xmlns:userControls="clr-namespace:UserControls;assembly=UserControls"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="Панель входу" Height="300" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Панель входу" Height="180" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
     <Window.Resources>
         <Style x:Key="HeaderName" TargetType="Label">
             <Setter Property="Foreground" Value="AliceBlue"/>
@@ -27,15 +27,11 @@
         </Style>
         <Style x:Key="LabelBorder"  TargetType="Border">
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="CornerRadius" Value="0"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="LightGray"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Margin" Value="0,0,25,0"/>
-        </Style>
-        <Style TargetType="Image">
-            <EventSetter  Event="Image.MouseEnter" Handler="EventSetter_OnHandler"></EventSetter>
-            <EventSetter  Event="Image.MouseLeave" Handler="MouseLeave"></EventSetter>
+            <Setter Property="Margin" Value="30,0,30,0"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="BorderThickness" Value="0"/>
@@ -45,11 +41,11 @@
         </Style>
         <Style x:Key="ButtonBorder" TargetType="Border">
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="CornerRadius" Value="0"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="LightGray"/>
             <Setter Property="Background" Value="#2c3a45"/>
-            <Setter Property="Margin" Value="0,0,25,0"/>
+            <Setter Property="Margin" Value="30,0,30,0"/>
         </Style>
         <Style x:Key="TextButton" TargetType="Label">
             <Setter Property="Padding" Value="0"/>
@@ -66,13 +62,9 @@
         </Style>
     </Window.Resources>
     <Grid  Background="#1c252a">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="105*"/>
-            <ColumnDefinition Width="187*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="37"/>
             <RowDefinition Height="4"/>
             <RowDefinition Height="37"/>
@@ -82,78 +74,34 @@
         </Grid.RowDefinitions>
         <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" ></userControls:MoveControl>
 
-        <Label Style="{StaticResource HeaderName}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
-        <Image Name="CloseIcon" Opacity="0.5" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" Source="Icons/CloseIcons.png" MouseDown="UIElement_OnMouseDown"/>
+        <Label Style="{StaticResource HeaderName}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
+        <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
 
-        <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Логін:"></Label>
-        <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Пароль:"></Label>
-
-        <Border Style="{StaticResource LabelBorder}" Grid.Column="1" Grid.Row="2">
+        <Border Style="{StaticResource LabelBorder}"  Grid.Row="2">
             <TextBox Background="{x:Null}"  Text="{Binding Login}"></TextBox>
         </Border>
-        <Border Style="{StaticResource LabelBorder}" Grid.Column="1" Grid.Row="4">
+        <Border Style="{StaticResource LabelBorder}"  Grid.Row="4">
             <TextBox Background="{x:Null}" Text="{Binding Password}"></TextBox>
         </Border>
-        <Border Style="{StaticResource ButtonBorder}" Grid.Column="1" Grid.Row="6">
-            <Button Background="{x:Null}" Grid.Column="1" Grid.Row="6" Command="{Binding LoginCommand}">
+        <Border Style="{StaticResource ButtonBorder}" Grid.Row="6">
+            <Button Background="{x:Null}" Grid.Row="6" Command="{Binding LoginCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Label Style="{StaticResource TextButton}"  Content="Ввійти">
-                        </Label>
+                        <Label Style="{StaticResource TextButton}"  Content="Ввійти"></Label>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
         </Border>
-        <Grid Grid.RowSpan="7" Grid.Row="1" Grid.ColumnSpan="2" Visibility="{Binding State}"    Background="#1c252a">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Image Width="56" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="0" Grid.Column="1"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="0" Grid.Column="2"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="0" Grid.Column="3"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="0" Grid.Column="4"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-         
-            <Image Width="56" Grid.Row="1" Grid.Column="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="1" Grid.Column="1"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="1" Grid.Column="2"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="1" Grid.Column="3"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="1" Grid.Column="4"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-
-            <Image Width="56" Grid.Row="2" Grid.Column="4"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="2" Grid.Column="3"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="2" Grid.Column="4"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-          
-            <Image Width="56" Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="3" Grid.Column="2"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="3" Grid.Column="3"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="3" Grid.Column="4"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-
-            <Image Width="56" Grid.Row="4" Grid.Column="4"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="4" Grid.Column="1"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="4" Grid.Column="2"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="4" Grid.Column="3"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-            <Image Width="56" Grid.Row="4" Grid.Column="4"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
-
-
-        </Grid>
+        <Border Style="{StaticResource ButtonBorder}" Grid.Row="6"  Visibility="{Binding State}">
+            <Button Background="{x:Null}" Grid.Row="6">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Image Width="56"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Border>
+        
     </Grid>
 
 </Window>

@@ -1,11 +1,13 @@
 ﻿
+using Model;
+
 namespace DatabaseService.Extension
 {
     public static class Extension
     {
-        public static Model.User ToUserModel(this User user)
+        public static User ToUserModel(this UsersDb user)
         {
-            return new Model.User
+            return new User
             {
                 Id = user.Id,
                 Name = user.Name,

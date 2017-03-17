@@ -30,8 +30,12 @@ namespace GraduateWork
         public void OpenMainWindow()
         {
             MainWindowViewModel.OnLogOut += MainWindowViewModelOnLogOut;
-            MainWindowView = new MainWindowView(MainWindowViewModel);
-            InvokeInMainThread(MainWindowView.Show);
+
+            InvokeInMainThread((() =>
+            {
+                MainWindowView = new MainWindowView(MainWindowViewModel);
+                MainWindowView.Show();
+            }));
         }
 
 

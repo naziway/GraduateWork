@@ -11,7 +11,7 @@ namespace DatabaseService
             using (var database = new DoctorPhoneEntities())
             {
                 var userB =
-                    database.Users.FirstOrDefault(user => user.Login == login && user.Password == password);
+                    database.UsersDbs.FirstOrDefault(user => user.Login == login && user.Password == password);
                 currentUser = userB?.ToUserModel();
             }
 

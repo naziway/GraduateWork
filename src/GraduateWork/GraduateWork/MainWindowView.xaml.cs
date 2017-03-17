@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using ViewModel;
 
 namespace GraduateWork
@@ -15,6 +16,16 @@ namespace GraduateWork
             ViewModel = viewModel;
             InitializeComponent();
             DataContext = ViewModel;
+        }
+
+        private void UIElement_OnMouseLeftButtonDownuseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void CloseWindow(object sender, MouseButtonEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -5,10 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a705b0332e4545648067d639b462e622" Name="Diagram1">
-        <EntityTypeShape EntityType="DoctorPhoneModel.Client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoctorPhoneModel.Device" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoctorPhoneModel.User" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="DoctorPhoneModel.FK_Devices_ToClients" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DoctorPhoneModel.ClientsDb" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="DoctorPhoneModel.DevicesDb" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DoctorPhoneModel.Order" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="DoctorPhoneModel.PartsDb" Width="1.5" PointX="5.75" PointY="5.875" />
+        <EntityTypeShape EntityType="DoctorPhoneModel.UsersDb" Width="1.5" PointX="7.75" PointY="1" />
+        <EntityTypeShape EntityType="DoctorPhoneModel.WorksDb" Width="1.5" PointX="2.875" PointY="5" />
+        <AssociationConnector Association="DoctorPhoneModel.FK_DevicesDb_ToClient" />
+        <AssociationConnector Association="DoctorPhoneModel.FK_Orders_ToDevices" />
+        <AssociationConnector Association="DoctorPhoneModel.FK_Orders_ToParts" />
+        <AssociationConnector Association="DoctorPhoneModel.FK_Orders_ToWorks" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

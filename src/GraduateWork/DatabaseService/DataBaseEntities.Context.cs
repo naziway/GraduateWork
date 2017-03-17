@@ -25,8 +25,11 @@ namespace DatabaseService
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<Device> Devices { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ClientsDb> ClientsDbs { get; set; }
+        public virtual DbSet<DevicesDb> DevicesDbs { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<PartsDb> PartsDbs { get; set; }
+        public virtual DbSet<UsersDb> UsersDbs { get; set; }
+        public virtual DbSet<WorksDb> WorksDbs { get; set; }
     }
 }

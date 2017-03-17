@@ -1,0 +1,231 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
+-- --------------------------------------------------
+-- Date Created: 03/17/2017 16:55:20
+-- Generated from EDMX file: C:\Users\__it\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\DataBaseEntities.edmx
+-- --------------------------------------------------
+
+SET QUOTED_IDENTIFIER OFF;
+GO
+USE [DoctorPhone];
+GO
+IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
+GO
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- --------------------------------------------------
+
+IF OBJECT_ID(N'[dbo].[FK_DevicesDb_ToClient]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DevicesDb] DROP CONSTRAINT [FK_DevicesDb_ToClient];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Orders_ToDevices]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_Orders_ToDevices];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Orders_ToParts]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_Orders_ToParts];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Orders_ToWorks]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_Orders_ToWorks];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- --------------------------------------------------
+
+IF OBJECT_ID(N'[dbo].[ClientsDb]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ClientsDb];
+GO
+IF OBJECT_ID(N'[dbo].[DevicesDb]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DevicesDb];
+GO
+IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Orders];
+GO
+IF OBJECT_ID(N'[dbo].[PartsDb]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PartsDb];
+GO
+IF OBJECT_ID(N'[dbo].[UsersDb]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UsersDb];
+GO
+IF OBJECT_ID(N'[dbo].[WorksDb]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[WorksDb];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'ClientsDbs'
+CREATE TABLE [dbo].[ClientsDbs] (
+    [Id] int  NOT NULL,
+    [Surname] nvarchar(50)  NOT NULL,
+    [Name] nvarchar(50)  NOT NULL,
+    [PassportData] nvarchar(50)  NOT NULL,
+    [Phone] varchar(12)  NOT NULL,
+    [IsAdmin] bit  NOT NULL,
+    [SignInDate] datetime  NOT NULL
+);
+GO
+
+-- Creating table 'DevicesDbs'
+CREATE TABLE [dbo].[DevicesDbs] (
+    [Id] int  NOT NULL,
+    [ClientId] int  NOT NULL,
+    [PhoneModel] nvarchar(30)  NOT NULL,
+    [PhoneMarka] nvarchar(30)  NOT NULL,
+    [DeviceType] nvarchar(20)  NOT NULL,
+    [SerialNumber] nvarchar(14)  NOT NULL,
+    [ManufactureDate] datetime  NOT NULL
+);
+GO
+
+-- Creating table 'Orders'
+CREATE TABLE [dbo].[Orders] (
+    [Id] int  NOT NULL,
+    [OrderKods] int  NOT NULL,
+    [PartId] int  NOT NULL,
+    [WorkId] int  NOT NULL,
+    [DeviceId] int  NOT NULL,
+    [OrderType] nvarchar(50)  NOT NULL
+);
+GO
+
+-- Creating table 'PartsDbs'
+CREATE TABLE [dbo].[PartsDbs] (
+    [Id] int  NOT NULL,
+    [Title] nvarchar(50)  NOT NULL,
+    [Model] nvarchar(50)  NOT NULL,
+    [Marka] nvarchar(50)  NOT NULL,
+    [Price] float  NOT NULL,
+    [IsAvailable] bit  NOT NULL
+);
+GO
+
+-- Creating table 'UsersDbs'
+CREATE TABLE [dbo].[UsersDbs] (
+    [Id] int  NOT NULL,
+    [Name] nvarchar(50)  NOT NULL,
+    [Surname] nvarchar(50)  NOT NULL,
+    [Login] varchar(50)  NOT NULL,
+    [Password] varchar(10)  NOT NULL
+);
+GO
+
+-- Creating table 'WorksDbs'
+CREATE TABLE [dbo].[WorksDbs] (
+    [Id] int  NOT NULL,
+    [Title] nvarchar(50)  NOT NULL,
+    [Price] float  NOT NULL,
+    [ExecutionTime] nchar(10)  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'ClientsDbs'
+ALTER TABLE [dbo].[ClientsDbs]
+ADD CONSTRAINT [PK_ClientsDbs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'DevicesDbs'
+ALTER TABLE [dbo].[DevicesDbs]
+ADD CONSTRAINT [PK_DevicesDbs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Orders'
+ALTER TABLE [dbo].[Orders]
+ADD CONSTRAINT [PK_Orders]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'PartsDbs'
+ALTER TABLE [dbo].[PartsDbs]
+ADD CONSTRAINT [PK_PartsDbs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UsersDbs'
+ALTER TABLE [dbo].[UsersDbs]
+ADD CONSTRAINT [PK_UsersDbs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'WorksDbs'
+ALTER TABLE [dbo].[WorksDbs]
+ADD CONSTRAINT [PK_WorksDbs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [ClientId] in table 'DevicesDbs'
+ALTER TABLE [dbo].[DevicesDbs]
+ADD CONSTRAINT [FK_DevicesDb_ToClient]
+    FOREIGN KEY ([ClientId])
+    REFERENCES [dbo].[ClientsDbs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DevicesDb_ToClient'
+CREATE INDEX [IX_FK_DevicesDb_ToClient]
+ON [dbo].[DevicesDbs]
+    ([ClientId]);
+GO
+
+-- Creating foreign key on [DeviceId] in table 'Orders'
+ALTER TABLE [dbo].[Orders]
+ADD CONSTRAINT [FK_Orders_ToDevices]
+    FOREIGN KEY ([DeviceId])
+    REFERENCES [dbo].[DevicesDbs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Orders_ToDevices'
+CREATE INDEX [IX_FK_Orders_ToDevices]
+ON [dbo].[Orders]
+    ([DeviceId]);
+GO
+
+-- Creating foreign key on [PartId] in table 'Orders'
+ALTER TABLE [dbo].[Orders]
+ADD CONSTRAINT [FK_Orders_ToParts]
+    FOREIGN KEY ([PartId])
+    REFERENCES [dbo].[PartsDbs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Orders_ToParts'
+CREATE INDEX [IX_FK_Orders_ToParts]
+ON [dbo].[Orders]
+    ([PartId]);
+GO
+
+-- Creating foreign key on [WorkId] in table 'Orders'
+ALTER TABLE [dbo].[Orders]
+ADD CONSTRAINT [FK_Orders_ToWorks]
+    FOREIGN KEY ([WorkId])
+    REFERENCES [dbo].[WorksDbs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Orders_ToWorks'
+CREATE INDEX [IX_FK_Orders_ToWorks]
+ON [dbo].[Orders]
+    ([WorkId]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------
