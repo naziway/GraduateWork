@@ -13,10 +13,10 @@ namespace DatabaseService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DoctorPhoneEntities : DbContext
+    public partial class DoctorPhoneEntities1 : DbContext
     {
-        public DoctorPhoneEntities()
-            : base("name=DoctorPhoneEntities")
+        public DoctorPhoneEntities1()
+            : base("name=DoctorPhoneEntities1")
         {
         }
     

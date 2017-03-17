@@ -10,12 +10,23 @@ namespace ViewModel
     [ImplementPropertyChanged]
     public class MainWindowViewModel
     {
+        #region Action
+        public Action<OpenWindow> OpenWindowAction { get; set; }
+
+        public void SetAction(Action<OpenWindow> action)
+        {
+            OpenWindowAction = action;
+        }
+        #endregion
+        public UserControl CurrentUserControl { get; set; }
+
         public MainWindowViewModel()
         {
 
         }
-        public UserControl CurrentUserControl { get; set; }
 
+
+        #region Command
         public ICommand UsersCommand => new CommandHandler(() =>
         {
             CurrentUserControl = new UsersList();
@@ -25,7 +36,7 @@ namespace ViewModel
             CurrentUserControl = new Orders();
         });
         public ICommand LogOutCommand => new CommandHandler(DoOnLogOut);
-
+        #endregion
 
 
         public event EventHandler OnLogOut;

@@ -52,68 +52,68 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientsDb.cs">
-      <DependentUpon>DataBaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataBaseEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataBaseEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataBaseEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataBaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataBaseEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
+      <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataService.cs" />
     <Compile Include="DevicesDb.cs">
-      <DependentUpon>DataBaseEntities.tt</DependentUpon>
+      <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Order.cs">
-      <DependentUpon>DataBaseEntities.tt</DependentUpon>
+      <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PartsDb.cs">
-      <DependentUpon>DataBaseEntities.tt</DependentUpon>
+      <DependentUpon>PhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersDb.cs">
-      <DependentUpon>DataBaseEntities.tt</DependentUpon>
+      <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WorksDb.cs">
-      <DependentUpon>DataBaseEntities.tt</DependentUpon>
+      <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="DataBaseEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataBaseEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DataBaseEntities.edmx.diagram">
-      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="PhoneDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PhoneDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PhoneDataModel.edmx.diagram">
+      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataBaseEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
-      <LastGenOutput>DataBaseEntities.Context.cs</LastGenOutput>
-    </Content>
     <Content Include="DataBaseEntities.edmx.sql" />
-    <Content Include="DataBaseEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataBaseEntities.edmx</DependentUpon>
-      <LastGenOutput>DataBaseEntities.cs</LastGenOutput>
-    </Content>
     <Content Include="DataEntity.edmx.sql" />
+    <Content Include="PhoneDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
+      <LastGenOutput>PhoneDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PhoneDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
+      <LastGenOutput>PhoneDataModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -9,8 +9,8 @@ namespace GraduateWork
     {
         public App()
         {
-            //var factory = new WindowsFactory();
-            //factory.OpenMainWindow();
+            var factory = new WindowsFactory();
+            factory.OpenLoginWindow();
         }
     }
 }

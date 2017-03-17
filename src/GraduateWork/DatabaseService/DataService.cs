@@ -8,7 +8,7 @@ namespace DatabaseService
         public Model.User GetUser(string login, string password)
         {
             Model.User currentUser;
-            using (var database = new DoctorPhoneEntities())
+            using (var database = new DoctorPhoneEntities1())
             {
                 var userB =
                     database.UsersDbs.FirstOrDefault(user => user.Login == login && user.Password == password);
