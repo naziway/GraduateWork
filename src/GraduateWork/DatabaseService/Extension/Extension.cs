@@ -16,5 +16,22 @@ namespace DatabaseService.Extension
                 Password = user.Password
             };
         }
+        public static OrderRecord ToOrderRecord(this Order order)
+        {
+            //int count = 19;
+            //var a = new List<Order>();
+            //a.Reverse();
+            //a.Take(count + 16).Skip(count);
+
+            return new OrderRecord
+            {
+                Id = order.Id,
+                DeviceId = order.DeviceId,
+                OrderKods = order.OrderKods,
+                OrderType = order.OrderType,
+                PartId = order.PartId,
+                WorkId = order.WorkId
+            };
+        }
     }
 }
