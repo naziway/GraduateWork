@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="DoctorPhoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ClientsDb">
+        <EntityType Name="ClientsDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -17,7 +17,7 @@
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
           <Property Name="SignInDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="DevicesDb">
+        <EntityType Name="DevicesDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -40,7 +40,7 @@
           <Property Name="DeviceId" Type="int" Nullable="false" />
           <Property Name="OrderType" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="PartsDb">
+        <EntityType Name="PartsDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -51,7 +51,7 @@
           <Property Name="Price" Type="float" Nullable="false" />
           <Property Name="IsAvailable" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="UsersDb">
+        <EntityType Name="UsersDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -61,7 +61,7 @@
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <EntityType Name="WorksDb">
+        <EntityType Name="WorksDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -71,22 +71,22 @@
           <Property Name="ExecutionTime" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_DevicesDb_ToClient">
-          <End Role="ClientsDb" Type="Self.ClientsDb" Multiplicity="1" />
-          <End Role="DevicesDb" Type="Self.DevicesDb" Multiplicity="*" />
+          <End Role="ClientsDbs" Type="Self.ClientsDbs" Multiplicity="1" />
+          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ClientsDb">
+            <Principal Role="ClientsDbs">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DevicesDb">
+            <Dependent Role="DevicesDbs">
               <PropertyRef Name="ClientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToDevices">
-          <End Role="DevicesDb" Type="Self.DevicesDb" Multiplicity="1" />
+          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DevicesDb">
+            <Principal Role="DevicesDbs">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
@@ -95,10 +95,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToParts">
-          <End Role="PartsDb" Type="Self.PartsDb" Multiplicity="1" />
+          <End Role="PartsDbs" Type="Self.PartsDbs" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PartsDb">
+            <Principal Role="PartsDbs">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
@@ -107,10 +107,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToWorks">
-          <End Role="WorksDb" Type="Self.WorksDb" Multiplicity="1" />
+          <End Role="WorksDbs" Type="Self.WorksDbs" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WorksDb">
+            <Principal Role="WorksDbs">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
@@ -119,26 +119,26 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DoctorPhoneModelStoreContainer">
-          <EntitySet Name="ClientsDb" EntityType="Self.ClientsDb" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DevicesDb" EntityType="Self.DevicesDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientsDbs" EntityType="Self.ClientsDbs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DevicesDbs" EntityType="Self.DevicesDbs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PartsDb" EntityType="Self.PartsDb" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsersDb" EntityType="Self.UsersDb" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WorksDb" EntityType="Self.WorksDb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartsDbs" EntityType="Self.PartsDbs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersDbs" EntityType="Self.UsersDbs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorksDbs" EntityType="Self.WorksDbs" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_DevicesDb_ToClient" Association="Self.FK_DevicesDb_ToClient">
-            <End Role="ClientsDb" EntitySet="ClientsDb" />
-            <End Role="DevicesDb" EntitySet="DevicesDb" />
+            <End Role="ClientsDbs" EntitySet="ClientsDbs" />
+            <End Role="DevicesDbs" EntitySet="DevicesDbs" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_ToDevices" Association="Self.FK_Orders_ToDevices">
-            <End Role="DevicesDb" EntitySet="DevicesDb" />
+            <End Role="DevicesDbs" EntitySet="DevicesDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_ToParts" Association="Self.FK_Orders_ToParts">
-            <End Role="PartsDb" EntitySet="PartsDb" />
+            <End Role="PartsDbs" EntitySet="PartsDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_ToWorks" Association="Self.FK_Orders_ToWorks">
-            <End Role="WorksDb" EntitySet="WorksDb" />
+            <End Role="WorksDbs" EntitySet="WorksDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
@@ -147,7 +147,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DoctorPhoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ClientsDb">
+        <EntityType Name="ClientsDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -158,9 +158,9 @@
           <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="SignInDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="DevicesDbs" Relationship="Self.FK_DevicesDb_ToClient" FromRole="ClientsDb" ToRole="DevicesDb" />
+          <NavigationProperty Name="DevicesDbs" Relationship="Self.FK_DevicesDb_ToClient" FromRole="ClientsDbs" ToRole="DevicesDbs" />
         </EntityType>
-        <EntityType Name="DevicesDb">
+        <EntityType Name="DevicesDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -171,10 +171,10 @@
           <Property Name="DeviceType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SerialNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ManufactureDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ClientsDb" Relationship="Self.FK_DevicesDb_ToClient" FromRole="DevicesDb" ToRole="ClientsDb" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToDevices" FromRole="DevicesDb" ToRole="Orders" />
+          <NavigationProperty Name="ClientsDbs" Relationship="Self.FK_DevicesDb_ToClient" FromRole="DevicesDbs" ToRole="ClientsDbs" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToDevices" FromRole="DevicesDbs" ToRole="Orders" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -184,11 +184,11 @@
           <Property Name="WorkId" Type="Int32" Nullable="false" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
           <Property Name="OrderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DevicesDb" Relationship="Self.FK_Orders_ToDevices" FromRole="Orders" ToRole="DevicesDb" />
-          <NavigationProperty Name="PartsDb" Relationship="Self.FK_Orders_ToParts" FromRole="Orders" ToRole="PartsDb" />
-          <NavigationProperty Name="WorksDb" Relationship="Self.FK_Orders_ToWorks" FromRole="Orders" ToRole="WorksDb" />
+          <NavigationProperty Name="DevicesDbs" Relationship="Self.FK_Orders_ToDevices" FromRole="Orders" ToRole="DevicesDbs" />
+          <NavigationProperty Name="PartsDbs" Relationship="Self.FK_Orders_ToParts" FromRole="Orders" ToRole="PartsDbs" />
+          <NavigationProperty Name="WorksDbs" Relationship="Self.FK_Orders_ToWorks" FromRole="Orders" ToRole="WorksDbs" />
         </EntityType>
-        <EntityType Name="PartsDb">
+        <EntityType Name="PartsDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -198,9 +198,9 @@
           <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
           <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToParts" FromRole="PartsDb" ToRole="Orders" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToParts" FromRole="PartsDbs" ToRole="Orders" />
         </EntityType>
-        <EntityType Name="UsersDb">
+        <EntityType Name="UsersDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -210,7 +210,7 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="WorksDb">
+        <EntityType Name="WorksDbs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -218,25 +218,25 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
           <Property Name="ExecutionTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToWorks" FromRole="WorksDb" ToRole="Orders" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToWorks" FromRole="WorksDbs" ToRole="Orders" />
         </EntityType>
         <Association Name="FK_DevicesDb_ToClient">
-          <End Role="ClientsDb" Type="Self.ClientsDb" Multiplicity="1" />
-          <End Role="DevicesDb" Type="Self.DevicesDb" Multiplicity="*" />
+          <End Role="ClientsDbs" Type="Self.ClientsDbs" Multiplicity="1" />
+          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ClientsDb">
+            <Principal Role="ClientsDbs">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="DevicesDb">
+            <Dependent Role="DevicesDbs">
               <PropertyRef Name="ClientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToDevices">
-          <End Role="DevicesDb" Type="Self.DevicesDb" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DevicesDb">
+            <Principal Role="DevicesDbs">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
@@ -245,10 +245,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToParts">
-          <End Role="PartsDb" Type="Self.PartsDb" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <End Role="PartsDbs" Type="Self.PartsDbs" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PartsDb">
+            <Principal Role="PartsDbs">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
@@ -257,10 +257,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToWorks">
-          <End Role="WorksDb" Type="Self.WorksDb" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <End Role="WorksDbs" Type="Self.WorksDbs" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WorksDb">
+            <Principal Role="WorksDbs">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
@@ -268,27 +268,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DoctorPhoneEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ClientsDbs" EntityType="Self.ClientsDb" />
-          <EntitySet Name="DevicesDbs" EntityType="Self.DevicesDb" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="PartsDbs" EntityType="Self.PartsDb" />
-          <EntitySet Name="UsersDbs" EntityType="Self.UsersDb" />
-          <EntitySet Name="WorksDbs" EntityType="Self.WorksDb" />
+        <EntityContainer Name="DoctorPhoneEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientsDbs" EntityType="Self.ClientsDbs" />
+          <EntitySet Name="DevicesDbs" EntityType="Self.DevicesDbs" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="PartsDbs" EntityType="Self.PartsDbs" />
+          <EntitySet Name="UsersDbs" EntityType="Self.UsersDbs" />
+          <EntitySet Name="WorksDbs" EntityType="Self.WorksDbs" />
           <AssociationSet Name="FK_DevicesDb_ToClient" Association="Self.FK_DevicesDb_ToClient">
-            <End Role="ClientsDb" EntitySet="ClientsDbs" />
-            <End Role="DevicesDb" EntitySet="DevicesDbs" />
+            <End Role="ClientsDbs" EntitySet="ClientsDbs" />
+            <End Role="DevicesDbs" EntitySet="DevicesDbs" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_ToDevices" Association="Self.FK_Orders_ToDevices">
-            <End Role="DevicesDb" EntitySet="DevicesDbs" />
+            <End Role="DevicesDbs" EntitySet="DevicesDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_ToParts" Association="Self.FK_Orders_ToParts">
-            <End Role="PartsDb" EntitySet="PartsDbs" />
+            <End Role="PartsDbs" EntitySet="PartsDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_ToWorks" Association="Self.FK_Orders_ToWorks">
-            <End Role="WorksDb" EntitySet="WorksDbs" />
+            <End Role="WorksDbs" EntitySet="WorksDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
@@ -297,10 +297,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DoctorPhoneModelStoreContainer" CdmEntityContainer="DoctorPhoneEntities1">
+        <EntityContainerMapping StorageEntityContainer="DoctorPhoneModelStoreContainer" CdmEntityContainer="DoctorPhoneEntities2">
           <EntitySetMapping Name="ClientsDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.ClientsDb">
-              <MappingFragment StoreEntitySet="ClientsDb">
+            <EntityTypeMapping TypeName="DoctorPhoneModel.ClientsDbs">
+              <MappingFragment StoreEntitySet="ClientsDbs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -312,8 +312,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DevicesDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.DevicesDb">
-              <MappingFragment StoreEntitySet="DevicesDb">
+            <EntityTypeMapping TypeName="DoctorPhoneModel.DevicesDbs">
+              <MappingFragment StoreEntitySet="DevicesDbs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="PhoneModel" ColumnName="PhoneModel" />
@@ -325,7 +325,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.Order">
+            <EntityTypeMapping TypeName="DoctorPhoneModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderKods" ColumnName="OrderKods" />
@@ -337,8 +337,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PartsDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.PartsDb">
-              <MappingFragment StoreEntitySet="PartsDb">
+            <EntityTypeMapping TypeName="DoctorPhoneModel.PartsDbs">
+              <MappingFragment StoreEntitySet="PartsDbs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
@@ -349,8 +349,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsersDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.UsersDb">
-              <MappingFragment StoreEntitySet="UsersDb">
+            <EntityTypeMapping TypeName="DoctorPhoneModel.UsersDbs">
+              <MappingFragment StoreEntitySet="UsersDbs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -360,8 +360,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WorksDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.WorksDb">
-              <MappingFragment StoreEntitySet="WorksDb">
+            <EntityTypeMapping TypeName="DoctorPhoneModel.WorksDbs">
+              <MappingFragment StoreEntitySet="WorksDbs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -383,7 +383,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

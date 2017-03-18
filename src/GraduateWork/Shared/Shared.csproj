@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CommandHandler.cs" />
     <Compile Include="OpenWindow.cs" />
+    <Compile Include="OrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

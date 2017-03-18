@@ -12,23 +12,24 @@ namespace DatabaseService
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientsDb
+    public partial class DevicesDbs
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ClientsDb()
+        public DevicesDbs()
         {
-            this.DevicesDbs = new HashSet<DevicesDb>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public int Id { get; set; }
-        public string Surname { get; set; }
-        public string Name { get; set; }
-        public string PassportData { get; set; }
-        public string Phone { get; set; }
-        public bool IsAdmin { get; set; }
-        public System.DateTime SignInDate { get; set; }
+        public int ClientId { get; set; }
+        public string PhoneModel { get; set; }
+        public string PhoneMarka { get; set; }
+        public string DeviceType { get; set; }
+        public string SerialNumber { get; set; }
+        public System.DateTime ManufactureDate { get; set; }
     
+        public virtual ClientsDbs ClientsDbs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DevicesDb> DevicesDbs { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }
