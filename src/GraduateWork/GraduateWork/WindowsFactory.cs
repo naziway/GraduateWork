@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using Shared;
+using UserControls;
 using ViewModel;
 
 namespace GraduateWork
@@ -30,59 +33,28 @@ namespace GraduateWork
         public void OpenMainWindow()
         {
             MainWindowViewModel.OnLogOut += MainWindowViewModelOnLogOut;
-
-            InvokeInMainThread((() =>
+            MainWindowViewModel.SetAction(OpenResizeWindow);
+            InvokeInMainThread(() =>
             {
                 MainWindowView = new MainWindowView(MainWindowViewModel);
                 MainWindowView.Show();
-            }));
+            });
         }
 
 
-        //private IView OpenWindow(WindowType windowType)
-        //{
-        //    UserControl control;
-        //    switch (windowType)
-        //    {
-        //        case WindowType.TimeAndSale:
-        //            control = new TimeSellView(new TimeAndSaleViewModel(new TimeAndSaleService(stockManager)));
-        //            break;
-        //        case WindowType.TodayInfo:
-        //            control = new TodayInfoView(new TodayInfoViewModel(new TodayInfoService(stockManager)));
-        //            break;
-        //        case WindowType.SendOrder:
-        //            control = new SendOrderView(new SendOrderViewModel(executionService));
-        //            break;
-        //        case WindowType.AccountInfo:
-        //            control = new AccountInfoView(new AccountInfoViewModel(accountService));
-        //            break;
-        //        case WindowType.Positions:
-        //            control = new PositionsView(new PositionsViewModel(positionService));
-        //            break;
-        //        case WindowType.Pendings:
-        //            control = new PendingView(new PendingViewModel(pendingService));
-        //            break;
-        //        case WindowType.Activity:
-        //            control = new ActivityView(new ActivityViewModel(activityService));
-        //            break;
-        //        case WindowType.Level2:
-        //            control = new Level2View(new Level2ViewModel(new Level2Service(stockManager)));
-        //            break;
-        //        case WindowType.RiskInfo:
-        //            control = new RiskInfoView(new RiskInfoViewModel(accountService));
-        //            break;
-        //        case WindowType.Settings:
-        //            control = new SettingsView(settingsViewModel);
-        //            break;
-
-        //        default: throw new InvalidOperationException();
-        //    }
-        //    IView view = new BaseWindow(control);
-        //    view.OnViewClosed += WindowClosed;
-        //    view.ChangeHeaderColor(settings.HeaderColor);
-        //    OpenedWindows.Add(view);
-        //    return view;
-        //}
+        private void OpenResizeWindow(OpenWindow windowType)
+        {
+            Window view;
+            switch (windowType)
+            {
+                case Shared.OpenWindow.Orders:
+                    view = new Base.ResizeBaseView(new OrdersUserControl(), "Список замовлень", 500, 500);
+                    break;
+                default: throw new InvalidOperationException();
+            }
+            OpenedWindows.Add(view);
+            InvokeInMainThread(view.Show);
+        }
 
         private void InvokeInMainThread(Action action)
         {

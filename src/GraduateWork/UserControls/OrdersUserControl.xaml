@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="UserControls.OrdersUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="2*" Header="Дата оформлення" Binding="{Binding StartData,StringFormat=d}"/>
+                <DataGridTextColumn Width="*" Header="Імя" Binding="{Binding Client.Name}"/>
+                <DataGridTextColumn Width="*" Header="Прізвище" Binding="{Binding Client.Surname}"/>
+                <DataGridTextColumn Width="*" Header="Телефон" Binding="{Binding }"/>
+                <DataGridTextColumn Width="*" Header="Ціна" Binding="{Binding }"/>
+                <DataGridTextColumn Width="*" Header="Код" Binding="{Binding }"/>
+                <DataGridTextColumn Width="2*" Header="Дата завершення" Binding="{Binding }"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

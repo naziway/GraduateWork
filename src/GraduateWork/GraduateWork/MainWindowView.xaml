@@ -53,7 +53,7 @@
                 </Button>
             </Grid>
             <Grid  Grid.Column="0" Grid.Row="2" Margin="0,0,0,5">
-                <Button Command="{Binding AddNewOrderCommand}">
+                <Button Command="{Binding OrdersCommand}">
                     <Button.Template>
                         <ControlTemplate >
                             <StackPanel Style="{DynamicResource PanelItem}">

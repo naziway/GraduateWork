@@ -70,7 +70,7 @@
         </Grid.RowDefinitions>
         <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" ></userControls:MoveControl>
 
-        <Label Style="{StaticResource HeaderName}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
+        <Label Style="{DynamicResource HeaderName}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
         <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
 
         <Border Style="{StaticResource LabelBorder}"  Grid.Row="2">
@@ -97,7 +97,7 @@
                 </Button.Template>
             </Button>
         </Border>
-        
+
     </Grid>
 
 </Window>

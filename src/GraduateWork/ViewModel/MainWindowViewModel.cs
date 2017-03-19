@@ -34,6 +34,7 @@ namespace ViewModel
         public ICommand OrdersCommand => new CommandHandler(() =>
         {
             CurrentUserControl = new Orders();
+            OpenWindowAction(OpenWindow.Orders);
         });
         public ICommand LogOutCommand => new CommandHandler(DoOnLogOut);
         #endregion

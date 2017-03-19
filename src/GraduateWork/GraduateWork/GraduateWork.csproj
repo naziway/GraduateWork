@@ -141,6 +141,10 @@
       <Project>{DF8A7CC4-ED9F-47CC-9170-469A9352BEEA}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{957dffe9-c9ac-4f80-8763-178fa616e272}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UserControls\UserControls.csproj">
       <Project>{45977c3a-c6bb-4990-8e44-ebcb202b6373}</Project>
       <Name>UserControls</Name>
