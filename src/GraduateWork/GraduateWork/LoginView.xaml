@@ -9,10 +9,6 @@
         mc:Ignorable="d"
         Title="Панель входу" Height="180" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
     <Window.Resources>
-        <Style x:Key="HeaderName" TargetType="Label">
-            <Setter Property="Foreground" Value="AliceBlue"/>
-            <Setter Property="FontSize" Value="17"/>
-        </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="#1c252a"/>

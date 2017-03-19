@@ -1,0 +1,23 @@
+﻿<Window x:Class="GraduateWork.Base.ResizeBaseView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraduateWork.Base"
+        xmlns:userControls="clr-namespace:UserControls;assembly=UserControls"
+        mc:Ignorable="d"
+        Title="ResizeBaseView" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="MoveOnMouseLeftButtonDown" ></userControls:MoveControl>
+            <Label Style="{DynamicResource HeaderName}"  Name="TitleView" VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
+            <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="../Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
+        </Grid>
+        <ContentPresenter Grid.Row="1" Grid.Column="1" Name="MainContaint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentPresenter>
+        <Rectangle  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="RightOnLeftButtonDown" MouseLeftButtonUp="RightOnMouseLeftButtonUp" MouseMove="RightOnMouseMove"></Rectangle>
+    </Grid>
+</Window>
