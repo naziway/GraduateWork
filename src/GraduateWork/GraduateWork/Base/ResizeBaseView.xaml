@@ -16,6 +16,10 @@
             <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="MoveOnMouseLeftButtonDown" ></userControls:MoveControl>
             <Label Style="{DynamicResource HeaderName}"  Name="TitleView" VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
             <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="../Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
+            <Rectangle  HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="Normal" Margin="0,5,67,5" ></Rectangle>
+            <Rectangle  HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="Max" Margin="0,5,42,5" ></Rectangle>
+            <Rectangle  HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="Min" Margin="0,5,92,5" />
+
         </Grid>
         <ContentPresenter Grid.Row="1" Grid.Column="1" Name="MainContaint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentPresenter>
         <Rectangle  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="RightOnLeftButtonDown" MouseLeftButtonUp="RightOnMouseLeftButtonUp" MouseMove="RightOnMouseMove"></Rectangle>

@@ -63,5 +63,19 @@ namespace GraduateWork.Base
         {
             Close();
         }
+
+        private void Max(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+        }
+        private void Normal(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+        }
+        private void Min(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
     }
 }
