@@ -1,5 +1,8 @@
-﻿namespace Model
+﻿using PropertyChanged;
+
+namespace Model
 {
+    [ImplementPropertyChanged]
     public class Client
     {
         public int Id { get; set; }

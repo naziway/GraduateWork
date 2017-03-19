@@ -40,8 +40,6 @@ namespace GraduateWork
                 MainWindowView.Show();
             });
         }
-
-
         private void OpenResizeWindow(OpenWindow windowType)
         {
             Window view;

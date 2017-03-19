@@ -25,7 +25,6 @@ namespace ViewModel
 
         }
 
-
         #region Command
         public ICommand UsersCommand => new CommandHandler(() =>
         {
