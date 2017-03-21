@@ -1,13 +1,11 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using ViewModel;
+﻿using ViewModel;
 
 namespace GraduateWork
 {
     /// <summary>
     /// Interaction logic for MainWindowView.xaml
     /// </summary>
-    public partial class MainWindowView : Window
+    public partial class MainWindowView
     {
         private readonly MainWindowViewModel ViewModel;
 
@@ -18,14 +16,5 @@ namespace GraduateWork
             DataContext = ViewModel;
         }
 
-        private void UIElement_OnMouseLeftButtonDownuseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-
-        private void CloseWindow(object sender, MouseButtonEventArgs e)
-        {
-            Close();
-        }
     }
 }

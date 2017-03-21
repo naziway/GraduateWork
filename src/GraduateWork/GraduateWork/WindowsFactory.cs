@@ -1,9 +1,9 @@
-﻿using Model;
+﻿using GraduateWork.Base;
+using Model;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using Shared;
 using UserControls;
 using ViewModel;
 
@@ -14,7 +14,7 @@ namespace GraduateWork
         private LoginViewModel LoginViewModel { get; set; } = new LoginViewModel();
         private LoginView LoginView { get; set; }
         private MainWindowViewModel MainWindowViewModel { get; set; } = new MainWindowViewModel();
-        private MainWindowView MainWindowView { get; set; }
+        private ResizeBaseView MainWindowView { get; set; }
 
         private List<Window> OpenedWindows { get; } = new List<Window>();
 
@@ -36,7 +36,7 @@ namespace GraduateWork
             MainWindowViewModel.SetAction(OpenResizeWindow);
             InvokeInMainThread(() =>
             {
-                MainWindowView = new MainWindowView(MainWindowViewModel);
+                MainWindowView = new ResizeBaseView(new MainWindowView(MainWindowViewModel), "Головне Вікно", 600, 900);
                 MainWindowView.Show();
             });
         }
@@ -46,7 +46,7 @@ namespace GraduateWork
             switch (windowType)
             {
                 case Shared.OpenWindow.Orders:
-                    view = new Base.ResizeBaseView(new OrdersUserControl(), "Список замовлень", 500, 500);
+                    view = new ResizeBaseView(new OrdersUserControl(), "Список замовлень", 500, 500);
                     break;
                 default: throw new InvalidOperationException();
             }
