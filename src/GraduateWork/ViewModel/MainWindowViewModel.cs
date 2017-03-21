@@ -28,11 +28,11 @@ namespace ViewModel
         #region Command
         public ICommand UsersCommand => new CommandHandler(() =>
         {
-            CurrentUserControl = new UsersList();
+
         });
         public ICommand OrdersCommand => new CommandHandler(() =>
         {
-            CurrentUserControl = new Orders();
+            CurrentUserControl = new OrdersUserControl();
             OpenWindowAction(OpenWindow.Orders);
         });
         public ICommand LogOutCommand => new CommandHandler(DoOnLogOut);

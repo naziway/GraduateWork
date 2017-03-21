@@ -16,14 +16,14 @@ namespace DatabaseService.Extension
                 Password = user.Password
             };
         }
-        public static OrderRecord ToOrderRecord(this Orders order)
+        public static OrderRecordModel ToOrderRecord(this Orders order)
         {
             //int count = 19;
             //var a = new List<Order>();
             //a.Reverse();
             //a.Take(count + 16).Skip(count);
 
-            return new OrderRecord
+            return new OrderRecordModel
             {
                 Id = order.Id,
                 DeviceId = order.DeviceId,

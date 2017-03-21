@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="OrdersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

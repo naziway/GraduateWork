@@ -46,7 +46,7 @@ namespace GraduateWork
             switch (windowType)
             {
                 case Shared.OpenWindow.Orders:
-                    view = new ResizeBaseView(new OrdersUserControl(), "Список замовлень", 500, 500);
+                    view = new ResizeBaseView(new OrdersListWithFinding(), "Список замовлень", 500, 500);
                     break;
                 default: throw new InvalidOperationException();
             }

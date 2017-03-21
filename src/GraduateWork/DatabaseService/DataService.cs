@@ -1,6 +1,6 @@
-﻿using System;
-using DatabaseService.Extension;
+﻿using DatabaseService.Extension;
 using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,18 +26,21 @@ namespace DatabaseService
             }
             return currentUser;
         }
-        public List<OrderRecord> GetAllOrders()
+        public List<OrderRecordModel> GetAllOrders()//TODO
         {
-            List<OrderRecord> orders = null;
+            List<OrderRecordModel> orders = null;
             using (var database = new DoctorPhoneEntities2())
             {
-                orders = database.Orders.Select(x => x.ToOrderRecord()).ToList();
+                var clients = database.ClientsDbs;
+                var devices = database.DevicesDbs;
+                var merge = clients.Join(devices, client => client.Id, device => device.ClientId, (client, device) => new { Name = client.Name });
+                //  orders = database.Orders;
             }
             return orders;
         }
-        public List<OrderRecord> GetOrdersByClient(Client client)
+        public List<OrderRecordModel> GetOrdersByClient(Client client)
         {
-            List<OrderRecord> orders = null;
+            List<OrderRecordModel> orders = null;
             using (var database = new DoctorPhoneEntities2())
             {
                 var devices = GetDevicesByClient(client).Select(device => device.Id);
