@@ -22,16 +22,16 @@ namespace DatabaseService.Extension
             //var a = new List<Order>();
             //a.Reverse();
             //a.Take(count + 16).Skip(count);
-
-            return new OrderRecordModel
-            {
-                Id = order.Id,
-                DeviceId = order.DeviceId,
-                OrderKods = order.OrderKods,
-                OrderType = order.OrderType,
-                PartId = order.PartId,
-                WorkId = order.WorkId
-            };
+            return new OrderRecordModel();
+            //return new OrderRecordModel//TODO
+            //{
+            //    Id = order.Id,
+            //    DeviceId = order.DeviceId,
+            //    OrderKods = order.OrderKods,
+            //    OrderType = order.OrderType,
+            //    PartId = order.PartId,
+            //    WorkId = order.WorkId
+            //};
         }
         public static Device ToDevice(this DevicesDbs device)
         {
