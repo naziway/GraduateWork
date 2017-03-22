@@ -91,6 +91,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClientListUserControl.xaml.cs">
+      <DependentUpon>ClientListUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FindControl.xaml.cs">
       <DependentUpon>FindControl.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ClientListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FindControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

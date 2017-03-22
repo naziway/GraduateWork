@@ -1,4 +1,5 @@
 ﻿using PropertyChanged;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -10,5 +11,6 @@ namespace Model
         public string Name { get; set; }
         public string PassportData { get; set; }
         public string Phone { get; set; }
+        public List<Device> Devices { get; set; }
     }
 }

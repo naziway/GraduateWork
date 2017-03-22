@@ -17,7 +17,6 @@
                 <DataGridTextColumn Width="*" Header="Ціна" Binding="{Binding Price}"/>
                 <DataGridTextColumn Width="*" Header="Код" Binding="{Binding OrderKod}"/>
                 <DataGridTextColumn Width="2*" Header="Дата завершення" Binding="{Binding FinishData,StringFormat=d}"/>
-
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
