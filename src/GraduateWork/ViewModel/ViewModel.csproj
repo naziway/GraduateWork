@@ -59,8 +59,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginViewModel.cs" />
-    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Find\ClientFindingViewModel.cs" />
+    <Compile Include="Lists\ClientListViewModel.cs" />
+    <Compile Include="Base\FindViewModel.cs" />
+    <Compile Include="Main\LoginViewModel.cs" />
+    <Compile Include="Main\MainWindowViewModel.cs" />
     <Compile Include="OrdersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

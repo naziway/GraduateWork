@@ -21,16 +21,17 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Canvas Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Background="#1f2933" ></Canvas>
+            <Canvas Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Background="#1f2933" ></Canvas>
             <Grid  Grid.Column="0" Grid.Row="1" Margin="0,0,0,5">
                 <Button Command="{Binding AddNewOrderCommand}">
                     <Button.Template>
@@ -64,12 +65,19 @@
                     </Button.Template>
                 </Button>
             </Grid>
+            <Grid  Grid.Column="0" Grid.Row="4" Margin="0,0,0,5">
+                <Button Command="{Binding ClientListCommand}">
+                    <Button.Template>
+                        <ControlTemplate >
+                            <StackPanel Style="{DynamicResource PanelItem}">
+                                <Image  Source="Icons/List.png" VerticalAlignment="Center" Height="60" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
         </Grid>
-        <Expander Grid.Column="0"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Stretch"
-                  IsExpanded="False"
-                  Padding="0" ExpandDirection="Left"/>
-        <ContentPresenter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentUserControl}"/>
+
+        <ContentPresenter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentUserControl}" Margin="5,0,-5,0"/>
     </Grid>
 </UserControl>

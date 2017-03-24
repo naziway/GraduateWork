@@ -165,6 +165,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseService\DatabaseService.csproj">
+      <Project>{7824028f-e8bd-424b-a9b5-ab0de50f9c56}</Project>
+      <Name>DatabaseService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{DF8A7CC4-ED9F-47CC-9170-469A9352BEEA}</Project>
       <Name>Model</Name>

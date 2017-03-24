@@ -1,5 +1,8 @@
-﻿namespace Model
+﻿using PropertyChanged;
+
+namespace Model
 {
+    [ImplementPropertyChanged]
     public class Device
     {
         public int Id { get; set; }

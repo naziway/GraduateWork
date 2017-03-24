@@ -43,17 +43,17 @@ namespace DatabaseService
             List<OrderRecordModel> orders = null;
             using (var database = new DoctorPhoneEntities2())
             {
-                var devices = GetDevicesByClient(client).Select(device => device.Id);
-                orders = database.Orders.Where(order => devices.Contains(order.DeviceId)).Select(x => x.ToOrderRecord()).ToList();
+                var devices = GetDevicesByClientId(client.Id).Select(device => device.Id);
+                orders = database.Orders.Where(order => devices.Contains(order.DeviceId)).Select(ToOrderRecord).ToList();
             }
             return orders;
         }
-        public List<Device> GetDevicesByClient(Client client)
+        public List<Device> GetDevicesByClientId(int clientId)
         {
             List<Device> devicesByClient = null;
             using (var database = new DoctorPhoneEntities2())
             {
-                devicesByClient = database.DevicesDbs.Where(device => device.ClientId == client.Id).Select(dbClient => dbClient.ToDevice()).ToList();
+                devicesByClient = database.DevicesDbs.Where(device => device.ClientId == clientId).Select(ToDevice).ToList();
             }
             return devicesByClient;
         }
@@ -66,5 +66,60 @@ namespace DatabaseService
             }
             return devices;
         }
+        public List<Client> GetClientsList()
+        {
+            List<Client> clients = null;
+            using (var database = new DoctorPhoneEntities2())
+            {
+                clients = database.ClientsDbs.Select(ToClient).ToList();
+            }
+            return clients;
+        }
+
+        #region Extension
+        public Device ToDevice(DevicesDbs device)
+        {
+            return new Device
+            {
+                Id = device.Id,
+                ClientId = device.ClientId,
+                DeviceType = device.DeviceType,
+                ManufactureDate = device.ManufactureDate,
+                PhoneMarka = device.PhoneMarka,
+                PhoneModel = device.PhoneModel,
+                SerialNumber = device.SerialNumber
+            };
+        }
+        private OrderRecordModel ToOrderRecord(Orders order)
+        {
+            //int count = 19;
+            //var a = new List<Order>();
+            //a.Reverse();
+            //a.Take(count + 16).Skip(count);
+            return new OrderRecordModel();
+            //return new OrderRecordModel//TODO
+            //{
+            //    Id = order.Id,
+            //    DeviceId = order.DeviceId,
+            //    OrderKods = order.OrderKods,
+            //    OrderType = order.OrderType,
+            //    PartId = order.PartId,
+            //    WorkId = order.WorkId
+            //};
+        }
+        private Client ToClient(ClientsDbs client)
+        {
+            return new Client
+            {
+                Id = client.Id,
+                Name = client.Name,
+                Surname = client.Surname,
+                PassportData = client.PassportData,
+                Phone = client.Phone,
+                Devices = new Devices(GetDevicesByClientId(client.Id))
+            };
+        }
+
+        #endregion
     }
 }

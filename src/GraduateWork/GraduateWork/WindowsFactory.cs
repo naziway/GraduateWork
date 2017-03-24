@@ -1,4 +1,5 @@
-﻿using GraduateWork.Base;
+﻿using DatabaseService;
+using GraduateWork.Base;
 using Model;
 using Shared;
 using System;
@@ -13,14 +14,15 @@ namespace GraduateWork
     {
         private LoginViewModel LoginViewModel { get; set; } = new LoginViewModel();
         private LoginView LoginView { get; set; }
-        private MainWindowViewModel MainWindowViewModel { get; set; } = new MainWindowViewModel();
+        private MainWindowViewModel MainWindowViewModel { get; set; }
         private ResizeBaseView MainWindowView { get; set; }
+        private DataService DataService { get; set; }
 
         private List<Window> OpenedWindows { get; } = new List<Window>();
 
         public WindowsFactory()
         {
-
+            DataService = new DataService();
         }
         public void OpenLoginWindow()
         {
@@ -32,6 +34,7 @@ namespace GraduateWork
 
         public void OpenMainWindow()
         {
+            MainWindowViewModel = new MainWindowViewModel(DataService);
             MainWindowViewModel.OnLogOut += MainWindowViewModelOnLogOut;
             MainWindowViewModel.SetAction(OpenResizeWindow);
             InvokeInMainThread(() =>
@@ -54,7 +57,7 @@ namespace GraduateWork
             InvokeInMainThread(view.Show);
         }
 
-        private void InvokeInMainThread(Action action)
+        private  void InvokeInMainThread(Action action)
         {
             Application.Current.Dispatcher.Invoke(action);
         }

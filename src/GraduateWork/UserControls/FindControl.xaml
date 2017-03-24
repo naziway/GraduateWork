@@ -22,8 +22,8 @@
 
         <TextBox Grid.Column="1" Text="{Binding FindText,IsAsync=True,UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
-        <Button Grid.Column="2" Command="{Binding FindCommand,UpdateSourceTrigger=PropertyChanged}">Пошук</Button>
-        <ComboBox Grid.Column="0" ItemsSource="{Binding FindingParameters}"></ComboBox>
+        <Button Grid.Column="2" Command="{Binding FindCommand}">Пошук</Button>
+        <ComboBox Grid.Column="0" ItemsSource="{Binding FindingParametersList}" SelectedItem="{Binding SelectedParam}"></ComboBox>
 
     </Grid>
 </UserControl>

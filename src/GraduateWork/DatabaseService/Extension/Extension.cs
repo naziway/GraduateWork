@@ -46,7 +46,7 @@ namespace DatabaseService.Extension
                 SerialNumber = device.SerialNumber
             };
         }
-        public static Client ToDevice(this ClientsDbs client)
+        public static Client ToClient(this ClientsDbs client)
         {
             return new Client
             {
