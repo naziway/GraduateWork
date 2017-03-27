@@ -12,12 +12,12 @@ namespace DatabaseService
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientsDbs
+    public partial class ClientsDb
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ClientsDbs()
+        public ClientsDb()
         {
-            this.DevicesDbs = new HashSet<DevicesDbs>();
+            this.DevicesDbs = new HashSet<DevicesDb>();
         }
     
         public int Id { get; set; }
@@ -29,6 +29,6 @@ namespace DatabaseService
         public System.DateTime SignInDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DevicesDbs> DevicesDbs { get; set; }
+        public virtual ICollection<DevicesDb> DevicesDbs { get; set; }
     }
 }

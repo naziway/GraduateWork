@@ -12,12 +12,12 @@ namespace DatabaseService
     using System;
     using System.Collections.Generic;
     
-    public partial class WorksDbs
+    public partial class WorksDb
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public WorksDbs()
+        public WorksDb()
         {
-            this.Orders = new HashSet<Orders>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace DatabaseService
         public string ExecutionTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

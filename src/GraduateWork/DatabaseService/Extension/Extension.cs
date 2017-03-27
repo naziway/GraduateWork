@@ -5,7 +5,7 @@ namespace DatabaseService.Extension
 {
     public static class Extension
     {
-        public static User ToUserModel(this UsersDbs user)
+        public static User ToUserModel(this UsersDb user)
         {
             return new User
             {
@@ -16,7 +16,7 @@ namespace DatabaseService.Extension
                 Password = user.Password
             };
         }
-        public static OrderRecordModel ToOrderRecord(this Orders order)
+        public static OrderRecordModel ToOrderRecord(this Order order)
         {
             //int count = 19;
             //var a = new List<Order>();
@@ -33,7 +33,7 @@ namespace DatabaseService.Extension
             //    WorkId = order.WorkId
             //};
         }
-        public static Device ToDevice(this DevicesDbs device)
+        public static Device ToDevice(this DevicesDb device)
         {
             return new Device
             {
@@ -46,7 +46,7 @@ namespace DatabaseService.Extension
                 SerialNumber = device.SerialNumber
             };
         }
-        public static Client ToClient(this ClientsDbs client)
+        public static Client ToClient(this ClientsDb client)
         {
             return new Client
             {

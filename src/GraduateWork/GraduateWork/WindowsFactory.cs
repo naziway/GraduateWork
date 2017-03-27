@@ -66,13 +66,6 @@ namespace GraduateWork
             Window view;
             switch (windowType)
             {
-                case Shared.OpenWindow.Orders:
-                    view = new ResizeBaseView(new OrdersListWithFinding(), "Список замовлень", 500, 500);
-                    break;
-                case Shared.OpenWindow.NewExaminate:
-                    var viewModel = new AddNewExaminateControl { DataContext = new NewExaminateViewModel(DataService) };
-                    view = new BaseView(viewModel, "Нова Діагностика", 300, 300);
-                    break;
                 default: throw new InvalidOperationException();
             }
             OpenedWindows.Add(view);

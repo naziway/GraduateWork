@@ -12,17 +12,20 @@ namespace DatabaseService
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Order
     {
         public int Id { get; set; }
         public int OrderKods { get; set; }
-        public int PartId { get; set; }
-        public int WorkId { get; set; }
-        public int DeviceId { get; set; }
+        public Nullable<int> PartId { get; set; }
+        public Nullable<int> WorkId { get; set; }
+        public Nullable<int> DeviceId { get; set; }
         public string OrderType { get; set; }
+        public string OrderStatus { get; set; }
+        public int UserId { get; set; }
     
-        public virtual DevicesDbs DevicesDbs { get; set; }
-        public virtual PartsDbs PartsDbs { get; set; }
-        public virtual WorksDbs WorksDbs { get; set; }
+        public virtual DevicesDb DevicesDb { get; set; }
+        public virtual PartsDb PartsDb { get; set; }
+        public virtual UsersDb UsersDb { get; set; }
+        public virtual WorksDb WorksDb { get; set; }
     }
 }

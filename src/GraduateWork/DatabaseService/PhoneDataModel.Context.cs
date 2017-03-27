@@ -9,26 +9,27 @@
 
 namespace DatabaseService
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class DoctorPhoneEntities2 : DbContext
+    
+    public partial class DoctorPhoneEntities3 : DbContext
     {
-        public DoctorPhoneEntities2()
-            : base("name=DoctorPhoneEntities2")
+        public DoctorPhoneEntities3()
+            : base("name=DoctorPhoneEntities3")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        public virtual DbSet<ClientsDbs> ClientsDbs { get; set; }
-        public virtual DbSet<DevicesDbs> DevicesDbs { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<PartsDbs> PartsDbs { get; set; }
-        public virtual DbSet<UsersDbs> UsersDbs { get; set; }
-        public virtual DbSet<WorksDbs> WorksDbs { get; set; }
+    
+        public virtual DbSet<ClientsDb> ClientsDbs { get; set; }
+        public virtual DbSet<DevicesDb> DevicesDbs { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<PartsDb> PartsDbs { get; set; }
+        public virtual DbSet<UsersDb> UsersDbs { get; set; }
+        public virtual DbSet<WorksDb> WorksDbs { get; set; }
     }
 }

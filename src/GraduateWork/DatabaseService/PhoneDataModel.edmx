@@ -4,150 +4,167 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DoctorPhoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ClientsDbs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PassportData" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="IsAdmin" Type="bit" Nullable="false" />
-          <Property Name="SignInDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DevicesDbs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="PhoneModel" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="PhoneMarka" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="DeviceType" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="SerialNumber" Type="nvarchar" MaxLength="14" Nullable="false" />
-          <Property Name="ManufactureDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Orders">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="OrderKods" Type="int" Nullable="false" />
-          <Property Name="PartId" Type="int" Nullable="false" />
-          <Property Name="WorkId" Type="int" Nullable="false" />
-          <Property Name="DeviceId" Type="int" Nullable="false" />
-          <Property Name="OrderType" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PartsDbs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Marka" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="IsAvailable" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UsersDbs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <EntityType Name="WorksDbs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="ExecutionTime" Type="nchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_DevicesDb_ToClient">
-          <End Role="ClientsDbs" Type="Self.ClientsDbs" Multiplicity="1" />
-          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ClientsDbs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DevicesDbs">
-              <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Orders_ToDevices">
-          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DevicesDbs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="DeviceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Orders_ToParts">
-          <End Role="PartsDbs" Type="Self.PartsDbs" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PartsDbs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="PartId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Orders_ToWorks">
-          <End Role="WorksDbs" Type="Self.WorksDbs" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WorksDbs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="WorkId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DoctorPhoneModelStoreContainer">
-          <EntitySet Name="ClientsDbs" EntityType="Self.ClientsDbs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DevicesDbs" EntityType="Self.DevicesDbs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PartsDbs" EntityType="Self.PartsDbs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsersDbs" EntityType="Self.UsersDbs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WorksDbs" EntityType="Self.WorksDbs" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_DevicesDb_ToClient" Association="Self.FK_DevicesDb_ToClient">
-            <End Role="ClientsDbs" EntitySet="ClientsDbs" />
-            <End Role="DevicesDbs" EntitySet="DevicesDbs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_ToDevices" Association="Self.FK_Orders_ToDevices">
-            <End Role="DevicesDbs" EntitySet="DevicesDbs" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_ToParts" Association="Self.FK_Orders_ToParts">
-            <End Role="PartsDbs" EntitySet="PartsDbs" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_ToWorks" Association="Self.FK_Orders_ToWorks">
-            <End Role="WorksDbs" EntitySet="WorksDbs" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="DoctorPhoneModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DoctorPhoneModelStoreContainer">
+    <EntitySet Name="ClientsDbs" EntityType="DoctorPhoneModel.Store.ClientsDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DevicesDbs" EntityType="DoctorPhoneModel.Store.DevicesDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="DoctorPhoneModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartsDbs" EntityType="DoctorPhoneModel.Store.PartsDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersDbs" EntityType="DoctorPhoneModel.Store.UsersDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorksDbs" EntityType="DoctorPhoneModel.Store.WorksDbs" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_DevicesDb_ToClient" Association="DoctorPhoneModel.Store.FK_DevicesDb_ToClient">
+      <End Role="ClientsDbs" EntitySet="ClientsDbs" />
+      <End Role="DevicesDbs" EntitySet="DevicesDbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_ToDevices" Association="DoctorPhoneModel.Store.FK_Orders_ToDevices">
+      <End Role="DevicesDbs" EntitySet="DevicesDbs" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_ToParts" Association="DoctorPhoneModel.Store.FK_Orders_ToParts">
+      <End Role="PartsDbs" EntitySet="PartsDbs" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_ToUser" Association="DoctorPhoneModel.Store.FK_Orders_ToUser">
+      <End Role="UsersDbs" EntitySet="UsersDbs" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_ToWorks" Association="DoctorPhoneModel.Store.FK_Orders_ToWorks">
+      <End Role="WorksDbs" EntitySet="WorksDbs" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ClientsDbs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PassportData" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="SignInDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DevicesDbs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="PhoneModel" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="PhoneMarka" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="DeviceType" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="false" MaxLength="14" />
+    <Property Name="ManufactureDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="OrderKods" Type="int" Nullable="false" />
+    <Property Name="PartId" Type="int" Nullable="true" />
+    <Property Name="WorkId" Type="int" Nullable="true" />
+    <Property Name="DeviceId" Type="int" Nullable="true" />
+    <Property Name="OrderType" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="OrderStatus" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartsDbs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Marka" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="IsAvailable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersDbs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Login" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="WorksDbs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="ExecutionTime" Type="nchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_DevicesDb_ToClient">
+    <End Role="ClientsDbs" Type="DoctorPhoneModel.Store.ClientsDbs" Multiplicity="1" />
+    <End Role="DevicesDbs" Type="DoctorPhoneModel.Store.DevicesDbs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientsDbs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DevicesDbs">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_ToDevices">
+    <End Role="DevicesDbs" Type="DoctorPhoneModel.Store.DevicesDbs" Multiplicity="0..1" />
+    <End Role="Orders" Type="DoctorPhoneModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DevicesDbs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_ToParts">
+    <End Role="PartsDbs" Type="DoctorPhoneModel.Store.PartsDbs" Multiplicity="0..1" />
+    <End Role="Orders" Type="DoctorPhoneModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartsDbs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="PartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_ToUser">
+    <End Role="UsersDbs" Type="DoctorPhoneModel.Store.UsersDbs" Multiplicity="1" />
+    <End Role="Orders" Type="DoctorPhoneModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersDbs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_ToWorks">
+    <End Role="WorksDbs" Type="DoctorPhoneModel.Store.WorksDbs" Multiplicity="0..1" />
+    <End Role="Orders" Type="DoctorPhoneModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorksDbs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="WorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DoctorPhoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ClientsDbs">
+        <EntityType Name="ClientsDb">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -155,12 +172,12 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PassportData" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-          <Property Name="SignInDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SignInDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="DevicesDbs" Relationship="Self.FK_DevicesDb_ToClient" FromRole="ClientsDbs" ToRole="DevicesDbs" />
         </EntityType>
-        <EntityType Name="DevicesDbs">
+        <EntityType Name="DevicesDb">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -171,24 +188,27 @@
           <Property Name="DeviceType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SerialNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ManufactureDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ClientsDbs" Relationship="Self.FK_DevicesDb_ToClient" FromRole="DevicesDbs" ToRole="ClientsDbs" />
+          <NavigationProperty Name="ClientsDb" Relationship="Self.FK_DevicesDb_ToClient" FromRole="DevicesDbs" ToRole="ClientsDbs" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToDevices" FromRole="DevicesDbs" ToRole="Orders" />
         </EntityType>
-        <EntityType Name="Orders">
+        <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="OrderKods" Type="Int32" Nullable="false" />
-          <Property Name="PartId" Type="Int32" Nullable="false" />
-          <Property Name="WorkId" Type="Int32" Nullable="false" />
-          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="PartId" Type="Int32" />
+          <Property Name="WorkId" Type="Int32" />
+          <Property Name="DeviceId" Type="Int32" />
           <Property Name="OrderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DevicesDbs" Relationship="Self.FK_Orders_ToDevices" FromRole="Orders" ToRole="DevicesDbs" />
-          <NavigationProperty Name="PartsDbs" Relationship="Self.FK_Orders_ToParts" FromRole="Orders" ToRole="PartsDbs" />
-          <NavigationProperty Name="WorksDbs" Relationship="Self.FK_Orders_ToWorks" FromRole="Orders" ToRole="WorksDbs" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DevicesDb" Relationship="Self.FK_Orders_ToDevices" FromRole="Orders" ToRole="DevicesDbs" />
+          <NavigationProperty Name="PartsDb" Relationship="Self.FK_Orders_ToParts" FromRole="Orders" ToRole="PartsDbs" />
+          <NavigationProperty Name="UsersDb" Relationship="Self.FK_Orders_ToUser" FromRole="Orders" ToRole="UsersDbs" />
+          <NavigationProperty Name="WorksDb" Relationship="Self.FK_Orders_ToWorks" FromRole="Orders" ToRole="WorksDbs" />
         </EntityType>
-        <EntityType Name="PartsDbs">
+        <EntityType Name="PartsDb">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -200,7 +220,7 @@
           <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToParts" FromRole="PartsDbs" ToRole="Orders" />
         </EntityType>
-        <EntityType Name="UsersDbs">
+        <EntityType Name="UsersDb">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -209,8 +229,9 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToUser" FromRole="UsersDbs" ToRole="Orders" />
         </EntityType>
-        <EntityType Name="WorksDbs">
+        <EntityType Name="WorksDb">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -221,8 +242,8 @@
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToWorks" FromRole="WorksDbs" ToRole="Orders" />
         </EntityType>
         <Association Name="FK_DevicesDb_ToClient">
-          <End Role="ClientsDbs" Type="Self.ClientsDbs" Multiplicity="1" />
-          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="*" />
+          <End Role="ClientsDbs" Type="Self.ClientsDb" Multiplicity="1" />
+          <End Role="DevicesDbs" Type="Self.DevicesDb" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClientsDbs">
               <PropertyRef Name="Id" />
@@ -233,8 +254,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToDevices">
-          <End Role="DevicesDbs" Type="Self.DevicesDbs" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="DevicesDbs" Type="Self.DevicesDb" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DevicesDbs">
               <PropertyRef Name="Id" />
@@ -245,8 +266,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_ToParts">
-          <End Role="PartsDbs" Type="Self.PartsDbs" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="PartsDbs" Type="Self.PartsDb" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PartsDbs">
               <PropertyRef Name="Id" />
@@ -256,9 +277,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Orders_ToUser">
+          <End Role="UsersDbs" Type="Self.UsersDb" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersDbs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orders_ToWorks">
-          <End Role="WorksDbs" Type="Self.WorksDbs" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="WorksDbs" Type="Self.WorksDb" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WorksDbs">
               <PropertyRef Name="Id" />
@@ -268,13 +301,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DoctorPhoneEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ClientsDbs" EntityType="Self.ClientsDbs" />
-          <EntitySet Name="DevicesDbs" EntityType="Self.DevicesDbs" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" />
-          <EntitySet Name="PartsDbs" EntityType="Self.PartsDbs" />
-          <EntitySet Name="UsersDbs" EntityType="Self.UsersDbs" />
-          <EntitySet Name="WorksDbs" EntityType="Self.WorksDbs" />
+        <EntityContainer Name="DoctorPhoneEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientsDbs" EntityType="Self.ClientsDb" />
+          <EntitySet Name="DevicesDbs" EntityType="Self.DevicesDb" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="PartsDbs" EntityType="Self.PartsDb" />
+          <EntitySet Name="UsersDbs" EntityType="Self.UsersDb" />
+          <EntitySet Name="WorksDbs" EntityType="Self.WorksDb" />
           <AssociationSet Name="FK_DevicesDb_ToClient" Association="Self.FK_DevicesDb_ToClient">
             <End Role="ClientsDbs" EntitySet="ClientsDbs" />
             <End Role="DevicesDbs" EntitySet="DevicesDbs" />
@@ -287,6 +320,10 @@
             <End Role="PartsDbs" EntitySet="PartsDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToUser" Association="Self.FK_Orders_ToUser">
+            <End Role="UsersDbs" EntitySet="UsersDbs" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
           <AssociationSet Name="FK_Orders_ToWorks" Association="Self.FK_Orders_ToWorks">
             <End Role="WorksDbs" EntitySet="WorksDbs" />
             <End Role="Orders" EntitySet="Orders" />
@@ -296,82 +333,83 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DoctorPhoneModelStoreContainer" CdmEntityContainer="DoctorPhoneEntities2">
-          <EntitySetMapping Name="ClientsDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.ClientsDbs">
-              <MappingFragment StoreEntitySet="ClientsDbs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PassportData" ColumnName="PassportData" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="SignInDate" ColumnName="SignInDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DevicesDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.DevicesDbs">
-              <MappingFragment StoreEntitySet="DevicesDbs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="PhoneModel" ColumnName="PhoneModel" />
-                <ScalarProperty Name="PhoneMarka" ColumnName="PhoneMarka" />
-                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.Orders">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OrderKods" ColumnName="OrderKods" />
-                <ScalarProperty Name="PartId" ColumnName="PartId" />
-                <ScalarProperty Name="WorkId" ColumnName="WorkId" />
-                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
-                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PartsDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.PartsDbs">
-              <MappingFragment StoreEntitySet="PartsDbs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="Marka" ColumnName="Marka" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.UsersDbs">
-              <MappingFragment StoreEntitySet="UsersDbs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WorksDbs">
-            <EntityTypeMapping TypeName="DoctorPhoneModel.WorksDbs">
-              <MappingFragment StoreEntitySet="WorksDbs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ExecutionTime" ColumnName="ExecutionTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DoctorPhoneModelStoreContainer" CdmEntityContainer="DoctorPhoneEntities3">
+    <EntitySetMapping Name="ClientsDbs">
+      <EntityTypeMapping TypeName="IsTypeOf(DoctorPhoneModel.ClientsDb)">
+        <MappingFragment StoreEntitySet="ClientsDbs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PassportData" ColumnName="PassportData" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="SignInDate" ColumnName="SignInDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DevicesDbs">
+      <EntityTypeMapping TypeName="IsTypeOf(DoctorPhoneModel.DevicesDb)">
+        <MappingFragment StoreEntitySet="DevicesDbs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="PhoneModel" ColumnName="PhoneModel" />
+          <ScalarProperty Name="PhoneMarka" ColumnName="PhoneMarka" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(DoctorPhoneModel.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderKods" ColumnName="OrderKods" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartsDbs">
+      <EntityTypeMapping TypeName="IsTypeOf(DoctorPhoneModel.PartsDb)">
+        <MappingFragment StoreEntitySet="PartsDbs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersDbs">
+      <EntityTypeMapping TypeName="IsTypeOf(DoctorPhoneModel.UsersDb)">
+        <MappingFragment StoreEntitySet="UsersDbs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorksDbs">
+      <EntityTypeMapping TypeName="IsTypeOf(DoctorPhoneModel.WorksDb)">
+        <MappingFragment StoreEntitySet="WorksDbs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ExecutionTime" ColumnName="ExecutionTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -383,9 +421,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

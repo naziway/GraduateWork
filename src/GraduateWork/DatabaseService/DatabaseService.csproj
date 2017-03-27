@@ -51,18 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientsDbs.cs">
+    <Compile Include="ClientsDb.cs">
       <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataService.cs" />
-    <Compile Include="DevicesDbs.cs">
+    <Compile Include="DevicesDb.cs">
       <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Extension\Extension.cs" />
-    <Compile Include="Orders.cs">
+    <Compile Include="Order.cs">
       <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PartsDbs.cs">
+    <Compile Include="PartsDb.cs">
       <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PhoneDataModel.Context.cs">
@@ -81,10 +81,10 @@
       <DependentUpon>PhoneDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsersDbs.cs">
+    <Compile Include="UsersDb.cs">
       <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="WorksDbs.cs">
+    <Compile Include="WorksDb.cs">
       <DependentUpon>PhoneDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -109,6 +109,7 @@
       <DependentUpon>PhoneDataModel.edmx</DependentUpon>
       <LastGenOutput>PhoneDataModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="PhoneDataModel.edmx.sql" />
     <Content Include="PhoneDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PhoneDataModel.edmx</DependentUpon>

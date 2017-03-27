@@ -11,7 +11,7 @@ namespace DatabaseService
         public User GetUser(string login, string password)
         {
             User currentUser = null;
-            using (var database = new DoctorPhoneEntities2())
+            using (var database = new DoctorPhoneEntities3())
             {
                 try
                 {
@@ -29,7 +29,7 @@ namespace DatabaseService
         public List<OrderRecordModel> GetAllOrders()//TODO
         {
             List<OrderRecordModel> orders = null;
-            using (var database = new DoctorPhoneEntities2())
+            using (var database = new DoctorPhoneEntities3())
             {
                 var clients = database.ClientsDbs;
                 var devices = database.DevicesDbs;
@@ -41,17 +41,17 @@ namespace DatabaseService
         public List<OrderRecordModel> GetOrdersByClient(Client client)
         {
             List<OrderRecordModel> orders = null;
-            using (var database = new DoctorPhoneEntities2())
+            using (var database = new DoctorPhoneEntities3())
             {
                 var devices = GetDevicesByClientId(client.Id).Select(device => device.Id);
-                orders = database.Orders.Where(order => devices.Contains(order.DeviceId)).Select(ToOrderRecord).ToList();
+                orders = database.Orders.Where(order => devices.Contains(order.DeviceId.Value)).Select(ToOrderRecord).ToList();
             }
             return orders;
         }
         public List<Device> GetDevicesByClientId(int clientId)
         {
             List<Device> devicesByClient = null;
-            using (var database = new DoctorPhoneEntities2())
+            using (var database = new DoctorPhoneEntities3())
             {
                 devicesByClient = database.DevicesDbs.Where(device => device.ClientId == clientId).Select(ToDevice).ToList();
             }
@@ -60,7 +60,7 @@ namespace DatabaseService
         public List<Device> GetAllDevices()
         {
             List<Device> devices = null;
-            using (var database = new DoctorPhoneEntities2())
+            using (var database = new DoctorPhoneEntities3())
             {
                 devices = database.DevicesDbs.Select(dbClient => dbClient.ToDevice()).ToList();
             }
@@ -69,7 +69,7 @@ namespace DatabaseService
         public List<Client> GetClientsList()
         {
             List<Client> clients = null;
-            using (var database = new DoctorPhoneEntities2())
+            using (var database = new DoctorPhoneEntities3())
             {
                 clients = database.ClientsDbs.Select(ToClient).ToList();
             }
@@ -77,7 +77,7 @@ namespace DatabaseService
         }
 
         #region Extension
-        public Device ToDevice(DevicesDbs device)
+        public Device ToDevice(DevicesDb device)
         {
             return new Device
             {
@@ -90,7 +90,7 @@ namespace DatabaseService
                 SerialNumber = device.SerialNumber
             };
         }
-        private OrderRecordModel ToOrderRecord(Orders order)
+        private OrderRecordModel ToOrderRecord(Order order)
         {
             //int count = 19;
             //var a = new List<Order>();
@@ -107,7 +107,7 @@ namespace DatabaseService
             //    WorkId = order.WorkId
             //};
         }
-        private Client ToClient(ClientsDbs client)
+        private Client ToClient(ClientsDb client)
         {
             return new Client
             {
