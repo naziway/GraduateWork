@@ -7,6 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="116*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Label Grid.Row="1" >Виберiть Користувача</Label>
+        <Label Grid.Row="3">Виберіть Марку</Label>
+        <Label Grid.Row="5">Виберіть Модель</Label>
+
+        <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Marks}" SelectedItem="{Binding SelectedMarka}"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}"></ComboBox>
+
+        <Button Grid.Column="1" Grid.Row="6" Command="{Binding AddExaminateCommand}">Додати</Button>
+
+
     </Grid>
 </UserControl>
