@@ -16,7 +16,12 @@ namespace ViewModel
 
         #region Action
         public Action<OpenWindow> OpenWindowAction { get; set; }
+        public Action<OpenWindow, TransferData> OpenWindowWithEventResultAction { get; set; }
 
+        public void SetAction(Action<OpenWindow, TransferData> action)
+        {
+            OpenWindowWithEventResultAction = action;
+        }
         public void SetAction(Action<OpenWindow> action)
         {
             OpenWindowAction = action;
