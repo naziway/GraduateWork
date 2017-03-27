@@ -5,17 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="200" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontSize" Value="15"/>
+
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontSize" Value="15"/>
+
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontSize" Value="25"/>
+
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="44*"/>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="11*"/>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="42*"/>
-            <RowDefinition Height="116*"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="15*"/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -31,7 +54,7 @@
         <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Marks}" SelectedItem="{Binding SelectedMarka}"></ComboBox>
         <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}"></ComboBox>
 
-        <Button Grid.Column="1" Grid.Row="6" Command="{Binding AddExaminateCommand}">Додати</Button>
+        <Button Grid.Column="1" Grid.Row="7" Command="{Binding AddExaminateCommand}">Додати</Button>
 
 
     </Grid>

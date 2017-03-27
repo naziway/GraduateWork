@@ -66,6 +66,7 @@
     <Compile Include="Main\MainWindowViewModel.cs" />
     <Compile Include="OrdersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourseAdd\NewExaminateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseService\DatabaseService.csproj">

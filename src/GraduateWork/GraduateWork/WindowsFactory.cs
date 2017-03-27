@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Windows;
 using UserControls;
 using ViewModel;
+using ViewModel.ResourseAdd;
 
 namespace GraduateWork
 {
@@ -52,7 +53,8 @@ namespace GraduateWork
                     view = new ResizeBaseView(new OrdersListWithFinding(), "Список замовлень", 500, 500);
                     break;
                 case Shared.OpenWindow.NewExaminate:
-                    view = new BaseView(new AddNewExaminateControl(), "Нова Діагностика", 300, 300);
+                    var viewModel = new AddNewExaminateControl { DataContext = new NewExaminateViewModel(DataService) };
+                    view = new BaseView(viewModel, "Нова Діагностика", 300, 300);
                     break;
                 default: throw new InvalidOperationException();
             }

@@ -33,7 +33,7 @@ namespace ViewModel
         #region Command
         public ICommand AddNewExaminationCommand => new CommandHandler(() =>
         {
-            CurrentUserControl = new AddNewExaminateControl();
+            //CurrentUserControl = new AddNewExaminateControl();
             OpenWindowAction(OpenWindow.NewExaminate);
         });
         public ICommand ClientListCommand => new CommandHandler(() =>
