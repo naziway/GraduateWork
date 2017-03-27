@@ -124,6 +124,10 @@
       <Project>{df8a7cc4-ed9f-47cc-9170-469a9352beea}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{957DFFE9-C9AC-4F80-8763-178FA616E272}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 ﻿using PropertyChanged;
+using Shared.Enum;
 using System;
 
 namespace Model
@@ -15,6 +16,13 @@ namespace Model
 
         public Client Client { get; set; }
         public Device Device { get; set; }
+        //TODO add class PArt
+
+
+
+        public int UserId { get; set; }
+        public OrderType OrderType { get; set; }
+        public OrderStatus OrderStatus { get; set; }
 
     }
 }

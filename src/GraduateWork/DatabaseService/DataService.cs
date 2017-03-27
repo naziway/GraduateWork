@@ -8,6 +8,31 @@ namespace DatabaseService
 {
     public class DataService
     {
+        public Tuple<int, int> GetNewOrderIdAndCode()
+        {
+            Tuple<int, int> newIdAndCode = new Tuple<int, int>(0, 0);
+            using (var data = new DoctorPhoneEntities3())
+            {
+                var lastOrder = data.Orders.LastOrDefault();
+                if (lastOrder != null)
+                    newIdAndCode = new Tuple<int, int>(lastOrder.Id, lastOrder.OrderKods);
+            }
+            return newIdAndCode;
+        }
+
+
+        public void NewOrder(List<OrderRecordModel> orders)
+        {
+            var lastInfo = GetNewOrderIdAndCode();
+            var newOrders = orders.ToOrder(lastInfo.Item1, lastInfo.Item2);
+            using (var data = new DoctorPhoneEntities3())
+            {
+                data.Orders.AddRange(newOrders);
+                data.SaveChangesAsync();
+            }
+        }
+
+
         public User GetUser(string login, string password)
         {
             User currentUser = null;

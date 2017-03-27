@@ -1,5 +1,7 @@
 ﻿
 using Model;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DatabaseService.Extension
 {
@@ -16,6 +18,23 @@ namespace DatabaseService.Extension
                 Password = user.Password
             };
         }
+        public static List<Order> ToOrder(this List<OrderRecordModel> orders, int id, int code)
+        {
+            return orders.Select(orderRecordModel => orderRecordModel.ToOrder(id++, code)).ToList();
+        }
+        public static Order ToOrder(this OrderRecordModel order, int id, int code)//TODO finish converting
+        {
+            return new Order
+            {
+                Id = id,
+                OrderKods = code,
+                UserId = order.UserId,
+                DeviceId = order.Device.Id,
+                OrderStatus = order.OrderStatus.ToString(),
+                OrderType = order.OrderType.ToString(),
+            };
+        }
+
         public static OrderRecordModel ToOrderRecord(this Order order)
         {
             //int count = 19;
