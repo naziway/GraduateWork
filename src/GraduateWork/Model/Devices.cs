@@ -16,7 +16,7 @@ namespace Model
         public override string ToString()
         {
             string str = "";
-            ListDevice.ForEach(device => { str += $"{device.PhoneMarka}-{device.PhoneModel}"; });
+            ListDevice.ForEach(device => { str += $"[{device.PhoneMarka}-{device.PhoneModel}]"; });
             return str;
         }
     }

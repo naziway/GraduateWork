@@ -51,13 +51,16 @@ namespace GraduateWork
                 case Shared.OpenWindow.Orders:
                     view = new ResizeBaseView(new OrdersListWithFinding(), "Список замовлень", 500, 500);
                     break;
+                case Shared.OpenWindow.NewExaminate:
+                    view = new BaseView(new AddNewExaminateControl(), "Нова Діагностика", 300, 300);
+                    break;
                 default: throw new InvalidOperationException();
             }
             OpenedWindows.Add(view);
             InvokeInMainThread(view.Show);
         }
 
-        private  void InvokeInMainThread(Action action)
+        private void InvokeInMainThread(Action action)
         {
             Application.Current.Dispatcher.Invoke(action);
         }

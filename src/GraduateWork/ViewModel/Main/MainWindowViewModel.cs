@@ -22,6 +22,7 @@ namespace ViewModel
             OpenWindowAction = action;
         }
         #endregion
+
         public UserControl CurrentUserControl { get; set; }
 
         public MainWindowViewModel(DataService dataService)
@@ -30,9 +31,10 @@ namespace ViewModel
         }
 
         #region Command
-        public ICommand UsersCommand => new CommandHandler(() =>
+        public ICommand AddNewExaminationCommand => new CommandHandler(() =>
         {
-
+            CurrentUserControl = new AddNewExaminateControl();
+            OpenWindowAction(OpenWindow.NewExaminate);
         });
         public ICommand ClientListCommand => new CommandHandler(() =>
         {
