@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/30/2017 19:20:34
+-- Date Created: 04/30/2017 21:16:48
 -- Generated from EDMX file: C:\Users\naziway\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\MobiDoc.edmx
 -- --------------------------------------------------
 
@@ -69,8 +69,7 @@ CREATE TABLE [dbo].[ClientsDbs] (
     [Surname] nvarchar(50)  NOT NULL,
     [Name] nvarchar(50)  NOT NULL,
     [PassportData] nvarchar(50)  NOT NULL,
-    [Phone] varchar(12)  NOT NULL,
-    [IsAdmin] bit  NOT NULL,
+    [Phone] nvarchar(13)  NOT NULL,
     [SignInDate] datetime  NOT NULL
 );
 GO
@@ -115,6 +114,7 @@ GO
 -- Creating table 'UsersDbs'
 CREATE TABLE [dbo].[UsersDbs] (
     [Id] int  NOT NULL,
+    [IsAdmin] bit  NOT NULL,
     [Name] nvarchar(50)  NOT NULL,
     [Surname] nvarchar(50)  NOT NULL,
     [Login] varchar(50)  NOT NULL,

@@ -21,6 +21,7 @@ namespace DatabaseService
         }
     
         public int Id { get; set; }
+        public bool IsAdmin { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Login { get; set; }

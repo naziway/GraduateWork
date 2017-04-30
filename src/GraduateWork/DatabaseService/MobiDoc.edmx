@@ -4,35 +4,35 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MobiDocModels.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="MobiDocModelsStoreContainer">
-    <EntitySet Name="ClientsDbs" EntityType="MobiDocModels.Store.ClientsDbs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DevicesDbs" EntityType="MobiDocModels.Store.DevicesDbs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Orders" EntityType="MobiDocModels.Store.Orders" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PartsDbs" EntityType="MobiDocModels.Store.PartsDbs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UsersDbs" EntityType="MobiDocModels.Store.UsersDbs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="WorksDbs" EntityType="MobiDocModels.Store.WorksDbs" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_DevicesDb_ToClient" Association="MobiDocModels.Store.FK_DevicesDb_ToClient">
+    <Schema Namespace="MobiDoc.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MobiDocStoreContainer">
+    <EntitySet Name="ClientsDbs" EntityType="MobiDoc.Store.ClientsDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DevicesDbs" EntityType="MobiDoc.Store.DevicesDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="MobiDoc.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartsDbs" EntityType="MobiDoc.Store.PartsDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersDbs" EntityType="MobiDoc.Store.UsersDbs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorksDbs" EntityType="MobiDoc.Store.WorksDbs" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_DevicesDb_ToClient" Association="MobiDoc.Store.FK_DevicesDb_ToClient">
       <End Role="ClientsDbs" EntitySet="ClientsDbs" />
       <End Role="DevicesDbs" EntitySet="DevicesDbs" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_ToDevices" Association="MobiDocModels.Store.FK_Orders_ToDevices">
+    <AssociationSet Name="FK_Orders_ToDevices" Association="MobiDoc.Store.FK_Orders_ToDevices">
       <End Role="DevicesDbs" EntitySet="DevicesDbs" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_ToSparePhones" Association="MobiDocModels.Store.FK_Orders_ToSparePhones">
+    <AssociationSet Name="FK_Orders_ToSparePhones" Association="MobiDoc.Store.FK_Orders_ToSparePhones">
       <End Role="DevicesDbs" EntitySet="DevicesDbs" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_ToParts" Association="MobiDocModels.Store.FK_Orders_ToParts">
+    <AssociationSet Name="FK_Orders_ToParts" Association="MobiDoc.Store.FK_Orders_ToParts">
       <End Role="PartsDbs" EntitySet="PartsDbs" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_ToUser" Association="MobiDocModels.Store.FK_Orders_ToUser">
+    <AssociationSet Name="FK_Orders_ToUser" Association="MobiDoc.Store.FK_Orders_ToUser">
       <End Role="UsersDbs" EntitySet="UsersDbs" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_ToWorks" Association="MobiDocModels.Store.FK_Orders_ToWorks">
+    <AssociationSet Name="FK_Orders_ToWorks" Association="MobiDoc.Store.FK_Orders_ToWorks">
       <End Role="WorksDbs" EntitySet="WorksDbs" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
@@ -45,8 +45,7 @@
     <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="PassportData" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Phone" Type="varchar" Nullable="false" MaxLength="12" />
-    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="13" />
     <Property Name="SignInDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="DevicesDbs">
@@ -91,6 +90,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Login" Type="varchar" Nullable="false" MaxLength="50" />
@@ -106,8 +106,8 @@
     <Property Name="ExecutionTime" Type="nchar" Nullable="false" MaxLength="10" />
   </EntityType>
   <Association Name="FK_DevicesDb_ToClient">
-    <End Role="ClientsDbs" Type="MobiDocModels.Store.ClientsDbs" Multiplicity="0..1" />
-    <End Role="DevicesDbs" Type="MobiDocModels.Store.DevicesDbs" Multiplicity="*" />
+    <End Role="ClientsDbs" Type="MobiDoc.Store.ClientsDbs" Multiplicity="0..1" />
+    <End Role="DevicesDbs" Type="MobiDoc.Store.DevicesDbs" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClientsDbs">
         <PropertyRef Name="Id" />
@@ -118,8 +118,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_ToDevices">
-    <End Role="DevicesDbs" Type="MobiDocModels.Store.DevicesDbs" Multiplicity="1" />
-    <End Role="Orders" Type="MobiDocModels.Store.Orders" Multiplicity="*" />
+    <End Role="DevicesDbs" Type="MobiDoc.Store.DevicesDbs" Multiplicity="1" />
+    <End Role="Orders" Type="MobiDoc.Store.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DevicesDbs">
         <PropertyRef Name="Id" />
@@ -130,8 +130,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_ToSparePhones">
-    <End Role="DevicesDbs" Type="MobiDocModels.Store.DevicesDbs" Multiplicity="0..1" />
-    <End Role="Orders" Type="MobiDocModels.Store.Orders" Multiplicity="*" />
+    <End Role="DevicesDbs" Type="MobiDoc.Store.DevicesDbs" Multiplicity="0..1" />
+    <End Role="Orders" Type="MobiDoc.Store.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DevicesDbs">
         <PropertyRef Name="Id" />
@@ -142,8 +142,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_ToParts">
-    <End Role="PartsDbs" Type="MobiDocModels.Store.PartsDbs" Multiplicity="1" />
-    <End Role="Orders" Type="MobiDocModels.Store.Orders" Multiplicity="*" />
+    <End Role="PartsDbs" Type="MobiDoc.Store.PartsDbs" Multiplicity="1" />
+    <End Role="Orders" Type="MobiDoc.Store.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PartsDbs">
         <PropertyRef Name="Id" />
@@ -154,8 +154,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_ToUser">
-    <End Role="UsersDbs" Type="MobiDocModels.Store.UsersDbs" Multiplicity="1" />
-    <End Role="Orders" Type="MobiDocModels.Store.Orders" Multiplicity="*" />
+    <End Role="UsersDbs" Type="MobiDoc.Store.UsersDbs" Multiplicity="1" />
+    <End Role="Orders" Type="MobiDoc.Store.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UsersDbs">
         <PropertyRef Name="Id" />
@@ -166,8 +166,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_ToWorks">
-    <End Role="WorksDbs" Type="MobiDocModels.Store.WorksDbs" Multiplicity="0..1" />
-    <End Role="Orders" Type="MobiDocModels.Store.Orders" Multiplicity="*" />
+    <End Role="WorksDbs" Type="MobiDoc.Store.WorksDbs" Multiplicity="0..1" />
+    <End Role="Orders" Type="MobiDoc.Store.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="WorksDbs">
         <PropertyRef Name="Id" />
@@ -180,7 +180,7 @@
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MobiDocModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MobiDoc" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ClientsDbs">
           <Key>
             <PropertyRef Name="Id" />
@@ -189,8 +189,7 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PassportData" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SignInDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="DevicesDbs" Relationship="Self.FK_DevicesDb_ToClient" FromRole="ClientsDbs" ToRole="DevicesDbs" />
         </EntityType>
@@ -245,6 +244,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -333,7 +333,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MobiDocConnection" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MobiDocContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ClientsDbs" EntityType="Self.ClientsDbs" />
           <EntitySet Name="DevicesDbs" EntityType="Self.DevicesDbs" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
@@ -370,22 +370,21 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MobiDocModelsStoreContainer" CdmEntityContainer="MobiDocConnection">
+  <EntityContainerMapping StorageEntityContainer="MobiDocStoreContainer" CdmEntityContainer="MobiDocContext">
     <EntitySetMapping Name="ClientsDbs">
-      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModels.ClientsDbs)">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDoc.ClientsDbs)">
         <MappingFragment StoreEntitySet="ClientsDbs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="PassportData" ColumnName="PassportData" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
           <ScalarProperty Name="SignInDate" ColumnName="SignInDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DevicesDbs">
-      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModels.DevicesDbs)">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDoc.DevicesDbs)">
         <MappingFragment StoreEntitySet="DevicesDbs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ClientId" ColumnName="ClientId" />
@@ -399,7 +398,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModels.Orders)">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDoc.Orders)">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="OrderKods" ColumnName="OrderKods" />
@@ -413,7 +412,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PartsDbs">
-      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModels.PartsDbs)">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDoc.PartsDbs)">
         <MappingFragment StoreEntitySet="PartsDbs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -425,9 +424,10 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UsersDbs">
-      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModels.UsersDbs)">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDoc.UsersDbs)">
         <MappingFragment StoreEntitySet="UsersDbs">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="Login" ColumnName="Login" />
@@ -436,7 +436,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WorksDbs">
-      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModels.WorksDbs)">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDoc.WorksDbs)">
         <MappingFragment StoreEntitySet="WorksDbs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />

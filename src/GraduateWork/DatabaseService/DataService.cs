@@ -21,7 +21,7 @@ namespace DatabaseService
         }
 
 
-        public void NewOrder(List<OrderRecordModel> orders)
+        public void NewOrder(List<OrderModel> orders)
         {
             //var lastInfo = GetNewOrderIdAndCode();
             //var newOrders = orders.ToOrder(lastInfo.Item1, lastInfo.Item2);
@@ -51,9 +51,9 @@ namespace DatabaseService
             }
             return currentUser;
         }
-        public List<OrderRecordModel> GetAllOrders()//TODO
+        public List<OrderModel> GetAllOrders()//TODO
         {
-            List<OrderRecordModel> orders = null;
+            List<OrderModel> orders = null;
             using (var database = new MobiDocContext())
             {
                 var clients = database.ClientsDbs;
@@ -63,9 +63,9 @@ namespace DatabaseService
             }
             return orders;
         }
-        public List<OrderRecordModel> GetOrdersByClient(Client client)
+        public List<OrderModel> GetOrdersByClient(Client client)
         {
-            List<OrderRecordModel> orders = null;
+            List<OrderModel> orders = null;
             using (var database = new MobiDocContext())
             {
                 var devices = GetDevicesByClientId(client.Id).Select(device => device.Id);
@@ -115,13 +115,13 @@ namespace DatabaseService
                 SerialNumber = device.SerialNumber
             };
         }
-        private OrderRecordModel ToOrderRecord(Orders order)
+        private OrderModel ToOrderRecord(Orders order)
         {
             //int count = 19;
             //var a = new List<Order>();
             //a.Reverse();
             //a.Take(count + 16).Skip(count);
-            return new OrderRecordModel();
+            return new OrderModel();
             //return new OrderRecordModel//TODO
             //{
             //    Id = order.Id,

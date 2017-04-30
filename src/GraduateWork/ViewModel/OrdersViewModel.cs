@@ -21,7 +21,7 @@ namespace ViewModel
         private void Finding()
         {
             var orders = DataService.GetAllOrders();
-            List<OrderRecordModel> findOrders = new List<OrderRecordModel>();
+            List<OrderModel> findOrders = new List<OrderModel>();
             switch (SelectedParam)
             {
                 case "Все":
@@ -39,10 +39,10 @@ namespace ViewModel
                     break;
             }
 
-            Orders = new ObservableCollection<OrderRecordModel>(findOrders);
+            Orders = new ObservableCollection<OrderModel>(findOrders);
         }
 
-        public ObservableCollection<OrderRecordModel> Orders { get; set; }
+        public ObservableCollection<OrderModel> Orders { get; set; }
 
         public ObservableCollection<string> FindingParametersList
             => new ObservableCollection<string>()
@@ -56,7 +56,7 @@ namespace ViewModel
         public OrdersViewModel(DataService dataService)
         {
             DataService = dataService;
-            Orders = new ObservableCollection<OrderRecordModel>(DataService.GetAllOrders());
+            Orders = new ObservableCollection<OrderModel>(DataService.GetAllOrders());
         }
     }
 }

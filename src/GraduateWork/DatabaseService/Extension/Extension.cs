@@ -36,13 +36,13 @@ namespace DatabaseService.Extension
         //    };
         //}
 
-        public static OrderRecordModel ToOrderRecord(this Orders order)
+        public static OrderModel ToOrderRecord(this Orders order)
         {
             //int count = 19;
             //var a = new List<Order>();
             //a.Reverse();
             //a.Take(count + 16).Skip(count);
-            return new OrderRecordModel();
+            return new OrderModel();
             //return new OrderRecordModel//TODO
             //{
             //    Id = order.Id,
