@@ -18,7 +18,7 @@ namespace ViewModel.Find
         public ClientFindingViewModel(DataService dataService)
         {
             DataService = dataService;
-
+            
             Clients = new ClientListViewModel(dataService);
             FindingParametersList = new List<string>()
             {   "Все",

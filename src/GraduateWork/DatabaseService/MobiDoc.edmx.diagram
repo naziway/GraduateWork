@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="16465e10d58246c6bd402014d9446047" Name="Diagram1">
-        <EntityTypeShape EntityType="MobiDocModel.ClientsDbs" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobiDocModel.DevicesDbs" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+      <Diagram DiagramId="5726099452914c42a9397c314d339a76" Name="Diagram1">
+        <EntityTypeShape EntityType="MobiDocModel.ClientsDbs" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.DevicesDbs" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MobiDocModel.Orders" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobiDocModel.PartsDbs" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobiDocModel.UsersDbs" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobiDocModel.WorksDbs" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.PartsDbs" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.UsersDbs" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.WorksDbs" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
         <AssociationConnector Association="MobiDocModel.FK_DevicesDb_ToClient" ManuallyRouted="false" />
         <AssociationConnector Association="MobiDocModel.FK_Orders_ToDevices" ManuallyRouted="false" />
         <AssociationConnector Association="MobiDocModel.FK_Orders_ToSparePhones" ManuallyRouted="false" />

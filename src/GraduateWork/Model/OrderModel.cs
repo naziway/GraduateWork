@@ -8,6 +8,12 @@ namespace Model
     [ImplementPropertyChanged]
     public class OrderModel
     {
+        public OrderModel()
+        {
+            Works = new List<WorkModel>();
+            Parts = new List<Part>();
+        }
+
         public int OrderKod { get; set; }
         public DateTime StartData { get; set; }
         public DateTime FinishData { get; set; }
@@ -16,6 +22,7 @@ namespace Model
         public Device RepairDevice { get; set; }
         public OrderType OrderType { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public List<OrderRecord> Orders { get; set; }
+        public List<WorkModel> Works { get; set; }
+        public List<Part> Parts { get; set; }
     }
 }

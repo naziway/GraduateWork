@@ -20,7 +20,8 @@ namespace DatabaseService
         public int WorkId { get; set; }
         public int UserId { get; set; }
         public int DeviceId { get; set; }
-        public string OrderType { get; set; }
+        public int OrderType { get; set; }
+        public int OrderStatus { get; set; }
         public Nullable<int> SparePhone { get; set; }
         public System.DateTime BeginDate { get; set; }
     
