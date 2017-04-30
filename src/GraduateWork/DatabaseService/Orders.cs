@@ -16,12 +16,13 @@ namespace DatabaseService
     {
         public int Id { get; set; }
         public int OrderKods { get; set; }
-        public int PartId { get; set; }
-        public Nullable<int> WorkId { get; set; }
+        public Nullable<int> PartId { get; set; }
+        public int WorkId { get; set; }
         public int UserId { get; set; }
         public int DeviceId { get; set; }
         public string OrderType { get; set; }
         public Nullable<int> SparePhone { get; set; }
+        public System.DateTime BeginDate { get; set; }
     
         public virtual DevicesDbs DevicesDbs { get; set; }
         public virtual DevicesDbs DevicesDbs1 { get; set; }

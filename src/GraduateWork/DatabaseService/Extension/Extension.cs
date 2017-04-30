@@ -58,7 +58,7 @@ namespace DatabaseService.Extension
             return new Device
             {
                 Id = device.Id,
-                ClientId = device.ClientId,
+             
                 DeviceType = device.DeviceType,
                 ManufactureDate = device.ManufactureDate,
                 PhoneMarka = device.PhoneMarka,

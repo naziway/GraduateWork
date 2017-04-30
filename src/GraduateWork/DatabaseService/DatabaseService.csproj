@@ -120,7 +120,6 @@
       <DependentUpon>MobiDoc.edmx</DependentUpon>
       <LastGenOutput>MobiDoc.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MobiDoc.edmx.sql" />
     <Content Include="MobiDoc.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MobiDoc.edmx</DependentUpon>

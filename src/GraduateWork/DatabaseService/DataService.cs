@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shared;
 
 namespace DatabaseService
 {
@@ -46,7 +47,7 @@ namespace DatabaseService
                 }
                 catch (Exception e)
                 {
-                    throw new PlatformNotSupportedException();
+                    throw new UserNotFoundException();
                 }
             }
             return currentUser;
@@ -107,7 +108,7 @@ namespace DatabaseService
             return new Device
             {
                 Id = device.Id,
-                ClientId = device.ClientId,
+               // ClientId = device.ClientId,
                 DeviceType = device.DeviceType,
                 ManufactureDate = device.ManufactureDate,
                 PhoneMarka = device.PhoneMarka,
@@ -117,20 +118,13 @@ namespace DatabaseService
         }
         private OrderModel ToOrderRecord(Orders order)
         {
-            //int count = 19;
-            //var a = new List<Order>();
-            //a.Reverse();
-            //a.Take(count + 16).Skip(count);
+            
+
+
+
+
             return new OrderModel();
-            //return new OrderRecordModel//TODO
-            //{
-            //    Id = order.Id,
-            //    DeviceId = order.DeviceId,
-            //    OrderKods = order.OrderKods,
-            //    OrderType = order.OrderType,
-            //    PartId = order.PartId,
-            //    WorkId = order.WorkId
-            //};
+          
         }
         private Client ToClient(ClientsDbs client)
         {
@@ -141,7 +135,7 @@ namespace DatabaseService
                 Surname = client.Surname,
                 PassportData = client.PassportData,
                 Phone = client.Phone,
-                Devices = new Devices(GetDevicesByClientId(client.Id))
+                //Devices = new Devices(GetDevicesByClientId(client.Id))
             };
         }
 

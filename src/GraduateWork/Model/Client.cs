@@ -10,6 +10,6 @@ namespace Model
         public string Name { get; set; }
         public string PassportData { get; set; }
         public string Phone { get; set; }
-        public Devices Devices { get; set; }
+        //public Devices Devices { get; set; }
     }
 }

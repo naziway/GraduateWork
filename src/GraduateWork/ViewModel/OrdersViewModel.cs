@@ -25,9 +25,7 @@ namespace ViewModel
             switch (SelectedParam)
             {
                 case "Все":
-                    findOrders = orders.Where(order => order.Client.Name.Contains(FindText) ||
-                    order.Client.Name.Contains(FindText) ||
-                    order.Client.Surname.Contains(FindText) ||
+                    findOrders = orders.Where(order => 
                     order.Device.PhoneModel.Contains(FindText) ||
                     order.OrderKod.ToString().Contains(FindText)).ToList();
                     break;

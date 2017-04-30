@@ -12,7 +12,6 @@ namespace Model
         public DateTime StartData { get; set; }
         public DateTime FinishData { get; set; }
         public double Price { get; set; }
-        public Client Client { get; set; }
         public Device Device { get; set; }
         public Device RepairDevice { get; set; }
         public OrderType OrderType { get; set; }
