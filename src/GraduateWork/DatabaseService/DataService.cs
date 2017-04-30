@@ -11,7 +11,7 @@ namespace DatabaseService
         public Tuple<int, int> GetNewOrderIdAndCode()
         {
             Tuple<int, int> newIdAndCode = new Tuple<int, int>(0, 0);
-            using (var data = new DoctorPhoneEntities3())
+            using (var data = new MobiDocContext())
             {
                 var lastOrder = data.Orders.LastOrDefault();
                 if (lastOrder != null)
@@ -23,20 +23,20 @@ namespace DatabaseService
 
         public void NewOrder(List<OrderRecordModel> orders)
         {
-            var lastInfo = GetNewOrderIdAndCode();
-            var newOrders = orders.ToOrder(lastInfo.Item1, lastInfo.Item2);
-            using (var data = new DoctorPhoneEntities3())
-            {
-                data.Orders.AddRange(newOrders);
-                data.SaveChangesAsync();
-            }
+            //var lastInfo = GetNewOrderIdAndCode();
+            //var newOrders = orders.ToOrder(lastInfo.Item1, lastInfo.Item2);
+            //using (var data = new MobiDocContext())
+            //{
+            //    data.Orders.AddRange(newOrders);
+            //    data.SaveChangesAsync();
+            //}
         }
 
 
         public User GetUser(string login, string password)
         {
             User currentUser = null;
-            using (var database = new DoctorPhoneEntities3())
+            using (var database = new MobiDocContext())
             {
                 try
                 {
@@ -54,7 +54,7 @@ namespace DatabaseService
         public List<OrderRecordModel> GetAllOrders()//TODO
         {
             List<OrderRecordModel> orders = null;
-            using (var database = new DoctorPhoneEntities3())
+            using (var database = new MobiDocContext())
             {
                 var clients = database.ClientsDbs;
                 var devices = database.DevicesDbs;
@@ -66,17 +66,17 @@ namespace DatabaseService
         public List<OrderRecordModel> GetOrdersByClient(Client client)
         {
             List<OrderRecordModel> orders = null;
-            using (var database = new DoctorPhoneEntities3())
+            using (var database = new MobiDocContext())
             {
                 var devices = GetDevicesByClientId(client.Id).Select(device => device.Id);
-                orders = database.Orders.Where(order => devices.Contains(order.DeviceId.Value)).Select(ToOrderRecord).ToList();
+                orders = database.Orders.Where(order => devices.Contains(order.DeviceId)).Select(ToOrderRecord).ToList();
             }
             return orders;
         }
         public List<Device> GetDevicesByClientId(int clientId)
         {
             List<Device> devicesByClient = null;
-            using (var database = new DoctorPhoneEntities3())
+            using (var database = new MobiDocContext())
             {
                 devicesByClient = database.DevicesDbs.Where(device => device.ClientId == clientId).Select(ToDevice).ToList();
             }
@@ -85,7 +85,7 @@ namespace DatabaseService
         public List<Device> GetAllDevices()
         {
             List<Device> devices = null;
-            using (var database = new DoctorPhoneEntities3())
+            using (var database = new MobiDocContext())
             {
                 devices = database.DevicesDbs.Select(dbClient => dbClient.ToDevice()).ToList();
             }
@@ -94,7 +94,7 @@ namespace DatabaseService
         public List<Client> GetClientsList()
         {
             List<Client> clients = null;
-            using (var database = new DoctorPhoneEntities3())
+            using (var database = new MobiDocContext())
             {
                 clients = database.ClientsDbs.Select(ToClient).ToList();
             }
@@ -102,7 +102,7 @@ namespace DatabaseService
         }
 
         #region Extension
-        public Device ToDevice(DevicesDb device)
+        public Device ToDevice(DevicesDbs device)
         {
             return new Device
             {
@@ -115,7 +115,7 @@ namespace DatabaseService
                 SerialNumber = device.SerialNumber
             };
         }
-        private OrderRecordModel ToOrderRecord(Order order)
+        private OrderRecordModel ToOrderRecord(Orders order)
         {
             //int count = 19;
             //var a = new List<Order>();
@@ -132,7 +132,7 @@ namespace DatabaseService
             //    WorkId = order.WorkId
             //};
         }
-        private Client ToClient(ClientsDb client)
+        private Client ToClient(ClientsDbs client)
         {
             return new Client
             {

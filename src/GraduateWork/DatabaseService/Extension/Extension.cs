@@ -1,4 +1,5 @@
 ﻿
+using DatabaseService;
 using Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace DatabaseService.Extension
 {
     public static class Extension
     {
-        public static User ToUserModel(this UsersDb user)
+        public static User ToUserModel(this UsersDbs user)
         {
             return new User
             {
@@ -18,24 +19,24 @@ namespace DatabaseService.Extension
                 Password = user.Password
             };
         }
-        public static List<Order> ToOrder(this List<OrderRecordModel> orders, int id, int code)
-        {
-            return orders.Select(orderRecordModel => orderRecordModel.ToOrder(id++, code)).ToList();
-        }
-        public static Order ToOrder(this OrderRecordModel order, int id, int code)//TODO finish converting
-        {
-            return new Order
-            {
-                Id = id,
-                OrderKods = code,
-                UserId = order.UserId,
-                DeviceId = order.Device.Id,
-                OrderStatus = order.OrderStatus.ToString(),
-                OrderType = order.OrderType.ToString(),
-            };
-        }
+        //public static List<Orders> ToOrder(this List<OrderRecordModel> orders, int id, int code)
+        //{
+        //    return orders.Select(orderRecordModel => orderRecordModel.ToOrder(id++, code)).ToList();
+        //}
+        //public static Order ToOrder(this OrderRecordModel order, int id, int code)//TODO finish converting
+        //{
+        //    return new Order
+        //    {
+        //        Id = id,
+        //        OrderKods = code,
+        //        UserId = order.UserId,
+        //        DeviceId = order.Device.Id,
+        //        OrderStatus = order.OrderStatus.ToString(),
+        //        OrderType = order.OrderType.ToString(),
+        //    };
+        //}
 
-        public static OrderRecordModel ToOrderRecord(this Order order)
+        public static OrderRecordModel ToOrderRecord(this Orders order)
         {
             //int count = 19;
             //var a = new List<Order>();
@@ -52,7 +53,7 @@ namespace DatabaseService.Extension
             //    WorkId = order.WorkId
             //};
         }
-        public static Device ToDevice(this DevicesDb device)
+        public static Device ToDevice(this DevicesDbs device)
         {
             return new Device
             {
@@ -65,7 +66,7 @@ namespace DatabaseService.Extension
                 SerialNumber = device.SerialNumber
             };
         }
-        public static Client ToClient(this ClientsDb client)
+        public static Client ToClient(this ClientsDbs client)
         {
             return new Client
             {

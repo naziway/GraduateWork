@@ -10,7 +10,7 @@ namespace GraduateWork
         public App()
         {
             var factory = new WindowsFactory();
-            factory.OpenMainWindow();
+            factory.OpenLoginWindow();
         }
     }
 }
