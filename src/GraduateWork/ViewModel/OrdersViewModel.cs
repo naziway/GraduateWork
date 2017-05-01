@@ -56,5 +56,7 @@ namespace ViewModel
             DataService = dataService;
             Orders = new ObservableCollection<OrderModel>(DataService.GetAllOrders());
         }
+
+       
     }
 }
