@@ -25,7 +25,7 @@ namespace ViewModel
             switch (SelectedParam)
             {
                 case "Все":
-                    findOrders = orders.Where(order => 
+                    findOrders = orders.Where(order =>
                     order.Device.PhoneModel.Contains(FindText) ||
                     order.OrderKod.ToString().Contains(FindText)).ToList();
                     break;
@@ -57,6 +57,11 @@ namespace ViewModel
             Orders = new ObservableCollection<OrderModel>(DataService.GetAllOrders());
         }
 
-       
+        public ICommand OpenInfoForOrderCommand => new CommandHandler(() =>
+        {
+
+        });
+
+
     }
 }

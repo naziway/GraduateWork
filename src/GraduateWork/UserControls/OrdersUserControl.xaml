@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
-        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ItemsSource="{Binding Orders}">
+        <ListBox Name="OrderList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ItemsSource="{Binding Orders}">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -26,17 +26,25 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="{Binding OrderKod}"  />
-                                    <TextBlock Grid.Column="0" Text="|" />
+
                                     <TextBlock Grid.Column="1" Text="{Binding OrderType}"/>
-                                    <TextBlock Grid.Column="1" Text="|" />
+
                                     <TextBlock Grid.Column="2" Text="{Binding OrderStatus}"  />
-                                    <TextBlock Grid.Column="2" Text="|" />
+
                                     <TextBlock Grid.Column="3" Text="{Binding StartData}"  />
-                                    <TextBlock Grid.Column="3" Text="|" />
+
                                     <TextBlock Grid.Column="4" Text="{Binding FinishData}" />
-                                    <TextBlock Grid.Column="4" Text="|" />
+                                    <Grid.InputBindings>
+                                        <KeyBinding Key="p" 
+            Command="{Binding Path=DataCOpenInfoForOrderCommand}"
+            CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+                                        <MouseBinding Gesture="LeftDoubleClick"
+            Command="{Binding Path=DataContext.OpenInfoForOrderCommand}"
+           CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+                                    </Grid.InputBindings>
                                 </Grid>
                             </DataTemplate>
                         </Expander.HeaderTemplate>
@@ -62,7 +70,14 @@
                     </Expander>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-
+            <ListBox.InputBindings>
+                <KeyBinding Key="p" 
+            Command="{Binding OpenInfoForOrderCommand}"
+            CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+                <MouseBinding Gesture="LeftDoubleClick"
+            Command="{Binding OpenInfoForOrderCommand}"
+           CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+            </ListBox.InputBindings>
         </ListBox>
     </Grid>
 </UserControl>
