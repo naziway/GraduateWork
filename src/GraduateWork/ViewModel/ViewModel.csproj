@@ -64,6 +64,7 @@
     <Compile Include="Base\FindViewModel.cs" />
     <Compile Include="Main\LoginViewModel.cs" />
     <Compile Include="Main\MainWindowViewModel.cs" />
+    <Compile Include="OrderInfoViewModel.cs" />
     <Compile Include="OrdersViewModel.cs" />
     <Compile Include="OrderWithFindViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -37,13 +37,11 @@
                                     <TextBlock Grid.Column="3" Text="{Binding StartData}"  />
 
                                     <TextBlock Grid.Column="4" Text="{Binding FinishData}" />
+                                    <Button Grid.Column="4" Command="{Binding Command}" Content="змінити" CommandParameter="{Binding Path=.}"/>
                                     <Grid.InputBindings>
-                                        <KeyBinding Key="p" 
-            Command="{Binding Path=DataCOpenInfoForOrderCommand}"
-            CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
                                         <MouseBinding Gesture="LeftDoubleClick"
-            Command="{Binding Path=DataContext.OpenInfoForOrderCommand}"
-           CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+                                                      Command="{Binding Command}"
+                                                      CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
                                     </Grid.InputBindings>
                                 </Grid>
                             </DataTemplate>
@@ -66,18 +64,15 @@
                             <TextBlock Grid.Row="3" Text="|" />
                             <TextBlock Grid.Row="4" Text="{Binding FinishData}" />
                             <TextBlock Grid.Row="4" Text="|" />
+                            <Grid.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick"
+                                                      Command="{Binding Command}"
+                                                      CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+                            </Grid.InputBindings>
                         </Grid>
                     </Expander>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <ListBox.InputBindings>
-                <KeyBinding Key="p" 
-            Command="{Binding OpenInfoForOrderCommand}"
-            CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
-                <MouseBinding Gesture="LeftDoubleClick"
-            Command="{Binding OpenInfoForOrderCommand}"
-           CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
-            </ListBox.InputBindings>
         </ListBox>
     </Grid>
 </UserControl>

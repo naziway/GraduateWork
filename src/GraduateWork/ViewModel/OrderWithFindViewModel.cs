@@ -9,10 +9,10 @@ namespace ViewModel
     {
         public DataService Service { get; set; }
 
-        public OrderWithFindViewModel(DataService service)
+        public OrderWithFindViewModel(DataService service, OrdersViewModel viewModel)
         {
             Service = service;
-            ViewModel = new OrdersViewModel(Service);
+            ViewModel = viewModel;
         }
 
         public OrdersViewModel ViewModel { get; set; }

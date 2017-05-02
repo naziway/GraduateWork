@@ -2,6 +2,7 @@
 using Shared.Enum;
 using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace Model
 {
@@ -13,7 +14,7 @@ namespace Model
             Works = new List<WorkModel>();
             Parts = new List<Part>();
         }
-
+        public ICommand Command { get; set; }
         public int OrderKod { get; set; }
         public DateTime StartData { get; set; }
         public DateTime FinishData { get; set; }

@@ -50,7 +50,9 @@ namespace GraduateWork
             switch (windowType)
             {
                 case Shared.OpenWindow.Orders:
-                    view = new ResizeBaseView(new OrdersListWithFinding { DataContext = new OrderWithFindViewModel(DataService) }, "Список замовлень", 500, 500);
+                    var orderViewModel = new OrdersViewModel(DataService);
+                    orderViewModel.SetAction(OpenWindowWithData);
+                    view = new ResizeBaseView(new OrdersListWithFinding { DataContext = new OrderWithFindViewModel(DataService, orderViewModel) }, "Список замовлень", 500, 500);
                     break;
                 case Shared.OpenWindow.NewExaminate:
                     var viewModel = new AddNewExaminateControl { DataContext = new NewExaminateViewModel(DataService) };
@@ -66,6 +68,20 @@ namespace GraduateWork
             Window view;
             switch (windowType)
             {
+                default: throw new InvalidOperationException();
+            }
+            OpenedWindows.Add(view);
+            InvokeInMainThread(view.Show);
+        }
+        private void OpenWindowWithData(OpenWindow windowType, object data)
+        {
+            Window view;
+            switch (windowType)
+            {
+                case OpenWindow.OrderInfo:
+                    var orderInfoViewModel = new OrderInfoViewModel(DataService, data as OrderModel);
+                    view = new ResizeBaseView(new OrderInfo() { DataContext = orderInfoViewModel }, "Опис Замовлення", 500, 500);
+                    break;
                 default: throw new InvalidOperationException();
             }
             OpenedWindows.Add(view);
