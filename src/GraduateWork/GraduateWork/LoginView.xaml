@@ -4,26 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraduateWork"
+        xmlns:userControls="clr-namespace:UserControls;assembly=UserControls"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="Панель входу" Height="300" Width="300">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="105*"/>
-            <ColumnDefinition Width="187*"/>
-        </Grid.ColumnDefinitions>
+        Title="Панель входу" Height="180" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#1c252a"/>
+            <Setter Property="Padding" Value="15,0,0,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="LabelBorder"  TargetType="Border">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="30,0,30,0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ButtonBorder" TargetType="Border">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="Background" Value="#2c3a45"/>
+            <Setter Property="Margin" Value="30,0,30,0"/>
+        </Style>
+        <Style x:Key="TextButton" TargetType="Label">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Foreground" Value="LightCyan"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid  Background="#1c252a">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="148*"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Логін:"></Label>
-        <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalAlignment="Center" Content="Пароль:"></Label>
+        <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" ></userControls:MoveControl>
 
-        <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Text="{Binding Login}" Margin="5,0,38,0" ></TextBox>
-        <TextBox Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" Text="{Binding Password}" Margin="5,0,38,0" ></TextBox>
+        <Label Style="{DynamicResource HeaderName}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
+        <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
 
-        <Button Command="{Binding LoginCommand}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Content="Login" Height="30" Width="125"></Button>
+        <Border Style="{StaticResource LabelBorder}"  Grid.Row="2">
+            <TextBox Background="{x:Null}"  Text="{Binding Login}"></TextBox>
+        </Border>
+        <Border Style="{StaticResource LabelBorder}"  Grid.Row="4">
+            <TextBox Background="{x:Null}" Text="{Binding Password}"></TextBox>
+        </Border>
+        <Border Style="{StaticResource ButtonBorder}" Grid.Row="6">
+            <Button Background="{x:Null}" Grid.Row="6" Command="{Binding LoginCommand}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Label Style="{StaticResource TextButton}"  Content="Ввійти"></Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Border>
+        <Border Style="{StaticResource ButtonBorder}" Grid.Row="6"  Visibility="{Binding State}">
+            <Button Background="{x:Null}" Grid.Row="6">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Image Width="56"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Border>
 
     </Grid>
+
 </Window>
+

@@ -15,5 +15,20 @@ namespace DatabaseService
     public partial class Orders
     {
         public int Id { get; set; }
+        public int OrderKods { get; set; }
+        public Nullable<int> PartId { get; set; }
+        public int WorkId { get; set; }
+        public int UserId { get; set; }
+        public int DeviceId { get; set; }
+        public int OrderType { get; set; }
+        public int OrderStatus { get; set; }
+        public Nullable<int> SparePhone { get; set; }
+        public System.DateTime BeginDate { get; set; }
+    
+        public virtual DevicesDbs DevicesDbs { get; set; }
+        public virtual DevicesDbs DevicesDbs1 { get; set; }
+        public virtual PartsDbs PartsDbs { get; set; }
+        public virtual UsersDbs UsersDbs { get; set; }
+        public virtual WorksDbs WorksDbs { get; set; }
     }
 }

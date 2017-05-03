@@ -1,12 +1,11 @@
-﻿using System.Windows;
-using ViewModel;
+﻿using ViewModel;
 
 namespace GraduateWork
 {
     /// <summary>
     /// Interaction logic for MainWindowView.xaml
     /// </summary>
-    public partial class MainWindowView : Window
+    public partial class MainWindowView
     {
         private readonly MainWindowViewModel ViewModel;
 
@@ -16,5 +15,6 @@ namespace GraduateWork
             InitializeComponent();
             DataContext = ViewModel;
         }
+
     }
 }
