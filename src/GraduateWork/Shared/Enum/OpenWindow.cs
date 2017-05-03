@@ -3,6 +3,7 @@
     public enum OpenWindow
     {
         Orders,
-        NewExaminate
+        NewExaminate,
+        OrderInfo
     }
 }

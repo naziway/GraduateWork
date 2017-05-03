@@ -41,11 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandler.cs" />
+    <Compile Include="DeviceType.cs" />
     <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Enum\OrderType.cs" />
     <Compile Include="Enum\OpenWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransferData.cs" />
+    <Compile Include="UserNotFoundException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

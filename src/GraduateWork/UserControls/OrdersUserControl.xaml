@@ -8,16 +8,71 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
-        <DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="2*" Header="Дата оформлення" Binding="{Binding StartData,StringFormat=d}"/>
-                <DataGridTextColumn Width="*" Header="Імя" Binding="{Binding Client.Name}"/>
-                <DataGridTextColumn Width="*" Header="Прізвище" Binding="{Binding Client.Surname}"/>
-                <DataGridTextColumn Width="*" Header="Телефон" Binding="{Binding Device}"/>
-                <DataGridTextColumn Width="*" Header="Ціна" Binding="{Binding Price}"/>
-                <DataGridTextColumn Width="*" Header="Код" Binding="{Binding OrderKod}"/>
-                <DataGridTextColumn Width="2*" Header="Дата завершення" Binding="{Binding FinishData,StringFormat=d}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListBox Name="OrderList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ItemsSource="{Binding Orders}">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Expander 
+                    Header="{Binding Path=.}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsExpanded="False">
+                        <Expander.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding OrderKod}"  />
+
+                                    <TextBlock Grid.Column="1" Text="{Binding OrderType}"/>
+
+                                    <TextBlock Grid.Column="2" Text="{Binding OrderStatus}"  />
+
+                                    <TextBlock Grid.Column="3" Text="{Binding StartData}"  />
+
+                                    <TextBlock Grid.Column="4" Text="{Binding FinishData}" />
+                                    <Button Grid.Column="4" Command="{Binding Command}" Content="змінити" CommandParameter="{Binding Path=.}"/>
+                                    <Grid.InputBindings>
+                                        <MouseBinding Gesture="LeftDoubleClick"
+                                                      Command="{Binding Command}"
+                                                      CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+                                    </Grid.InputBindings>
+                                </Grid>
+                            </DataTemplate>
+                        </Expander.HeaderTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="sdfsdf"  />
+                            <TextBlock Grid.Row="0" Text="|" />
+                            <TextBlock Grid.Row="1" Text="{Binding OrderType}"/>
+                            <TextBlock Grid.Row="1" Text="|" />
+                            <TextBlock Grid.Row="2" Text="{Binding OrderStatus}"  />
+                            <TextBlock Grid.Row="2" Text="|" />
+                            <TextBlock Grid.Row="3" Text="{Binding StartData}"  />
+                            <TextBlock Grid.Row="3" Text="|" />
+                            <TextBlock Grid.Row="4" Text="{Binding FinishData}" />
+                            <TextBlock Grid.Row="4" Text="|" />
+                            <Grid.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick"
+                                                      Command="{Binding Command}"
+                                                      CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
+                            </Grid.InputBindings>
+                        </Grid>
+                    </Expander>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

@@ -18,7 +18,7 @@ namespace ViewModel.Find
         public ClientFindingViewModel(DataService dataService)
         {
             DataService = dataService;
-
+            
             Clients = new ClientListViewModel(dataService);
             FindingParametersList = new List<string>()
             {   "Все",
@@ -40,8 +40,7 @@ namespace ViewModel.Find
                         client.Name.ToLower().Contains(text.ToLower()) ||
                         client.Surname.ToLower().Contains(text.ToLower()) ||
                         client.Phone.ToLower().Contains(text.ToLower()) ||
-                        client.PassportData.ToLower().Contains(text.ToLower()) ||
-                        client.Devices.ToString().ToLower().Contains(text.ToLower())).ToList();
+                        client.PassportData.ToLower().Contains(text.ToLower())).ToList();
                     break;
                 case "Ім'я":
                     findClients = DataService.GetClientsList().Where(client =>

@@ -51,70 +51,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientsDb.cs">
-      <DependentUpon>PhoneDataModel.tt</DependentUpon>
+    <Compile Include="ClientsDbs.cs">
+      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
     <Compile Include="DataService.cs" />
-    <Compile Include="DevicesDb.cs">
-      <DependentUpon>PhoneDataModel.tt</DependentUpon>
+    <Compile Include="DevicesDbs.cs">
+      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
     <Compile Include="Extension\Extension.cs" />
-    <Compile Include="Order.cs">
-      <DependentUpon>PhoneDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PartsDb.cs">
-      <DependentUpon>PhoneDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PhoneDataModel.Context.cs">
+    <Compile Include="MobiDoc.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneDataModel.Context.tt</DependentUpon>
+      <DependentUpon>MobiDoc.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="PhoneDataModel.cs">
+    <Compile Include="MobiDoc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneDataModel.tt</DependentUpon>
+      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
-    <Compile Include="PhoneDataModel.Designer.cs">
+    <Compile Include="MobiDoc.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
+      <DependentUpon>MobiDoc.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders.cs">
+      <DependentUpon>MobiDoc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartsDbs.cs">
+      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsersDb.cs">
-      <DependentUpon>PhoneDataModel.tt</DependentUpon>
+    <Compile Include="UsersDbs.cs">
+      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
-    <Compile Include="WorksDb.cs">
-      <DependentUpon>PhoneDataModel.tt</DependentUpon>
+    <Compile Include="WorksDbs.cs">
+      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-    <EntityDeploy Include="PhoneDataModel.edmx">
+    <EntityDeploy Include="MobiDoc.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PhoneDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MobiDoc.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="PhoneDataModel.edmx.diagram">
-      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
+    <None Include="MobiDoc.edmx.diagram">
+      <DependentUpon>MobiDoc.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataBaseEntities.edmx.sql" />
-    <Content Include="DataEntity.edmx.sql" />
-    <Content Include="PhoneDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
-      <LastGenOutput>PhoneDataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="PhoneDataModel.edmx.sql" />
-    <Content Include="PhoneDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhoneDataModel.edmx</DependentUpon>
-      <LastGenOutput>PhoneDataModel.cs</LastGenOutput>
-    </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -128,6 +113,19 @@
       <Project>{957DFFE9-C9AC-4F80-8763-178FA616E272}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MobiDoc.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MobiDoc.edmx</DependentUpon>
+      <LastGenOutput>MobiDoc.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MobiDoc.edmx.sql" />
+    <Content Include="MobiDoc.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MobiDoc.edmx</DependentUpon>
+      <LastGenOutput>MobiDoc.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

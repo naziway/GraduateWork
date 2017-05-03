@@ -106,6 +106,9 @@
     <Compile Include="MoveControl.xaml.cs">
       <DependentUpon>MoveControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderInfo.xaml.cs">
+      <DependentUpon>OrderInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OrdersListWithFinding.xaml.cs">
       <DependentUpon>OrdersListWithFinding.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MoveControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

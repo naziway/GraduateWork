@@ -26,7 +26,7 @@
 
             </Grid>
         </Grid>
-        <local:OrdersUserControl Grid.Row="1" DataContext="{Binding Orders}" ></local:OrdersUserControl>
+        <local:OrdersUserControl  Grid.Row="1" DataContext="{Binding ViewModel}" ></local:OrdersUserControl>
 
     </Grid>
 </UserControl>

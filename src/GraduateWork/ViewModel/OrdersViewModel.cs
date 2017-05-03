@@ -1,4 +1,5 @@
-﻿using DatabaseService;
+﻿using System;
+using DatabaseService;
 using Model;
 using Shared;
 using System.Collections.Generic;
@@ -10,6 +11,24 @@ namespace ViewModel
 {
     public class OrdersViewModel
     {
+        #region Action
+        public Action<OpenWindow> OpenWindowAction { get; set; }
+        public Action<OpenWindow, object> OpenWindowByDataAction { get; set; }
+        public Action<OpenWindow, TransferData> OpenWindowWithEventResultAction { get; set; }
+
+        public void SetAction(Action<OpenWindow, TransferData> action)
+        {
+            OpenWindowWithEventResultAction = action;
+        }
+        public void SetAction(Action<OpenWindow> action)
+        {
+            OpenWindowAction = action;
+        }
+        public void SetAction(Action<OpenWindow, object> action)
+        {
+            OpenWindowByDataAction = action;
+        }
+        #endregion
         public DataService DataService { get; set; }
 
         public string FindText { get; set; }
@@ -21,13 +40,11 @@ namespace ViewModel
         private void Finding()
         {
             var orders = DataService.GetAllOrders();
-            List<OrderRecordModel> findOrders = new List<OrderRecordModel>();
+            List<OrderModel> findOrders = new List<OrderModel>();
             switch (SelectedParam)
             {
                 case "Все":
-                    findOrders = orders.Where(order => order.Client.Name.Contains(FindText) ||
-                    order.Client.Name.Contains(FindText) ||
-                    order.Client.Surname.Contains(FindText) ||
+                    findOrders = orders.Where(order =>
                     order.Device.PhoneModel.Contains(FindText) ||
                     order.OrderKod.ToString().Contains(FindText)).ToList();
                     break;
@@ -39,10 +56,10 @@ namespace ViewModel
                     break;
             }
 
-            Orders = new ObservableCollection<OrderRecordModel>(findOrders);
+            Orders = new ObservableCollection<OrderModel>(findOrders);
         }
 
-        public ObservableCollection<OrderRecordModel> Orders { get; set; }
+        public ObservableCollection<OrderModel> Orders { get; set; }
 
         public ObservableCollection<string> FindingParametersList
             => new ObservableCollection<string>()
@@ -52,11 +69,22 @@ namespace ViewModel
                 "Ціна",
                 "Все"
             };
-
         public OrdersViewModel(DataService dataService)
         {
             DataService = dataService;
-            Orders = new ObservableCollection<OrderRecordModel>(DataService.GetAllOrders());
+            var command = new CommandWithParameters(OpenOrderInfoWindow);
+            var orders = DataService.GetAllOrders();
+            Command = command;
+            orders.ForEach((order) => { order.Command = command; });
+            Orders = new ObservableCollection<OrderModel>(orders);
+        }
+        public ICommand Command { get; set; }
+        private void OpenOrderInfoWindow(object obj)
+        {
+            var order = obj as OrderModel;
+            if (order == null)
+                return;
+            OpenWindowByDataAction(OpenWindow.OrderInfo, order);
         }
     }
 }
