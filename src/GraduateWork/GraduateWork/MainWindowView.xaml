@@ -100,6 +100,17 @@
                     </Button.Template>
                 </Button>
             </Grid>
+            <Grid  Grid.Column="0" Grid.Row="7" Margin="0,0,0,5">
+                <Button Command="{Binding ExaminateListCommand}" ToolTip="Список обстежень">
+                    <Button.Template>
+                        <ControlTemplate >
+                            <StackPanel Style="{DynamicResource PanelItem}">
+                                <Image  Source="Icons/List.png" VerticalAlignment="Center" Height="60" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
         </Grid>
 
         <ContentPresenter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentUserControl}" Margin="5,0,-5,0"/>

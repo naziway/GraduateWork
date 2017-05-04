@@ -4,6 +4,8 @@
     {
         Orders,
         NewExaminate,
-        OrderInfo
+        OrderInfo,
+        ListExaminate,
+        ExaminateToOrder
     }
 }

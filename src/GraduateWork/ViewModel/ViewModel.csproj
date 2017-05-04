@@ -59,6 +59,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExaminateManager.cs" />
+    <Compile Include="ExaminateViewModel.cs" />
     <Compile Include="Find\ClientFindingViewModel.cs" />
     <Compile Include="Lists\ClientListViewModel.cs" />
     <Compile Include="Base\FindViewModel.cs" />

@@ -58,6 +58,11 @@ namespace GraduateWork
                     var viewModel = new AddNewExaminateControl { DataContext = new NewExaminateViewModel(DataService) };
                     view = new BaseView(viewModel, "Нова Діагностика", 300, 300);
                     break;
+                case Shared.OpenWindow.ListExaminate:
+                    var examToOrderViewModel = new ExaminateViewModel(DataService);// new ExaminateManager(DataService, new ExaminateViewModel(DataService));
+                    examToOrderViewModel.SetAction(OpenWindowWithData);
+                    view = new ResizeBaseView(new OrdersUserControl() { DataContext = examToOrderViewModel }, "список обстежень", 500, 500);
+                    break;
                 default: throw new InvalidOperationException();
             }
             OpenedWindows.Add(view);
@@ -81,6 +86,10 @@ namespace GraduateWork
                 case OpenWindow.OrderInfo:
                     var orderInfoViewModel = new OrderInfoViewModel(DataService, data as OrderModel);
                     view = new ResizeBaseView(new OrderInfo() { DataContext = orderInfoViewModel }, "Опис Замовлення", 500, 500);
+                    break;
+                case OpenWindow.ExaminateToOrder:
+                    var examToOrderViewModel = new ExaminateManager(DataService, new ExaminateViewModel(DataService));
+                    view = new ResizeBaseView(new ExaminateToOrder { DataContext = examToOrderViewModel }, "до ордеру", 500, 500);
                     break;
                 default: throw new InvalidOperationException();
             }

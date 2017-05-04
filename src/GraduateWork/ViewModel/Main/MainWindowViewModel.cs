@@ -52,6 +52,12 @@ namespace ViewModel
             CurrentUserControl = new OrdersUserControl();
             OpenWindowAction(OpenWindow.Orders);
         });
+        public ICommand ExaminateListCommand => new CommandHandler(() =>
+        {
+            OpenWindowAction(OpenWindow.ListExaminate);
+        });
+
+
         public ICommand LogOutCommand => new CommandHandler(DoOnLogOut);
         #endregion
 
