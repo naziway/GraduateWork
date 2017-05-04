@@ -14,31 +14,22 @@ namespace ViewModel.ResourseAdd
         public DataService DataService { get; set; }
 
         public ObservableCollection<Client> Clients { get; set; }
-        public ObservableCollection<string> Marks { get; set; }
-        public ObservableCollection<string> Models { get; set; }
+        public ObservableCollection<Device> Devices { get; set; }
 
-        public string selectedMarka { get; set; }
-        public string selectedModel { get; set; }
+        public Device selectedDevice { get; set; }
+
         public Client selectedClient { get; set; }
 
-        public string SelectedMarka
+        public Device SelectedDevice
         {
-            get { return selectedMarka; }
+            get { return selectedDevice; }
             set
             {
-                selectedMarka = value;
-                DoOnSelectedMarka();
+                selectedDevice = value;
+                DoOnSelectedDevice();
             }
         }
-        public string SelectedModel
-        {
-            get { return selectedModel; }
-            set
-            {
-                selectedModel = value;
-                DoOnSelectedModel();
-            }
-        }
+
         public Client SelectedClient
         {
             get { return selectedClient; }
@@ -49,30 +40,28 @@ namespace ViewModel.ResourseAdd
             }
         }
 
-
-        private void DoOnSelectedModel()
+        private void DoOnSelectedDevice()
         {
-
-        }
-
-        private void DoOnSelectedMarka()
-        {
-            Models = new ObservableCollection<string>
-               (DataService.GetDevicesByClientId(selectedClient.Id).Where(device => device.PhoneMarka == SelectedMarka).Select(device => device.PhoneModel));
-
+            CanExecute = true;
         }
 
         private void DoOnSelectedClient()
         {
-            Marks = new ObservableCollection<string>
-                (DataService.GetDevicesByClientId(selectedClient.Id).Select(device => device.PhoneMarka));
+            Devices = new ObservableCollection<Device>
+                (DataService.GetDevicesByClientId(selectedClient.Id));
+            CanExecute = false;
         }
 
         public ICommand AddExaminateCommand => new CommandHandler((() =>
           {
+              var device = new Device();
 
-          }));
+              device = selectedDevice;
+              DataService.AddNewExaminate(device);
 
+          }), CanExecute);
+
+        public bool CanExecute { get; set; }
 
         public NewExaminateViewModel(DataService dataService)
         {

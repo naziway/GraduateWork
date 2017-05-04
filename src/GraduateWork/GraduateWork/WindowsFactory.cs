@@ -110,6 +110,7 @@ namespace GraduateWork
             LoginViewModel.OnSuccessLogin -= ViewModelOnSuccessLogin;
             LoginViewModel.OnFailedLogin -= ViewModelOnFailedLogin;
             OpenMainWindow();
+            DataService.User = user;
             InvokeInMainThread(LoginView.Close);
         }
 

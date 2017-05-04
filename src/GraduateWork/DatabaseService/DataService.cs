@@ -1,36 +1,62 @@
 ﻿using DatabaseService.Extension;
 using Model;
+using Shared;
+using Shared.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Shared;
-using Shared.Enum;
 
 namespace DatabaseService
 {
     public class DataService
     {
+        public User User { get; set; }
+        public bool AddNewExaminate(Device device)
+        {
+            var exeminate = new Orders();
+
+            var kodId = GetNewOrderIdAndCode();
+            exeminate.Id = kodId.Item1;
+            exeminate.OrderKods = kodId.Item2;
+            exeminate.BeginDate = DateTime.Now;
+            exeminate.OrderType = (int)OrderType.Review;
+            exeminate.OrderStatus = (int)OrderStatus.Active;
+            exeminate.DeviceId = device.Id;
+            exeminate.PartId = null;
+            exeminate.WorkerId = User.Id;
+            exeminate.UserId = User.Id;
+            exeminate.WorkId = 1;
+
+            using (var database = new MobiDocContext())
+            {
+                database.Orders.Add(exeminate);
+                try
+                {
+                    database.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
         public Tuple<int, int> GetNewOrderIdAndCode()
         {
             Tuple<int, int> newIdAndCode = new Tuple<int, int>(0, 0);
             using (var data = new MobiDocContext())
             {
-                var lastOrder = data.Orders.LastOrDefault();
+                var lastOrder = data.Orders.ToList().LastOrDefault();
                 if (lastOrder != null)
-                    newIdAndCode = new Tuple<int, int>(lastOrder.Id, lastOrder.OrderKods);
+                    newIdAndCode = new Tuple<int, int>(lastOrder.Id+1, lastOrder.OrderKods+1);
             }
             return newIdAndCode;
         }
-        public void NewOrder(List<OrderModel> orders)
-        {
-            //var lastInfo = GetNewOrderIdAndCode();
-            //var newOrders = orders.ToOrder(lastInfo.Item1, lastInfo.Item2);
-            //using (var data = new MobiDocContext())
-            //{
-            //    data.Orders.AddRange(newOrders);
-            //    data.SaveChangesAsync();
-            //}
-        }
+
         public User GetUser(string login, string password)
         {
             User currentUser = null;

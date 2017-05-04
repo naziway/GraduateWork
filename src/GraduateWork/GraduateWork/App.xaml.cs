@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Model;
+using System.Windows;
 
 namespace GraduateWork
 {
@@ -10,7 +11,8 @@ namespace GraduateWork
         public App()
         {
             var factory = new WindowsFactory();
-            factory.OpenMainWindow();
+            factory.OpenLoginWindow();
         }
+        public static User User { get; set; }
     }
 }

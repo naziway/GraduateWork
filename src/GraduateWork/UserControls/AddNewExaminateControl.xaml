@@ -46,14 +46,12 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Grid.Row="1" >Виберiть Користувача</Label>
-        <Label Grid.Row="3">Виберіть Марку</Label>
-        <Label Grid.Row="5">Виберіть Модель</Label>
+        <Label Grid.Row="1" >Виберiть Клієнта</Label>
+        <Label Grid.Row="3">Виберіть Пристрій</Label>
 
         <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}"></ComboBox>
-        <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Marks}" SelectedItem="{Binding SelectedMarka}"></ComboBox>
-        <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}"></ComboBox>
-
+        <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice}"></ComboBox>
+       
         <Button Grid.Column="1" Grid.Row="7" Command="{Binding AddExaminateCommand}">Додати</Button>
 
 
