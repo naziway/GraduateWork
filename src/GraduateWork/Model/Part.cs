@@ -7,6 +7,6 @@
         public string Model { get; set; }
         public string Marka { get; set; }
         public double Price { get; set; }
-        public bool IsAvailable { get; set; }
+        public int Count { get; set; }
     }
 }

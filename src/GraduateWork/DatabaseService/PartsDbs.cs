@@ -25,7 +25,7 @@ namespace DatabaseService
         public string Model { get; set; }
         public string Marka { get; set; }
         public double Price { get; set; }
-        public bool IsAvailable { get; set; }
+        public int Count { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }

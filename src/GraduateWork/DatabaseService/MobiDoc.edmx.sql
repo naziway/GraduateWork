@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/01/2017 02:09:30
--- Generated from EDMX file: C:\Users\naziway\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\MobiDoc.edmx
+-- Date Created: 05/04/2017 20:20:20
+-- Generated from EDMX file: C:\Users\__it\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\MobiDoc.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -31,6 +31,9 @@ IF OBJECT_ID(N'[dbo].[FK_Orders_ToSparePhones]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_Orders_ToUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_Orders_ToUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Orders_ToUserWorker]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_Orders_ToUserWorker];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Orders_ToWorks]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_Orders_ToWorks];
@@ -98,7 +101,8 @@ CREATE TABLE [dbo].[Orders] (
     [OrderType] int  NOT NULL,
     [OrderStatus] int  NOT NULL,
     [SparePhone] int  NULL,
-    [BeginDate] datetime  NOT NULL
+    [BeginDate] datetime  NOT NULL,
+    [WorkerId] int  NOT NULL
 );
 GO
 
@@ -109,7 +113,7 @@ CREATE TABLE [dbo].[PartsDbs] (
     [Model] nvarchar(50)  NOT NULL,
     [Marka] nvarchar(50)  NOT NULL,
     [Price] float  NOT NULL,
-    [IsAvailable] bit  NOT NULL
+    [Count] int  NOT NULL
 );
 GO
 
@@ -117,6 +121,7 @@ GO
 CREATE TABLE [dbo].[UsersDbs] (
     [Id] int  NOT NULL,
     [IsAdmin] bit  NOT NULL,
+    [IsWorker] bit  NULL,
     [Name] nvarchar(50)  NOT NULL,
     [Surname] nvarchar(50)  NOT NULL,
     [Login] varchar(50)  NOT NULL,
@@ -250,6 +255,21 @@ GO
 CREATE INDEX [IX_FK_Orders_ToUser]
 ON [dbo].[Orders]
     ([UserId]);
+GO
+
+-- Creating foreign key on [WorkerId] in table 'Orders'
+ALTER TABLE [dbo].[Orders]
+ADD CONSTRAINT [FK_Orders_ToUserWorker]
+    FOREIGN KEY ([WorkerId])
+    REFERENCES [dbo].[UsersDbs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Orders_ToUserWorker'
+CREATE INDEX [IX_FK_Orders_ToUserWorker]
+ON [dbo].[Orders]
+    ([WorkerId]);
 GO
 
 -- Creating foreign key on [WorkId] in table 'Orders'

@@ -24,11 +24,13 @@ namespace DatabaseService
         public int OrderStatus { get; set; }
         public Nullable<int> SparePhone { get; set; }
         public System.DateTime BeginDate { get; set; }
+        public int WorkerId { get; set; }
     
         public virtual DevicesDbs DevicesDbs { get; set; }
         public virtual DevicesDbs DevicesDbs1 { get; set; }
         public virtual PartsDbs PartsDbs { get; set; }
         public virtual UsersDbs UsersDbs { get; set; }
+        public virtual UsersDbs UsersDbs1 { get; set; }
         public virtual WorksDbs WorksDbs { get; set; }
     }
 }

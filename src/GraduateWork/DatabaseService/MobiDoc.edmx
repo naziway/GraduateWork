@@ -32,6 +32,10 @@
       <End Role="UsersDbs" EntitySet="UsersDbs" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
+    <AssociationSet Name="FK_Orders_ToUserWorker" Association="MobiDocModel.Store.FK_Orders_ToUserWorker">
+      <End Role="UsersDbs" EntitySet="UsersDbs" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
     <AssociationSet Name="FK_Orders_ToWorks" Association="MobiDocModel.Store.FK_Orders_ToWorks">
       <End Role="WorksDbs" EntitySet="WorksDbs" />
       <End Role="Orders" EntitySet="Orders" />
@@ -75,6 +79,7 @@
     <Property Name="OrderStatus" Type="int" Nullable="false" />
     <Property Name="SparePhone" Type="int" Nullable="true" />
     <Property Name="BeginDate" Type="datetime" Nullable="false" />
+    <Property Name="WorkerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PartsDbs">
     <Key>
@@ -85,7 +90,7 @@
     <Property Name="Model" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Marka" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Price" Type="float" Nullable="false" />
-    <Property Name="IsAvailable" Type="bit" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UsersDbs">
     <Key>
@@ -93,6 +98,7 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="IsWorker" Type="bit" Nullable="true" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Login" Type="varchar" Nullable="false" MaxLength="50" />
@@ -167,6 +173,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Orders_ToUserWorker">
+    <End Role="UsersDbs" Type="MobiDocModel.Store.UsersDbs" Multiplicity="1" />
+    <End Role="Orders" Type="MobiDocModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersDbs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orders_ToWorks">
     <End Role="WorksDbs" Type="MobiDocModel.Store.WorksDbs" Multiplicity="1" />
     <End Role="Orders" Type="MobiDocModel.Store.Orders" Multiplicity="*" />
@@ -225,10 +243,12 @@
           <Property Name="OrderStatus" Type="Int32" Nullable="false" />
           <Property Name="SparePhone" Type="Int32" />
           <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DevicesDbs" Relationship="Self.FK_Orders_ToDevices" FromRole="Orders" ToRole="DevicesDbs" />
           <NavigationProperty Name="DevicesDbs1" Relationship="Self.FK_Orders_ToSparePhones" FromRole="Orders" ToRole="DevicesDbs" />
           <NavigationProperty Name="PartsDbs" Relationship="Self.FK_Orders_ToParts" FromRole="Orders" ToRole="PartsDbs" />
           <NavigationProperty Name="UsersDbs" Relationship="Self.FK_Orders_ToUser" FromRole="Orders" ToRole="UsersDbs" />
+          <NavigationProperty Name="UsersDbs1" Relationship="Self.FK_Orders_ToUserWorker" FromRole="Orders" ToRole="UsersDbs" />
           <NavigationProperty Name="WorksDbs" Relationship="Self.FK_Orders_ToWorks" FromRole="Orders" ToRole="WorksDbs" />
         </EntityType>
         <EntityType Name="PartsDbs">
@@ -240,7 +260,7 @@
           <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToParts" FromRole="PartsDbs" ToRole="Orders" />
         </EntityType>
         <EntityType Name="UsersDbs">
@@ -249,11 +269,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="IsWorker" Type="Boolean" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToUser" FromRole="UsersDbs" ToRole="Orders" />
+          <NavigationProperty Name="Orders1" Relationship="Self.FK_Orders_ToUserWorker" FromRole="UsersDbs" ToRole="Orders" />
         </EntityType>
         <EntityType Name="WorksDbs">
           <Key>
@@ -325,6 +347,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Orders_ToUserWorker">
+          <End Role="UsersDbs" Type="Self.UsersDbs" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersDbs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orders_ToWorks">
           <End Role="WorksDbs" Type="Self.WorksDbs" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -361,6 +395,10 @@
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_ToUser" Association="Self.FK_Orders_ToUser">
+            <End Role="UsersDbs" EntitySet="UsersDbs" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToUserWorker" Association="Self.FK_Orders_ToUserWorker">
             <End Role="UsersDbs" EntitySet="UsersDbs" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
@@ -414,6 +452,7 @@
           <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
           <ScalarProperty Name="SparePhone" ColumnName="SparePhone" />
           <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -425,7 +464,7 @@
           <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="Marka" ColumnName="Marka" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -434,6 +473,7 @@
         <MappingFragment StoreEntitySet="UsersDbs">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="IsWorker" ColumnName="IsWorker" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="Login" ColumnName="Login" />

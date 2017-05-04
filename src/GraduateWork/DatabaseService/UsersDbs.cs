@@ -18,10 +18,12 @@ namespace DatabaseService
         public UsersDbs()
         {
             this.Orders = new HashSet<Orders>();
+            this.Orders1 = new HashSet<Orders>();
         }
     
         public int Id { get; set; }
         public bool IsAdmin { get; set; }
+        public Nullable<bool> IsWorker { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Login { get; set; }
@@ -29,5 +31,7 @@ namespace DatabaseService
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders1 { get; set; }
     }
 }

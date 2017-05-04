@@ -113,7 +113,7 @@ namespace DatabaseService
                             Model = part.Model,
                             Marka = part.Marka,
                             Price = part.Price,
-                            IsAvailable = part.IsAvailable,
+                            Count = part.Count,
                         },
                         UserId = orders.UserId,
                         DeviceId = orders.DeviceId,
