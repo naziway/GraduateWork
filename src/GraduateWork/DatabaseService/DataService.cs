@@ -60,13 +60,13 @@ namespace DatabaseService
         public User GetUser(string login, string password)
         {
             User currentUser = null;
-            using (var database = new MobiDocContext())
+            using (var database = new MobileDoc())
             {
                 try
                 {
-                    var userB =
-                               database.UsersDbs.FirstOrDefault(user => user.Login == login && user.Password == password);
-                    currentUser = userB?.ToUserModel();
+                    var userBD =
+                               database.Users.FirstOrDefault(user => user.Login == login && user.Password == password);
+                    currentUser = userBD?.ToUserModel();
                 }
                 catch (Exception e)
                 {
