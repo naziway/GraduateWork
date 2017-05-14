@@ -2,8 +2,8 @@
 {
     public enum OrderStatus
     {
-        Active,
-        Implemented,
-        PaidUp
+        Активний,
+        Виконується,
+        Оплачено
     }
 }

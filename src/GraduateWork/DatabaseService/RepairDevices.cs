@@ -12,25 +12,23 @@ namespace DatabaseService
     using System;
     using System.Collections.Generic;
     
-    public partial class Parts
+    public partial class RepairDevices
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Parts()
+        public RepairDevices()
         {
             this.Repairs = new HashSet<Repairs>();
-            this.Sellings = new HashSet<Sellings>();
         }
     
         public int Id { get; set; }
-        public string Title { get; set; }
-        public double Price { get; set; }
-        public int Count { get; set; }
         public string Marka { get; set; }
         public string Model { get; set; }
+        public int DeviceType { get; set; }
+        public string SerialNumber { get; set; }
+        public System.DateTime ManufactureDate { get; set; }
+        public int Count { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Repairs> Repairs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sellings> Sellings { get; set; }
     }
 }

@@ -28,16 +28,15 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding OrderKod}"  />
+                                    <TextBlock Grid.Column="0" Text="Код замовлення:"  />
 
-                                    <TextBlock Grid.Column="1" Text="{Binding OrderType}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding OrderKod}"/>
 
-                                    <TextBlock Grid.Column="2" Text="{Binding OrderStatus}"  />
+                                    <TextBlock Grid.Column="2" Text="Дата оформлення:"  />
 
-                                    <TextBlock Grid.Column="3" Text="{Binding StartData}"  />
+                                    <TextBlock Grid.Column="3" Text="{Binding StartData, StringFormat=d}"  />
 
-                                    <TextBlock Grid.Column="4" Text="{Binding FinishData}" />
-                                    <Button Grid.Column="4" Command="{Binding Command}" Content="змінити" CommandParameter="{Binding Path=.}"/>
+                                    <Button Grid.Column="4" Command="{Binding Command}" Content="Змінити" CommandParameter="{Binding Path=.}"/>
                                     <Grid.InputBindings>
                                         <MouseBinding Gesture="LeftDoubleClick"
                                                       Command="{Binding Command}"
@@ -54,16 +53,31 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="sdfsdf"  />
-                            <TextBlock Grid.Row="0" Text="|" />
-                            <TextBlock Grid.Row="1" Text="{Binding OrderType}"/>
-                            <TextBlock Grid.Row="1" Text="|" />
-                            <TextBlock Grid.Row="2" Text="{Binding OrderStatus}"  />
-                            <TextBlock Grid.Row="2" Text="|" />
-                            <TextBlock Grid.Row="3" Text="{Binding StartData}"  />
-                            <TextBlock Grid.Row="3" Text="|" />
-                            <TextBlock Grid.Row="4" Text="{Binding FinishData}" />
-                            <TextBlock Grid.Row="4" Text="|" />
+                            <Grid Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="тип замовлення:"/>
+                                <TextBlock Grid.Column="1" Text="{Binding OrderType}"/>
+                            </Grid>
+                            <Grid Grid.Row="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="Статус замовлення:"/>
+                                <TextBlock Grid.Column="1" Text="{Binding OrderStatus}"/>
+                            </Grid>
+                            <Grid Grid.Row="3" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="тип замовлення:"/>
+                                <TextBlock Grid.Column="1" Text="{Binding StartData,StringFormat=d}"/>
+                            </Grid>
+
                             <Grid.InputBindings>
                                 <MouseBinding Gesture="LeftDoubleClick"
                                                       Command="{Binding Command}"

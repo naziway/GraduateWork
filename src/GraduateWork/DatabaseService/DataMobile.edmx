@@ -1,0 +1,898 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MobileDocModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MobileDocModelStoreContainer">
+    <EntitySet Name="Clients" EntityType="MobileDocModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devices" EntityType="MobileDocModel.Store.Devices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parts" EntityType="MobileDocModel.Store.Parts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonalData" EntityType="MobileDocModel.Store.PersonalData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RepairDevices" EntityType="MobileDocModel.Store.RepairDevices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Repairs" EntityType="MobileDocModel.Store.Repairs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reviews" EntityType="MobileDocModel.Store.Reviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sellings" EntityType="MobileDocModel.Store.Sellings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="MobileDocModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Works" EntityType="MobileDocModel.Store.Works" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Devices_ToClient" Association="MobileDocModel.Store.FK_Devices_ToClient">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sellings_To_Client" Association="MobileDocModel.Store.FK_Sellings_To_Client">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Sellings" EntitySet="Sellings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Device" Association="MobileDocModel.Store.FK_Repairs_To_Device">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_To_Device" Association="MobileDocModel.Store.FK_Reviews_To_Device">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Part" Association="MobileDocModel.Store.FK_Repairs_To_Part">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sellings_To_Part" Association="MobileDocModel.Store.FK_Sellings_To_Part">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="Sellings" EntitySet="Sellings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_ToPersonalData" Association="MobileDocModel.Store.FK_Users_ToPersonalData">
+      <End Role="PersonalData" EntitySet="PersonalData" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_RepairDevice" Association="MobileDocModel.Store.FK_Repairs_To_RepairDevice">
+      <End Role="RepairDevices" EntitySet="RepairDevices" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Work" Association="MobileDocModel.Store.FK_Repairs_To_Work">
+      <End Role="Works" EntitySet="Works" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Worker" Association="MobileDocModel.Store.FK_Repairs_To_Worker">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_To_Repair" Association="MobileDocModel.Store.FK_Reviews_To_Repair">
+      <End Role="Repairs" EntitySet="Repairs" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_To_User" Association="MobileDocModel.Store.FK_Reviews_To_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_To_Worker" Association="MobileDocModel.Store.FK_Reviews_To_Worker">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sellings_To_User" Association="MobileDocModel.Store.FK_Sellings_To_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Sellings" EntitySet="Sellings" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PasportData" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Marka" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DeviceType" Type="int" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ManufactureDate" Type="datetime" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="Marka" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="Model" Type="nchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PersonalData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PasportData" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RepairDevices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Marka" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DeviceType" Type="int" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ManufactureDate" Type="datetime" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Repairs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Kod" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="IsWarranty" Type="bit" Nullable="false" />
+    <Property Name="RepairDeviceId" Type="int" Nullable="false" />
+    <Property Name="WorkerId" Type="int" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="PartId" Type="int" Nullable="true" />
+    <Property Name="WorkId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Kod" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="WorkerId" Type="int" Nullable="false" />
+    <Property Name="RepairId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Sellings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Kod" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="PartId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="PersonalDataId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Works">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Time" Type="time" Nullable="false" Precision="7" />
+  </EntityType>
+  <Association Name="FK_Devices_ToClient">
+    <End Role="Clients" Type="MobileDocModel.Store.Clients" Multiplicity="1" />
+    <End Role="Devices" Type="MobileDocModel.Store.Devices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sellings_To_Client">
+    <End Role="Clients" Type="MobileDocModel.Store.Clients" Multiplicity="1" />
+    <End Role="Sellings" Type="MobileDocModel.Store.Sellings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sellings">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Device">
+    <End Role="Devices" Type="MobileDocModel.Store.Devices" Multiplicity="1" />
+    <End Role="Repairs" Type="MobileDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_To_Device">
+    <End Role="Devices" Type="MobileDocModel.Store.Devices" Multiplicity="1" />
+    <End Role="Reviews" Type="MobileDocModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Part">
+    <End Role="Parts" Type="MobileDocModel.Store.Parts" Multiplicity="0..1" />
+    <End Role="Repairs" Type="MobileDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="PartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sellings_To_Part">
+    <End Role="Parts" Type="MobileDocModel.Store.Parts" Multiplicity="1" />
+    <End Role="Sellings" Type="MobileDocModel.Store.Sellings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sellings">
+        <PropertyRef Name="PartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_ToPersonalData">
+    <End Role="PersonalData" Type="MobileDocModel.Store.PersonalData" Multiplicity="1" />
+    <End Role="Users" Type="MobileDocModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="PersonalDataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_RepairDevice">
+    <End Role="RepairDevices" Type="MobileDocModel.Store.RepairDevices" Multiplicity="1" />
+    <End Role="Repairs" Type="MobileDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RepairDevices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="RepairDeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Work">
+    <End Role="Works" Type="MobileDocModel.Store.Works" Multiplicity="1" />
+    <End Role="Repairs" Type="MobileDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Works">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="WorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Worker">
+    <End Role="Users" Type="MobileDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Repairs" Type="MobileDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_To_Repair">
+    <End Role="Repairs" Type="MobileDocModel.Store.Repairs" Multiplicity="0..1" />
+    <End Role="Reviews" Type="MobileDocModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Repairs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="RepairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_To_User">
+    <End Role="Users" Type="MobileDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Reviews" Type="MobileDocModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_To_Worker">
+    <End Role="Users" Type="MobileDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Reviews" Type="MobileDocModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sellings_To_User">
+    <End Role="Users" Type="MobileDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Sellings" Type="MobileDocModel.Store.Sellings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sellings">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MobileDocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasportData" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK_Devices_ToClient" FromRole="Clients" ToRole="Devices" />
+          <NavigationProperty Name="Sellings" Relationship="Self.FK_Sellings_To_Client" FromRole="Clients" ToRole="Sellings" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceType" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManufactureDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Devices_ToClient" FromRole="Devices" ToRole="Clients" />
+          <NavigationProperty Name="Repairs" Relationship="Self.FK_Repairs_To_Device" FromRole="Devices" ToRole="Repairs" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_To_Device" FromRole="Devices" ToRole="Reviews" />
+        </EntityType>
+        <EntityType Name="Parts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Repairs" Relationship="Self.FK_Repairs_To_Part" FromRole="Parts" ToRole="Repairs" />
+          <NavigationProperty Name="Sellings" Relationship="Self.FK_Sellings_To_Part" FromRole="Parts" ToRole="Sellings" />
+        </EntityType>
+        <EntityType Name="PersonalData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasportData" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_ToPersonalData" FromRole="PersonalData" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="RepairDevices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceType" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManufactureDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Repairs" Relationship="Self.FK_Repairs_To_RepairDevice" FromRole="RepairDevices" ToRole="Repairs" />
+        </EntityType>
+        <EntityType Name="Repairs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Kod" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsWarranty" Type="Boolean" Nullable="false" />
+          <Property Name="RepairDeviceId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="PartId" Type="Int32" />
+          <Property Name="WorkId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK_Repairs_To_Device" FromRole="Repairs" ToRole="Devices" />
+          <NavigationProperty Name="Parts" Relationship="Self.FK_Repairs_To_Part" FromRole="Repairs" ToRole="Parts" />
+          <NavigationProperty Name="RepairDevices" Relationship="Self.FK_Repairs_To_RepairDevice" FromRole="Repairs" ToRole="RepairDevices" />
+          <NavigationProperty Name="Works" Relationship="Self.FK_Repairs_To_Work" FromRole="Repairs" ToRole="Works" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Repairs_To_Worker" FromRole="Repairs" ToRole="Users" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_To_Repair" FromRole="Repairs" ToRole="Reviews" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Kod" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="RepairId" Type="Int32" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK_Reviews_To_Device" FromRole="Reviews" ToRole="Devices" />
+          <NavigationProperty Name="Repairs" Relationship="Self.FK_Reviews_To_Repair" FromRole="Reviews" ToRole="Repairs" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Reviews_To_User" FromRole="Reviews" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_Reviews_To_Worker" FromRole="Reviews" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Sellings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Kod" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="PartId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Sellings_To_Client" FromRole="Sellings" ToRole="Clients" />
+          <NavigationProperty Name="Parts" Relationship="Self.FK_Sellings_To_Part" FromRole="Sellings" ToRole="Parts" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Sellings_To_User" FromRole="Sellings" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="PersonalDataId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PersonalData" Relationship="Self.FK_Users_ToPersonalData" FromRole="Users" ToRole="PersonalData" />
+          <NavigationProperty Name="Repairs" Relationship="Self.FK_Repairs_To_Worker" FromRole="Users" ToRole="Repairs" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_To_User" FromRole="Users" ToRole="Reviews" />
+          <NavigationProperty Name="Reviews1" Relationship="Self.FK_Reviews_To_Worker" FromRole="Users" ToRole="Reviews" />
+          <NavigationProperty Name="Sellings" Relationship="Self.FK_Sellings_To_User" FromRole="Users" ToRole="Sellings" />
+        </EntityType>
+        <EntityType Name="Works">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Repairs" Relationship="Self.FK_Repairs_To_Work" FromRole="Works" ToRole="Repairs" />
+        </EntityType>
+        <Association Name="FK_Devices_ToClient">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sellings_To_Client">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sellings">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repairs_To_Device">
+          <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
+          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Repairs">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reviews_To_Device">
+          <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repairs_To_Part">
+          <End Role="Parts" Type="Self.Parts" Multiplicity="0..1" />
+          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Repairs">
+              <PropertyRef Name="PartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sellings_To_Part">
+          <End Role="Parts" Type="Self.Parts" Multiplicity="1" />
+          <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sellings">
+              <PropertyRef Name="PartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_ToPersonalData">
+          <End Role="PersonalData" Type="Self.PersonalData" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="PersonalDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repairs_To_RepairDevice">
+          <End Role="RepairDevices" Type="Self.RepairDevices" Multiplicity="1" />
+          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairDevices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Repairs">
+              <PropertyRef Name="RepairDeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repairs_To_Work">
+          <End Role="Works" Type="Self.Works" Multiplicity="1" />
+          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Works">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Repairs">
+              <PropertyRef Name="WorkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repairs_To_Worker">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Repairs">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reviews_To_Repair">
+          <End Role="Repairs" Type="Self.Repairs" Multiplicity="0..1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repairs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="RepairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reviews_To_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reviews_To_Worker">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sellings_To_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sellings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobileDoc" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" />
+          <EntitySet Name="Parts" EntityType="Self.Parts" />
+          <EntitySet Name="PersonalData" EntityType="Self.PersonalData" />
+          <EntitySet Name="RepairDevices" EntityType="Self.RepairDevices" />
+          <EntitySet Name="Repairs" EntityType="Self.Repairs" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" />
+          <EntitySet Name="Sellings" EntityType="Self.Sellings" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Works" EntityType="Self.Works" />
+          <AssociationSet Name="FK_Devices_ToClient" Association="Self.FK_Devices_ToClient">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sellings_To_Client" Association="Self.FK_Sellings_To_Client">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Sellings" EntitySet="Sellings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repairs_To_Device" Association="Self.FK_Repairs_To_Device">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="Repairs" EntitySet="Repairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_To_Device" Association="Self.FK_Reviews_To_Device">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repairs_To_Part" Association="Self.FK_Repairs_To_Part">
+            <End Role="Parts" EntitySet="Parts" />
+            <End Role="Repairs" EntitySet="Repairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sellings_To_Part" Association="Self.FK_Sellings_To_Part">
+            <End Role="Parts" EntitySet="Parts" />
+            <End Role="Sellings" EntitySet="Sellings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_ToPersonalData" Association="Self.FK_Users_ToPersonalData">
+            <End Role="PersonalData" EntitySet="PersonalData" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repairs_To_RepairDevice" Association="Self.FK_Repairs_To_RepairDevice">
+            <End Role="RepairDevices" EntitySet="RepairDevices" />
+            <End Role="Repairs" EntitySet="Repairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repairs_To_Work" Association="Self.FK_Repairs_To_Work">
+            <End Role="Works" EntitySet="Works" />
+            <End Role="Repairs" EntitySet="Repairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repairs_To_Worker" Association="Self.FK_Repairs_To_Worker">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Repairs" EntitySet="Repairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_To_Repair" Association="Self.FK_Reviews_To_Repair">
+            <End Role="Repairs" EntitySet="Repairs" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_To_User" Association="Self.FK_Reviews_To_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_To_Worker" Association="Self.FK_Reviews_To_Worker">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sellings_To_User" Association="Self.FK_Sellings_To_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sellings" EntitySet="Sellings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MobileDocModelStoreContainer" CdmEntityContainer="MobileDoc">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Clients)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PasportData" ColumnName="PasportData" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Devices)">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parts">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Parts)">
+        <MappingFragment StoreEntitySet="Parts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalData">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.PersonalData)">
+        <MappingFragment StoreEntitySet="PersonalData">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PasportData" ColumnName="PasportData" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepairDevices">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.RepairDevices)">
+        <MappingFragment StoreEntitySet="RepairDevices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repairs">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Repairs)">
+        <MappingFragment StoreEntitySet="Repairs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsWarranty" ColumnName="IsWarranty" />
+          <ScalarProperty Name="RepairDeviceId" ColumnName="RepairDeviceId" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Reviews)">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="RepairId" ColumnName="RepairId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sellings">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Sellings)">
+        <MappingFragment StoreEntitySet="Sellings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="PersonalDataId" ColumnName="PersonalDataId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Works">
+      <EntityTypeMapping TypeName="IsTypeOf(MobileDocModel.Works)">
+        <MappingFragment StoreEntitySet="Works">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

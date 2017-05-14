@@ -19,8 +19,8 @@ namespace DatabaseService
             exeminate.Id = kodId.Item1;
             exeminate.OrderKods = kodId.Item2;
             exeminate.BeginDate = DateTime.Now;
-            exeminate.OrderType = (int)OrderType.Review;
-            exeminate.OrderStatus = (int)OrderStatus.Active;
+            exeminate.OrderType = (int)OrderType.Обстеження;
+            exeminate.OrderStatus = (int)OrderStatus.Активний;
             exeminate.DeviceId = device.Id;
             exeminate.PartId = null;
             exeminate.WorkerId = User.Id;
@@ -349,7 +349,7 @@ namespace DatabaseService
                            Work = orders.Work
                        });
                 allOrders = new List<OrderModel>();
-                foreach (var order in orderList.Where(arg => arg.OrderType == (int)OrderType.Review).GroupBy(arg => arg.OrderKods))
+                foreach (var order in orderList.Where(arg => arg.OrderType == (int)OrderType.Обстеження).GroupBy(arg => arg.OrderKods))
                 {
                     var orderItem = new OrderModel { OrderKod = order.Key };
 

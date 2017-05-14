@@ -12,24 +12,31 @@ namespace DatabaseService
     using System;
     using System.Collections.Generic;
     
-    public partial class Parts
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Parts()
+        public Users()
         {
             this.Repairs = new HashSet<Repairs>();
+            this.Reviews = new HashSet<Reviews>();
+            this.Reviews1 = new HashSet<Reviews>();
             this.Sellings = new HashSet<Sellings>();
         }
     
         public int Id { get; set; }
-        public string Title { get; set; }
-        public double Price { get; set; }
-        public int Count { get; set; }
-        public string Marka { get; set; }
-        public string Model { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public System.DateTime RegistrationDate { get; set; }
+        public int UserType { get; set; }
+        public int PersonalDataId { get; set; }
     
+        public virtual PersonalData PersonalData { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Repairs> Repairs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reviews> Reviews { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reviews> Reviews1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sellings> Sellings { get; set; }
     }

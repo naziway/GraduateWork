@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="512c6a57c4cb447597e2c13f3197388b" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="MobileDocModel.Clients" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.Devices" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.Parts" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.PersonalData" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.RepairDevices" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.Repairs" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.Reviews" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.Sellings" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.Users" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileDocModel.Works" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="MobileDocModel.FK_Devices_ToClient" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Sellings_To_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Repairs_To_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Reviews_To_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Repairs_To_Part" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Sellings_To_Part" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Users_ToPersonalData" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Repairs_To_RepairDevice" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Repairs_To_Work" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Repairs_To_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Reviews_To_Repair" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Reviews_To_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Reviews_To_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileDocModel.FK_Sellings_To_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

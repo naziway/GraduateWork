@@ -2,9 +2,9 @@
 {
     public enum OrderType
     {
-        Review,
-        Buy,
-        Repair,
-        Empty
+        Обстеження,
+        Купівля,
+        Ремонт,
+        Порожній
     }
 }
