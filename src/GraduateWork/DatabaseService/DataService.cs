@@ -64,9 +64,8 @@ namespace DatabaseService
             {
                 try
                 {
-                    var userBD =
-                               database.Users.FirstOrDefault(user => user.Login == login && user.Password == password);
-                    currentUser = userBD?.ToUserModel();
+                    var userBd = database.Users.FirstOrDefault(user => user.Login == login && user.Password == password);
+                    currentUser = userBd?.ToUserModel();
                 }
                 catch (Exception e)
                 {

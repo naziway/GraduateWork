@@ -80,6 +80,7 @@
       <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
     <Compile Include="Extension\Extension.cs" />
+    <Compile Include="IDataProvider.cs" />
     <Compile Include="MobiDoc.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
