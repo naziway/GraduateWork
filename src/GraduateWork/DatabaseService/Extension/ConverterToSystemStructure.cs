@@ -1,4 +1,5 @@
 ﻿using Model;
+using Shared;
 using Shared.Enum;
 
 namespace DatabaseService.Extension
@@ -20,9 +21,18 @@ namespace DatabaseService.Extension
         {
             return new Device();
         }
-        public RepairDevice ToDevice(RepairDevices devices)
+        public RepairDevice ToDevice(RepairDevices device)
         {
-            return new RepairDevice();
+            return new RepairDevice
+            {
+                Id = device.Id,
+                Model = device.Model,
+                DeviceType = (DeviceType)device.DeviceType,
+                SerialNumber = device.SerialNumber,
+                ManufactureDate = device.ManufactureDate,
+                Marka = device.Marka,
+                Count = device.Count
+            };
         }
         public Part ToPart(Parts parts)
         {
@@ -36,9 +46,15 @@ namespace DatabaseService.Extension
                 Marka = parts.Marka
             };
         }
-        public Work Convert(Works works)
+        public Work Convert(Works work)
         {
-            return new Work();
+            return new Work
+            {
+                Id = work.Id,
+                Title = work.Title,
+                Price = work.Price,
+                Time = work.Time
+            };
         }
         public Userr Convert(Users users)
         {

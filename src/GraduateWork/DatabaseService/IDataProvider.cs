@@ -2,6 +2,7 @@
 using Shared.Enum;
 using System;
 using System.Collections.Generic;
+using Shared;
 
 namespace DatabaseService
 {
@@ -138,7 +139,7 @@ namespace DatabaseService
         public int Id { get; set; }
         public int Kod { get; set; }
         public DateTime OrderDate { get; set; }
-        public int Status { get; set; }
+        public RepairStatus Status { get; set; }
         public bool IsWarranty { get; set; }
         public RepairDevice RepairDevice { get; set; }//change chem
         public Userr Worker { get; set; }
@@ -155,7 +156,7 @@ namespace DatabaseService
         public int Kod { get; set; }
         public DateTime OrderDate { get; set; }
         public ReviewStatus Status { get; set; }
-        public Userr User { get; set; } 
+        public Userr User { get; set; }
         public Userr Worker { get; set; }
         public Devicee Device { get; set; }
         public Repair Repair { get; set; }
@@ -179,7 +180,7 @@ namespace DatabaseService
         public int Id { get; set; }
         public string Marka { get; set; }
         public string Model { get; set; }
-        public int DeviceType { get; set; }
+        public DeviceType DeviceType { get; set; }
         public string SerialNumber { get; set; }
         public System.DateTime ManufactureDate { get; set; }
         public int Count { get; set; }

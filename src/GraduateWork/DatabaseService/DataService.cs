@@ -771,7 +771,7 @@ namespace DatabaseService
         public List<Repair> GetRepairs()
         {
             var repairDevices = GetRepairDevices();
-            var workers = GetUsers().Where(usser => usser.UserType == UserType.Worker).ToList();
+            var workers = GetUsers();
             var devices = GetDevices();
             var parts = GetParts();
             var works = GetWorks();
@@ -786,10 +786,10 @@ namespace DatabaseService
                     IsWarranty = repair.IsWarranty,
                     Kod = repair.Kod,
                     OrderDate = repair.OrderDate,
-                    Status = repair.Status,
+                    Status = (RepairStatus)repair.Status,
                     Worker = workers.First(user => user.Id == repair.WorkerId),
                     Device = devices.First(devicee => devicee.Id == repair.DeviceId),
-                    RepairDevice = repairDevices.First(device => device.Id == repair.DeviceId),
+                    RepairDevice = repairDevices.First(device => device.Id == repair.RepairDeviceId),
                     Work = works.First(work => work.Id == repair.WorkId)
                 };
                 if (repair.PartId != null)

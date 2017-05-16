@@ -24,6 +24,15 @@ namespace TestDb
             Assert.AreNotEqual(reviews.Count, 0);
 
         }
+        [TestMethod]
+        public void CheckGetRepairs()
+        {
+            DatabaseService.DataService service = new DataService();
+
+            var repairs = service.GetRepairs();
+            Assert.AreNotEqual(repairs.Count, 0);
+
+        }
 
     }
 }

@@ -1,8 +1,10 @@
 ﻿namespace Shared
 {
-    public static class DeviceType
+    public enum DeviceType
     {
-        public static string Phone => "Телефон";
-        public static string Tab => "Планшет";
+        Phone,
+        Tab
+        //public static string Phone => "Телефон";
+        //public static string Tab => "Планшет";
     }
 }
