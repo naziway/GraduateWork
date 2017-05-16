@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestDb
 {
     [TestClass]
-    public class SellingTest
+    public class DbTest
     {
         [TestMethod]
         public void CheckGetAllSelling()
@@ -13,6 +13,15 @@ namespace TestDb
 
             var sellings = service.GetSellings();
             Assert.AreNotEqual(sellings.Count, 0);
+
+        }
+        [TestMethod]
+        public void CheckGetReview()
+        {
+            DatabaseService.DataService service = new DataService();
+
+            var reviews = service.GetReviews();
+            Assert.AreNotEqual(reviews.Count, 0);
 
         }
 

@@ -509,16 +509,21 @@ namespace DatabaseService
         {
             var clients = GetClients();
             var devices = database.Devices;
-            var list = devices.Select(device => new Devicee
+            var list = new List<Devicee>();
+            foreach (var device in devices)
             {
-                Id = device.Id,
-                DeviceType = device.DeviceType,
-                ManufactureDate = device.ManufactureDate,
-                Marka = device.Marka,
-                Model = device.Model,
-                SerialNumber = device.SerialNumber,
-                Client = clients.First(client => client.Id == device.ClientId)
-            }).ToList();
+                var item = new Devicee
+                {
+                    Id = device.Id,
+                    DeviceType = device.DeviceType,
+                    ManufactureDate = device.ManufactureDate,
+                    Marka = device.Marka,
+                    Model = device.Model,
+                    SerialNumber = device.SerialNumber,
+                    Client = clients.First(client => client.Id == device.ClientId)
+                };
+                list.Add(item);
+            }
 
             return list;
         }
@@ -740,12 +745,8 @@ namespace DatabaseService
 
         public List<Review> GetReviews()
         {
-            var repairDevices = GetRepairDevices();
             var users = GetUsers();
             var devices = GetDevices();
-            var parts = GetParts();
-            var works = GetWorks();
-
             var list = new List<Review>();
 
             foreach (var review in database.Reviews)
@@ -755,15 +756,13 @@ namespace DatabaseService
                     Id = review.Id,
                     Kod = review.Kod,
                     OrderDate = review.OrderDate,
-                    Status = review.Status,
+                    Status = (ReviewStatus)review.Status,
                     Worker = users.First(user => user.Id == review.WorkerId),
                     Device = devices.First(devicee => devicee.Id == review.DeviceId),
-                    RepairDevice = repairDevices.First(device => device.Id == review.DeviceId),
-                    Work = works.First(work => work.Id == review.WorkId)
+                    User = users.First(userr => userr.Id == review.UserId)
                 };
-                if (review.PartId != null)
-                    item.Part = parts.First(part => part.Id == review.PartId);
-
+                if (review.RepairId != null)
+                    item.Repair = GetRepairs().First(repair => review.Id == review.RepairId);
                 list.Add(item);
             }
             return list;

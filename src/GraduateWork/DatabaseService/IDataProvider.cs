@@ -154,7 +154,7 @@ namespace DatabaseService
         public int Id { get; set; }
         public int Kod { get; set; }
         public DateTime OrderDate { get; set; }
-        public int Status { get; set; }
+        public ReviewStatus Status { get; set; }
         public Userr User { get; set; } 
         public Userr Worker { get; set; }
         public Devicee Device { get; set; }
