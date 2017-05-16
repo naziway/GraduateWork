@@ -140,11 +140,13 @@ namespace DatabaseService
         public DateTime OrderDate { get; set; }
         public int Status { get; set; }
         public bool IsWarranty { get; set; }
-        public RepairDevice RepairDevice { get; set; }
-        public User Worker { get; set; }
-        public Device Device { get; set; }
+        public RepairDevice RepairDevice { get; set; }//change chem
+        public Userr Worker { get; set; }
+        public Devicee Device { get; set; }
         public Part Part { get; set; }
         public Work Work { get; set; }
+
+
     }
 
     public class Review
@@ -153,9 +155,9 @@ namespace DatabaseService
         public int Kod { get; set; }
         public DateTime OrderDate { get; set; }
         public int Status { get; set; }
-        public User User { get; set; }
-        public User Worker { get; set; }
-        public Device Device { get; set; }
+        public Userr User { get; set; } 
+        public Userr Worker { get; set; }
+        public Devicee Device { get; set; }
         public Repair Repair { get; set; }
 
     }

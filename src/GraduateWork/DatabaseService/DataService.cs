@@ -740,12 +740,65 @@ namespace DatabaseService
 
         public List<Review> GetReviews()
         {
-            throw new NotImplementedException();
+            var repairDevices = GetRepairDevices();
+            var users = GetUsers();
+            var devices = GetDevices();
+            var parts = GetParts();
+            var works = GetWorks();
+
+            var list = new List<Review>();
+
+            foreach (var review in database.Reviews)
+            {
+                var item = new Review
+                {
+                    Id = review.Id,
+                    Kod = review.Kod,
+                    OrderDate = review.OrderDate,
+                    Status = review.Status,
+                    Worker = users.First(user => user.Id == review.WorkerId),
+                    Device = devices.First(devicee => devicee.Id == review.DeviceId),
+                    RepairDevice = repairDevices.First(device => device.Id == review.DeviceId),
+                    Work = works.First(work => work.Id == review.WorkId)
+                };
+                if (review.PartId != null)
+                    item.Part = parts.First(part => part.Id == review.PartId);
+
+                list.Add(item);
+            }
+            return list;
         }
 
         public List<Repair> GetRepairs()
         {
-            throw new NotImplementedException();
+            var repairDevices = GetRepairDevices();
+            var workers = GetUsers().Where(usser => usser.UserType == UserType.Worker).ToList();
+            var devices = GetDevices();
+            var parts = GetParts();
+            var works = GetWorks();
+
+            var list = new List<Repair>();
+
+            foreach (var repair in database.Repairs)
+            {
+                var item = new Repair
+                {
+                    Id = repair.Id,
+                    IsWarranty = repair.IsWarranty,
+                    Kod = repair.Kod,
+                    OrderDate = repair.OrderDate,
+                    Status = repair.Status,
+                    Worker = workers.First(user => user.Id == repair.WorkerId),
+                    Device = devices.First(devicee => devicee.Id == repair.DeviceId),
+                    RepairDevice = repairDevices.First(device => device.Id == repair.DeviceId),
+                    Work = works.First(work => work.Id == repair.WorkId)
+                };
+                if (repair.PartId != null)
+                    item.Part = parts.First(part => part.Id == repair.PartId);
+
+                list.Add(item);
+            }
+            return list;
         }
 
         public bool AddSellings(List<Selling> sellings)
