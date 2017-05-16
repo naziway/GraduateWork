@@ -74,7 +74,7 @@ namespace DatabaseService
 
         #region Review
 
-        Review GetReviewById(int id);
+        List<Review> GetReviewById(int id);
         List<Review> GetReviewsByClientId(int clientId);
         List<Review> GetReviewsByUserId(int userId);
         List<Review> GetReviewsByWorkerId(int workerId);

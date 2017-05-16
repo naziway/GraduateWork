@@ -35,5 +35,19 @@ namespace DatabaseService.Extension
             return new Works();
         }
 
+        public static Sellings Convert(this Selling selling, int id, int kod)
+        {
+            return new Sellings
+            {
+                Id = id,
+                ClientId = selling.Client.Id,
+                Kod = kod,
+                PartId = selling.Part.Id,
+                Status = (int)selling.Status,
+                OrderDate = selling.OrderDate,
+                UserId = selling.User.Id
+            };
+        }
+
     }
 }

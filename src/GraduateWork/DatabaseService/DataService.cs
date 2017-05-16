@@ -14,6 +14,13 @@ namespace DatabaseService
         MobileDoc database = new MobileDoc();
         ConverterToSystemStructure converter = new ConverterToSystemStructure();
 
+        private int GetKodForSelling => database.Sellings.LastOrDefault()?.Kod + 1 ?? 1;
+        private int GetIdForSelling => database.Sellings.LastOrDefault()?.Id + 1 ?? 1;
+        private int GetKodForReview => database.Reviews.LastOrDefault()?.Kod + 1 ?? 1;
+        private int GetIdForReview => database.Reviews.LastOrDefault()?.Id + 1 ?? 1;
+        private int GetKodForRepair => database.Repairs.LastOrDefault()?.Kod + 1 ?? 1;
+        private int GetIdForRepair => database.Repairs.LastOrDefault()?.Id + 1 ?? 1;
+
         #region Old Service
         public User User { get; set; }
         public bool AddNewExaminate(Device device)
@@ -723,21 +730,6 @@ namespace DatabaseService
             return GetSellings().Where(selling => selling.User.Id == userId).ToList();
         }
 
-        public bool ChangeSellingsStatusByKod(int kod, SellingStatus newStatus)//Test
-        {
-            database.Sellings.Where(sellings => sellings.Kod == kod)
-                .ForEachAsync(sellings => sellings.Status = (int)newStatus);
-            try
-            {
-                database.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public bool RemoveDeviceById(Devicee device)
         {
             throw new NotImplementedException();
@@ -800,32 +792,80 @@ namespace DatabaseService
             return list;
         }
 
+        public List<Review> GetReviewById(int id)//Test
+        {
+            return GetReviews().Where(review => review.Id == id).ToList();
+        }
+
+        public List<Review> GetReviewsByClientId(int clientId)//Test
+        {
+            return GetReviews().Where(review => review.Device.Client.Id == clientId).ToList();
+        }
+
+        public List<Review> GetReviewsByUserId(int userId)//Test
+        {
+            return GetReviews().Where(review => review.User.Id == userId).ToList();
+        }
+
+        public List<Review> GetReviewsByWorkerId(int workerId)//Test
+        {
+            return GetReviews().Where(review => review.Worker.Id == workerId).ToList();
+        }
+
+        public List<Repair> GetRepairsByClientId(int clientId)//Test
+        {
+            return GetRepairs().Where(repair => repair.Device.Client.Id == clientId).ToList();
+        }
+
+        public List<Repair> GetReviewsByKod(int kod)//Test
+        {
+            return GetRepairs().Where(repair => repair.Kod == kod).ToList();
+        }
+
+        public List<Repair> GetRepairsByWorkerId(int workerId)//Test
+        {
+            return GetRepairs().Where(repair => repair.Worker.Id == workerId).ToList();
+        }
+
+        //Test//Test//Test//Test//Test//Test//Test//Test//Test
+        public bool ChangeSellingsStatusByKod(int kod, SellingStatus newStatus)//Test
+        {
+            database.Sellings.Where(sellings => sellings.Kod == kod)
+                .ForEachAsync(sellings => sellings.Status = (int)newStatus);
+            try
+            {
+                database.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public bool AddSellings(List<Selling> sellings)
         {
-            throw new NotImplementedException();
+            int kod = GetKodForSelling;
+            int id = GetIdForSelling;
+            try
+            {
+                foreach (var selling in sellings)
+                {
+                    database.Sellings.Add(selling.Convert(id++, kod));
+                }
+                database.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
-
-        public Review GetReviewById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Review> GetReviewsByClientId(int clientId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Review> GetReviewsByUserId(int userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Review> GetReviewsByWorkerId(int workerId)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool AddReview(Review review)
+        {
+            throw new NotImplementedException();
+        }
+        public bool AddRepairs(List<Repair> repairs)
         {
             throw new NotImplementedException();
         }
@@ -840,25 +880,8 @@ namespace DatabaseService
             throw new NotImplementedException();
         }
 
-        public List<Repair> GetRepairsByClientId(int clientId)
-        {
-            throw new NotImplementedException();
-        }
 
-        public List<Repair> GetReviewsByKod(int kod)
-        {
-            throw new NotImplementedException();
-        }
 
-        public List<Repair> GetRepairsByWorkerId(int workerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool AddRepairs(List<Repair> repairs)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool ChangeRepairsStatusByKod(int id, RepairStatus newStatus)
         {
