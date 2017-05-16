@@ -1,5 +1,6 @@
 ﻿using Model;
 using Shared.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace DatabaseService
@@ -97,30 +98,67 @@ namespace DatabaseService
     public class UserData
     {
         public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PasportData { get; set; }
+        public System.DateTime BirthDate { get; set; }
     }
 
     public class Work
     {
         public int Id { get; set; }
+        public string Title { get; set; }
+        public double Price { get; set; }
+        public System.TimeSpan Time { get; set; }
     }
 
     public class Repair
     {
         public int Id { get; set; }
+        public int Kod { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int Status { get; set; }
+        public bool IsWarranty { get; set; }
+        public RepairDevice RepairDevice { get; set; }
+        public User Worker { get; set; }
+        public Device Device { get; set; }
+        public Part Part { get; set; }
+        public Work Work { get; set; }
     }
 
     public class Review
     {
         public int Id { get; set; }
+        public int Kod { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int Status { get; set; }
+        public User User { get; set; }
+        public User Worker { get; set; }
+        public Device Device { get; set; }
+        public Repair Repair { get; set; }
+
     }
 
     public class Selling
     {
         public int Id { get; set; }
+        public int Kod { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int Status { get; set; }
+        public User User { get; set; }
+        public Client Client { get; set; }
+        public Part Part { get; set; }
+
     }
 
     public class RepairDevice
     {
         public int Id { get; set; }
+        public string Marka { get; set; }
+        public string Model { get; set; }
+        public int DeviceType { get; set; }
+        public string SerialNumber { get; set; }
+        public System.DateTime ManufactureDate { get; set; }
+        public int Count { get; set; }
     }
 }
