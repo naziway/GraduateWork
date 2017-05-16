@@ -656,7 +656,27 @@ namespace DatabaseService
 
         public List<Selling> GetSellings()
         {
-            throw new NotImplementedException();
+            var users = GetUsers();
+            var clients = GetClients();
+            var part = GetParts();
+
+            List<Selling> list = new List<Selling>();
+
+            foreach (var sellingse in database.Sellings)
+            {
+                var selling = new Selling
+                {
+                    Id = sellingse.Id,
+                    Part = part.First(p => p.Id == sellingse.PartId),
+                    User = users.First(p => p.Id == sellingse.UserId),
+                    Client = clients.First(p => p.Id == sellingse.ClientId),
+                    Kod = sellingse.Kod,
+                    OrderDate = sellingse.OrderDate,
+                    Status = (SellingStatus)sellingse.Status
+                };
+                list.Add(selling);
+            }
+            return list;
         }
 
         public List<Review> GetReviews()
@@ -668,6 +688,19 @@ namespace DatabaseService
         {
             throw new NotImplementedException();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
         public Selling GetSellingByKod(int kod)
         {
             throw new NotImplementedException();
