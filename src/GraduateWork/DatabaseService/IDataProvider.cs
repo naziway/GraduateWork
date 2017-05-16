@@ -8,27 +8,27 @@ namespace DatabaseService
     public interface IDataProvider
     {
         User GetUser(string login, string password);
-        bool AddUser(User user);
+        bool AddUser(Userr user);
 
         #region GetFullList
 
         List<Client> GetClients();
-        List<Device> GetDevices();
+        List<Devicee> GetDevices();
         List<RepairDevice> GetRepairDevices();
         List<Selling> GetSellings();
         List<Review> GetReviews();
         List<Repair> GetRepairs();
         List<Part> GetParts();
         List<Work> GetWorks();
-        List<User> GetUsers();
+        List<Userr> GetUsers();
         List<UserData> GetUsersDataList();
 
         #endregion
 
         #region Device Data
-        List<Device> GetDevicesByClientId(int id);
-        bool AddDevice(Device device);
-        bool RemoveDeviceById(Device device);
+        List<Devicee> GetDevicesByClientId(int id);
+        bool AddDevice(Devicee device);
+        bool RemoveDeviceById(Devicee device);
         #endregion
 
         #region Repair Device Data
@@ -63,7 +63,7 @@ namespace DatabaseService
 
         #region Selling
 
-        Selling GetSellingByKod(int kod);
+        List<Selling> GetSellingByKod(int kod);
         List<Selling> GetSellingsByClientId(int clientId);
         List<Selling> GetSellingsByUserId(int userId);
         bool AddSellings(List<Selling> sellings);
@@ -93,6 +93,27 @@ namespace DatabaseService
 
         #endregion
 
+    }
+
+    public class Devicee
+    {
+        public int Id { get; set; }
+        public string Marka { get; set; }
+        public string Model { get; set; }
+        public int DeviceType { get; set; }
+        public string SerialNumber { get; set; }
+        public System.DateTime ManufactureDate { get; set; }
+        public Client Client { get; set; }
+    }
+
+    public class Userr
+    {
+        public int Id { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public UserType UserType { get; set; }
+        public UserData UserData { get; set; }
     }
 
     public class UserData
@@ -145,7 +166,7 @@ namespace DatabaseService
         public int Kod { get; set; }
         public DateTime OrderDate { get; set; }
         public SellingStatus Status { get; set; }
-        public User User { get; set; }
+        public Userr User { get; set; }
         public Client Client { get; set; }
         public Part Part { get; set; }
 

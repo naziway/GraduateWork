@@ -4,6 +4,7 @@ using Shared;
 using Shared.Enum;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace DatabaseService
@@ -395,6 +396,7 @@ namespace DatabaseService
             }
             return devices;
         }
+
         public List<Client> GetClientsList()
         {
             List<Client> clients = null;
@@ -484,7 +486,7 @@ namespace DatabaseService
             return currentUser;
         }
 
-        public bool AddUser(User user)//Test
+        public bool AddUser(Userr user)//Test
         {
             try
             {
@@ -503,9 +505,22 @@ namespace DatabaseService
             return database.Clients.Select(converter.ToClient).ToList();
         }
 
-        public List<Device> GetDevices()//Test
+        public List<Devicee> GetDevices()//Test
         {
-            return database.Devices.Select(converter.ToDevice).ToList();
+            var clients = GetClients();
+            var devices = database.Devices;
+            var list = devices.Select(device => new Devicee
+            {
+                Id = device.Id,
+                DeviceType = device.DeviceType,
+                ManufactureDate = device.ManufactureDate,
+                Marka = device.Marka,
+                Model = device.Model,
+                SerialNumber = device.SerialNumber,
+                Client = clients.First(client => client.Id == device.ClientId)
+            }).ToList();
+
+            return list;
         }
 
         public List<RepairDevice> GetRepairDevices()//Test
@@ -524,9 +539,24 @@ namespace DatabaseService
             return database.Works.Select(converter.Convert).ToList();
         }
 
-        public List<User> GetUsers()//Test
+        public List<Userr> GetUsers()//Done
         {
-            return database.Users.Select(converter.Convert).ToList();
+            var userData = GetUsersDataList();
+            var users = database.Users;
+            var list = new List<Userr>();
+            foreach (var user in users)
+            {
+                list.Add(new Userr
+                {
+                    Id = user.Id,
+                    Login = user.Login,
+                    Password = user.Password,
+                    RegistrationDate = user.RegistrationDate,
+                    UserType = (UserType)user.UserType,
+                    UserData = userData.First(data => data.Id == user.PersonalDataId)
+                });
+            }
+            return list;
         }
 
         public List<UserData> GetUsersDataList()//Test
@@ -534,12 +564,12 @@ namespace DatabaseService
             return database.PersonalData.Select(converter.Convert).ToList();
         }
 
-        public List<Device> GetDevicesByClientId(int id)//Test
+        public List<Devicee> GetDevicesByClientId(int id)//Test
         {
-            return GetAllDevices().Where(device => device.Client.Id == id).ToList();
+            return GetDevices().Where(devicee => devicee.Client.Id == id).ToList();
         }
 
-        public bool AddDevice(Device device)//Test
+        public bool AddDevice(Devicee device)//Test
         {
             try
             {
@@ -648,19 +678,13 @@ namespace DatabaseService
             return true;
         }
 
-
-        public bool RemoveDeviceById(Device device)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Selling> GetSellings()
+        public List<Selling> GetSellings()//Done
         {
             var users = GetUsers();
             var clients = GetClients();
             var part = GetParts();
 
-            List<Selling> list = new List<Selling>();
+            var list = new List<Selling>();
 
             foreach (var sellingse in database.Sellings)
             {
@@ -679,6 +703,41 @@ namespace DatabaseService
             return list;
         }
 
+        public List<Selling> GetSellingByKod(int kod)//Test
+        {
+            return GetSellings().Where(selling => selling.Kod == kod).ToList();
+        }
+
+        public List<Selling> GetSellingsByClientId(int clientId)//Test
+        {
+            return GetSellings().Where(selling => selling.Client.Id == clientId).ToList();
+        }
+
+        public List<Selling> GetSellingsByUserId(int userId)//Test
+        {
+            return GetSellings().Where(selling => selling.User.Id == userId).ToList();
+        }
+
+        public bool ChangeSellingsStatusByKod(int kod, SellingStatus newStatus)//Test
+        {
+            database.Sellings.Where(sellings => sellings.Kod == kod)
+                .ForEachAsync(sellings => sellings.Status = (int)newStatus);
+            try
+            {
+                database.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool RemoveDeviceById(Devicee device)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Review> GetReviews()
         {
             throw new NotImplementedException();
@@ -689,39 +748,7 @@ namespace DatabaseService
             throw new NotImplementedException();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-        public Selling GetSellingByKod(int kod)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Selling> GetSellingsByClientId(int clientId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Selling> GetSellingsByUserId(int userId)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool AddSellings(List<Selling> sellings)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ChangeSellingsStatusByKod(int kod, SellingStatus newStatus)
         {
             throw new NotImplementedException();
         }

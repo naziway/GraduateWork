@@ -4,12 +4,12 @@ namespace DatabaseService.Extension
 {
     public static class ExtensionToBdStructure
     {
-        public static Users Convert(this User user)
+        public static Users Convert(this Userr user)
         {
             return new Users();
         }
 
-        public static Devices Convert(this Device device)
+        public static Devices Convert(this Devicee device)
         {
             return new Devices();
         }

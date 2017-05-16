@@ -48,6 +48,7 @@
     <Compile Include="Enum\RepairStatus.cs" />
     <Compile Include="Enum\ReviewStatus.cs" />
     <Compile Include="Enum\SellingStatus.cs" />
+    <Compile Include="Enum\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransferData.cs" />
     <Compile Include="UserNotFoundException.cs" />
