@@ -96,25 +96,31 @@ namespace DatabaseService
 
     public class UserData
     {
+        public int Id { get; set; }
     }
 
     public class Work
     {
+        public int Id { get; set; }
     }
 
     public class Repair
     {
+        public int Id { get; set; }
     }
 
     public class Review
     {
+        public int Id { get; set; }
     }
 
     public class Selling
     {
+        public int Id { get; set; }
     }
 
     public class RepairDevice
     {
+        public int Id { get; set; }
     }
 }

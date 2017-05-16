@@ -79,7 +79,9 @@
     <Compile Include="DevicesDbs.cs">
       <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extension\ConverterToSystemStructure.cs" />
     <Compile Include="Extension\Extension.cs" />
+    <Compile Include="Extension\ExtensionToBdStructure.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="MobiDoc.Context.cs">
       <AutoGen>True</AutoGen>
