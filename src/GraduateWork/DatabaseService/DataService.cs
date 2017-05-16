@@ -843,7 +843,7 @@ namespace DatabaseService
             return true;
         }
 
-        public bool AddSellings(List<Selling> sellings)
+        public bool AddSellings(List<Selling> sellings)//DONE
         {
             int kod = GetKodForSelling;
             int id = GetIdForSelling;
@@ -861,13 +861,38 @@ namespace DatabaseService
             }
             return true;
         }
-        public bool AddReview(Review review)
+        public bool AddReview(Review review)//Test
         {
-            throw new NotImplementedException();
+            int kod = GetKodForReview;
+            int id = GetIdForReview;
+            try
+            {
+                database.Reviews.Add(review.Convert(id, kod));
+                database.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
-        public bool AddRepairs(List<Repair> repairs)
+        public bool AddRepairs(List<Repair> repairs)//Test
         {
-            throw new NotImplementedException();
+            int kod = GetKodForRepair;
+            int id = GetIdForRepair;
+            try
+            {
+                foreach (var repair in repairs)
+                {
+                    database.Repairs.Add(repair.Convert(id++, kod));
+                }
+                database.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public bool ChangeReviewStatusById(int id, ReviewStatus newStatus)

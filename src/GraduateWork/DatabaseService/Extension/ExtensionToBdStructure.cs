@@ -48,6 +48,36 @@ namespace DatabaseService.Extension
                 UserId = selling.User.Id
             };
         }
+        public static Reviews Convert(this Review review, int id, int kod)
+        {
+            return new Reviews
+            {
+                Id = id,
+                Kod = kod,
+                Status = (int)review.Status,
+                OrderDate = review.OrderDate,
+                UserId = review.User.Id,
+                DeviceId = review.Device.Id,
+                WorkerId = review.Worker.Id,
+                RepairId = review?.Repair.Id//Warning//TODO
+            };
+        }
+        public static Repairs Convert(this Repair repair, int id, int kod)
+        {
+            return new Repairs
+            {
+                Id = id,
+                Kod = kod,
+                Status = (int)repair.Status,
+                OrderDate = repair.OrderDate,
+                IsWarranty = repair.IsWarranty,
+                RepairDeviceId = repair.RepairDevice.Id,
+                DeviceId = repair.Device.Id,
+                WorkerId = repair.Worker.Id,
+                PartId = repair?.Part.Id,//Warning//TODO
+                WorkId = repair.Work.Id
+            };
+        }
 
     }
 }
