@@ -14,12 +14,12 @@ namespace DatabaseService
         MobileDoc database = new MobileDoc();
         ConverterToSystemStructure converter = new ConverterToSystemStructure();
 
-        private int GetKodForSelling => database.Sellings.LastOrDefault()?.Kod + 1 ?? 1;
-        private int GetIdForSelling => database.Sellings.LastOrDefault()?.Id + 1 ?? 1;
-        private int GetKodForReview => database.Reviews.LastOrDefault()?.Kod + 1 ?? 1;
-        private int GetIdForReview => database.Reviews.LastOrDefault()?.Id + 1 ?? 1;
-        private int GetKodForRepair => database.Repairs.LastOrDefault()?.Kod + 1 ?? 1;
-        private int GetIdForRepair => database.Repairs.LastOrDefault()?.Id + 1 ?? 1;
+        private int GetKodForSelling => database.Sellings.ToList().LastOrDefault()?.Kod + 1 ?? 1;
+        private int GetIdForSelling => database.Sellings.ToList().LastOrDefault()?.Id + 1 ?? 1;
+        private int GetKodForReview => database.Reviews.ToList().LastOrDefault()?.Kod + 1 ?? 1;
+        private int GetIdForReview => database.Reviews.ToList().LastOrDefault()?.Id + 1 ?? 1;
+        private int GetKodForRepair => database.Repairs.ToList().LastOrDefault()?.Kod + 1 ?? 1;
+        private int GetIdForRepair => database.Repairs.ToList().LastOrDefault()?.Id + 1 ?? 1;
 
         #region Old Service
         public User User { get; set; }
