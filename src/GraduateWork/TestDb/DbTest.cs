@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using DatabaseService;
+﻿using DatabaseService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shared.Enum;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TestDb
 {
@@ -37,7 +38,7 @@ namespace TestDb
 
         }
         [TestMethod]
-        public void AddNewSellings()
+        public async Task AddNewSellings()
         {
             DatabaseService.DataService service = new DataService();
 
@@ -47,6 +48,7 @@ namespace TestDb
 
             var sellings = new List<Selling>();
 
+            clients[1].Id = 100;
             sellings.Add(new Selling
             {
                 OrderDate = DateTime.Now,
@@ -72,12 +74,12 @@ namespace TestDb
                 User = users[1]
             });
 
-            var result = service.AddSellings(sellings);
+            var result = await service.AddSellings(sellings);
 
 
             //var sellings = service.GetSellings();
-            Assert.AreNotEqual(result, false);
-
+            Assert.AreEqual(result, -1);
+           
         }
 
     }

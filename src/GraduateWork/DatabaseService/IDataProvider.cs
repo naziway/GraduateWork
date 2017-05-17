@@ -1,8 +1,9 @@
 ﻿using Model;
+using Shared;
 using Shared.Enum;
 using System;
 using System.Collections.Generic;
-using Shared;
+using System.Threading.Tasks;
 
 namespace DatabaseService
 {
@@ -67,8 +68,8 @@ namespace DatabaseService
         List<Selling> GetSellingByKod(int kod);
         List<Selling> GetSellingsByClientId(int clientId);
         List<Selling> GetSellingsByUserId(int userId);
-        bool AddSellings(List<Selling> sellings);
-        bool ChangeSellingsStatusByKod(int kod, SellingStatus newStatus);
+        Task<int> AddSellings(List<Selling> sellings);
+        Task<int> ChangeSellingsStatusByKod(int kod, SellingStatus newStatus);
 
         #endregion
 

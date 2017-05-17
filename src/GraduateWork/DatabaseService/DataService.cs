@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DatabaseService
 {
@@ -828,22 +829,21 @@ namespace DatabaseService
         }
 
         //Test//Test//Test//Test//Test//Test//Test//Test//Test
-        public bool ChangeSellingsStatusByKod(int kod, SellingStatus newStatus)//Test
+        public async Task<int> ChangeSellingsStatusByKod(int kod, SellingStatus newStatus)//Test
         {
-            database.Sellings.Where(sellings => sellings.Kod == kod)
-                .ForEachAsync(sellings => sellings.Status = (int)newStatus);
+            await database.Sellings.Where(sellings => sellings.Kod == kod)
+                  .ForEachAsync(sellings => sellings.Status = (int)newStatus);
             try
             {
-                database.SaveChanges();
+                return await database.SaveChangesAsync();
             }
             catch (Exception)
             {
-                return false;
+                return await Task.FromResult(0);
             }
-            return true;
         }
 
-        public bool AddSellings(List<Selling> sellings)//DONE
+        public async Task<int> AddSellings(List<Selling> sellings)//DONE
         {
             int kod = GetKodForSelling;
             int id = GetIdForSelling;
@@ -853,13 +853,14 @@ namespace DatabaseService
                 {
                     database.Sellings.Add(selling.Convert(id++, kod));
                 }
-                database.SaveChanges();
+                var a = await database.SaveChangesAsync();
+                return a;
             }
             catch (Exception)
             {
-                return false;
+                return await Task.FromResult(-1);
             }
-            return true;
+
         }
         public bool AddReview(Review review)//Test
         {
