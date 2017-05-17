@@ -29,6 +29,7 @@ namespace ViewModel
             OpenWindowByDataAction = action;
         }
         #endregion
+
         public DataService DataService { get; set; }
 
 
@@ -40,17 +41,17 @@ namespace ViewModel
             var command = new CommandWithParameters(OpenOrderInfoWindow);
             var list = DataService.GetReviews();
             Command = command;
-            // orders.ForEach((order) => { order.Command = command; });
+            list.ForEach((order) => { order.Command = command; });
             Reviews = new ObservableCollection<Review>(list);
         }
 
         public ICommand Command { get; set; }
         private void OpenOrderInfoWindow(object obj)
         {
-            var order = obj as OrderModel;
-            if (order == null)
-                return;
-            OpenWindowByDataAction(OpenWindow.ExaminateToOrder, order);
+            //var order = obj as OrderModel;
+            //if (order == null)
+            //    return;
+            //OpenWindowByDataAction(OpenWindow.ReviewToOrder, order);
         }
     }
 }

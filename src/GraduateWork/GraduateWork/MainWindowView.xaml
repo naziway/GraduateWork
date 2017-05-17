@@ -35,7 +35,7 @@
             </Grid.RowDefinitions>
             <Canvas Grid.Column="0" Grid.Row="0" Grid.RowSpan="8" Background="#1f2933" ></Canvas>
             <Grid  Grid.Column="0" Grid.Row="1" Margin="0,0,0,5">
-                <Button Command="{Binding AddNewExaminationCommand}" ToolTip="Додати обстеження">
+                <Button Command="{Binding AddNewReviewCommand}" ToolTip="Додати обстеження">
                     <Button.Template>
                         <ControlTemplate>
                             <StackPanel Style="{DynamicResource PanelItem}">
@@ -68,7 +68,7 @@
                 </Button>
             </Grid>
             <Grid  Grid.Column="0" Grid.Row="4" Margin="0,0,0,5">
-                <Button Command="{Binding OrdersCommand}" ToolTip="Пошук по замовленнях">
+                <Button Command="{Binding OpenReviewListCommand}" ToolTip="Список Обстежень">
                     <Button.Template>
                         <ControlTemplate >
                             <StackPanel Style="{DynamicResource PanelItem}">

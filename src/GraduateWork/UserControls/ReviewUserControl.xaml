@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="UserControls.OrdersUserControl"
+﻿<UserControl x:Class="UserControls.ReviewUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
-        <ListBox Name="OrderList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ItemsSource="{Binding Orders}">
+        <ListBox Name="OrderList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ItemsSource="{Binding Reviews}">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -30,11 +30,11 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Код замовлення:"  />
 
-                                    <TextBlock Grid.Column="1" Text="{Binding OrderKod}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Kod}"/>
 
                                     <TextBlock Grid.Column="2" Text="Дата оформлення:"  />
 
-                                    <TextBlock Grid.Column="3" Text="{Binding StartData, StringFormat=d}"  />
+                                    <TextBlock Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
 
                                     <Button Grid.Column="4" Command="{Binding Command}" Content="Змінити" CommandParameter="{Binding Path=.}"/>
                                     <Grid.InputBindings>

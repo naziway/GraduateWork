@@ -17,6 +17,8 @@ namespace ViewModel
         public LoginViewModel()
         {
             service = new DataService();
+            Login = "naziway";
+            Password = "1";
         }
 
         public string Login { get; set; }

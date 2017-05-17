@@ -1,6 +1,7 @@
 ﻿using PropertyChanged;
 using Shared.Enum;
 using System;
+using System.Windows.Input;
 
 namespace Model
 {
@@ -15,5 +16,6 @@ namespace Model
         public User Worker { get; set; }
         public Device Device { get; set; }
         public Repair Repair { get; set; }
+        public ICommand Command { get; set; }
     }
 }

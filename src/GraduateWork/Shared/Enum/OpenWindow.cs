@@ -2,10 +2,10 @@
 {
     public enum OpenWindow
     {
-        Orders,
-        NewExaminate,
+        Repairs,
+        NewReview,
         OrderInfo,
-        ListExaminate,
-        ExaminateToOrder
+        ListReview,
+        ReviewToOrder
     }
 }

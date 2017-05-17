@@ -49,19 +49,19 @@ namespace GraduateWork
             Window view;
             switch (windowType)
             {
-                case Shared.OpenWindow.Orders:
+                case Shared.OpenWindow.Repairs:
                     var orderViewModel = new RepairsViewModel(DataService);
                     orderViewModel.SetAction(OpenWindowWithData);
                     view = new ResizeBaseView(new OrdersListWithFinding { DataContext = new OrderWithFindViewModel(DataService, orderViewModel) }, "Список замовлень", 500, 500);
                     break;
-                case Shared.OpenWindow.NewExaminate:
+                case Shared.OpenWindow.NewReview:
                     var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
                     view = new BaseView(viewModel, "Нова Діагностика", 300, 300);
                     break;
-                case Shared.OpenWindow.ListExaminate:
-                    var examToOrderViewModel = new ExaminateViewModel(DataService);// new ExaminateManager(DataService, new ExaminateViewModel(DataService));
+                case Shared.OpenWindow.ListReview:
+                    var examToOrderViewModel = new ExaminateViewModel(DataService);
                     examToOrderViewModel.SetAction(OpenWindowWithData);
-                    view = new ResizeBaseView(new OrdersUserControl() { DataContext = examToOrderViewModel }, "список обстежень", 500, 500);
+                    view = new ResizeBaseView(new ReviewUserControl() { DataContext = examToOrderViewModel }, "Cписок обстежень", 500, 500);
                     break;
                 default: throw new InvalidOperationException();
             }
@@ -87,7 +87,7 @@ namespace GraduateWork
                     var orderInfoViewModel = new OrderInfoViewModel(DataService, data as OrderModel);
                     view = new ResizeBaseView(new OrderInfo() { DataContext = orderInfoViewModel }, "Опис Замовлення", 500, 500);
                     break;
-                case OpenWindow.ExaminateToOrder:
+                case OpenWindow.ReviewToOrder:
                     var examToOrderViewModel = new ExaminateManager(DataService, new ExaminateViewModel(DataService));
                     view = new ResizeBaseView(new ExaminateToOrder { DataContext = examToOrderViewModel }, "до ордеру", 500, 500);
                     break;

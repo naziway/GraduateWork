@@ -408,7 +408,7 @@ namespace DatabaseService
             }
 
         }
-        public Review AddReview(Review review)//Test
+        public Review AddReview(Review review)//Done
         {
             int kod = GetKodForReview;
             int id = GetIdForReview;

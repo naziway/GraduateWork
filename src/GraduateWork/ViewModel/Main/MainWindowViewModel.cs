@@ -36,10 +36,10 @@ namespace ViewModel
         }
 
         #region Command
-        public ICommand AddNewExaminationCommand => new CommandHandler(() =>
+        public ICommand AddNewReviewCommand => new CommandHandler(() =>
         {
             //CurrentUserControl = new AddNewExaminateControl();
-            OpenWindowAction(OpenWindow.NewExaminate);
+            OpenWindowAction(OpenWindow.NewReview);
         });
         public ICommand ClientListCommand => new CommandHandler(() =>
         {
@@ -49,12 +49,12 @@ namespace ViewModel
 
         public ICommand OrdersCommand => new CommandHandler(() =>
         {
-            CurrentUserControl = new OrdersUserControl();
-            OpenWindowAction(OpenWindow.Orders);
+            CurrentUserControl = new ReviewUserControl();
+            OpenWindowAction(OpenWindow.Repairs);
         });
-        public ICommand ExaminateListCommand => new CommandHandler(() =>
+        public ICommand OpenReviewListCommand => new CommandHandler(() =>
         {
-            OpenWindowAction(OpenWindow.ListExaminate);
+            OpenWindowAction(OpenWindow.ListReview);
         });
 
 
