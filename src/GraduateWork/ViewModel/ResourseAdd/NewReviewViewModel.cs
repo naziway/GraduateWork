@@ -9,7 +9,7 @@ using System.Windows.Input;
 namespace ViewModel.ResourseAdd
 {
     [ImplementPropertyChanged]
-    public class NewExaminateViewModel
+    public class NewReviewViewModel
     {
         public DataService DataService { get; set; }
 
@@ -54,19 +54,19 @@ namespace ViewModel.ResourseAdd
 
         public ICommand AddExaminateCommand => new CommandHandler((() =>
           {
-              var device = new Device();
+              //var device = new Devicee();
 
-              device = selectedDevice;
-              DataService.AddNewExaminate(device);
+              //device = selectedDevice;
+              //DataService.A(device);
 
           }), CanExecute);
 
         public bool CanExecute { get; set; }
 
-        public NewExaminateViewModel(DataService dataService)
+        public NewReviewViewModel(DataService dataService)
         {
             DataService = dataService;
-            Clients = new ObservableCollection<Client>(DataService.GetClientsList());
+            Clients = new ObservableCollection<Client>(DataService.GetClients());
             if (Clients.Count > 0)
                 selectedClient = Clients.First();
         }

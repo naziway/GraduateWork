@@ -6,22 +6,19 @@ namespace DatabaseService.Extension
 {
     public class ConverterToSystemStructure
     {
-        public Client ToClient(Clients clients)
+        public Client Convert(Clients clients)
         {
             return new Client
             {
                 Id = clients.Id,
-                Name = clients.LastName,
-                Surname = clients.FirstName,
-                Phone = clients.PhoneNumber,
-                PassportData = clients.PasportData
+                LastName = clients.LastName,
+                FirstName = clients.FirstName,
+                PhoneNumber = clients.PhoneNumber,
+                PasportData = clients.PasportData,
+                RegistrationDate = clients.RegistrationDate
             };
         }
-        public Device ToDevice(Devices devices)
-        {
-            return new Device();
-        }
-        public RepairDevice ToDevice(RepairDevices device)
+        public RepairDevice Convert(RepairDevices device)
         {
             return new RepairDevice
             {
@@ -34,7 +31,7 @@ namespace DatabaseService.Extension
                 Count = device.Count
             };
         }
-        public Part ToPart(Parts parts)
+        public Part Convert(Parts parts)
         {
             return new Part
             {
@@ -56,9 +53,9 @@ namespace DatabaseService.Extension
                 Time = work.Time
             };
         }
-        public Userr Convert(Users users)
+        public User Convert(Users users)
         {
-            return new Userr
+            return new User
             {
                 Id = users.Id,
                 Login = users.Login,

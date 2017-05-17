@@ -2,10 +2,8 @@
 using Model;
 using PropertyChanged;
 using Shared;
-using Shared.Enum;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace ViewModel
@@ -34,16 +32,16 @@ namespace ViewModel
         public DataService DataService { get; set; }
 
 
-        public ObservableCollection<OrderModel> Orders { get; set; }
+        public ObservableCollection<Review> Reviews { get; set; }
 
         public ExaminateViewModel(DataService dataService)
         {
             DataService = dataService;
             var command = new CommandWithParameters(OpenOrderInfoWindow);
-            var orders = DataService.GetAllExaminates();
+            var list = DataService.GetReviews();
             Command = command;
-            orders.ForEach((order) => { order.Command = command; });
-            Orders = new ObservableCollection<OrderModel>(orders);
+            // orders.ForEach((order) => { order.Command = command; });
+            Reviews = new ObservableCollection<Review>(list);
         }
 
         public ICommand Command { get; set; }

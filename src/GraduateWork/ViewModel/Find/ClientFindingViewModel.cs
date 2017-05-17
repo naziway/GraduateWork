@@ -18,7 +18,7 @@ namespace ViewModel.Find
         public ClientFindingViewModel(DataService dataService)
         {
             DataService = dataService;
-            
+
             Clients = new ClientListViewModel(dataService);
             FindingParametersList = new List<string>()
             {   "Все",
@@ -36,19 +36,19 @@ namespace ViewModel.Find
             switch (SelectedParam)
             {
                 case "Все":
-                    findClients = DataService.GetClientsList().Where(client =>
-                        client.Name.ToLower().Contains(text.ToLower()) ||
-                        client.Surname.ToLower().Contains(text.ToLower()) ||
-                        client.Phone.ToLower().Contains(text.ToLower()) ||
-                        client.PassportData.ToLower().Contains(text.ToLower())).ToList();
+                    findClients = DataService.GetClients().Where(client =>
+                        client.FirstName.ToLower().Contains(text.ToLower()) ||
+                        client.LastName.ToLower().Contains(text.ToLower()) ||
+                        client.PhoneNumber.ToLower().Contains(text.ToLower()) ||
+                        client.PasportData.ToLower().Contains(text.ToLower())).ToList();
                     break;
                 case "Ім'я":
-                    findClients = DataService.GetClientsList().Where(client =>
-                        client.Name.ToLower().Contains(text.ToLower())).ToList();
+                    findClients = DataService.GetClients().Where(client =>
+                        client.LastName.ToLower().Contains(text.ToLower())).ToList();
                     break;
                 case "Прізвище":
-                    findClients = DataService.GetClientsList().Where(client =>
-                        client.Surname.ToLower().Contains(text.ToLower())).ToList();
+                    findClients = DataService.GetClients().Where(client =>
+                        client.FirstName.ToLower().Contains(text.ToLower())).ToList();
                     break;
                 default:
                     return;

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace ViewModel
 {
-    public class OrdersViewModel
+    public class RepairsViewModel
     {
         #region Action
         public Action<OpenWindow> OpenWindowAction { get; set; }
@@ -39,14 +39,14 @@ namespace ViewModel
 
         private void Finding()
         {
-            var orders = DataService.GetAllOrders();
-            List<OrderModel> findOrders = new List<OrderModel>();
+            var repairs = DataService.GetRepairs();
+            List<Repair> list = new List<Repair>();
             switch (SelectedParam)
             {
                 case "Все":
-                    findOrders = orders.Where(order =>
-                    order.Device.PhoneModel.Contains(FindText) ||
-                    order.OrderKod.ToString().Contains(FindText)).ToList();
+                    list = repairs.Where(order =>
+                    order.Device.Marka.Contains(FindText) ||
+                    order.Kod.ToString().Contains(FindText)).ToList();
                     break;
                 case "Імя":
                     break;
@@ -56,10 +56,10 @@ namespace ViewModel
                     break;
             }
 
-            Orders = new ObservableCollection<OrderModel>(findOrders);
+            Repairs = new ObservableCollection<Repair>(list);
         }
 
-        public ObservableCollection<OrderModel> Orders { get; set; }
+        public ObservableCollection<Repair> Repairs { get; set; }
 
         public ObservableCollection<string> FindingParametersList
             => new ObservableCollection<string>()
@@ -69,14 +69,14 @@ namespace ViewModel
                 "Ціна",
                 "Все"
             };
-        public OrdersViewModel(DataService dataService)
+        public RepairsViewModel(DataService dataService)
         {
             DataService = dataService;
             var command = new CommandWithParameters(OpenOrderInfoWindow);
-            var orders = DataService.GetAllOrders();
+            var orders = DataService.GetRepairs();
             Command = command;
-            orders.ForEach((order) => { order.Command = command; });
-            Orders = new ObservableCollection<OrderModel>(orders);
+            //orders.ForEach((order) => { order.Command = command; });
+            Repairs = new ObservableCollection<Repair>(orders);
         }
 
         public ICommand Command { get; set; }

@@ -50,12 +50,12 @@ namespace GraduateWork
             switch (windowType)
             {
                 case Shared.OpenWindow.Orders:
-                    var orderViewModel = new OrdersViewModel(DataService);
+                    var orderViewModel = new RepairsViewModel(DataService);
                     orderViewModel.SetAction(OpenWindowWithData);
                     view = new ResizeBaseView(new OrdersListWithFinding { DataContext = new OrderWithFindViewModel(DataService, orderViewModel) }, "Список замовлень", 500, 500);
                     break;
                 case Shared.OpenWindow.NewExaminate:
-                    var viewModel = new AddNewExaminateControl { DataContext = new NewExaminateViewModel(DataService) };
+                    var viewModel = new AddNewExaminateControl { DataContext = new NewReviewViewModel(DataService) };
                     view = new BaseView(viewModel, "Нова Діагностика", 300, 300);
                     break;
                 case Shared.OpenWindow.ListExaminate:

@@ -1,7 +1,5 @@
 ﻿using Model;
-using Shared;
 using Shared.Enum;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,27 +8,27 @@ namespace DatabaseService
     public interface IDataProvider
     {
         User GetUser(string login, string password);
-        bool AddUser(Userr user);
+        bool AddUser(User user);
 
         #region GetFullList
 
         List<Client> GetClients();
-        List<Devicee> GetDevices();
+        List<Device> GetDevices();
         List<RepairDevice> GetRepairDevices();
         List<Selling> GetSellings();
         List<Review> GetReviews();
         List<Repair> GetRepairs();
         List<Part> GetParts();
         List<Work> GetWorks();
-        List<Userr> GetUsers();
+        List<User> GetUsers();
         List<UserData> GetUsersDataList();
 
         #endregion
 
         #region Device Data
-        List<Devicee> GetDevicesByClientId(int id);
-        bool AddDevice(Devicee device);
-        bool RemoveDeviceById(Devicee device);
+        List<Device> GetDevicesByClientId(int id);
+        bool AddDevice(Device device);
+        bool RemoveDeviceById(Device device);
         #endregion
 
         #region Repair Device Data
@@ -80,8 +78,8 @@ namespace DatabaseService
         List<Review> GetReviewsByUserId(int userId);
         List<Review> GetReviewsByWorkerId(int workerId);
         bool AddReview(Review review);
-        bool ChangeReviewStatusById(int id, ReviewStatus newStatus);
-        bool ChangeReviewStatusAndSetRefToRepairById(int id, ReviewStatus newStatus, int kodRepair);
+        Task<int> ChangeReviewStatusById(int id, ReviewStatus newStatus);
+        Task<int> ChangeReviewStatusAndSetRefToRepairById(int id, ReviewStatus newStatus, int kodRepair);
 
         #endregion
 
@@ -91,99 +89,17 @@ namespace DatabaseService
         List<Repair> GetReviewsByKod(int kod);
         List<Repair> GetRepairsByWorkerId(int workerId);
         bool AddRepairs(List<Repair> repairs);
-        bool ChangeRepairsStatusByKod(int id, RepairStatus newStatus);
+        Task<int> ChangeRepairsStatusByKod(int id, RepairStatus newStatus);
 
         #endregion
 
     }
 
-    public class Devicee
-    {
-        public int Id { get; set; }
-        public string Marka { get; set; }
-        public string Model { get; set; }
-        public int DeviceType { get; set; }
-        public string SerialNumber { get; set; }
-        public System.DateTime ManufactureDate { get; set; }
-        public Client Client { get; set; }
-    }
-
-    public class Userr
-    {
-        public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public DateTime RegistrationDate { get; set; }
-        public UserType UserType { get; set; }
-        public UserData UserData { get; set; }
-    }
-
-    public class UserData
-    {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PasportData { get; set; }
-        public System.DateTime BirthDate { get; set; }
-    }
-
-    public class Work
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public double Price { get; set; }
-        public System.TimeSpan Time { get; set; }
-    }
-
-    public class Repair
-    {
-        public int Id { get; set; }
-        public int Kod { get; set; }
-        public DateTime OrderDate { get; set; }
-        public RepairStatus Status { get; set; }
-        public bool IsWarranty { get; set; }
-        public RepairDevice RepairDevice { get; set; }//change chem
-        public Userr Worker { get; set; }
-        public Devicee Device { get; set; }
-        public Part Part { get; set; }
-        public Work Work { get; set; }
 
 
-    }
 
-    public class Review
-    {
-        public int Id { get; set; }
-        public int Kod { get; set; }
-        public DateTime OrderDate { get; set; }
-        public ReviewStatus Status { get; set; }
-        public Userr User { get; set; }
-        public Userr Worker { get; set; }
-        public Devicee Device { get; set; }
-        public Repair Repair { get; set; }
 
-    }
 
-    public class Selling
-    {
-        public int Id { get; set; }
-        public int Kod { get; set; }
-        public DateTime OrderDate { get; set; }
-        public SellingStatus Status { get; set; }
-        public Userr User { get; set; }
-        public Client Client { get; set; }
-        public Part Part { get; set; }
 
-    }
 
-    public class RepairDevice
-    {
-        public int Id { get; set; }
-        public string Marka { get; set; }
-        public string Model { get; set; }
-        public DeviceType DeviceType { get; set; }
-        public string SerialNumber { get; set; }
-        public System.DateTime ManufactureDate { get; set; }
-        public int Count { get; set; }
-    }
 }

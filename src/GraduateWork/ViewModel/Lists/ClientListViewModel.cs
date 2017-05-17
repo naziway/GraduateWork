@@ -14,7 +14,7 @@ namespace ViewModel.Lists
         {
             DataService = dataService;
 
-            Clients = new ObservableCollection<Client>(DataService.GetClientsList());
+            Clients = new ObservableCollection<Client>(DataService.GetClients());
         }
         public ObservableCollection<Client> Clients { get; set; }
 

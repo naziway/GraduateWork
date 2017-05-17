@@ -38,9 +38,9 @@ namespace ViewModel
             DoOnSuccessLogin(user);
         }
 
-        public event EventHandler<Model.User> OnSuccessLogin;
+        public event EventHandler<User> OnSuccessLogin;
         public event EventHandler OnFailedLogin;
-        private void DoOnSuccessLogin(Model.User e)
+        private void DoOnSuccessLogin(User e)
         {
             OnSuccessLogin?.Invoke(this, e);
         }
