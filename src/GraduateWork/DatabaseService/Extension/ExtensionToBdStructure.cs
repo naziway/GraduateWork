@@ -59,7 +59,7 @@ namespace DatabaseService.Extension
                 UserId = review.User.Id,
                 DeviceId = review.Device.Id,
                 WorkerId = review.Worker.Id,
-                RepairId = review?.Repair.Id//Warning//TODO
+                RepairId = review?.Repair?.Id//Warning//TODO
             };
         }
         public static Repairs Convert(this Repair repair, int id, int kod)

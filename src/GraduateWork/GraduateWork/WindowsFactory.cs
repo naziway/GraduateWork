@@ -55,7 +55,7 @@ namespace GraduateWork
                     view = new ResizeBaseView(new OrdersListWithFinding { DataContext = new OrderWithFindViewModel(DataService, orderViewModel) }, "Список замовлень", 500, 500);
                     break;
                 case Shared.OpenWindow.NewExaminate:
-                    var viewModel = new AddNewExaminateControl { DataContext = new NewReviewViewModel(DataService) };
+                    var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
                     view = new BaseView(viewModel, "Нова Діагностика", 300, 300);
                     break;
                 case Shared.OpenWindow.ListExaminate:
@@ -115,7 +115,6 @@ namespace GraduateWork
         }
         private void ViewModelOnSuccessLogin(object sender, User user)
         {
-            MessageBox.Show($"Success Log In {user.Login}");
             LoginViewModel.OnSuccessLogin -= ViewModelOnSuccessLogin;
             LoginViewModel.OnFailedLogin -= ViewModelOnFailedLogin;
             OpenMainWindow();

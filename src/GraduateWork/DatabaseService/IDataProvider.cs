@@ -77,7 +77,7 @@ namespace DatabaseService
         List<Review> GetReviewsByClientId(int clientId);
         List<Review> GetReviewsByUserId(int userId);
         List<Review> GetReviewsByWorkerId(int workerId);
-        bool AddReview(Review review);
+        Review AddReview(Review review);
         Task<int> ChangeReviewStatusById(int id, ReviewStatus newStatus);
         Task<int> ChangeReviewStatusAndSetRefToRepairById(int id, ReviewStatus newStatus, int kodRepair);
 

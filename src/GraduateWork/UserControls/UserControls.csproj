@@ -87,8 +87,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddNewExaminateControl.xaml.cs">
-      <DependentUpon>AddNewExaminateControl.xaml</DependentUpon>
+    <Compile Include="NewReviewControl.xaml.cs">
+      <DependentUpon>NewReviewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -148,7 +148,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AddNewExaminateControl.xaml">
+    <Page Include="NewReviewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,9 +5,9 @@ namespace UserControls
     /// <summary>
     /// Interaction logic for AddNewExaminateControl.xaml
     /// </summary>
-    public partial class AddNewExaminateControl : UserControl
+    public partial class NewReviewControl : UserControl
     {
-        public AddNewExaminateControl()
+        public NewReviewControl()
         {
             InitializeComponent();
         }

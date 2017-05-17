@@ -133,7 +133,7 @@ namespace DatabaseService
             try
             {
                 database.Devices.Add(device.Convert());
-                database.SaveChangesAsync();
+                database.SaveChanges();
             }
             catch (Exception e)
             {
@@ -408,20 +408,25 @@ namespace DatabaseService
             }
 
         }
-        public bool AddReview(Review review)//Test
+        public Review AddReview(Review review)//Test
         {
             int kod = GetKodForReview;
             int id = GetIdForReview;
+            review.User = User;
             try
             {
-                database.Reviews.Add(review.Convert(id, kod));
+                var modReview = review.Convert(id, kod);
+                database.Reviews.Add(modReview);
                 database.SaveChanges();
+                review.Kod = modReview.Kod;
+                review.Id = modReview.Id;
+                return review;
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
-            return true;
+
         }
         public bool AddRepairs(List<Repair> repairs)//Test
         {

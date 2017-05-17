@@ -15,6 +15,5 @@ namespace Model
         public User Worker { get; set; }
         public Device Device { get; set; }
         public Repair Repair { get; set; }
-
     }
 }

@@ -54,9 +54,6 @@
     <Compile Include="Clients.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
-    <Compile Include="ClientsDbs.cs">
-      <DependentUpon>MobiDoc.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataMobile.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,36 +73,12 @@
     <Compile Include="Devices.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
-    <Compile Include="DevicesDbs.cs">
-      <DependentUpon>MobiDoc.tt</DependentUpon>
-    </Compile>
     <Compile Include="Extension\ConverterToSystemStructure.cs" />
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Extension\ExtensionToBdStructure.cs" />
     <Compile Include="IDataProvider.cs" />
-    <Compile Include="MobiDoc.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MobiDoc.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MobiDoc.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MobiDoc.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MobiDoc.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MobiDoc.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Orders.cs">
-      <DependentUpon>MobiDoc.tt</DependentUpon>
-    </Compile>
     <Compile Include="Parts.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PartsDbs.cs">
-      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
     <Compile Include="PersonalData.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
@@ -126,33 +99,20 @@
     <Compile Include="Users.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersDbs.cs">
-      <DependentUpon>MobiDoc.tt</DependentUpon>
-    </Compile>
     <Compile Include="Works.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WorksDbs.cs">
-      <DependentUpon>MobiDoc.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="MobiDoc.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MobiDoc.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="DataMobile.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DataMobile.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="DataMobile.edmx.diagram">
       <DependentUpon>DataMobile.edmx</DependentUpon>
-    </None>
-    <None Include="MobiDoc.edmx.diagram">
-      <DependentUpon>MobiDoc.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -180,17 +140,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataMobile.edmx</DependentUpon>
       <LastGenOutput>DataMobile.cs</LastGenOutput>
-    </Content>
-    <Content Include="MobiDoc.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MobiDoc.edmx</DependentUpon>
-      <LastGenOutput>MobiDoc.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="MobiDoc.edmx.sql" />
-    <Content Include="MobiDoc.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MobiDoc.edmx</DependentUpon>
-      <LastGenOutput>MobiDoc.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

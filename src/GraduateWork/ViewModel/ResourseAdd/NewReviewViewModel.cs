@@ -2,6 +2,8 @@
 using Model;
 using PropertyChanged;
 using Shared;
+using Shared.Enum;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -15,10 +17,11 @@ namespace ViewModel.ResourseAdd
 
         public ObservableCollection<Client> Clients { get; set; }
         public ObservableCollection<Device> Devices { get; set; }
-
+        public ObservableCollection<User> Workers { get; set; }
         public Device selectedDevice { get; set; }
 
         public Client selectedClient { get; set; }
+
 
         public Device SelectedDevice
         {
@@ -29,7 +32,6 @@ namespace ViewModel.ResourseAdd
                 DoOnSelectedDevice();
             }
         }
-
         public Client SelectedClient
         {
             get { return selectedClient; }
@@ -39,27 +41,40 @@ namespace ViewModel.ResourseAdd
                 DoOnSelectedClient();
             }
         }
+        public User SelectedWorker { get; set; }
 
         private void DoOnSelectedDevice()
         {
             CanExecute = true;
         }
-
         private void DoOnSelectedClient()
         {
             Devices = new ObservableCollection<Device>
                 (DataService.GetDevicesByClientId(selectedClient.Id));
             CanExecute = false;
+            if (Devices.Count > 0)
+                SelectedDevice = Devices.First();
+
         }
 
-        public ICommand AddExaminateCommand => new CommandHandler((() =>
+        public ICommand AddReviewCommand => new CommandHandler((() =>
           {
-              //var device = new Devicee();
+              var review = new Review
+              {
+                  Worker = SelectedWorker,
+                  Device = SelectedDevice,
+                  OrderDate = DateTime.Now,
+                  Status = ReviewStatus.New
+              };
 
-              //device = selectedDevice;
-              //DataService.A(device);
+              var addedReview = DataService.AddReview(review);
+
+              StatusMessage = addedReview != null ? $"Обстеження Додано.Код: {addedReview.Kod}" :
+                                                    $"Обстеження не вдалося додати.";
 
           }), CanExecute);
+
+        public string StatusMessage { get; set; }
 
         public bool CanExecute { get; set; }
 
@@ -67,8 +82,11 @@ namespace ViewModel.ResourseAdd
         {
             DataService = dataService;
             Clients = new ObservableCollection<Client>(DataService.GetClients());
-            if (Clients.Count > 0)
-                selectedClient = Clients.First();
+
+            Workers = new ObservableCollection<User>
+               (DataService.GetUsers().Where(user => user.UserType == UserType.Worker));
+            if (Workers.Count > 0)
+                SelectedWorker = Workers.First();
         }
     }
 }
