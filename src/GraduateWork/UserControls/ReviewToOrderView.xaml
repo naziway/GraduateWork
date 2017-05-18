@@ -61,7 +61,68 @@
         </Border>
         <Border Grid.Row="1" BorderBrush="White" BorderThickness="1" >
             <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
 
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0" Margin="2" ItemsSource="{Binding Works}" SelectedItem="{Binding SelectedWork}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding Title}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Price}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox Grid.Column="1" Margin="2" ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding Title}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Price}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button Grid.Column="2" Command="{Binding AddRepair}" Content="+" Padding="0,0,0,0" Margin="0,2,0,2" VerticalContentAlignment="Top" FontSize="45"/>
+
+                </Grid>
+
+
+                <ListBox Grid.Row="1" ItemsSource="{Binding Repairs}" >
+
+                </ListBox>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Style="{DynamicResource HeaderProperty}" Text="Загальна сума:"/>
+                    <TextBlock  Grid.Column="0" Style="{DynamicResource HeaderValue}" Text="{Binding Symma}"/>
+                </Grid>
+
+                <Button Grid.Row="3" Margin="10,1,10,1" Content="Зберегти результат обстеження"/>
             </Grid>
         </Border>
 
