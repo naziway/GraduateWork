@@ -12,7 +12,7 @@ namespace DatabaseService
 {
     public class DataService : IDataProvider
     {
-        MobileDoc database = new MobileDoc();
+        MobiDoc database = new MobiDoc();
         public User User { get; set; }
 
         ConverterToSystemStructure converter = new ConverterToSystemStructure();
@@ -300,8 +300,8 @@ namespace DatabaseService
                     Device = devices.First(devicee => devicee.Id == review.DeviceId),
                     User = users.First(userr => userr.Id == review.UserId)
                 };
-                if (review.RepairId != null)
-                    item.Repair = GetRepairs().First(repair => review.Id == review.RepairId);
+                if (review.RepairKod != null)
+                    item.Repair = GetRepairs().First(repair => repair.Kod == review.RepairKod);
                 list.Add(item);
             }
             return list;
@@ -429,7 +429,7 @@ namespace DatabaseService
             }
 
         }
-        public bool AddRepairs(List<Repair> repairs)//Test
+        public int AddRepairs(List<Repair> repairs)//Test
         {
             int kod = GetKodForRepair;
             int id = GetIdForRepair;
@@ -443,9 +443,9 @@ namespace DatabaseService
             }
             catch (Exception)
             {
-                return false;
+                return -1;
             }
-            return true;
+            return kod;
         }
 
         public async Task<int> ChangeReviewStatusById(int id, ReviewStatus newStatus)//Test
@@ -465,13 +465,13 @@ namespace DatabaseService
             }
         }
 
-        public async Task<int> ChangeReviewStatusAndSetRefToRepairById(int id, ReviewStatus newStatus, int kodRepair)//Test
+        public async Task<int> ChangeReviewStatusAndSetRefToRepairByKod(int id, ReviewStatus newStatus, int kodRepair)//Test
         {
             await database.Reviews.Where(reviews => reviews.Id == id)
                    .ForEachAsync(reviews =>
                    {
                        reviews.Status = (int)newStatus;
-                       reviews.RepairId = kodRepair;
+                       reviews.RepairKod = kodRepair;
                    });
             try
             {

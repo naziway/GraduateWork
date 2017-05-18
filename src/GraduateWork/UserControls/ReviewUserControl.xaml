@@ -36,7 +36,9 @@
 
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
 
+                        
                         <Button Grid.Column="4" Command="{Binding Command}" Content="Обстежити" CommandParameter="{Binding Path=.}"/>
+                        
                         <Grid.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick"
                                                       Command="{Binding Command}"
@@ -48,13 +50,19 @@
             </ListBox.ItemTemplate>
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Background" Value="Red" />
+                    <Setter Property="Background" Value="#2c3a45" />
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                     <Setter Property="BorderThickness" Value="0.5"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="New">
-                            <Setter Property="Background" Value="#2c3a45" />
+                            <Setter Property="Background" Value="Red" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="Reviewing">
+                            <Setter Property="Background" Value="Yellow" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="SetLink">
+                            <Setter Property="Background" Value="Green" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

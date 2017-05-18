@@ -13,10 +13,10 @@ namespace DatabaseService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MobileDoc : DbContext
+    public partial class MobiDoc : DbContext
     {
-        public MobileDoc()
-            : base("name=MobileDoc")
+        public MobiDoc()
+            : base("name=MobiDoc")
         {
         }
     

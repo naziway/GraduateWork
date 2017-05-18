@@ -79,7 +79,7 @@ namespace DatabaseService
         List<Review> GetReviewsByWorkerId(int workerId);
         Review AddReview(Review review);
         Task<int> ChangeReviewStatusById(int id, ReviewStatus newStatus);
-        Task<int> ChangeReviewStatusAndSetRefToRepairById(int id, ReviewStatus newStatus, int kodRepair);
+        Task<int> ChangeReviewStatusAndSetRefToRepairByKod(int id, ReviewStatus newStatus, int kodRepair);
 
         #endregion
 
@@ -88,7 +88,7 @@ namespace DatabaseService
         List<Repair> GetRepairsByClientId(int clientId);
         List<Repair> GetReviewsByKod(int kod);
         List<Repair> GetRepairsByWorkerId(int workerId);
-        bool AddRepairs(List<Repair> repairs);
+        int AddRepairs(List<Repair> repairs);
         Task<int> ChangeRepairsStatusByKod(int id, RepairStatus newStatus);
 
         #endregion

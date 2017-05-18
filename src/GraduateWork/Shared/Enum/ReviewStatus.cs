@@ -4,6 +4,7 @@
     {
         New,
         Reviewing,
-        Reviewed
+        Reviewed,
+        SetLink
     }
 }

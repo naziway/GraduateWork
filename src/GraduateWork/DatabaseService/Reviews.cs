@@ -21,10 +21,9 @@ namespace DatabaseService
         public int UserId { get; set; }
         public int DeviceId { get; set; }
         public int WorkerId { get; set; }
-        public Nullable<int> RepairId { get; set; }
+        public Nullable<int> RepairKod { get; set; }
     
         public virtual Devices Devices { get; set; }
-        public virtual Repairs Repairs { get; set; }
         public virtual Users Users { get; set; }
         public virtual Users Users1 { get; set; }
     }
