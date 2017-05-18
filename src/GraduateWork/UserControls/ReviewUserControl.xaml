@@ -36,7 +36,7 @@
 
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
 
-                        <Button Grid.Column="4" Command="{Binding Command}" Content="Змінити" CommandParameter="{Binding Path=.}"/>
+                        <Button Grid.Column="4" Command="{Binding Command}" Content="Обстежити" CommandParameter="{Binding Path=.}"/>
                         <Grid.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick"
                                                       Command="{Binding Command}"

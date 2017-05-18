@@ -32,7 +32,6 @@ namespace GraduateWork
             LoginView = new LoginView(LoginViewModel);
             InvokeInMainThread(LoginView.Show);
         }
-
         public void OpenMainWindow()
         {
             MainWindowViewModel = new MainWindowViewModel(DataService);
@@ -44,6 +43,8 @@ namespace GraduateWork
                 MainWindowView.Show();
             });
         }
+
+
         private void OpenResizeWindow(OpenWindow windowType)
         {
             Window view;
@@ -52,32 +53,23 @@ namespace GraduateWork
                 case Shared.OpenWindow.Repairs:
                     var orderViewModel = new RepairsViewModel(DataService);
                     orderViewModel.SetAction(OpenWindowWithData);
-                    view = new ResizeBaseView(new OrdersListWithFinding { DataContext = new OrderWithFindViewModel(DataService, orderViewModel) }, "Список замовлень", 500, 500);
+                    view = new ResizeBaseView(new RepairsListWithFinding { DataContext = new RepairsWithFindViewModel(DataService, orderViewModel) }, "Список ремонтів", 500, 500);
                     break;
                 case Shared.OpenWindow.NewReview:
                     var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
-                    view = new BaseView(viewModel, "Нова Діагностика", 300, 300);
+                    view = new BaseView(viewModel, "Нове Обстеження", 300, 300);
                     break;
                 case Shared.OpenWindow.ListReview:
-                    var examToOrderViewModel = new ExaminateViewModel(DataService);
-                    examToOrderViewModel.SetAction(OpenWindowWithData);
-                    view = new ResizeBaseView(new ReviewUserControl() { DataContext = examToOrderViewModel }, "Cписок обстежень", 500, 500);
+                    var reviewsViewModel = new ReviewsViewModel(DataService);
+                    reviewsViewModel.SetAction(OpenWindowWithData);
+                    view = new ResizeBaseView(new ReviewUserControl() { DataContext = reviewsViewModel }, "Cписок Обстежень", 500, 500);
                     break;
                 default: throw new InvalidOperationException();
             }
             OpenedWindows.Add(view);
             InvokeInMainThread(view.Show);
         }
-        private void OpenRezultResizeWindow(OpenWindow windowType, TransferData transferData)
-        {
-            Window view;
-            switch (windowType)
-            {
-                default: throw new InvalidOperationException();
-            }
-            OpenedWindows.Add(view);
-            InvokeInMainThread(view.Show);
-        }
+
         private void OpenWindowWithData(OpenWindow windowType, object data)
         {
             Window view;
@@ -88,8 +80,7 @@ namespace GraduateWork
                     view = new ResizeBaseView(new OrderInfo() { DataContext = orderInfoViewModel }, "Опис Замовлення", 500, 500);
                     break;
                 case OpenWindow.ReviewToOrder:
-                    var examToOrderViewModel = new ExaminateManager(DataService, new ExaminateViewModel(DataService));
-                    view = new ResizeBaseView(new ExaminateToOrder { DataContext = examToOrderViewModel }, "до ордеру", 500, 500);
+                    view = new ResizeBaseView(new ReviewToOrderView { DataContext = new ReviewToOrderViewModel(DataService, data as Review) }, "Обстеження", 500, 300);
                     break;
                 default: throw new InvalidOperationException();
             }
@@ -108,11 +99,8 @@ namespace GraduateWork
             InvokeInMainThread(MainWindowView.Close);
         }
 
-        #region ProccessResponseLogin
-        private void ViewModelOnFailedLogin(object sender, System.EventArgs e)
-        {
-            MessageBox.Show($"Failed Login Or Password");
-        }
+        #region Process Response Login
+
         private void ViewModelOnSuccessLogin(object sender, User user)
         {
             LoginViewModel.OnSuccessLogin -= ViewModelOnSuccessLogin;
@@ -121,7 +109,11 @@ namespace GraduateWork
             DataService.User = user;
             InvokeInMainThread(LoginView.Close);
         }
-
+        private void ViewModelOnFailedLogin(object sender, System.EventArgs e)
+        {
+            MessageBox.Show($"Failed Login Or Password");
+        }
         #endregion
     }
+
 }

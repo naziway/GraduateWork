@@ -11,7 +11,7 @@ namespace DatabaseService
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Repairs
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,18 +19,18 @@ namespace DatabaseService
         {
             this.Reviews = new HashSet<Reviews>();
         }
-    
+
         public int Id { get; set; }
         public int Kod { get; set; }
         public System.DateTime OrderDate { get; set; }
         public int Status { get; set; }
         public bool IsWarranty { get; set; }
-        public int RepairDeviceId { get; set; }
+        public Nullable<int> RepairDeviceId { get; set; }
         public int WorkerId { get; set; }
         public int DeviceId { get; set; }
         public Nullable<int> PartId { get; set; }
         public int WorkId { get; set; }
-    
+
         public virtual Devices Devices { get; set; }
         public virtual Parts Parts { get; set; }
         public virtual RepairDevices RepairDevices { get; set; }

@@ -2,14 +2,16 @@
 using Model;
 using PropertyChanged;
 using Shared;
+using Shared.Enum;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace ViewModel
 {
     [ImplementPropertyChanged]
-    public class ExaminateViewModel
+    public class ReviewsViewModel
     {
         #region Action
         public Action<OpenWindow> OpenWindowAction { get; set; }
@@ -35,10 +37,13 @@ namespace ViewModel
 
         public ObservableCollection<Review> Reviews { get; set; }
 
-        public ExaminateViewModel(DataService dataService)
+        public ReviewsViewModel(DataService dataService)
         {
             DataService = dataService;
-            var command = new CommandWithParameters(OpenOrderInfoWindow);
+            var command = new CommandWithParameters((async o =>
+            {
+                await Reviewing(o);
+            }));
             var list = DataService.GetReviews();
             Command = command;
             list.ForEach((order) => { order.Command = command; });
@@ -46,12 +51,13 @@ namespace ViewModel
         }
 
         public ICommand Command { get; set; }
-        private void OpenOrderInfoWindow(object obj)
+        private async Task Reviewing(object obj)
         {
-            //var order = obj as OrderModel;
-            //if (order == null)
-            //    return;
-            //OpenWindowByDataAction(OpenWindow.ReviewToOrder, order);
+            var review = obj as Review;
+            if (review == null)
+                return;
+            await DataService.ChangeReviewStatusById(review.Id, ReviewStatus.Reviewing);
+            OpenWindowByDataAction(OpenWindow.ReviewToOrder, review);
         }
     }
 }

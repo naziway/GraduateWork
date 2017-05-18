@@ -21,7 +21,12 @@
             <Rectangle  HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="Min" Margin="0,5,92,5" />
 
         </Grid>
-        <ContentPresenter Grid.Row="1" Grid.Column="1" Name="MainContaint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentPresenter>
+        <Grid Grid.Row="1">
+            <Border BorderBrush="#2c3a45" BorderThickness="2">
+                <ContentPresenter  Name="MainContaint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentPresenter>
+            </Border>
+        </Grid>
+
         <Rectangle  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="RightOnLeftButtonDown" MouseLeftButtonUp="RightOnMouseLeftButtonUp" MouseMove="RightOnMouseMove"></Rectangle>
     </Grid>
 </Window>

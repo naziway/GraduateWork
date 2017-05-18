@@ -8,12 +8,12 @@ namespace ViewModel
     {
         public DataService Service { get; set; }
 
-        public ExaminateManager(DataService service, ExaminateViewModel viewModel)
+        public ExaminateManager(DataService service, ReviewsViewModel viewModel)
         {
             Service = service;
             ViewModel = viewModel;
         }
 
-        public ExaminateViewModel ViewModel { get; set; }
+        public ReviewsViewModel ViewModel { get; set; }
     }
 }

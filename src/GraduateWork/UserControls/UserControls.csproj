@@ -100,8 +100,8 @@
     <Compile Include="ClientListWithFinding.xaml.cs">
       <DependentUpon>ClientListWithFinding.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExaminateToOrder.xaml.cs">
-      <DependentUpon>ExaminateToOrder.xaml</DependentUpon>
+    <Compile Include="ReviewToOrderView.xaml.cs">
+      <DependentUpon>ReviewToOrderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FindControl.xaml.cs">
       <DependentUpon>FindControl.xaml</DependentUpon>
@@ -112,8 +112,8 @@
     <Compile Include="OrderInfo.xaml.cs">
       <DependentUpon>OrderInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrdersListWithFinding.xaml.cs">
-      <DependentUpon>OrdersListWithFinding.xaml</DependentUpon>
+    <Compile Include="RepairsListWithFinding.xaml.cs">
+      <DependentUpon>RepairsListWithFinding.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReviewUserControl.xaml.cs">
       <DependentUpon>ReviewUserControl.xaml</DependentUpon>
@@ -160,7 +160,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExaminateToOrder.xaml">
+    <Page Include="ReviewToOrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,7 +176,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OrdersListWithFinding.xaml">
+    <Page Include="RepairsListWithFinding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

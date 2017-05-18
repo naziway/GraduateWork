@@ -60,17 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExaminateManager.cs" />
-    <Compile Include="ExaminateViewModel.cs" />
+    <Compile Include="ReviewsViewModel.cs" />
     <Compile Include="Find\ClientFindingViewModel.cs" />
     <Compile Include="Lists\ClientListViewModel.cs" />
     <Compile Include="Base\FindViewModel.cs" />
     <Compile Include="Main\LoginViewModel.cs" />
     <Compile Include="Main\MainWindowViewModel.cs" />
-    <Compile Include="OrderInfoViewModel.cs" />
+    <Compile Include="Find\OrderInfoViewModel.cs" />
     <Compile Include="RepairsViewModel.cs" />
-    <Compile Include="OrderWithFindViewModel.cs" />
+    <Compile Include="Find\RepairsWithFindViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourseAdd\NewReviewViewModel.cs" />
+    <Compile Include="ReviewToOrderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseService\DatabaseService.csproj">

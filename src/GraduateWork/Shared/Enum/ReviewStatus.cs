@@ -2,6 +2,8 @@
 {
     public enum ReviewStatus
     {
-        New
+        New,
+        Reviewing,
+        Reviewed
     }
 }

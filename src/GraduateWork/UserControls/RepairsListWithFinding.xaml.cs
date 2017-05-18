@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace UserControls
 {
     /// <summary>
-    /// Interaction logic for ExaminateToOrder.xaml
+    /// Interaction logic for OrdersListWithFinding.xaml
     /// </summary>
-    public partial class ExaminateToOrder : UserControl
+    public partial class RepairsListWithFinding : UserControl
     {
-        public ExaminateToOrder()
+        public RepairsListWithFinding()
         {
             InitializeComponent();
         }

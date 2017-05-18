@@ -328,11 +328,12 @@ namespace DatabaseService
                     Status = (RepairStatus)repair.Status,
                     Worker = workers.First(user => user.Id == repair.WorkerId),
                     Device = devices.First(devicee => devicee.Id == repair.DeviceId),
-                    RepairDevice = repairDevices.First(device => device.Id == repair.RepairDeviceId),
                     Work = works.First(work => work.Id == repair.WorkId)
                 };
                 if (repair.PartId != null)
                     item.Part = parts.First(part => part.Id == repair.PartId);
+                if (repair.RepairDeviceId != null)
+                    item.RepairDevice = repairDevices.First(device => device.Id == repair.RepairDeviceId);
 
                 list.Add(item);
             }

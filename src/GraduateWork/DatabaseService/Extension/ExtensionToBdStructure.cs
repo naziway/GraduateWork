@@ -71,10 +71,10 @@ namespace DatabaseService.Extension
                 Status = (int)repair.Status,
                 OrderDate = repair.OrderDate,
                 IsWarranty = repair.IsWarranty,
-                RepairDeviceId = repair.RepairDevice.Id,
+                RepairDeviceId = repair?.RepairDevice?.Id,
                 DeviceId = repair.Device.Id,
                 WorkerId = repair.Worker.Id,
-                PartId = repair?.Part.Id,//Warning//TODO
+                PartId = repair?.Part?.Id,//Warning//TODO
                 WorkId = repair.Work.Id
             };
         }
