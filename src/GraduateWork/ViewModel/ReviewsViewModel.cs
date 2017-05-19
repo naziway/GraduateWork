@@ -72,7 +72,7 @@ namespace ViewModel
             var review = obj as Review;
             if (review == null)
                 return;
-            var repair = DataService.GetReviewsByKod(review.Kod);
+            var repair = DataService.GetRepairsByKod(review.Repair.Kod);
             OpenWindowByDataAction(OpenWindow.Repair, repair);
         }
     }

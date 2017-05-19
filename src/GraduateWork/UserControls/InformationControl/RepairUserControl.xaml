@@ -4,21 +4,122 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserControls.InformationControl"
+             xmlns:item="clr-namespace:UserControls.ItemsControl"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="300">
     <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="TimeNewRoman"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="AliceBlue"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
+            <Setter Property="Background" Value="#2c3a45"/>
+        </Style>
         <DataTemplate x:Key="RepairItemDataTemplate" DataType="ListBoxItem">
-            <TextBlock  Text="{Binding Kod}"/>
+            <item:RepairListBoxItemWithComboBox DataContext="{Binding Path=.}"/>
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding Repairs}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="ContentTemplate" Value="{StaticResource RepairItemDataTemplate }"/>
-                    <Setter Property="Background" Value="Chartreuse"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="3"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Клієнт: "/>
+                        <TextBlock Grid.Column="1" Text="{Binding Client.FirstName}"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Client.LastName}"/>
+                        <TextBlock Grid.Column="5" Text="Код: "/>
+                        <TextBlock Grid.Column="6" Text="{Binding RepairKod}"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="3"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Пристрій: "/>
+                        <TextBlock Grid.Column="1" Text="{Binding Device.Marka}"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Device.Model}"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Серійний: "/>
+                        <TextBlock Grid.Column="1" Text="{Binding Device.SerialNumber}"/>
+                    </Grid>
+
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1">
+            <ListBox ItemsSource="{Binding Repairs}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="ContentTemplate" Value="{StaticResource RepairItemDataTemplate }"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding  Status}" Value="New">
+                                <Setter Property="Background" Value="OrangeRed"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding  Status}" Value="InProgress">
+                                <Setter Property="Background" Value="Yellow"/>
+                                <Setter Property="Foreground" Value="Blue"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding  Status}" Value="Done">
+                                <Setter Property="Background" Value="ForestGreen"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding  Status}" Value="Canceled">
+                                <Setter Property="Background" Value="Black"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding  Status}" Value="Paid">
+                                <Setter Property="Background" Value="#2c3a45"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Border>
+
+        <Border Grid.Row="2">
+            <Grid  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Grid.Column="0" HorizontalAlignment="Right" Text="Загальна сума:"/>
+                <TextBlock  Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Symma}"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

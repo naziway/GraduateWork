@@ -86,7 +86,7 @@ namespace DatabaseService
         #region Repair
 
         List<Repair> GetRepairsByClientId(int clientId);
-        List<Repair> GetReviewsByKod(int kod);
+        List<Repair> GetRepairsByKod(int kod);
         List<Repair> GetRepairsByWorkerId(int workerId);
         int AddRepairs(List<Repair> repairs);
         Task<int> ChangeRepairsStatusByKod(int id, RepairStatus newStatus);

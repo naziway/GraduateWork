@@ -15,16 +15,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Shared.Enum;
 
-namespace UserControls.InformationControl
+namespace UserControls.ItemsControl
 {
     /// <summary>
-    /// Interaction logic for RepairUserControl.xaml
+    /// Interaction logic for RepairListBoxItemWithComboBox.xaml
     /// </summary>
-    public partial class RepairUserControl : UserControl
+    public partial class RepairListBoxItemWithComboBox : UserControl
     {
-        public ObservableCollection<RepairStatus> StatusList { get; set; }
 
-        public RepairUserControl()
+        public RepairListBoxItemWithComboBox()
         {
             InitializeComponent();
             StatusList = new ObservableCollection<RepairStatus>
@@ -36,5 +35,7 @@ namespace UserControls.InformationControl
                     RepairStatus.Paid
     };
         }
+
+        public ObservableCollection<RepairStatus> StatusList { get; set; }
     }
 }

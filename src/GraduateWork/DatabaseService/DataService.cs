@@ -365,7 +365,7 @@ namespace DatabaseService
             return GetRepairs().Where(repair => repair.Device.Client.Id == clientId).ToList();
         }
 
-        public List<Repair> GetReviewsByKod(int kod)//Test
+        public List<Repair> GetRepairsByKod(int kod)//Test
         {
             return GetRepairs().Where(repair => repair.Kod == kod).ToList();
         }

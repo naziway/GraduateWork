@@ -2,6 +2,10 @@
 {
     public enum RepairStatus
     {
-        New
+        New,
+        InProgress,
+        Done,
+        Canceled,
+        Paid
     }
 }
