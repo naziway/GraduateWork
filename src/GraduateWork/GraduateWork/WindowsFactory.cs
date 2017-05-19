@@ -47,13 +47,13 @@ namespace GraduateWork
 
         private void OpenResizeWindow(OpenWindow windowType)
         {
-            Window view;
+            Window view = new BaseView();
             switch (windowType)
             {
                 case Shared.OpenWindow.Repairs:
                     var orderViewModel = new RepairsViewModel(DataService);
                     orderViewModel.SetAction(OpenWindowWithData);
-                    view = new ResizeBaseView(new RepairsListWithFinding { DataContext = new RepairsWithFindViewModel(DataService, orderViewModel) }, "Список ремонтів", 500, 500);
+                    // view = new ResizeBaseView(new RepairsListWithFinding { DataContext = new RepairsWithFindViewModel(DataService, orderViewModel) }, "Список ремонтів", 500, 500);
                     break;
                 case Shared.OpenWindow.NewReview:
                     var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
@@ -75,10 +75,6 @@ namespace GraduateWork
             Window view;
             switch (windowType)
             {
-                case OpenWindow.OrderInfo:
-                    var orderInfoViewModel = new OrderInfoViewModel(DataService, data as OrderModel);
-                    view = new ResizeBaseView(new OrderInfo() { DataContext = orderInfoViewModel }, "Опис Замовлення", 500, 500);
-                    break;
                 case OpenWindow.ReviewToOrder:
                     view = new ResizeBaseView(new ReviewToOrderView { DataContext = new ReviewToOrderViewModel(DataService, data as Review) }, "Обстеження", 500, 300);
                     break;

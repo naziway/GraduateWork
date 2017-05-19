@@ -41,7 +41,7 @@ namespace ViewModel
                 Status = RepairStatus.New,
                 Worker = Review.Worker
             });
-            Symma += SelectedPart.Price + SelectedWork.Price;
+            Symma += SelectedPart.Price + SelectedWork.Price;// частина може бути null
         });
         public ICommand SaveReviewInRepair => new CommandHandler(async () =>
         {

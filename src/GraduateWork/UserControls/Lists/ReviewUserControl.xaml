@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:UserControls"
+             xmlns:item="clr-namespace:UserControls.ItemsControl"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
 
@@ -12,48 +13,23 @@
         <Style TargetType="ListBoxItem">
             <Setter Property="Foreground" Value="White"/>
         </Style>
+
+        <DataTemplate x:Key="ReviewListBoxItem">
+            <item:ReviewListBoxItem DataContext="{Binding Path=.}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ReviewListBoxItem2">
+            <item:ReviewListBoxItem DataContext="{Binding Path=.}"/>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid >
         <ListBox Name="OrderList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ItemsSource="{Binding Reviews}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" >
-
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="30" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="60" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Код замовлення:"  />
-
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Chartreuse" Grid.Column="1" Text="{Binding Kod}"/>
-
-                        <TextBlock  Grid.Column="2" Text="Дата оформлення:"  />
-
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
-
-                        
-                        <Button Grid.Column="4" Command="{Binding Command}" Content="Обстежити" CommandParameter="{Binding Path=.}"/>
-                        
-                        <Grid.InputBindings>
-                            <MouseBinding Gesture="LeftDoubleClick"
-                                                      Command="{Binding Command}"
-                                                      CommandParameter="{Binding ElementName=OrderList, Path=SelectedItem}"/>
-                        </Grid.InputBindings>
-                    </Grid>
-
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <ListBox.ItemContainerStyle>
+          <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="#2c3a45" />
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                     <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxItem}"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="New">
                             <Setter Property="Background" Value="Red" />
