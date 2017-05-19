@@ -94,8 +94,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="InformationControl\RepairUserControl.xaml.cs">
+      <DependentUpon>RepairUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ItemsControl\ReviewListBoxItem.xaml.cs">
       <DependentUpon>ReviewListBoxItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsControl\ReviewListBoxView.xaml.cs">
+      <DependentUpon>ReviewListBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lists\ClientListUserControl.xaml.cs">
       <DependentUpon>ClientListUserControl.xaml</DependentUpon>
@@ -149,7 +155,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="InformationControl\RepairUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ItemsControl\ReviewListBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemsControl\ReviewListBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,9 +192,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InformationControl\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

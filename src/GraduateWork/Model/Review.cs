@@ -17,5 +17,6 @@ namespace Model
         public Device Device { get; set; }
         public Repair Repair { get; set; }
         public ICommand Command { get; set; }
+        public ICommand ViewCommand { get; set; }
     }
 }

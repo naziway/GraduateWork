@@ -42,22 +42,38 @@ namespace ViewModel
             DataService = dataService;
             var command = new CommandWithParameters((async o =>
             {
-                await Reviewing(o);
+                await OpenViewReviewToRepair(o);
             }));
+            var viewcommand = new CommandWithParameters(OpenRepairByReview);
             var list = DataService.GetReviews();
+            ViewCommand = viewcommand;
             Command = command;
-            list.ForEach((order) => { order.Command = command; });
+            list.ForEach((review) =>
+            {
+                review.Command = command;
+                review.ViewCommand = ViewCommand;
+            });
             Reviews = new ObservableCollection<Review>(list);
         }
 
         public ICommand Command { get; set; }
-        private async Task Reviewing(object obj)
+        public ICommand ViewCommand { get; set; }
+        private async Task OpenViewReviewToRepair(object obj)
         {
             var review = obj as Review;
             if (review == null)
                 return;
             await DataService.ChangeReviewStatusById(review.Id, ReviewStatus.Reviewing);
             OpenWindowByDataAction(OpenWindow.ReviewToOrder, review);
+        }
+
+        private void OpenRepairByReview(object obj)
+        {
+            var review = obj as Review;
+            if (review == null)
+                return;
+            var repair = DataService.GetReviewsByKod(review.Kod);
+            OpenWindowByDataAction(OpenWindow.Repair, repair);
         }
     }
 }

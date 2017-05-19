@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using UserControls;
+using UserControls.InformationControl;
 using ViewModel;
 using ViewModel.ResourseAdd;
 
@@ -77,6 +78,9 @@ namespace GraduateWork
             {
                 case OpenWindow.ReviewToOrder:
                     view = new ResizeBaseView(new ReviewToOrderView { DataContext = new ReviewToOrderViewModel(DataService, data as Review) }, "Обстеження", 500, 300);
+                    break;
+                case OpenWindow.Repair:
+                    view = new ResizeBaseView(new RepairUserControl{ DataContext = new RepairViewModel(DataService, data as List<Repair>) }, "Ремонт", 500, 300);
                     break;
                 default: throw new InvalidOperationException();
             }

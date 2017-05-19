@@ -2,6 +2,7 @@
 {
     public enum OpenWindow
     {
+        Repair,
         Repairs,
         NewReview,
         OrderInfo,

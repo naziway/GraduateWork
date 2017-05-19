@@ -17,8 +17,8 @@
         <DataTemplate x:Key="ReviewListBoxItem">
             <item:ReviewListBoxItem DataContext="{Binding Path=.}"/>
         </DataTemplate>
-        <DataTemplate x:Key="ReviewListBoxItem2">
-            <item:ReviewListBoxItem DataContext="{Binding Path=.}"/>
+        <DataTemplate x:Key="ReviewListBoxView">
+            <item:ReviewListBoxView DataContext="{Binding Path=.}"/>
         </DataTemplate>
     </UserControl.Resources>
     <Grid >
@@ -29,16 +29,18 @@
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                     <Setter Property="BorderThickness" Value="0.5"/>
-                    <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxItem}"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="New">
                             <Setter Property="Background" Value="Red" />
+                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxItem}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="Reviewing">
                             <Setter Property="Background" Value="Yellow" />
+                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxView}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="SetLink">
                             <Setter Property="Background" Value="Green" />
+                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxView}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
