@@ -98,6 +98,7 @@
     <Compile Include="ConvertControl\SellingCreatorUserControl.xaml.cs">
       <DependentUpon>SellingCreatorUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\CountConverter.cs" />
     <Compile Include="InformationControl\RepairUserControl.xaml.cs">
       <DependentUpon>RepairUserControl.xaml</DependentUpon>
     </Compile>

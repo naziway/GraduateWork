@@ -22,7 +22,7 @@
 
 
         <Border Grid.Row="1">
-            <ListBox ItemsSource="{Binding Parts}">
+            <ListBox ItemsSource="{Binding Parts}" HorizontalContentAlignment="Stretch">
 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
