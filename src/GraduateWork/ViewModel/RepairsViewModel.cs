@@ -82,10 +82,10 @@ namespace ViewModel
         public ICommand Command { get; set; }
         private void OpenOrderInfoWindow(object obj)
         {
-            var order = obj as OrderModel;
-            if (order == null)
-                return;
-            OpenWindowByDataAction(OpenWindow.OrderInfo, order);
+            //   var order = obj as OrderModel;
+            //   if (order == null)
+            //       return;
+            //   OpenWindowByDataAction(OpenWindow.OrderInfo, order);
         }
     }
 }

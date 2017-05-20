@@ -4,7 +4,6 @@ using Shared;
 using System;
 using System.Windows.Controls;
 using System.Windows.Input;
-using UserControls;
 using ViewModel.Find;
 
 namespace ViewModel
@@ -36,20 +35,18 @@ namespace ViewModel
         }
 
         #region Command
-        public ICommand AddNewReviewCommand => new CommandHandler(() =>
+        public ICommand AddNewSellingCommand => new CommandHandler(() =>
         {
-            //CurrentUserControl = new AddNewExaminateControl();
-            OpenWindowAction(OpenWindow.NewReview);
+            OpenWindowAction(OpenWindow.NewSelling);
         });
         public ICommand ClientListCommand => new CommandHandler(() =>
         {
-            var userControl = new ClientListWithFinding { DataContext = new ClientFindingViewModel(DataService) };
-            CurrentUserControl = userControl;
+
         });
 
         public ICommand OrdersCommand => new CommandHandler(() =>
         {
-            CurrentUserControl = new ReviewUserControl();
+
             OpenWindowAction(OpenWindow.Repairs);
         });
         public ICommand OpenReviewListCommand => new CommandHandler(() =>

@@ -7,6 +7,7 @@
         NewReview,
         OrderInfo,
         ListReview,
-        ReviewToOrder
+        ReviewToOrder,
+        NewSelling
     }
 }

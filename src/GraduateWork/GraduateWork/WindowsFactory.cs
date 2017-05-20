@@ -1,11 +1,12 @@
-﻿using DatabaseService;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+using DatabaseService;
 using GraduateWork.Base;
 using Model;
 using Shared;
-using System;
-using System.Collections.Generic;
-using System.Windows;
 using UserControls;
+using UserControls.ConvertControl;
 using UserControls.InformationControl;
 using ViewModel;
 using ViewModel.ResourseAdd;
@@ -51,19 +52,28 @@ namespace GraduateWork
             Window view = new BaseView();
             switch (windowType)
             {
-                case Shared.OpenWindow.Repairs:
+                case OpenWindow.NewSelling:
+                    var sellingViewModel = new SellingCreatorViewModel(DataService);
+                    var sellingView = new SellingCreatorUserControl
+                    {
+                        DataContext = sellingViewModel,
+                        AddPart = sellingViewModel.AddPart
+                    };
+                    view = new ResizeBaseView(sellingView, "Нова покупка", 600, 380);
+                    break;
+                case OpenWindow.Repairs:
                     var orderViewModel = new RepairsViewModel(DataService);
                     orderViewModel.SetAction(OpenWindowWithData);
                     // view = new ResizeBaseView(new RepairsListWithFinding { DataContext = new RepairsWithFindViewModel(DataService, orderViewModel) }, "Список ремонтів", 500, 500);
                     break;
-                case Shared.OpenWindow.NewReview:
+                case OpenWindow.NewReview:
                     var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
                     view = new BaseView(viewModel, "Нове Обстеження", 300, 300);
                     break;
-                case Shared.OpenWindow.ListReview:
+                case OpenWindow.ListReview:
                     var reviewsViewModel = new ReviewsViewModel(DataService);
                     reviewsViewModel.SetAction(OpenWindowWithData);
-                    view = new ResizeBaseView(new ReviewUserControl() { DataContext = reviewsViewModel }, "Cписок Обстежень", 500, 500);
+                    view = new ResizeBaseView(new ReviewUserControl { DataContext = reviewsViewModel }, "Cписок Обстежень", 500, 500);
                     break;
                 default: throw new InvalidOperationException();
             }
@@ -80,7 +90,7 @@ namespace GraduateWork
                     view = new ResizeBaseView(new ReviewToOrderView { DataContext = new ReviewToOrderViewModel(DataService, data as Review) }, "Обстеження", 500, 300);
                     break;
                 case OpenWindow.Repair:
-                    view = new ResizeBaseView(new RepairUserControl{ DataContext = new RepairViewModel(DataService, data as List<Repair>) }, "Ремонт", 500, 300);
+                    view = new ResizeBaseView(new RepairUserControl { DataContext = new RepairViewModel(DataService, data as List<Repair>) }, "Ремонт", 500, 300);
                     break;
                 default: throw new InvalidOperationException();
             }
@@ -109,7 +119,7 @@ namespace GraduateWork
             DataService.User = user;
             InvokeInMainThread(LoginView.Close);
         }
-        private void ViewModelOnFailedLogin(object sender, System.EventArgs e)
+        private void ViewModelOnFailedLogin(object sender, EventArgs e)
         {
             MessageBox.Show($"Failed Login Or Password");
         }

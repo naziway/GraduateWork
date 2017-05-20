@@ -15,5 +15,9 @@
         <Setter Property="Foreground" Value="AliceBlue"/>
         <Setter Property="FontSize" Value="17"/>
     </Style>
+    <Style TargetType="Border">
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
+    </Style>
 
 </ResourceDictionary>

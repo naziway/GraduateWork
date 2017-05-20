@@ -49,7 +49,6 @@
     <Compile Include="Client.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="Devices.cs" />
-    <Compile Include="OrderModel.cs" />
     <Compile Include="OrderRecord.cs" />
     <Compile Include="Part.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,10 +56,10 @@
     <Compile Include="RepairDevice.cs" />
     <Compile Include="Review.cs" />
     <Compile Include="Selling.cs" />
+    <Compile Include="PartModel.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="Work.cs" />
-    <Compile Include="WorkModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />

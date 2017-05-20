@@ -95,6 +95,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConvertControl\SellingCreatorUserControl.xaml.cs">
+      <DependentUpon>SellingCreatorUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InformationControl\RepairUserControl.xaml.cs">
       <DependentUpon>RepairUserControl.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,9 @@
     </Compile>
     <Compile Include="ItemsControl\ReviewListBoxView.xaml.cs">
       <DependentUpon>ReviewListBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsControl\SellingListBoxItem.xaml.cs">
+      <DependentUpon>SellingListBoxItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lists\ClientListUserControl.xaml.cs">
       <DependentUpon>ClientListUserControl.xaml</DependentUpon>
@@ -162,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ConvertControl\SellingCreatorUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InformationControl\RepairUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -179,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ItemsControl\ReviewListBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemsControl\SellingListBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,6 +225,10 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{957dffe9-c9ac-4f80-8763-178fa616e272}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{8a5d60e2-531e-4e14-a919-1294a6f89231}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

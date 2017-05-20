@@ -24,6 +24,14 @@ namespace ViewModel
             if (repairs == null || repairs.Count < 1)
                 return;
             DataService = dataService;
+            StatusList = new ObservableCollection<RepairStatus>
+                {
+                    RepairStatus.New,
+                    RepairStatus.InProgress,
+                    RepairStatus.Done,
+                    RepairStatus.Canceled,
+                    RepairStatus.Paid
+                };
             Task.Factory.StartNew(() =>
             {
                 Repairs = new ObservableCollection<Repair>(repairs);
@@ -37,14 +45,7 @@ namespace ViewModel
                     if (repair.Part != null)
                         Symma += repair.Part.Price;
                 }
-                StatusList = new ObservableCollection<RepairStatus>
-                {
-                    RepairStatus.New,
-                    RepairStatus.InProgress,
-                    RepairStatus.Done,
-                    RepairStatus.Canceled,
-                    RepairStatus.Paid
-                };
+                
             });
         }
     }
