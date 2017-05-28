@@ -1,0 +1,36 @@
+﻿<Window
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GraduateWork"
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             x:Class="GraduateWork.DiagramControl"
+             DataContext="{dxmvvm:ViewModelSource Type={x:Type local:ViewModel}}"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="700">
+    <Grid>
+
+        <dxc:ChartControl HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" DataSource="{Binding Items}">
+            <dxc:ChartControl.Legend>
+                <dxc:Legend/>
+            </dxc:ChartControl.Legend>
+            <dxc:XYDiagram2D>
+                <dxc:BarSideBySideSeries2D DisplayName="Обстеження" LabelsVisibility="True"
+                             ArgumentDataMember="Argument" 
+                             ValueDataMember="ReviewValue">
+                </dxc:BarSideBySideSeries2D>
+                <dxc:BarSideBySideSeries2D DisplayName="Ремонт" LabelsVisibility="True"
+                             ArgumentDataMember="Argument" 
+                             ValueDataMember="RepairValue">
+                </dxc:BarSideBySideSeries2D>
+                <dxc:BarSideBySideSeries2D DisplayName="Продажі" LabelsVisibility="True"
+                             ArgumentDataMember="Argument" 
+                             ValueDataMember="SellingValue">
+                </dxc:BarSideBySideSeries2D>
+            </dxc:XYDiagram2D>
+        </dxc:ChartControl>
+
+    </Grid>
+</Window>

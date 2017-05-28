@@ -49,6 +49,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="Devices.cs" />
+    <Compile Include="HistogramModel.cs" />
     <Compile Include="OrderRecord.cs" />
     <Compile Include="Part.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

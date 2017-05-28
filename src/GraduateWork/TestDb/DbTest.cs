@@ -1,16 +1,26 @@
 ﻿using DatabaseService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Model;
 using Shared.Enum;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Model;
+using ViewModel;
 
 namespace TestDb
 {
     [TestClass]
     public class DbTest
     {
+        [TestMethod]
+        public void StatisticTest()
+        {
+            DatabaseService.DataService service = new DataService();
+
+            var statistic = new HistogramLogic(service).GetStatisticList();
+            Assert.AreNotEqual(statistic.Count, 0);
+
+        }
         [TestMethod]
         public void CheckGetAllSelling()
         {
@@ -80,7 +90,7 @@ namespace TestDb
 
             //var sellings = service.GetSellings();
             Assert.AreEqual(result, -1);
-           
+
         }
 
     }

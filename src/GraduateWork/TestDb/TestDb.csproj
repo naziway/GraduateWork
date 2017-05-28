@@ -75,6 +75,10 @@
       <Project>{957dffe9-c9ac-4f80-8763-178fa616e272}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{8a5d60e2-531e-4e14-a919-1294a6f89231}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
