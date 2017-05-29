@@ -19,10 +19,25 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Silver">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="2" Command="{Binding OpenPartViewCommand}" Content="Відкрити Вікно Запчастин"/>
+
+            </Grid>
+
+
+        </Border>
+
 
 
         <Border Grid.Row="1">
-            <ListBox ItemsSource="{Binding Parts}" HorizontalContentAlignment="Stretch">
+            <ListBox ItemsSource="{Binding ChooseParts}" HorizontalContentAlignment="Stretch">
 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">

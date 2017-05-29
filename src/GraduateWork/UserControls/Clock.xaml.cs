@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace UserControls
@@ -20,9 +21,11 @@ namespace UserControls
 
         private void Timer_Click(object sender, EventArgs e)
         {
-            DateTime d;
-            d = DateTime.Now;
-            clock.Content = d.Hour + " : " + d.Minute + " : " + d.Second;
+            //   DateTime d;
+            //  d = DateTime.Now.ToLongTimeString()
+            //  var hour = d.Hour;
+            //  var minute = d.Minute;
+            clock.Content = new string(new string(DateTime.Now.ToLongTimeString().Reverse().ToArray()).Remove(0, 2).Reverse().ToArray());
         }
     }
 }

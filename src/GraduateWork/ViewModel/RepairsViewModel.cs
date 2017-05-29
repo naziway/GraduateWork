@@ -1,6 +1,7 @@
 ﻿using DatabaseService;
 using Model;
 using Shared;
+using Shared.Enum;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

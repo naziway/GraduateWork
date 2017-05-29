@@ -114,6 +114,9 @@
     <Compile Include="ItemsControl\ReviewListBoxView.xaml.cs">
       <DependentUpon>ReviewListBoxView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ItemsControl\SellingListBoxItemForPart.xaml.cs">
+      <DependentUpon>SellingListBoxItemForPart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ItemsControl\SellingListBoxItem.xaml.cs">
       <DependentUpon>SellingListBoxItem.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,9 @@
     </Compile>
     <Compile Include="ConvertControl\ReviewToOrderView.xaml.cs">
       <DependentUpon>ReviewToOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lists\ListPart.xaml.cs">
+      <DependentUpon>ListPart.xaml</DependentUpon>
     </Compile>
     <Compile Include="ServiceControl\FindControl.xaml.cs">
       <DependentUpon>FindControl.xaml</DependentUpon>
@@ -196,6 +202,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ItemsControl\SellingListBoxItemForPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ItemsControl\SellingListBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ConvertControl\ReviewToOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lists\ListPart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,4 @@
-﻿namespace Shared
+﻿namespace Shared.Enum
 {
     public enum OpenWindow
     {
@@ -8,6 +8,7 @@
         OrderInfo,
         ListReview,
         ReviewToOrder,
-        NewSelling
+        NewSelling,
+        ListParts
     }
 }

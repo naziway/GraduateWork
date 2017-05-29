@@ -61,7 +61,8 @@ namespace DatabaseService.Extension
                 Login = users.Login,
                 Password = users.Password,
                 RegistrationDate = users.RegistrationDate,
-                UserType = (UserType)users.UserType
+                UserType = (UserType)users.UserType,
+                Salary = users.Salary ?? 0
             };
         }
         public UserData Convert(PersonalData personalData)

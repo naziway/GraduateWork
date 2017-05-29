@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Label  HorizontalAlignment="Stretch" VerticalContentAlignment="Bottom" Padding="0" Margin="0"  Name="clock" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Stretch"  FontSize="40" FontFamily="Forte" />
+        <Label  HorizontalAlignment="Stretch" VerticalContentAlignment="Bottom" Padding="0" Margin="0"  Name="clock" VerticalAlignment="Bottom" Foreground="White" HorizontalContentAlignment="Stretch"  FontSize="40" FontFamily="Forte" />
     </Grid>
 </UserControl>

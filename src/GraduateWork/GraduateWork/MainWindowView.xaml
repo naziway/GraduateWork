@@ -91,14 +91,14 @@
                             <TextBlock Grid.Column="1" HorizontalAlignment="Right" Style="{DynamicResource UserName}" Text="{Binding ActiveUser}"/>
                             
                         </Grid>
-                        <Grid  Grid.Column="2" Width="200">
-                            <userControls:Clock Margin="20,3,0,0"  />
+                        <Grid  Grid.Column="2" Width="150" VerticalAlignment="Bottom" >
+                            <userControls:Clock Margin="0" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" />
                         </Grid>
 
                     </Grid>
                 </Border>
                 <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="White">
-                    <local:DiagramControl  DataContext="{Binding HistogramViewModel}"/>
+                    <local:DiagramControl  DataContext="{Binding HistogramViewModel}" Margin="10,1,-10,-1"/>
                 </Border>
             </Grid>
         </Grid>

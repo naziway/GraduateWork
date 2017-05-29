@@ -1,6 +1,5 @@
 ﻿using DatabaseService;
 using Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,7 +35,7 @@ namespace ViewModel
         {
             var list = new List<HistogramModel>();
 
-            var repairs = DataService.GetRepairs().Where(repair => repair.OrderDate > DateTime.Now.AddMonths(-6)).GroupBy(repair => repair.OrderDate.Month.ToString());
+            var repairs = DataService.GetRepairs().GroupBy(repair => repair.OrderDate.Month.ToString());
             foreach (var repair in repairs)
             {
                 var value = 0.0;
@@ -48,7 +47,7 @@ namespace ViewModel
                 }
                 list.Add(new HistogramModel { Argument = repair.Key, RepairValue = value });
             }
-            var reviews = DataService.GetReviews().Where(review => review.OrderDate > DateTime.Now.AddMonths(-6)).GroupBy(review => review.OrderDate.Month.ToString());
+            var reviews = DataService.GetReviews().GroupBy(review => review.OrderDate.Month.ToString());
             foreach (var review in reviews)
             {
                 var value = review.Count() * 50;
@@ -60,7 +59,7 @@ namespace ViewModel
                     bar.ReviewValue = value;
             }
 
-            var sellings = DataService.GetSellings().Where(review => review.OrderDate > DateTime.Now.AddMonths(-6)).GroupBy(review => review.OrderDate.Month.ToString());
+            var sellings = DataService.GetSellings().GroupBy(review => review.OrderDate.Month.ToString());
             foreach (var selling in sellings)
             {
                 var value = selling.Where(item => item.Part != null).Sum(item => item.Part.Price * item.Part.Count);

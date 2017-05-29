@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UserControls.ConvertControl
+namespace UserControls.ItemsControl
 {
     /// <summary>
-    /// Interaction logic for SellingCreatorUserControl.xaml
+    /// Interaction logic for SellingListBoxItem.xaml
     /// </summary>
-    public partial class SellingCreatorUserControl : UserControl
+    public partial class SellingListBoxItemForPart : UserControl
     {
-        public SellingCreatorUserControl()
+        public SellingListBoxItemForPart()
         {
             InitializeComponent();
         }
-        public ICommand RemoveBoxItemCommand { get; set; }
     }
 }

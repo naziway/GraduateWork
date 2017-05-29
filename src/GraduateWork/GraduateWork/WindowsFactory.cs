@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
-using DatabaseService;
+﻿using DatabaseService;
 using GraduateWork.Base;
 using Model;
-using Shared;
+using Shared.Enum;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 using UserControls;
 using UserControls.ConvertControl;
 using UserControls.InformationControl;
@@ -47,17 +47,18 @@ namespace GraduateWork
         }
 
 
-        private void OpenResizeWindow(OpenWindow windowType)
+        private void OpenResizeWindow(Shared.Enum.OpenWindow windowType)
         {
             Window view = new BaseView();
             switch (windowType)
             {
                 case OpenWindow.NewSelling:
                     var sellingViewModel = new SellingCreatorViewModel(DataService);
+                    sellingViewModel.SetAction(OpenWindowWithAction);
                     var sellingView = new SellingCreatorUserControl
                     {
                         DataContext = sellingViewModel,
-                        AddPart = sellingViewModel.AddPart
+                        RemoveBoxItemCommand = sellingViewModel.RemoveBoxItemCommand
                     };
                     view = new ResizeBaseView(sellingView, "Нова покупка", 600, 380);
                     break;
@@ -81,7 +82,7 @@ namespace GraduateWork
             InvokeInMainThread(view.Show);
         }
 
-        private void OpenWindowWithData(OpenWindow windowType, object data)
+        private void OpenWindowWithData(Shared.Enum.OpenWindow windowType, object data)
         {
             Window view;
             switch (windowType)
@@ -95,6 +96,29 @@ namespace GraduateWork
                 default: throw new InvalidOperationException();
             }
             OpenedWindows.Add(view);
+            InvokeInMainThread(view.Show);
+        }
+        private void OpenWindowWithAction(OpenWindow windowType, Action<object> action)
+        {
+            Window view;
+            switch (windowType)
+            {
+                case OpenWindow.ListParts:
+
+                    var listPartViewModel = new ListPartViewModel(DataService);
+                    var listPart = new ListPart
+                    {
+                        DataContext = listPartViewModel,
+                        Command = listPartViewModel.Command
+                    };
+                    listPartViewModel.SetAction(action);
+                    view = new ResizeBaseView(listPart, "Cписок Запчастин", 500, 500);
+
+                    break;
+                default: throw new InvalidOperationException();
+            }
+            OpenedWindows.Add(view);
+
             InvokeInMainThread(view.Show);
         }
 
@@ -117,7 +141,7 @@ namespace GraduateWork
             LoginViewModel.OnFailedLogin -= ViewModelOnFailedLogin;
             DataService.User = user;
             OpenMainWindow();
-            
+
             InvokeInMainThread(LoginView.Close);
         }
         private void ViewModelOnFailedLogin(object sender, EventArgs e)
