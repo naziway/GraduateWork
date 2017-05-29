@@ -29,7 +29,7 @@
                 <TextBox   Grid.Column="4" Text="{Binding ChooseCount,UpdateSourceTrigger=PropertyChanged,IsAsync=True}"/>
                 <TextBlock   Grid.Column="5" Text="Сума="/>
                 <TextBlock   Grid.Column="6" Text="{Binding SumPrice}"/>
-                <Button Grid.Column="7" Command="{Binding RemoveBoxItemCommand,RelativeSource={RelativeSource Mode=FindAncestor ,AncestorType={x:Type convertControl:SellingCreatorUserControl}}}" CommandParameter="{Binding Path=.}" Content="+"/>
+                <Button Grid.Column="7" Command="{Binding RemoveBoxItemCommand,RelativeSource={RelativeSource Mode=FindAncestor ,AncestorType={x:Type convertControl:SellingCreatorUserControl}}}" CommandParameter="{Binding Path=.}" Content="-"/>
             </Grid>
         </Border>
     </Grid>

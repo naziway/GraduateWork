@@ -5,6 +5,7 @@ using Shared;
 using Shared.Enum;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace ViewModel
@@ -15,8 +16,15 @@ namespace ViewModel
         public DataService DatabaseService { get; set; }
 
         public ObservableCollection<PartModel> ChooseParts { get; set; } = new ObservableCollection<PartModel>();
+        public ObservableCollection<Client> Clients { get; set; }
+        public Client SelectedClient { get; set; }
 
         public Action<OpenWindow, Action<object>> OpenWindowWithAction { get; set; }
+
+
+        public ICommand ClearChoisePartListCommand => new CommandHandler(() => ChooseParts.Clear());
+        public ICommand ApplayCommand { get; set; }
+
         public ICommand RemoveBoxItemCommand => new CommandWithParameters(part =>
         {
             var item = part as PartModel;
@@ -35,7 +43,9 @@ namespace ViewModel
         public SellingCreatorViewModel(DataService databaseService)
         {
             DatabaseService = databaseService;
-
+            Clients = new ObservableCollection<Client>(DatabaseService.GetClients());
+            if (Clients.Any())
+                SelectedClient = Clients.First();
         }
 
         private static PartModel Convert(Part part) => new PartModel
