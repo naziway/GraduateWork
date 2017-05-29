@@ -1,16 +1,18 @@
 ﻿using DatabaseService;
+using Model;
 using PropertyChanged;
 using Shared;
 using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
-using ViewModel.Find;
 
 namespace ViewModel
 {
     [ImplementPropertyChanged]
     public class MainWindowViewModel
     {
+        public List<CustomMenuItem> MenuItems { get; set; }
         public DataService DataService { get; set; }
 
         #region Action
@@ -32,6 +34,16 @@ namespace ViewModel
         public MainWindowViewModel(DataService dataService)
         {
             DataService = dataService;
+
+            MenuItems = new List<CustomMenuItem>
+                {
+             new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Покупку"},
+             new CustomMenuItem {Command =AddNewReviewCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Обстеження"},
+             new CustomMenuItem {Command =ListReviewCommand , Img = "Icons/List.png" , ToolTip = "Список Обстежень"},
+             new CustomMenuItem {Command =LogOutCommand , Img = "Icons/LogOut.png" , ToolTip = "Вихід"},
+                 };
+
+
         }
 
         #region Command
@@ -39,21 +51,14 @@ namespace ViewModel
         {
             OpenWindowAction(OpenWindow.NewSelling);
         });
-        public ICommand ClientListCommand => new CommandHandler(() =>
+        public ICommand AddNewReviewCommand => new CommandHandler(() =>
         {
-
+            OpenWindowAction(OpenWindow.NewReview);
         });
-
-        public ICommand OrdersCommand => new CommandHandler(() =>
-        {
-
-            OpenWindowAction(OpenWindow.Repairs);
-        });
-        public ICommand OpenReviewListCommand => new CommandHandler(() =>
+        public ICommand ListReviewCommand => new CommandHandler(() =>
         {
             OpenWindowAction(OpenWindow.ListReview);
         });
-
 
         public ICommand LogOutCommand => new CommandHandler(DoOnLogOut);
         #endregion

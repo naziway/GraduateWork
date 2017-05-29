@@ -23,96 +23,46 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Canvas Grid.Column="0" Grid.Row="0" Grid.RowSpan="8" Background="#1f2933" ></Canvas>
-            <Grid  Grid.Column="0" Grid.Row="1" Margin="0,0,0,5">
-                <Button Command="{Binding AddNewReviewCommand}" ToolTip="Додати обстеження">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <StackPanel Style="{DynamicResource PanelItem}">
-                                <Image Source="Icons/Plus.png"  Height="40"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-            <Grid  Grid.Column="0" Grid.Row="2" Margin="0,0,0,5">
-                <Button Command="{Binding AddNewSellingCommand}" ToolTip="Нова Покупка">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <StackPanel Style="{DynamicResource PanelItem}">
-                                <Image Source="Icons/Plus.png"  Height="40"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-            <Grid  Grid.Column="0" Grid.Row="3" Margin="0,0,0,5">
-                <Button Command="{Binding AddNewDeviceCommand}" ToolTip="Додати новий пристрій">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <StackPanel Style="{DynamicResource PanelItem}">
-                                <Image Source="Icons/Plus.png"  Height="40"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-            <Grid  Grid.Column="0" Grid.Row="4" Margin="0,0,0,5">
-                <Button Command="{Binding OpenReviewListCommand}" ToolTip="Список Обстежень">
-                    <Button.Template>
-                        <ControlTemplate >
-                            <StackPanel Style="{DynamicResource PanelItem}">
-                                <Image  Source="Icons/List.png" VerticalAlignment="Center" Height="60" />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-            <Grid  Grid.Column="0" Grid.Row="5" Margin="0,0,0,5" ToolTip="Статистика роботи">
-                <Button Command="{Binding AddNewOrderCommand}">
-                    <Button.Template>
-                        <ControlTemplate >
-                            <StackPanel Style="{DynamicResource PanelItem}">
-                                <Image  Source="Icons/Settings.png" VerticalAlignment="Center" Height="60" />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-            <Grid  Grid.Column="0" Grid.Row="6" Margin="0,0,0,5">
-                <Button Command="{Binding ClientListCommand}" ToolTip="Список клієнтів">
-                    <Button.Template>
-                        <ControlTemplate >
-                            <StackPanel Style="{DynamicResource PanelItem}">
-                                <Image  Source="Icons/List.png" VerticalAlignment="Center" Height="60" />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-            <Grid  Grid.Column="0" Grid.Row="7" Margin="0,0,0,5">
-                <Button Command="{Binding ExaminateListCommand}" ToolTip="Список обстежень">
-                    <Button.Template>
-                        <ControlTemplate >
-                            <StackPanel Style="{DynamicResource PanelItem}">
-                                <Image  Source="Icons/List.png" VerticalAlignment="Center" Height="60" />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
+
+            <ListBox Margin="0" Padding="0"  HorizontalContentAlignment="Stretch" Background="#1f2933" ItemsSource="{Binding MenuItems}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid  Margin="0,0,0,5">
+                            <Button Command="{Binding Command}" ToolTip="{Binding ToolTip}">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <StackPanel Style="{DynamicResource PanelItem}">
+                                            <Image Source="{Binding Img}"  Height="40"/>
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
         </Grid>
 
-        <ContentPresenter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentUserControl}" Margin="5,0,-5,0"/>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+
+            <local:DiagramControl Grid.Column="1"/>
+
+        </Grid>
     </Grid>
 </UserControl>
