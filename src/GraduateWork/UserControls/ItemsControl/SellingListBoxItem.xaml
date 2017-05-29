@@ -10,6 +10,9 @@
              d:DesignHeight="40" d:DesignWidth="300">
     <UserControl.Resources>
         <converter:CountConverter x:Key="CountConverter"/>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#1c252a"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Border>

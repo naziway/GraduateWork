@@ -2,6 +2,7 @@
 {
     public enum SellingStatus
     {
-        New
+        New,
+        Paid
     }
 }

@@ -386,7 +386,7 @@ namespace DatabaseService
             }
             catch (Exception)
             {
-                return await Task.FromResult(0);
+                return await Task.FromResult(-1);
             }
         }
 
@@ -398,6 +398,7 @@ namespace DatabaseService
             {
                 foreach (var selling in sellings)
                 {
+                    selling.User = User;
                     database.Sellings.Add(selling.Convert(id++, kod));
                 }
                 var a = await database.SaveChangesAsync();
