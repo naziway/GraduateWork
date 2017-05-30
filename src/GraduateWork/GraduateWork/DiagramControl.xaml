@@ -7,18 +7,17 @@
              xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              x:Class="GraduateWork.DiagramControl"
-             DataContext="{dxmvvm:ViewModelSource Type={x:Type local:ViewModel}}"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="700">
     <Grid>
 
-        <dxc:ChartControl HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0" Padding="0"  VerticalAlignment="Stretch" Background="#2c3a45" DataSource="{Binding Items}">
+        <dxc:ChartControl BorderThickness="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0" Padding="0"  VerticalAlignment="Stretch" Background="#2c3a45" DataSource="{Binding Items}" AnimationMode="OnLoad">
             <dxc:ChartControl.Legend >
-                <dxc:Legend HorizontalPosition="Center" VerticalPosition="Top"/>
+                <dxc:Legend HorizontalPosition="Center" VerticalPosition="Top" Orientation="Horizontal" ReverseItems="False" Visible="True"/>
             </dxc:ChartControl.Legend>
             <dxc:XYDiagram2D VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Padding="0">
                 <dxc:XYDiagram2D.DefaultPane>
-                    <dxc:Pane DomainBrush="#FF035D63" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" />
+                    <dxc:Pane DomainBrush="#2c3a45" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" DomainBorderBrush="#2c3a45" EnableAxisXNavigation="False" EnableAxisYNavigation="False" />
                 </dxc:XYDiagram2D.DefaultPane>
 
                 <dxc:XYDiagram2D.AxisX>
@@ -37,7 +36,6 @@
                         </dxc:AxisY2D.Label>
                     </dxc:AxisY2D>
                 </dxc:XYDiagram2D.AxisY>
-
 
                 <dxc:BarSideBySideSeries2D DisplayName="Обстеження" LabelsVisibility="True"
                              ArgumentDataMember="Argument" 

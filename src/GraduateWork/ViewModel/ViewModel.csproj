@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="ExaminateManager.cs" />
     <Compile Include="HistogramLogic.cs" />
+    <Compile Include="HistogramViewModel.cs" />
     <Compile Include="RepairViewModel.cs" />
     <Compile Include="ReviewsViewModel.cs" />
     <Compile Include="Find\ClientFindingViewModel.cs" />

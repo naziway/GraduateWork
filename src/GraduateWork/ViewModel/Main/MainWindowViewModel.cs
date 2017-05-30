@@ -12,6 +12,7 @@ namespace ViewModel
     [ImplementPropertyChanged]
     public class MainWindowViewModel
     {
+        public HistogramViewModel HistogramViewModel { get; set; }
         public List<CustomMenuItem> MenuItems { get; set; }
         public DataService DataService { get; set; }
 
@@ -34,7 +35,7 @@ namespace ViewModel
         public MainWindowViewModel(DataService dataService)
         {
             DataService = dataService;
-
+            HistogramViewModel = new HistogramViewModel(dataService);
             MenuItems = new List<CustomMenuItem>
                 {
              new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Покупку"},
