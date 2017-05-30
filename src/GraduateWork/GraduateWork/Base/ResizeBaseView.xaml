@@ -15,18 +15,18 @@
         <Grid Grid.Row="0" Grid.Column="0">
             <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="MoveOnMouseLeftButtonDown" ></userControls:MoveControl>
             <Label Style="{DynamicResource HeaderName}"  Name="TitleView" VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
-            <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="../Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
-            <Rectangle  HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="Normal" Margin="0,5,67,5" ></Rectangle>
-            <Rectangle  HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="Max" Margin="0,5,42,5" ></Rectangle>
-            <Rectangle  HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="Min" Margin="0,5,92,5" />
+            <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Source="../Icons/close.png" MouseLeftButtonDown="CloseWindow" />
+            <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Source="../Icons/fullscreen.png" MouseLeftButtonDown="Max" Margin="0,2,30,2" />
+            <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="../Icons/minimaze.png" MouseLeftButtonDown="Min" Margin="0,0,68,3" Height="19" Width="23" Stretch="Fill" StretchDirection="Both" />
+
 
         </Grid>
         <Grid Grid.Row="1">
             <Border BorderBrush="#2c3a45" BorderThickness="2">
-                <ContentPresenter  Name="MainContaint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentPresenter>
+                <ContentPresenter  Name="MainContaint" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,2,-2,-2"></ContentPresenter>
             </Border>
         </Grid>
+        <Image  Style="{DynamicResource CloseIcon}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="../Icons/resize.png" MouseLeftButtonDown="RightOnLeftButtonDown" MouseLeftButtonUp="RightOnMouseLeftButtonUp" MouseMove="RightOnMouseMove" Margin="0" Height="19" Width="23" Stretch="Fill" StretchDirection="Both" />
 
-        <Rectangle  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Fill="Chartreuse" Height="20" Width="20" MouseLeftButtonDown="RightOnLeftButtonDown" MouseLeftButtonUp="RightOnMouseLeftButtonUp" MouseMove="RightOnMouseMove"></Rectangle>
     </Grid>
 </Window>

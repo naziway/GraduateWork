@@ -40,12 +40,12 @@ namespace GraduateWork.Base
         private void RightOnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             resixe = false;
-            Rectangle rect = (Rectangle)sender;
+            Image rect = (Image)sender;
             rect.ReleaseMouseCapture();
         }
         private void RightOnMouseMove(object sender, MouseEventArgs e)
         {
-            Rectangle rect = (Rectangle)sender;
+            Image rect = (Image)sender;
             if (resixe)
             {
                 rect.CaptureMouse();

@@ -15,6 +15,7 @@ namespace ViewModel
         public HistogramViewModel HistogramViewModel { get; set; }
         public List<CustomMenuItem> MenuItems { get; set; }
         public DataService DataService { get; set; }
+        public string ActiveUser => DataService.User.Login;
 
         #region Action
         public Action<OpenWindow> OpenWindowAction { get; set; }

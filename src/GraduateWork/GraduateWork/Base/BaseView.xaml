@@ -15,7 +15,7 @@
         <Grid Grid.Row="0" Grid.Column="0">
             <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="MoveOnMouseLeftButtonDown" ></userControls:MoveControl>
             <Label Style="{DynamicResource HeaderName}"  Name="TitleView" VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
-            <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="../Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
+            <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Source="../Icons/close.png " MouseLeftButtonDown="CloseWindow" />
 
         </Grid>
         <Grid Grid.Row="1">

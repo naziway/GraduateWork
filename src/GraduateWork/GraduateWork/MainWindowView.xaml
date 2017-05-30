@@ -19,11 +19,17 @@
 
         <Style TargetType="TextBlock" x:Key="Logo">
             <Setter Property="Foreground"  Value="White"/>
-            <Setter Property="FontSize"  Value="40"/>
+            <Setter Property="FontSize"  Value="45"/>
             <Setter Property="FontFamily"  Value="Times New Roman"/>
             <Setter Property="FontStyle"  Value="Italic"/>
             <Setter Property="Margin"  Value="10,0,10,0"/>
 
+        </Style>
+        <Style TargetType="TextBlock" x:Key="UserName">
+            <Setter Property="Foreground"  Value="White"/>
+            <Setter Property="FontSize"  Value="25"/>
+            <Setter Property="FontFamily"  Value="Times New Roman"/>
+            <Setter Property="VerticalAlignment"  Value="Bottom"/>
         </Style>
     </UserControl.Resources>
     <Border BorderThickness="0.5" BorderBrush="White">
@@ -66,22 +72,31 @@
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" Name="Logo"/>
+                            <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" Name="User"/>
+                           
                             <ColumnDefinition Width="Auto" Name="Time"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
                             <TextBlock Style="{DynamicResource Logo}" Text="Mobi Doc"/>
                         </Grid>
-                        <Grid Grid.Column="1">
-
+                        <Grid Grid.Column="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Right" Style="{DynamicResource UserName}"  Text="Активний користувач: "/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Right" Style="{DynamicResource UserName}" Text="{Binding ActiveUser}"/>
+                            
                         </Grid>
-                        <Grid Grid.Column="2">
-
+                        <Grid  Grid.Column="2" Width="200">
+                            <userControls:Clock Margin="20,3,0,0"  />
                         </Grid>
 
                     </Grid>
-                </Border> 
+                </Border>
                 <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="White">
                     <local:DiagramControl  DataContext="{Binding HistogramViewModel}"/>
                 </Border>
