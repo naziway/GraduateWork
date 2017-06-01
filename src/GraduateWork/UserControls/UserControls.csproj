@@ -88,6 +88,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddingControl\NewClientUserControl.xaml.cs">
+      <DependentUpon>NewClientUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddingControl\NewReviewControl.xaml.cs">
       <DependentUpon>NewReviewControl.xaml</DependentUpon>
     </Compile>
@@ -123,9 +126,6 @@
     <Compile Include="Lists\ClientListUserControl.xaml.cs">
       <DependentUpon>ClientListUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClientListWithFinding.xaml.cs">
-      <DependentUpon>ClientListWithFinding.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ConvertControl\ReviewToOrderView.xaml.cs">
       <DependentUpon>ReviewToOrderView.xaml</DependentUpon>
     </Compile>
@@ -138,10 +138,10 @@
     <Compile Include="ServiceControl\MoveControl.xaml.cs">
       <DependentUpon>MoveControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lists\ReviewUserControl.xaml.cs">
-      <DependentUpon>ReviewUserControl.xaml</DependentUpon>
+    <Compile Include="Lists\ReviewListUserControl.xaml.cs">
+      <DependentUpon>ReviewListUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Clock.xaml.cs">
+    <Compile Include="ServiceControl\Clock.xaml.cs">
       <DependentUpon>Clock.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -174,6 +174,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddingControl\NewClientUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddingControl\NewReviewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,10 +218,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ClientListWithFinding.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ConvertControl\ReviewToOrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -234,11 +234,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lists\ReviewUserControl.xaml">
+    <Page Include="Lists\ReviewListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Clock.xaml">
+    <Page Include="ServiceControl\Clock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

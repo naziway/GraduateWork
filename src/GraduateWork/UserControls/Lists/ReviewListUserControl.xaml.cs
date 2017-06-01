@@ -5,9 +5,9 @@ namespace UserControls
     /// <summary>
     /// Interaction logic for OrdersUserControl.xaml
     /// </summary>
-    public partial class ReviewUserControl : UserControl
+    public partial class ReviewListUserControl : UserControl
     {
-        public ReviewUserControl()
+        public ReviewListUserControl()
         {
             InitializeComponent();
         }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using UserControls;
+using UserControls.AddingControl;
 using UserControls.ConvertControl;
 using UserControls.InformationControl;
 using ViewModel;
@@ -65,20 +66,25 @@ namespace GraduateWork
                     break;
                 case OpenWindow.ListClient:
                     var clientViewModel = new ClientListViewModel(DataService);
-                    view = new ResizeBaseView(new ClientListUserControl{ DataContext = clientViewModel }, "Список Клієнтів", 400, 500);
+                    view = new ResizeBaseView(new ClientListUserControl { DataContext = clientViewModel }, "Список Клієнтів", 400, 500);
                     break;
                 case OpenWindow.SalaryInfo:
                     var salaryViewModel = new SalaryViewModel(DataService);
                     view = new ResizeBaseView(new SalaryUserControl { DataContext = salaryViewModel }, "Статистика заробітньої плати", 500, 300);
                     break;
+                case OpenWindow.ListReview:
+                    var reviewsViewModel = new ReviewsViewModel(DataService);
+                    reviewsViewModel.SetAction(OpenWindowWithData);
+                    view = new ResizeBaseView(new ReviewListUserControl { DataContext = reviewsViewModel }, "Cписок Обстежень", 500, 500);
+                    break;
+
                 case OpenWindow.NewReview:
                     var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
                     view = new BaseView(viewModel, "Нове Обстеження", 300, 300);
                     break;
-                case OpenWindow.ListReview:
-                    var reviewsViewModel = new ReviewsViewModel(DataService);
-                    reviewsViewModel.SetAction(OpenWindowWithData);
-                    view = new ResizeBaseView(new ReviewUserControl { DataContext = reviewsViewModel }, "Cписок Обстежень", 500, 500);
+                case OpenWindow.NewClient:
+                    var clientUserControl = new NewClientUserControl { DataContext = new NewClientViewModel(DataService) };
+                    view = new BaseView(clientUserControl, "Новий Клієнт", 400, 300);
                     break;
                 default: throw new InvalidOperationException();
             }

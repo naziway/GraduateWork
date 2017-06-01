@@ -23,6 +23,7 @@ namespace DatabaseService
         private int GetIdForReview => database.Reviews.ToList().LastOrDefault()?.Id + 1 ?? 1;
         private int GetKodForRepair => database.Repairs.ToList().LastOrDefault()?.Kod + 1 ?? 1;
         private int GetIdForRepair => database.Repairs.ToList().LastOrDefault()?.Id + 1 ?? 1;
+        private int GetIdForClient => database.Clients.ToList().LastOrDefault()?.Id + 1 ?? 1;
 
 
         public bool Paid(Paid paid)//Test
@@ -182,6 +183,7 @@ namespace DatabaseService
         {
             try
             {
+                client.Id = GetIdForClient;
                 database.Clients.Add(client.Convert());
                 database.SaveChangesAsync();
             }

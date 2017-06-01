@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 
 namespace DatabaseService.Extension
 {
@@ -20,7 +21,15 @@ namespace DatabaseService.Extension
 
         public static Clients Convert(this Client client)
         {
-            return new Clients();
+            return new Clients
+            {
+                Id = client.Id,
+                FirstName = client.FirstName,
+                LastName = client.LastName,
+                PasportData = client.PasportData,
+                PhoneNumber = client.PhoneNumber,
+                RegistrationDate = DateTime.Now
+            };
         }
         public static PersonalData Convert(this UserData userData)
         {

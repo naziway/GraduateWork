@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UserControls
+namespace UserControls.AddingControl
 {
     /// <summary>
-    /// Interaction logic for ClientListWithFinding.xaml
+    /// Interaction logic for NewClientUserControl.xaml
     /// </summary>
-    public partial class ClientListWithFinding : UserControl
+    public partial class NewClientUserControl : UserControl
     {
-        public ClientListWithFinding()
+        public NewClientUserControl()
         {
             InitializeComponent();
         }
