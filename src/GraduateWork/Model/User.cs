@@ -13,6 +13,6 @@ namespace Model
         public DateTime RegistrationDate { get; set; }
         public UserType UserType { get; set; }
         public UserData UserData { get; set; }
-        public float Salary { get; set; }
+        public double Salary { get; set; }
     }
 }

@@ -6,6 +6,16 @@ namespace DatabaseService.Extension
 {
     public class ConverterToSystemStructure
     {
+        public Paid Convert(Table paid)
+        {
+            return new Paid
+            {
+                Id = paid.Id,
+                DatePaid = paid.DatePaid,
+                Salary = paid.Salary,
+                UserId = paid.UserId
+            };
+        }
         public Client Convert(Clients clients)
         {
             return new Client

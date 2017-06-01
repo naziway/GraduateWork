@@ -33,6 +33,7 @@ namespace DatabaseService
         public virtual DbSet<Repairs> Repairs { get; set; }
         public virtual DbSet<Reviews> Reviews { get; set; }
         public virtual DbSet<Sellings> Sellings { get; set; }
+        public virtual DbSet<Table> Table { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Works> Works { get; set; }
     }

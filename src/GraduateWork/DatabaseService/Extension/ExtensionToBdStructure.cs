@@ -48,6 +48,16 @@ namespace DatabaseService.Extension
                 UserId = selling.User.Id
             };
         }
+        public static Table Convert(this Paid paid)
+        {
+            return new Table
+            {
+                Id = paid.Id,
+                DatePaid = paid.DatePaid,
+                Salary = paid.Salary,
+                UserId = paid.Id
+            };
+        }
         public static Reviews Convert(this Review review, int id, int kod)
         {
             return new Reviews

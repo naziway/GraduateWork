@@ -9,6 +9,7 @@ using UserControls;
 using UserControls.ConvertControl;
 using UserControls.InformationControl;
 using ViewModel;
+using ViewModel.Lists;
 using ViewModel.ResourseAdd;
 
 namespace GraduateWork
@@ -62,10 +63,13 @@ namespace GraduateWork
                     };
                     view = new ResizeBaseView(sellingView, "Нова покупка", 600, 380);
                     break;
-                case OpenWindow.Repairs:
-                    var orderViewModel = new RepairsViewModel(DataService);
-                    orderViewModel.SetAction(OpenWindowWithData);
-                    // view = new ResizeBaseView(new RepairsListWithFinding { DataContext = new RepairsWithFindViewModel(DataService, orderViewModel) }, "Список ремонтів", 500, 500);
+                case OpenWindow.ListClient:
+                    var clientViewModel = new ClientListViewModel(DataService);
+                    view = new ResizeBaseView(new ClientListUserControl{ DataContext = clientViewModel }, "Список Клієнтів", 400, 500);
+                    break;
+                case OpenWindow.SalaryInfo:
+                    var salaryViewModel = new SalaryViewModel(DataService);
+                    view = new ResizeBaseView(new SalaryUserControl { DataContext = salaryViewModel }, "Статистика заробітньої плати", 500, 300);
                     break;
                 case OpenWindow.NewReview:
                     var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
@@ -90,7 +94,7 @@ namespace GraduateWork
                 case OpenWindow.ReviewToOrder:
                     view = new ResizeBaseView(new ReviewToOrderView { DataContext = new ReviewToOrderViewModel(DataService, data as Review) }, "Обстеження", 500, 300);
                     break;
-                case OpenWindow.Repair:
+                case OpenWindow.RepairInfo:
                     view = new ResizeBaseView(new RepairUserControl { DataContext = new RepairViewModel(DataService, data as List<Repair>) }, "Ремонт", 500, 300);
                     break;
                 default: throw new InvalidOperationException();

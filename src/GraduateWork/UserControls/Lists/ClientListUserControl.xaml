@@ -9,11 +9,11 @@
     <Grid>
         <DataGrid HorizontalAlignment="Stretch" ItemsSource="{Binding Clients,IsAsync=True}" AutoGenerateColumns="False"  VerticalAlignment="Stretch">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Прізвище" Binding="{Binding Surname}"/>
-                <DataGridTextColumn Width="*" Header="Імя" Binding="{Binding Name}"/>
-                <DataGridTextColumn Width="*" Header="Паспортні данні" Binding="{Binding PassportData}"/>
-                <DataGridTextColumn Width="*" Header="Телефон" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Width="*" Header="Пристрої" Binding="{Binding Devices}"/>
+                <DataGridTextColumn Width="*" Header="Прізвище" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Width="*" Header="Імя" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Width="*" Header="Паспортні данні" Binding="{Binding PasportData}"/>
+                <DataGridTextColumn Width="*" Header="Телефон" Binding="{Binding PhoneNumber}"/>
+                <DataGridTextColumn Width="*" Header="Дата" Binding="{Binding RegistrationDate,StringFormat=d}"/>
             </DataGrid.Columns>
         </DataGrid>
 

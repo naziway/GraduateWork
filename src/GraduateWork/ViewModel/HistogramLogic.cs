@@ -75,5 +75,21 @@ namespace ViewModel
             return list;
         }
 
+        public List<SalaryHistogramModel> GetSalaryStatisticByUser(User user)
+        {
+            var salaryList =
+                DataService.GetPaids().Where(paid => paid.UserId == user.Id);
+
+
+            var returnList = new List<SalaryHistogramModel>();
+
+
+            foreach (var item in salaryList)
+            {
+                returnList.Insert(0, new SalaryHistogramModel { Argument = MonthByKey[item.DatePaid.Month.ToString()], Value = item.Salary });
+            }
+            return returnList;
+        }
+
     }
 }

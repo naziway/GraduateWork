@@ -96,6 +96,9 @@
     <Compile Include="Sellings.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
+    <Compile Include="Table.cs">
+      <DependentUpon>DataMobile.tt</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>

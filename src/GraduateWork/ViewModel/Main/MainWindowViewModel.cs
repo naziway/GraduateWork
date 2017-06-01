@@ -41,8 +41,11 @@ namespace ViewModel
             MenuItems = new List<CustomMenuItem>
                 {
              new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Покупку"},
+             new CustomMenuItem {Command =AddNewUserCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Нового Користувача"},
              new CustomMenuItem {Command =AddNewReviewCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Обстеження"},
              new CustomMenuItem {Command =ListReviewCommand , Img = "Icons/List.png" , ToolTip = "Список Обстежень"},
+             new CustomMenuItem {Command =OpenClientListCommand , Img = "Icons/List.png" , ToolTip = "Список Клієнтів"},
+             new CustomMenuItem {Command =OpenSalaryInfoCommand , Img = "Icons/List.png" , ToolTip = "Статистика заробітньої плати"},
              new CustomMenuItem {Command =LogOutCommand , Img = "Icons/LogOut.png" , ToolTip = "Вихід"},
                  };
 
@@ -50,6 +53,18 @@ namespace ViewModel
         }
 
         #region Command
+        public ICommand OpenClientListCommand => new CommandHandler(() =>
+        {
+            OpenWindowAction(OpenWindow.ListClient);
+        });
+        public ICommand OpenSalaryInfoCommand => new CommandHandler(() =>
+        {
+            OpenWindowAction(OpenWindow.SalaryInfo);
+        });
+        public ICommand AddNewUserCommand => new CommandHandler(() =>
+        {
+            OpenWindowAction(OpenWindow.SalaryInfo);
+        });
         public ICommand AddNewSellingCommand => new CommandHandler(() =>
         {
             OpenWindowAction(OpenWindow.NewSelling);

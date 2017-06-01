@@ -25,6 +25,23 @@ namespace DatabaseService
         private int GetIdForRepair => database.Repairs.ToList().LastOrDefault()?.Id + 1 ?? 1;
 
 
+        public bool Paid(Paid paid)//Test
+        {
+            try
+            {
+                database.Table.Add(paid.Convert());
+                database.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public List<Paid> GetPaids()//Test
+        {
+            return database.Table.Select(converter.Convert).ToList();
+        }
 
         public User GetUser(string login, string password)
         {

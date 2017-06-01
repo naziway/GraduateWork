@@ -73,7 +73,7 @@ namespace ViewModel
             if (review == null)
                 return;
             var repair = DataService.GetRepairsByKod(review.Repair.Kod);
-            OpenWindowByDataAction(OpenWindow.Repair, repair);
+            OpenWindowByDataAction(OpenWindow.RepairInfo, repair);
         }
     }
 }
