@@ -88,6 +88,10 @@ namespace GraduateWork
                     var viewModel = new NewReviewControl { DataContext = new NewReviewViewModel(DataService) };
                     view = new BaseView(viewModel, "Нове Обстеження", 300, 300);
                     break;
+                case OpenWindow.SummaryІtatistics:
+                    var incomeCostUserControl = new IncomeCostsUserControl { DataContext = new IncomeCostsViewModel(DataService) };
+                    view = new BaseView(incomeCostUserControl, "Витрати/Дохід", 400, 400);
+                    break;
                 case OpenWindow.NewClient:
                     var clientUserControl = new NewClientUserControl { DataContext = new NewClientViewModel(DataService) };
                     view = new BaseView(clientUserControl, "Новий Клієнт", 400, 300);

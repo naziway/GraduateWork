@@ -2,6 +2,7 @@
 {
     public enum OpenWindow
     {
+        SummaryІtatistics,
         ReviewToOrder,//+
         RepairInfo,//+
         SalaryInfo,//+
@@ -10,15 +11,15 @@
         ListRepairs,//TODO maybe and no
         ListReview,//+
         ListParts,//+
-        ListDevices,
-        ListClient,
+        ListDevices,//+
+        ListClient,//+
         ListRepairDevices,
 
         NewReview,//+
         NewSelling,//+
         NewUser,
-        NewClient,
-        NewDevice,
+        NewClient,//+
+        NewDevice,//+
         NewRepairDevice
     }
 }

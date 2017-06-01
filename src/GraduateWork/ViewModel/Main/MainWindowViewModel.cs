@@ -50,6 +50,7 @@ namespace ViewModel
              new CustomMenuItem {Command =OpenClientListCommand ,Img = "Icons/List.png" , ToolTip = "Список Клієнтів"},
 
              new CustomMenuItem {Command =OpenSalaryInfoCommand ,Img = "Icons/List.png" , ToolTip = "Статистика заробітньої плати"},
+             new CustomMenuItem {Command =IncomeCostCommand ,Img = "Icons/List.png" , ToolTip = "Дохід/Витрати"},
              new CustomMenuItem {Command =LogOutCommand ,        Img = "Icons/LogOut.png",ToolTip = "Вихід"},
                  };
 
@@ -72,6 +73,10 @@ namespace ViewModel
         public ICommand OpenSalaryInfoCommand => new CommandHandler(() =>
         {
             OpenWindowAction(OpenWindow.SalaryInfo);
+        });
+        public ICommand IncomeCostCommand => new CommandHandler(() =>
+        {
+            OpenWindowAction(OpenWindow.SummaryІtatistics);
         });
         public ICommand AddNewDeviceCommand => new CommandHandler(() =>
         {

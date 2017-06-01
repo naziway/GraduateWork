@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="PieChartDemo.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+             xmlns:ViewModels="clr-namespace:PieChartDemo.ViewModels"
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" 
+             DataContext="{dxmvvm:ViewModelSource Type={x:Type ViewModels:MainViewModel}}"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+
+    <dxc:ChartControl Name="chart"
+                      DataSource="{Binding Items}"
+                      CrosshairEnabled="False"
+                      ToolTipEnabled="True"
+                      MouseUp="chart_MouseUp"
+                      MouseDown="chart_MouseDown"
+                      AnimationMode="OnLoad">
+        <dxc:ChartControl.Titles>
+            <dxc:Title Content="{Binding Title}" HorizontalAlignment="Center" FontWeight="Bold"/>
+        </dxc:ChartControl.Titles>
+
+        <dxc:ChartControl.Palette>
+            <dxc:Office2013Palette />
+        </dxc:ChartControl.Palette>
+
+        <dxc:ChartControl.ToolTipOptions>
+            <dxc:ToolTipOptions ShowForSeries="True" ShowForPoints="True">
+                <dxc:ToolTipOptions.ToolTipPosition>
+                    <dxc:ToolTipRelativePosition/>
+                </dxc:ToolTipOptions.ToolTipPosition>
+            </dxc:ToolTipOptions>
+        </dxc:ChartControl.ToolTipOptions>
+
+        <dxc:SimpleDiagram2D>
+            <dxc:PieSeries2D LabelsVisibility="True"
+                             ArgumentDataMember="Name" 
+                             ValueDataMember="Value">
+                <dxc:PieSeries2D.Model>
+                    <dxc:GlassPie2DModel/>
+                </dxc:PieSeries2D.Model>
+
+                <dxc:PieSeries2D.Label>
+                    <dxc:SeriesLabel Visible="True"
+                                     dxc:PieSeries.LabelPosition="Inside"
+                                     RenderMode="RectangleConnectedToCenter"
+                                     TextPattern="{}{A}, {VP:P0}"/>
+                </dxc:PieSeries2D.Label>
+
+                <dxc:PieSeries2D.PointAnimation>
+                    <dxc:Pie2DFlyInAnimation Duration="0:0:1" PointOrder="Random" />
+                </dxc:PieSeries2D.PointAnimation>
+            </dxc:PieSeries2D>
+        </dxc:SimpleDiagram2D>
+    </dxc:ChartControl>
+</UserControl>

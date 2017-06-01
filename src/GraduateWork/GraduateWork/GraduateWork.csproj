@@ -119,6 +119,9 @@
     <Compile Include="DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IncomeCostsUserControl.xaml.cs">
+      <DependentUpon>IncomeCostsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DiagramControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IncomeCostsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

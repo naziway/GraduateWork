@@ -91,5 +91,43 @@ namespace ViewModel
             return returnList;
         }
 
+        public List<CircleDiagramItem> GetIncomeCosts()
+        {
+            var list = new List<CircleDiagramItem>();
+            double reviews = DataService.GetReviews().Count * 50;
+            double repairs = 0.0;
+            foreach (var repair in DataService.GetRepairs())
+            {
+                if (repair.Part != null)
+                    repairs += repair.Part.Price;
+                repairs += repair.Work.Price;
+            }
+            double selings = DataService.GetSellings().Sum(selling => selling.Part.Price);
+            double salary = DataService.GetPaids().Sum(paid => paid.Salary);
+
+            list.Add(new CircleDiagramItem
+            {
+                Argument = "Обстеження",
+                Value = reviews
+            });
+            list.Add(new CircleDiagramItem
+            {
+                Argument = "Ремонт",
+                Value = repairs
+            });
+            list.Add(new CircleDiagramItem
+            {
+                Argument = "Продаж",
+                Value = selings
+            });
+            list.Add(new CircleDiagramItem
+            {
+                Argument = "Зарплата",
+                Value = salary
+            });
+
+
+            return list;
+        }
     }
 }
