@@ -24,6 +24,7 @@ namespace DatabaseService
         private int GetKodForRepair => database.Repairs.ToList().LastOrDefault()?.Kod + 1 ?? 1;
         private int GetIdForRepair => database.Repairs.ToList().LastOrDefault()?.Id + 1 ?? 1;
         private int GetIdForClient => database.Clients.ToList().LastOrDefault()?.Id + 1 ?? 1;
+        private int GetIdForDevice => database.Devices.ToList().LastOrDefault()?.Id + 1 ?? 1;
 
 
         public bool Paid(Paid paid)//Test
@@ -87,7 +88,7 @@ namespace DatabaseService
                 var item = new Device
                 {
                     Id = device.Id,
-                    DeviceType = device.DeviceType,
+                    DeviceType = (DeviceType)device.DeviceType,
                     ManufactureDate = device.ManufactureDate,
                     Marka = device.Marka,
                     Model = device.Model,
@@ -150,6 +151,7 @@ namespace DatabaseService
         {
             try
             {
+                device.Id = GetIdForDevice;
                 database.Devices.Add(device.Convert());
                 database.SaveChanges();
             }

@@ -42,7 +42,7 @@ namespace ViewModel
                 {
              new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Покупку"},
              new CustomMenuItem {Command =NewClientCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Нового Клієнта"},
-             new CustomMenuItem {Command =AddNewUserCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Нового Користувача"},
+             new CustomMenuItem {Command =AddNewDeviceCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Новий Пристрій"},
              new CustomMenuItem {Command =AddNewReviewCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Обстеження"},
              new CustomMenuItem {Command =ListReviewCommand , Img = "Icons/List.png" , ToolTip = "Список Обстежень"},
              new CustomMenuItem {Command =OpenClientListCommand , Img = "Icons/List.png" , ToolTip = "Список Клієнтів"},
@@ -66,9 +66,9 @@ namespace ViewModel
         {
             OpenWindowAction(OpenWindow.SalaryInfo);
         });
-        public ICommand AddNewUserCommand => new CommandHandler(() =>
+        public ICommand AddNewDeviceCommand => new CommandHandler(() =>
         {
-            OpenWindowAction(OpenWindow.SalaryInfo);
+            OpenWindowAction(OpenWindow.NewDevice);
         });
         public ICommand AddNewSellingCommand => new CommandHandler(() =>
         {

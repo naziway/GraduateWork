@@ -12,7 +12,16 @@ namespace DatabaseService.Extension
 
         public static Devices Convert(this Device device)
         {
-            return new Devices();
+            return new Devices()
+            {
+                DeviceType = (int)device.DeviceType,
+                ClientId = device.Client.Id,
+                Id = device.Id,
+                ManufactureDate = device.ManufactureDate,
+                Marka = device.Marka,
+                Model = device.Model,
+                SerialNumber = device.SerialNumber
+            };
         }
         public static RepairDevices Convert(this RepairDevice device)
         {

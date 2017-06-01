@@ -2,8 +2,8 @@
 {
     public enum DeviceType
     {
-        Phone,
-        Tab
+        Телефон,
+        Планшет
         //public static string Phone => "Телефон";
         //public static string Tab => "Планшет";
     }

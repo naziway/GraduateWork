@@ -91,6 +91,9 @@
     <Compile Include="AddingControl\NewClientUserControl.xaml.cs">
       <DependentUpon>NewClientUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddingControl\NewDeviceUserControl.xaml.cs">
+      <DependentUpon>NewDeviceUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddingControl\NewReviewControl.xaml.cs">
       <DependentUpon>NewReviewControl.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AddingControl\NewClientUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddingControl\NewDeviceUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
