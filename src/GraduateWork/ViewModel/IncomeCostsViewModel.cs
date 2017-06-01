@@ -13,7 +13,6 @@ namespace ViewModel
         public IncomeCostsViewModel(DatabaseService.DataService service)
         {
             Service = service;
-
             var data = new HistogramLogic(Service).GetIncomeCosts();
             Items = new ObservableCollection<CircleDiagramItem>(data);
         }

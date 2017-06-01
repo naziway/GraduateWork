@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2590eee0d87042ac8da572d299967890" Name="Diagram1" ZoomLevel="105">
+        <EntityTypeShape EntityType="MobiDocModel.Клієнти" Width="1.5" PointX="12.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.Пристрої" Width="1.5" PointX="8.375" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.Частини" Width="1.5" PointX="14.875" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.ПерсональніДані" Width="1.625" PointX="12.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.ПристроїДляЗаміни" Width="2" PointX="10.375" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.Ремонти" Width="2.125" PointX="13.125" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.Обстеження" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.Продажі" Width="1.5" PointX="15.125" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.Виплати" Width="1.5" PointX="10.625" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.Користувачі" Width="1.5" PointX="12.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobiDocModel.ТипиРобіт" Width="1.5" PointX="15.625" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="MobiDocModel.FK_Devices_ToClient" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Sellings_To_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Repairs_To_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Reviews_To_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Repairs_To_Part" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Sellings_To_Part" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Users_ToPersonalData" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Repairs_To_RepairDevice" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Repairs_To_Work" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Repairs_To_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Reviews_To_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Reviews_To_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="MobiDocModel.FK_Sellings_To_User" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="MobiDocModel.FK_Table_ToUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
