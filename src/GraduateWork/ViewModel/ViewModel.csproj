@@ -63,6 +63,7 @@
     <Compile Include="HistogramLogic.cs" />
     <Compile Include="HistogramViewModel.cs" />
     <Compile Include="ListPartViewModel.cs" />
+    <Compile Include="Lists\DeviceListViewModel.cs" />
     <Compile Include="RepairViewModel.cs" />
     <Compile Include="ResourseAdd\NewClientViewModel.cs" />
     <Compile Include="ResourseAdd\NewDeviceViewModel.cs" />

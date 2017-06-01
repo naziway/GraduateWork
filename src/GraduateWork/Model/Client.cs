@@ -11,5 +11,9 @@ namespace Model
         public string PasportData { get; set; }
         public string PhoneNumber { get; set; }
         public System.DateTime RegistrationDate { get; set; }
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }

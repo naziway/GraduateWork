@@ -15,13 +15,13 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Foreground" Value="#2C4355"/>
-            <Setter Property="Margin" Value="0,8"/>
+            <Setter Property="Margin" Value="0,5"/>
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Foreground" Value="#2C4355"/>
-            <Setter Property="Margin" Value="5,5"/>
+            <Setter Property="Margin" Value="5,3"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="ComboBox">
@@ -39,6 +39,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -50,6 +51,7 @@
         <Label Grid.Row="2" Grid.Column="0">Модель Пристрою</Label>
         <Label Grid.Row="3" Grid.Column="0">Тип Пристрою</Label>
         <Label Grid.Row="4" Grid.Column="0">Серія Телефону</Label>
+        <Label Grid.Row="5" Grid.Column="0">Дата Виготовлення</Label>
 
         <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Clients}" SelectedItem="{Binding Device.Client}" >
             <ComboBox.ItemTemplate>
@@ -70,10 +72,11 @@
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Device.Model}" />
         <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding DeviceTypes}" SelectedItem="{Binding Device.DeviceType}" />
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Device.SerialNumber}" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Device.ManufactureDate}" />
 
 
-        <Button Grid.Column="0" Grid.Row="5" Command="{Binding ClearCommand}" Content="Очистити"/>
-        <Button Grid.Column="1" Grid.Row="5" Command="{Binding AddClientCommand}" Content="Додати"/>
+        <Button Grid.Column="0" Grid.Row="6" Command="{Binding ClearCommand}" Content="Очистити"/>
+        <Button Grid.Column="1" Grid.Row="6" Command="{Binding AddClientCommand}" Content="Додати"/>
 
     </Grid>
 </UserControl>

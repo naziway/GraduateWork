@@ -132,6 +132,9 @@
     <Compile Include="ConvertControl\ReviewToOrderView.xaml.cs">
       <DependentUpon>ReviewToOrderView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lists\DeviceListUserControl.xaml.cs">
+      <DependentUpon>DeviceListUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lists\ListPart.xaml.cs">
       <DependentUpon>ListPart.xaml</DependentUpon>
     </Compile>
@@ -226,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ConvertControl\ReviewToOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lists\DeviceListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

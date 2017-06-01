@@ -9,6 +9,7 @@ using UserControls;
 using UserControls.AddingControl;
 using UserControls.ConvertControl;
 using UserControls.InformationControl;
+using UserControls.Lists;
 using ViewModel;
 using ViewModel.Lists;
 using ViewModel.ResourseAdd;
@@ -76,6 +77,11 @@ namespace GraduateWork
                     var reviewsViewModel = new ReviewsViewModel(DataService);
                     reviewsViewModel.SetAction(OpenWindowWithData);
                     view = new ResizeBaseView(new ReviewListUserControl { DataContext = reviewsViewModel }, "Cписок Обстежень", 500, 500);
+                    break;
+
+                case OpenWindow.ListDevices:
+                    var deviceListViewModel = new DeviceListViewModel(DataService);
+                    view = new ResizeBaseView(new DeviceListUserControl { DataContext = deviceListViewModel }, "Cписок Пристроїв", 500, 500);
                     break;
 
                 case OpenWindow.NewReview:

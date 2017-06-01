@@ -41,19 +41,26 @@ namespace ViewModel
             MenuItems = new List<CustomMenuItem>
                 {
              new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Покупку"},
-             new CustomMenuItem {Command =NewClientCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Нового Клієнта"},
-             new CustomMenuItem {Command =AddNewDeviceCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Новий Пристрій"},
-             new CustomMenuItem {Command =AddNewReviewCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Обстеження"},
-             new CustomMenuItem {Command =ListReviewCommand , Img = "Icons/List.png" , ToolTip = "Список Обстежень"},
-             new CustomMenuItem {Command =OpenClientListCommand , Img = "Icons/List.png" , ToolTip = "Список Клієнтів"},
-             new CustomMenuItem {Command =OpenSalaryInfoCommand , Img = "Icons/List.png" , ToolTip = "Статистика заробітньої плати"},
-             new CustomMenuItem {Command =LogOutCommand , Img = "Icons/LogOut.png" , ToolTip = "Вихід"},
+             new CustomMenuItem {Command =NewClientCommand ,     Img = "Icons/Plus.png" , ToolTip = "Додати Нового Клієнта"},
+             new CustomMenuItem {Command =AddNewDeviceCommand ,  Img = "Icons/Plus.png" , ToolTip = "Додати Новий Пристрій"},
+             new CustomMenuItem {Command =AddNewReviewCommand ,  Img = "Icons/Plus.png" , ToolTip = "Додати Обстеження"},
+
+             new CustomMenuItem {Command =ListReviewCommand ,    Img = "Icons/List.png" , ToolTip = "Список Обстежень"},
+             new CustomMenuItem {Command =ListDevicesCommand ,    Img = "Icons/List.png" , ToolTip = "Список Пристроїв"},
+             new CustomMenuItem {Command =OpenClientListCommand ,Img = "Icons/List.png" , ToolTip = "Список Клієнтів"},
+
+             new CustomMenuItem {Command =OpenSalaryInfoCommand ,Img = "Icons/List.png" , ToolTip = "Статистика заробітньої плати"},
+             new CustomMenuItem {Command =LogOutCommand ,        Img = "Icons/LogOut.png",ToolTip = "Вихід"},
                  };
 
 
         }
 
         #region Command
+        public ICommand ListDevicesCommand => new CommandHandler(() =>
+        {
+            OpenWindowAction(OpenWindow.ListDevices);
+        });
         public ICommand OpenClientListCommand => new CommandHandler(() =>
         {
             OpenWindowAction(OpenWindow.ListClient);
