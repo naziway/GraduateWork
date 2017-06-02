@@ -51,26 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-    </Compile>
     <Compile Include="Clients.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataMobile - Copy.Context.cs">
-      <DependentUpon>DataMobile - Copy.Context.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="DataMobile - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="DataMobile - Copy.Designer.cs">
-      <DependentUpon>DataMobile - Copy.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="DataMobile.Context.cs">
       <AutoGen>True</AutoGen>
@@ -88,9 +70,6 @@
       <DependentUpon>DataMobile.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataService.cs" />
-    <Compile Include="Devices - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-    </Compile>
     <Compile Include="Devices.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
@@ -98,57 +77,30 @@
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Extension\ExtensionToBdStructure.cs" />
     <Compile Include="IDataProvider.cs" />
-    <Compile Include="Parts - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-    </Compile>
     <Compile Include="Parts.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PersonalData - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
     </Compile>
     <Compile Include="PersonalData.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepairDevices - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-    </Compile>
     <Compile Include="RepairDevices.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repairs - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
     </Compile>
     <Compile Include="Repairs.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
-    <Compile Include="Reviews - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-    </Compile>
     <Compile Include="Reviews.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sellings - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
     </Compile>
     <Compile Include="Sellings.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
-    <Compile Include="Table - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-    </Compile>
     <Compile Include="Table.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
     </Compile>
-    <Compile Include="Users - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
-    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Works - Copy.cs">
-      <DependentUpon>DataMobile - Copy.tt</DependentUpon>
     </Compile>
     <Compile Include="Works.cs">
       <DependentUpon>DataMobile.tt</DependentUpon>
@@ -162,13 +114,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DataMobile.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="DataMobile - Copy.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataMobile - Copy.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DataMobile - Copy.edmx.diagram">
-      <DependentUpon>DataMobile - Copy.edmx</DependentUpon>
-    </None>
     <None Include="DataMobile.edmx.diagram">
       <DependentUpon>DataMobile.edmx</DependentUpon>
     </None>
@@ -188,16 +133,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataMobile - Copy.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataMobile - Copy.edmx</DependentUpon>
-      <LastGenOutput>DataMobile - Copy.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DataMobile - Copy.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataMobile - Copy.edmx</DependentUpon>
-      <LastGenOutput>DataMobile - Copy.cs</LastGenOutput>
-    </Content>
     <Content Include="DataMobile.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataMobile.edmx</DependentUpon>

@@ -34,7 +34,6 @@ namespace ViewModel
 
         public DataService DataService { get; set; }
 
-
         public ObservableCollection<Review> Reviews { get; set; }
 
         public ReviewsViewModel(DataService dataService)
