@@ -25,6 +25,25 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
     </Style>
 
+    <Style TargetType="Button"  x:Key="ButtonInsideListBox">
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border 
+          x:Name="Border"  
+          CornerRadius="1" 
+          BorderThickness="1"
+                        Padding="3"
+          Background="#2c3a45"
+          BorderBrush="White">
+                        <TextBlock Style="{DynamicResource ButtonText}" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Margin" Value="2"/>
+    </Style>
 
     <Style TargetType="Button"  x:Key="ButtonStyle">
         <Setter Property="Template" >

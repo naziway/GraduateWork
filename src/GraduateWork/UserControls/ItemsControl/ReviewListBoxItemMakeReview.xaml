@@ -24,7 +24,7 @@
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
 
 
-        <Button Grid.Column="4" Width="Auto" Command="{Binding Command}" Content="Провести обстеження" CommandParameter="{Binding Path=.}"/>
+        <Button Style="{DynamicResource ButtonInsideListBox}" Grid.Column="4" Width="Auto" Command="{Binding Command}" Content="Провести обстеження" CommandParameter="{Binding Path=.}"/>
 
         <Grid.InputBindings>
             <MouseBinding Gesture="LeftDoubleClick"

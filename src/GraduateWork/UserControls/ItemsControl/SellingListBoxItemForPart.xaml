@@ -30,7 +30,7 @@
                 <TextBox   Grid.Column="4" Text="{Binding ChooseCount,UpdateSourceTrigger=PropertyChanged,IsAsync=True}"/>
                 <TextBlock   Grid.Column="5" Text="Сума="/>
                 <TextBlock   Grid.Column="6" Text="{Binding SumPrice}"/>
-                <Button Grid.Column="7" Command="{Binding Command,RelativeSource={RelativeSource Mode=FindAncestor ,AncestorType={x:Type userControls:ListPart}}}" CommandParameter="{Binding Path=.}" Content="+"/>
+                <Button Style="{DynamicResource ButtonStyle}" Grid.Column="7" Command="{Binding Command,RelativeSource={RelativeSource Mode=FindAncestor ,AncestorType={x:Type userControls:ListPart}}}" CommandParameter="{Binding Path=.}" Content="+"/>
             </Grid>
         </Border>
     </Grid>

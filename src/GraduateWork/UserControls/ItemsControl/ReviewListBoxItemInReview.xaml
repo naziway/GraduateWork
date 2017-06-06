@@ -29,7 +29,7 @@
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
 
 
-        <Button Grid.Column="4"  Content="Проводиться обстеження" />
+        <Button Style="{DynamicResource ButtonInsideListBox}" Grid.Column="4"  Content="Проводиться обстеження" />
 
         
     </Grid>

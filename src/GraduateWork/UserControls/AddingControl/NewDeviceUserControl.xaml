@@ -75,8 +75,8 @@
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Device.ManufactureDate}" />
 
 
-        <Button Grid.Column="0" Grid.Row="6" Command="{Binding ClearCommand}" Content="Очистити"/>
-        <Button Grid.Column="1" Grid.Row="6" Command="{Binding AddClientCommand}" Content="Додати"/>
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="0" Grid.Row="6" Command="{Binding ClearCommand}" Content="Очистити"/>
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="1" Grid.Row="6" Command="{Binding AddClientCommand}" Content="Додати"/>
 
     </Grid>
 </UserControl>

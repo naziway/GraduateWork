@@ -94,7 +94,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button Grid.Column="1" Grid.Row="7" Command="{Binding AddReviewCommand}" Margin="2,5,2,10">Додати</Button>
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="1" Grid.Row="7" Command="{Binding AddReviewCommand}" Margin="2,5,2,10">Додати</Button>
 
         <TextBlock Grid.Column="0" Grid.Row="7" Text="{Binding StatusMessage}"></TextBlock>
 

@@ -103,7 +103,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <Button Grid.Column="2" Command="{Binding AddRepair}" Content="+" Padding="0,0,0,0" Margin="0,2,0,2" VerticalContentAlignment="Top" FontSize="45"/>
+                    <Button Style="{DynamicResource ButtonStyle}" Grid.Column="2" Command="{Binding AddRepair}" Content="+" Padding="0,0,0,0" Margin="0,2,0,2" VerticalContentAlignment="Top" FontSize="45"/>
 
                 </Grid>
 
