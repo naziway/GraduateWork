@@ -161,7 +161,7 @@
                         <TextBlock  Grid.Column="1" Style="{DynamicResource HeaderValue}" Text="{Binding Symma}"/>
                     </Grid>
                 </Border>
-                <Button Grid.Row="3" Margin="10,1,10,1" Command="{Binding SaveReviewInRepair}" Content="Зберегти результат обстеження"/>
+                <Button Style="{DynamicResource ButtonStyle}" Grid.Row="3" Margin="10,1,10,1" Command="{Binding SaveReviewInRepair}" Content="Зберегти результат обстеження"/>
             </Grid>
         </Border>
 

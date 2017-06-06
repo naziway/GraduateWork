@@ -47,10 +47,10 @@
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Client.LastName}" />
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Client.PasportData}" />
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Client.PhoneNumber}" />
-        
-        
-        <Button Grid.Column="0" Grid.Row="4" Command="{Binding ClearCommand}" Content="Очистити"/>
-        <Button Grid.Column="1" Grid.Row="4" Command="{Binding AddClientCommand}" Content="Додати"/>
+
+
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="0" Grid.Row="4" Command="{Binding ClearCommand}" Content="Очистити"/>
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="1" Grid.Row="4" Command="{Binding AddClientCommand}" Content="Додати"/>
 
     </Grid>
 </UserControl>
