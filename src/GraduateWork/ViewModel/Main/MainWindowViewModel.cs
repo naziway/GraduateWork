@@ -17,6 +17,8 @@ namespace ViewModel
         public List<CustomMenuItem> MenuItems { get; set; }
         public DataService DataService { get; set; }
         public string ActiveUser => DataService.User.Login;
+        public string ActiveUserFirstName => DataService.User.UserData.FirstName;
+        public string ActiveUserLastName => DataService.User.UserData.LastName;
 
         #region Action
         public Action<OpenWindow> OpenWindowAction { get; set; }
@@ -40,17 +42,17 @@ namespace ViewModel
             HistogramViewModel = new HistogramViewModel(dataService);
             MenuItems = new List<CustomMenuItem>
                 {
-             new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/Plus.png" , ToolTip = "Додати Покупку"},
-             new CustomMenuItem {Command =NewClientCommand ,     Img = "Icons/Plus.png" , ToolTip = "Додати Нового Клієнта"},
-             new CustomMenuItem {Command =AddNewDeviceCommand ,  Img = "Icons/Plus.png" , ToolTip = "Додати Новий Пристрій"},
-             new CustomMenuItem {Command =AddNewReviewCommand ,  Img = "Icons/Plus.png" , ToolTip = "Додати Обстеження"},
+             new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/add_icon.png" , ToolTip = "Додати Покупку"},
+             new CustomMenuItem {Command =NewClientCommand ,     Img = "Icons/add_icon.png" , ToolTip = "Додати Нового Клієнта"},
+             new CustomMenuItem {Command =AddNewDeviceCommand ,  Img = "Icons/icon_add.png" , ToolTip = "Додати Новий Пристрій"},
+             new CustomMenuItem {Command =AddNewReviewCommand ,  Img = "Icons/icon_add.png" , ToolTip = "Додати Обстеження"},
 
              new CustomMenuItem {Command =ListReviewCommand ,    Img = "Icons/List.png" , ToolTip = "Список Обстежень"},
              new CustomMenuItem {Command =ListDevicesCommand ,    Img = "Icons/List.png" , ToolTip = "Список Пристроїв"},
              new CustomMenuItem {Command =OpenClientListCommand ,Img = "Icons/List.png" , ToolTip = "Список Клієнтів"},
 
-             new CustomMenuItem {Command =OpenSalaryInfoCommand ,Img = "Icons/List.png" , ToolTip = "Статистика заробітньої плати"},
-             new CustomMenuItem {Command =IncomeCostCommand ,Img = "Icons/List.png" , ToolTip = "Дохід/Витрати"},
+             new CustomMenuItem {Command =OpenSalaryInfoCommand ,Img = "Icons/salary.png" , ToolTip = "Статистика заробітньої плати"},
+             new CustomMenuItem {Command =IncomeCostCommand ,Img = "Icons/salary.png" , ToolTip = "Дохід/Витрати"},
              new CustomMenuItem {Command =LogOutCommand ,        Img = "Icons/LogOut.png",ToolTip = "Вихід"},
                  };
 

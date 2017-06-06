@@ -1,5 +1,6 @@
 ﻿using DatabaseService;
 using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace ViewModel
             {"9","Вересень"},
             {"10","Жовтень"},
             {"11","Листопад"},
-            {"12","Грудень"},
+            {"12","Січень"},
         };
         public DataService DataService { get; set; }
 
@@ -35,7 +36,7 @@ namespace ViewModel
         {
             var list = new List<HistogramModel>();
 
-            var repairs = DataService.GetRepairs().GroupBy(repair => repair.OrderDate.Month.ToString());
+            var repairs = DataService.GetRepairs().Where(repair => repair.OrderDate > DateTime.Now.AddMonths(-4)).GroupBy(repair => repair.OrderDate.Month.ToString());
             foreach (var repair in repairs)
             {
                 var value = 0.0;
@@ -47,7 +48,7 @@ namespace ViewModel
                 }
                 list.Add(new HistogramModel { Argument = repair.Key, RepairValue = value });
             }
-            var reviews = DataService.GetReviews().GroupBy(review => review.OrderDate.Month.ToString());
+            var reviews = DataService.GetReviews().Where(review => review.OrderDate > DateTime.Now.AddMonths(-4)).GroupBy(review => review.OrderDate.Month.ToString());
             foreach (var review in reviews)
             {
                 var value = review.Count() * 50;
@@ -59,15 +60,15 @@ namespace ViewModel
                     bar.ReviewValue = value;
             }
 
-            var sellings = DataService.GetSellings().GroupBy(review => review.OrderDate.Month.ToString());
+            var sellings = DataService.GetSellings().Where(selling => selling.OrderDate > DateTime.Now.AddMonths(-4) && selling.OrderDate < DateTime.Now.AddMonths(1)).GroupBy(review => review.OrderDate.Month.ToString());
             foreach (var selling in sellings)
             {
-                var value = selling.Where(item => item.Part != null).Sum(item => item.Part.Price * item.Part.Count);
-                var bar = list.FirstOrDefault(model => model.Argument == selling.Key);
-                if (bar == null)
-                    list.Add(new HistogramModel { Argument = selling.Key, SellingValue = value });
+                var valueS = selling.Where(item => item.Part != null).Sum(item => item.Part.Price * item.Part.Count);
+                var barS = list.FirstOrDefault(model => model.Argument == selling.Key);
+                if (barS == null)
+                    list.Add(new HistogramModel { Argument = selling.Key, SellingValue = valueS });
                 else
-                    bar.SellingValue = value;
+                    barS.SellingValue = valueS;
             }
 
             list = list.OrderBy(model => model.Argument).ThenBy(model => model.Argument).ToList();

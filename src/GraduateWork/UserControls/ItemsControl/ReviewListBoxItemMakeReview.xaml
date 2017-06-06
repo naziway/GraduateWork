@@ -15,11 +15,11 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Код замовлення:"  />
+        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Код замовлення:"  />
 
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Grid.Column="1" Text="{Binding Kod}"/>
+        <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="White" Grid.Column="1" Text="{Binding Kod}"/>
 
-        <TextBlock  Grid.Column="2" Text="Дата оформлення:"  />
+        <TextBlock  Grid.Column="2" VerticalAlignment="Center" Text="Дата оформлення:"  />
 
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
 
