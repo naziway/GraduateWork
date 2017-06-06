@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ViewModel.MainWindowViewModel">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAgqAgDgCIAABAEABAIBCAgAAAAAAAAAAiBAAAAAAA=</HashCode>
+      <FileName>Main\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.LoginViewModel">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAACAAAABAAAAAAAEAAAAAACAEAQBACAAAA=</HashCode>
+      <FileName>Main\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.RepairViewModel">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAQgAAAAAACCAAAAAAAAAIAAAAAAAAAAQ=</HashCode>
+      <FileName>RepairViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.ListPartViewModel">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAJAABAAAAAAAQAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ListPartViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ViewModel.ReviewToOrderViewModel">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAQAAABRAAACAAAAEAAAAACACAAAAEAAA=</HashCode>
+      <FileName>ReviewToOrderViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -114,6 +114,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DataMobile.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataMobile.edmx.diagram">
       <DependentUpon>DataMobile.edmx</DependentUpon>
     </None>
