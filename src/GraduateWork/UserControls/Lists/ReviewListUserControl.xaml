@@ -14,11 +14,14 @@
             <Setter Property="Foreground" Value="White"/>
         </Style>
 
-        <DataTemplate x:Key="ReviewListBoxItem">
-            <item:ReviewListBoxItem DataContext="{Binding Path=.}"/>
+        <DataTemplate x:Key="ReviewListBoxItemMakeReview">
+            <item:ReviewListBoxItemMakeReview DataContext="{Binding Path=.}"/>
         </DataTemplate>
-        <DataTemplate x:Key="ReviewListBoxView">
-            <item:ReviewListBoxView DataContext="{Binding Path=.}"/>
+        <DataTemplate x:Key="ReviewListBoxGoToRepair">
+            <item:ReviewListBoxGoToRepair DataContext="{Binding Path=.}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ReviewListBoxItemInReview">
+            <item:ReviewListBoxItemInReview DataContext="{Binding Path=.}"/>
         </DataTemplate>
     </UserControl.Resources>
     <Grid >
@@ -29,18 +32,19 @@
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                     <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxGoToRepair}"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="New">
                             <Setter Property="Background" Value="Red" />
-                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxItem}"/>
+                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxItemMakeReview}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="Reviewing">
                             <Setter Property="Background" Value="Yellow" />
-                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxView}"/>
+                            <Setter Property="ContentTemplate" Value="{DynamicResource ReviewListBoxItemInReview  }"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Status, Mode=TwoWay}" Value="SetLink">
                             <Setter Property="Background" Value="Green" />
-                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxView}"/>
+                            <Setter Property="ContentTemplate" Value="{DynamicResource  ReviewListBoxGoToRepair}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

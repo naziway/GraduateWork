@@ -3,11 +3,11 @@
 namespace UserControls.ItemsControl
 {
     /// <summary>
-    /// Interaction logic for ReviewListBoxItem.xaml
+    /// Interaction logic for ReviewListBoxView.xaml
     /// </summary>
-    public partial class ReviewListBoxItem : UserControl
+    public partial class ReviewListBoxGoToRepair : UserControl
     {
-        public ReviewListBoxItem()
+        public ReviewListBoxGoToRepair()
         {
             InitializeComponent();
         }

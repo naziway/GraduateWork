@@ -114,11 +114,14 @@
     <Compile Include="ItemsControl\RepairListBoxItemWithComboBox.xaml.cs">
       <DependentUpon>RepairListBoxItemWithComboBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ItemsControl\ReviewListBoxItem.xaml.cs">
-      <DependentUpon>ReviewListBoxItem.xaml</DependentUpon>
+    <Compile Include="ItemsControl\ReviewListBoxItemInReview.xaml.cs">
+      <DependentUpon>ReviewListBoxItemInReview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ItemsControl\ReviewListBoxView.xaml.cs">
-      <DependentUpon>ReviewListBoxView.xaml</DependentUpon>
+    <Compile Include="ItemsControl\ReviewListBoxItemMakeReview.xaml.cs">
+      <DependentUpon>ReviewListBoxItemMakeReview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsControl\ReviewListBoxGoToRepair.xaml.cs">
+      <DependentUpon>ReviewListBoxGoToRepair.xaml</DependentUpon>
     </Compile>
     <Compile Include="ItemsControl\SellingListBoxItemForPart.xaml.cs">
       <DependentUpon>SellingListBoxItemForPart.xaml</DependentUpon>
@@ -208,11 +211,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ItemsControl\ReviewListBoxItem.xaml">
+    <Page Include="ItemsControl\ReviewListBoxItemInReview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ItemsControl\ReviewListBoxView.xaml">
+    <Page Include="ItemsControl\ReviewListBoxItemMakeReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemsControl\ReviewListBoxGoToRepair.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

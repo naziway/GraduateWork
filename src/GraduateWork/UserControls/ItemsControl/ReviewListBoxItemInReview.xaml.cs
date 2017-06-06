@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace UserControls.ItemsControl
 {
     /// <summary>
-    /// Interaction logic for ReviewListBoxView.xaml
+    /// Interaction logic for ReviewListBoxItemInReview.xaml
     /// </summary>
-    public partial class ReviewListBoxView : UserControl
+    public partial class ReviewListBoxItemInReview : UserControl
     {
-        public ReviewListBoxView()
+        public ReviewListBoxItemInReview()
         {
             InitializeComponent();
         }
