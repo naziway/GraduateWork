@@ -38,25 +38,26 @@ namespace ViewModel
 
         public MainWindowViewModel(DataService dataService)
         {
+
+
             DataService = dataService;
             HistogramViewModel = new HistogramViewModel(dataService);
             MenuItems = new List<CustomMenuItem>
                 {
-             new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/add_icon.png" , ToolTip = "Додати Покупку"},
-             new CustomMenuItem {Command =NewClientCommand ,     Img = "Icons/add_icon.png" , ToolTip = "Додати Нового Клієнта"},
-             new CustomMenuItem {Command =AddNewDeviceCommand ,  Img = "Icons/icon_add.png" , ToolTip = "Додати Новий Пристрій"},
-             new CustomMenuItem {Command =AddNewReviewCommand ,  Img = "Icons/icon_add.png" , ToolTip = "Додати Обстеження"},
+             new CustomMenuItem {Command =AddNewReviewCommand ,  Img = "Icons/new style/review_device.png" , ToolTip = "Додати Обстеження"},
+
+             new CustomMenuItem {Command =NewClientCommand ,     Img = "Icons/new style/add_client_mod.png" , ToolTip = "Додати Нового Клієнта"},
+             new CustomMenuItem {Command =AddNewDeviceCommand ,  Img = "Icons/new style/add_device.png" , ToolTip = "Додати Новий Пристрій"},
+             new CustomMenuItem {Command =AddNewSellingCommand , Img = "Icons/new style/buy.png" , ToolTip = "Додати Покупку"},
 
              new CustomMenuItem {Command =ListReviewCommand ,    Img = "Icons/List.png" , ToolTip = "Список Обстежень"},
-             new CustomMenuItem {Command =ListDevicesCommand ,    Img = "Icons/List.png" , ToolTip = "Список Пристроїв"},
+             new CustomMenuItem {Command =ListDevicesCommand ,   Img = "Icons/List.png" , ToolTip = "Список Пристроїв"},
              new CustomMenuItem {Command =OpenClientListCommand ,Img = "Icons/List.png" , ToolTip = "Список Клієнтів"},
 
-             new CustomMenuItem {Command =OpenSalaryInfoCommand ,Img = "Icons/salary.png" , ToolTip = "Статистика заробітньої плати"},
-             new CustomMenuItem {Command =IncomeCostCommand ,Img = "Icons/salary.png" , ToolTip = "Дохід/Витрати"},
+             new CustomMenuItem {Command =OpenSalaryInfoCommand ,Img = "Icons/new style/salary.png" , ToolTip = "Заробітня статистика"},
+             new CustomMenuItem {Command =IncomeCostCommand ,    Img = "Icons/new style/icon.png" , ToolTip = "Дохід/Витрати"},
              new CustomMenuItem {Command =LogOutCommand ,        Img = "Icons/LogOut.png",ToolTip = "Вихід"},
                  };
-
-
         }
 
         #region Command

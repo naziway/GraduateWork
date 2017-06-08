@@ -4,372 +4,371 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MobiDocModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Clients">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="PasportData" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="RegistrationDate" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Devices">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Marka" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DeviceType" Type="int" Nullable="false" />
-          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ManufactureDate" Type="date" Nullable="false" />
-          <Property Name="ClientId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Parts">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="Count" Type="int" Nullable="false" />
-          <Property Name="Marka" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Model" Type="nchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PersonalData">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="PasportData" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="BirthDate" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RepairDevices">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Marka" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DeviceType" Type="int" Nullable="false" />
-          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ManufactureDate" Type="date" Nullable="false" />
-          <Property Name="Count" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Repairs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Kod" Type="int" Nullable="false" />
-          <Property Name="OrderDate" Type="date" Nullable="false" />
-          <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="IsWarranty" Type="bit" Nullable="false" />
-          <Property Name="RepairDeviceId" Type="int" />
-          <Property Name="WorkerId" Type="int" Nullable="false" />
-          <Property Name="DeviceId" Type="int" Nullable="false" />
-          <Property Name="PartId" Type="int" />
-          <Property Name="WorkId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Reviews">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Kod" Type="int" Nullable="false" />
-          <Property Name="OrderDate" Type="date" Nullable="false" />
-          <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="DeviceId" Type="int" Nullable="false" />
-          <Property Name="WorkerId" Type="int" Nullable="false" />
-          <Property Name="RepairKod" Type="int" />
-        </EntityType>
-        <EntityType Name="Sellings">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Kod" Type="int" Nullable="false" />
-          <Property Name="OrderDate" Type="date" Nullable="false" />
-          <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="PartId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="DatePaid" Type="datetime" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="Salary" Type="float" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Login" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="RegistrationDate" Type="date" Nullable="false" />
-          <Property Name="UserType" Type="int" Nullable="false" />
-          <Property Name="PersonalDataId" Type="int" Nullable="false" />
-          <Property Name="Salary" Type="float" />
-        </EntityType>
-        <EntityType Name="Works">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Devices_ToClient">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Devices">
-              <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Repairs_To_Device">
-          <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
-          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Devices">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Repairs">
-              <PropertyRef Name="DeviceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Repairs_To_Part">
-          <End Role="Parts" Type="Self.Parts" Multiplicity="0..1" />
-          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Parts">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Repairs">
-              <PropertyRef Name="PartId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Repairs_To_RepairDevice">
-          <End Role="RepairDevices" Type="Self.RepairDevices" Multiplicity="0..1" />
-          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RepairDevices">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Repairs">
-              <PropertyRef Name="RepairDeviceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Repairs_To_Work">
-          <End Role="Works" Type="Self.Works" Multiplicity="1" />
-          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Works">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Repairs">
-              <PropertyRef Name="WorkId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Repairs_To_Worker">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Repairs" Type="Self.Repairs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Repairs">
-              <PropertyRef Name="WorkerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reviews_To_Device">
-          <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Devices">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reviews">
-              <PropertyRef Name="DeviceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reviews_To_User">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reviews">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reviews_To_Worker">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reviews">
-              <PropertyRef Name="WorkerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sellings_To_Client">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sellings">
-              <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sellings_To_Part">
-          <End Role="Parts" Type="Self.Parts" Multiplicity="1" />
-          <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Parts">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sellings">
-              <PropertyRef Name="PartId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sellings_To_User">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sellings">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_ToUser">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Table" Type="Self.Table" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Table">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_ToPersonalData">
-          <End Role="PersonalData" Type="Self.PersonalData" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PersonalData">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="PersonalDataId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="MobiDocModelStoreContainer">
-          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Devices" EntityType="Self.Devices" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Parts" EntityType="Self.Parts" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PersonalData" EntityType="Self.PersonalData" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RepairDevices" EntityType="Self.RepairDevices" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Repairs" EntityType="Self.Repairs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sellings" EntityType="Self.Sellings" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Works" EntityType="Self.Works" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Devices_ToClient" Association="Self.FK_Devices_ToClient">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Devices" EntitySet="Devices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Repairs_To_Device" Association="Self.FK_Repairs_To_Device">
-            <End Role="Devices" EntitySet="Devices" />
-            <End Role="Repairs" EntitySet="Repairs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Repairs_To_Part" Association="Self.FK_Repairs_To_Part">
-            <End Role="Parts" EntitySet="Parts" />
-            <End Role="Repairs" EntitySet="Repairs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Repairs_To_RepairDevice" Association="Self.FK_Repairs_To_RepairDevice">
-            <End Role="RepairDevices" EntitySet="RepairDevices" />
-            <End Role="Repairs" EntitySet="Repairs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Repairs_To_Work" Association="Self.FK_Repairs_To_Work">
-            <End Role="Works" EntitySet="Works" />
-            <End Role="Repairs" EntitySet="Repairs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Repairs_To_Worker" Association="Self.FK_Repairs_To_Worker">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Repairs" EntitySet="Repairs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reviews_To_Device" Association="Self.FK_Reviews_To_Device">
-            <End Role="Devices" EntitySet="Devices" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reviews_To_User" Association="Self.FK_Reviews_To_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reviews_To_Worker" Association="Self.FK_Reviews_To_Worker">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sellings_To_Client" Association="Self.FK_Sellings_To_Client">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Sellings" EntitySet="Sellings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sellings_To_Part" Association="Self.FK_Sellings_To_Part">
-            <End Role="Parts" EntitySet="Parts" />
-            <End Role="Sellings" EntitySet="Sellings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sellings_To_User" Association="Self.FK_Sellings_To_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Sellings" EntitySet="Sellings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_ToUser" Association="Self.FK_Table_ToUser">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Table" EntitySet="Table" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_ToPersonalData" Association="Self.FK_Users_ToPersonalData">
-            <End Role="PersonalData" EntitySet="PersonalData" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="MobiDocModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MobiDocModelStoreContainer">
+    <EntitySet Name="Clients" EntityType="MobiDocModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devices" EntityType="MobiDocModel.Store.Devices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parts" EntityType="MobiDocModel.Store.Parts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonalData" EntityType="MobiDocModel.Store.PersonalData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RepairDevices" EntityType="MobiDocModel.Store.RepairDevices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Repairs" EntityType="MobiDocModel.Store.Repairs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reviews" EntityType="MobiDocModel.Store.Reviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sellings" EntityType="MobiDocModel.Store.Sellings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Table" EntityType="MobiDocModel.Store.Table" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="MobiDocModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Works" EntityType="MobiDocModel.Store.Works" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Devices_ToClient" Association="MobiDocModel.Store.FK_Devices_ToClient">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sellings_To_Client" Association="MobiDocModel.Store.FK_Sellings_To_Client">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Sellings" EntitySet="Sellings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Device" Association="MobiDocModel.Store.FK_Repairs_To_Device">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_To_Device" Association="MobiDocModel.Store.FK_Reviews_To_Device">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Part" Association="MobiDocModel.Store.FK_Repairs_To_Part">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sellings_To_Part" Association="MobiDocModel.Store.FK_Sellings_To_Part">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="Sellings" EntitySet="Sellings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_ToPersonalData" Association="MobiDocModel.Store.FK_Users_ToPersonalData">
+      <End Role="PersonalData" EntitySet="PersonalData" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_RepairDevice" Association="MobiDocModel.Store.FK_Repairs_To_RepairDevice">
+      <End Role="RepairDevices" EntitySet="RepairDevices" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Work" Association="MobiDocModel.Store.FK_Repairs_To_Work">
+      <End Role="Works" EntitySet="Works" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Repairs_To_Worker" Association="MobiDocModel.Store.FK_Repairs_To_Worker">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Repairs" EntitySet="Repairs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_To_User" Association="MobiDocModel.Store.FK_Reviews_To_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_To_Worker" Association="MobiDocModel.Store.FK_Reviews_To_Worker">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sellings_To_User" Association="MobiDocModel.Store.FK_Sellings_To_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Sellings" EntitySet="Sellings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToUser" Association="MobiDocModel.Store.FK_Table_ToUser">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Table" EntitySet="Table" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PasportData" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Marka" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DeviceType" Type="int" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ManufactureDate" Type="datetime" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="Marka" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="Model" Type="nchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PersonalData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PasportData" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RepairDevices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Marka" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DeviceType" Type="int" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ManufactureDate" Type="datetime" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Repairs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Kod" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="IsWarranty" Type="bit" Nullable="false" />
+    <Property Name="RepairDeviceId" Type="int" Nullable="true" />
+    <Property Name="WorkerId" Type="int" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="PartId" Type="int" Nullable="true" />
+    <Property Name="WorkId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Kod" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="WorkerId" Type="int" Nullable="false" />
+    <Property Name="RepairKod" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Sellings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Kod" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="PartId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="DatePaid" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Salary" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="PersonalDataId" Type="int" Nullable="false" />
+    <Property Name="Salary" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Works">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Time" Type="time" Nullable="false" Precision="7" />
+  </EntityType>
+  <Association Name="FK_Devices_ToClient">
+    <End Role="Clients" Type="MobiDocModel.Store.Clients" Multiplicity="1" />
+    <End Role="Devices" Type="MobiDocModel.Store.Devices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sellings_To_Client">
+    <End Role="Clients" Type="MobiDocModel.Store.Clients" Multiplicity="1" />
+    <End Role="Sellings" Type="MobiDocModel.Store.Sellings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sellings">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Device">
+    <End Role="Devices" Type="MobiDocModel.Store.Devices" Multiplicity="1" />
+    <End Role="Repairs" Type="MobiDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_To_Device">
+    <End Role="Devices" Type="MobiDocModel.Store.Devices" Multiplicity="1" />
+    <End Role="Reviews" Type="MobiDocModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Part">
+    <End Role="Parts" Type="MobiDocModel.Store.Parts" Multiplicity="0..1" />
+    <End Role="Repairs" Type="MobiDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="PartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sellings_To_Part">
+    <End Role="Parts" Type="MobiDocModel.Store.Parts" Multiplicity="1" />
+    <End Role="Sellings" Type="MobiDocModel.Store.Sellings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sellings">
+        <PropertyRef Name="PartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_ToPersonalData">
+    <End Role="PersonalData" Type="MobiDocModel.Store.PersonalData" Multiplicity="1" />
+    <End Role="Users" Type="MobiDocModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="PersonalDataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_RepairDevice">
+    <End Role="RepairDevices" Type="MobiDocModel.Store.RepairDevices" Multiplicity="0..1" />
+    <End Role="Repairs" Type="MobiDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RepairDevices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="RepairDeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Work">
+    <End Role="Works" Type="MobiDocModel.Store.Works" Multiplicity="1" />
+    <End Role="Repairs" Type="MobiDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Works">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="WorkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Repairs_To_Worker">
+    <End Role="Users" Type="MobiDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Repairs" Type="MobiDocModel.Store.Repairs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Repairs">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_To_User">
+    <End Role="Users" Type="MobiDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Reviews" Type="MobiDocModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_To_Worker">
+    <End Role="Users" Type="MobiDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Reviews" Type="MobiDocModel.Store.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="WorkerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sellings_To_User">
+    <End Role="Users" Type="MobiDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Sellings" Type="MobiDocModel.Store.Sellings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sellings">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToUser">
+    <End Role="Users" Type="MobiDocModel.Store.Users" Multiplicity="1" />
+    <End Role="Table" Type="MobiDocModel.Store.Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Table">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MobiDocModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -768,148 +767,147 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MobiDocModelStoreContainer" CdmEntityContainer="MobiDoc">
-          <EntitySetMapping Name="Clients">
-            <EntityTypeMapping TypeName="MobiDocModel.Clients">
-              <MappingFragment StoreEntitySet="Clients">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="PasportData" ColumnName="PasportData" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Devices">
-            <EntityTypeMapping TypeName="MobiDocModel.Devices">
-              <MappingFragment StoreEntitySet="Devices">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Marka" ColumnName="Marka" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Parts">
-            <EntityTypeMapping TypeName="MobiDocModel.Parts">
-              <MappingFragment StoreEntitySet="Parts">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="Marka" ColumnName="Marka" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PersonalData">
-            <EntityTypeMapping TypeName="MobiDocModel.PersonalData">
-              <MappingFragment StoreEntitySet="PersonalData">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="PasportData" ColumnName="PasportData" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RepairDevices">
-            <EntityTypeMapping TypeName="MobiDocModel.RepairDevices">
-              <MappingFragment StoreEntitySet="RepairDevices">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Marka" ColumnName="Marka" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Repairs">
-            <EntityTypeMapping TypeName="MobiDocModel.Repairs">
-              <MappingFragment StoreEntitySet="Repairs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Kod" ColumnName="Kod" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsWarranty" ColumnName="IsWarranty" />
-                <ScalarProperty Name="RepairDeviceId" ColumnName="RepairDeviceId" />
-                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
-                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
-                <ScalarProperty Name="PartId" ColumnName="PartId" />
-                <ScalarProperty Name="WorkId" ColumnName="WorkId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Reviews">
-            <EntityTypeMapping TypeName="MobiDocModel.Reviews">
-              <MappingFragment StoreEntitySet="Reviews">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Kod" ColumnName="Kod" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
-                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
-                <ScalarProperty Name="RepairKod" ColumnName="RepairKod" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sellings">
-            <EntityTypeMapping TypeName="MobiDocModel.Sellings">
-              <MappingFragment StoreEntitySet="Sellings">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Kod" ColumnName="Kod" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="PartId" ColumnName="PartId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Table">
-            <EntityTypeMapping TypeName="MobiDocModel.Table">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DatePaid" ColumnName="DatePaid" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MobiDocModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="PersonalDataId" ColumnName="PersonalDataId" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Works">
-            <EntityTypeMapping TypeName="MobiDocModel.Works">
-              <MappingFragment StoreEntitySet="Works">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MobiDocModelStoreContainer" CdmEntityContainer="MobiDoc">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Clients)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PasportData" ColumnName="PasportData" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Devices)">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parts">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Parts)">
+        <MappingFragment StoreEntitySet="Parts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalData">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.PersonalData)">
+        <MappingFragment StoreEntitySet="PersonalData">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PasportData" ColumnName="PasportData" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepairDevices">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.RepairDevices)">
+        <MappingFragment StoreEntitySet="RepairDevices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repairs">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Repairs)">
+        <MappingFragment StoreEntitySet="Repairs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsWarranty" ColumnName="IsWarranty" />
+          <ScalarProperty Name="RepairDeviceId" ColumnName="RepairDeviceId" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Reviews)">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="RepairKod" ColumnName="RepairKod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sellings">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Sellings)">
+        <MappingFragment StoreEntitySet="Sellings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="PartId" ColumnName="PartId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Table)">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DatePaid" ColumnName="DatePaid" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="PersonalDataId" ColumnName="PersonalDataId" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Works">
+      <EntityTypeMapping TypeName="IsTypeOf(MobiDocModel.Works)">
+        <MappingFragment StoreEntitySet="Works">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -923,7 +921,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
