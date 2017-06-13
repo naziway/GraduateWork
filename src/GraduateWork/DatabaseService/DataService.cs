@@ -276,7 +276,8 @@ namespace DatabaseService
                     Client = clients.First(p => p.Id == sellingse.ClientId),
                     Kod = sellingse.Kod,
                     OrderDate = sellingse.OrderDate,
-                    Status = (SellingStatus)sellingse.Status
+                    Status = (SellingStatus)sellingse.Status,
+                    Count = sellingse.Count
                 };
                 list.Add(selling);
             }
@@ -422,8 +423,8 @@ namespace DatabaseService
                     selling.User = User;
                     database.Sellings.Add(selling.Convert(id++, kod));
                 }
-                var a = await database.SaveChangesAsync();
-                return a;
+                await database.SaveChangesAsync();
+                return kod;
             }
             catch (Exception)
             {

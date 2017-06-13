@@ -1,7 +1,7 @@
 ﻿using DatabaseService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Model;
-using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using ViewModel;
 
 namespace TestDb
@@ -11,16 +11,26 @@ namespace TestDb
     {
 
         [TestMethod]
-        public void CreateFileTest()
+        public void CreateSellCheckTest()
         {
-            List<Selling> list = new List<Selling>();
+            CheckManager checkManager = new CheckManager(new DataService());
+
+            Process.Start(checkManager.CreateSellCheck(new DataService().GetSellingsByClientId(1).Take(10).ToList()));
+        }
+        [TestMethod]
+        public void CreateRepairCheckTest()
+        {
+            CheckManager checkManager = new CheckManager(new DataService());
+
+            Process.Start(checkManager.CreateRepairCheck(new DataService().GetRepairsByKod(1)));
+        }
+        [TestMethod]
+        public void CreateReviewCheckTest()
+        {
 
             CheckManager checkManager = new CheckManager(new DataService());
 
-
-            checkManager.CreateSellCheck(new DataService().GetSellingsByClientId(1));
-
-
+            Process.Start(checkManager.CreateReviewCheck(new DataService().GetReviewById(1).First()));
 
         }
 

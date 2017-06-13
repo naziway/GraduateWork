@@ -5,6 +5,7 @@ using Shared;
 using Shared.Enum;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
@@ -14,6 +15,7 @@ namespace ViewModel.ResourseAdd
     public class NewReviewViewModel
     {
         public DataService DataService { get; set; }
+        public CheckManager CheckManager { get; set; }
 
         public ObservableCollection<Client> Clients { get; set; }
         public ObservableCollection<Device> Devices { get; set; }
@@ -69,8 +71,9 @@ namespace ViewModel.ResourseAdd
 
               var addedReview = DataService.AddReview(review);
 
-              StatusMessage = addedReview != null ? $"Обстеження Додано.Код: {addedReview.Kod}" :
-                                                    $"Обстеження не вдалося додати.";
+              if (addedReview != null)
+                  Process.Start(CheckManager.CreateReviewCheck(addedReview));
+
 
           }), CanExecute);
 
@@ -81,6 +84,7 @@ namespace ViewModel.ResourseAdd
         public NewReviewViewModel(DataService dataService)
         {
             DataService = dataService;
+            CheckManager = new CheckManager(dataService);
             Clients = new ObservableCollection<Client>(DataService.GetClients());
 
             Workers = new ObservableCollection<User>

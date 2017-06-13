@@ -110,11 +110,11 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <EntityDeploy Include="DataMobile.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DataMobile.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
     <None Include="DataMobile.edmx.diagram">
       <DependentUpon>DataMobile.edmx</DependentUpon>
     </None>

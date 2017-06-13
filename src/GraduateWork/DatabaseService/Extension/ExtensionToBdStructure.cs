@@ -63,7 +63,7 @@ namespace DatabaseService.Extension
                 PartId = selling.Part.Id,
                 Status = (int)selling.Status,
                 OrderDate = DateTime.Now,
-                UserId = selling.User.Id
+                UserId = selling.User.Id,Count = selling.Count
             };
         }
         public static Table Convert(this Paid paid)
