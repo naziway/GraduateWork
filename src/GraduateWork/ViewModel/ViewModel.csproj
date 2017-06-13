@@ -63,17 +63,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckManager.cs" />
-    <Compile Include="ExaminateManager.cs" />
-    <Compile Include="HistogramLogic.cs" />
+    <Compile Include="Lists\SellingListViewModel.cs" />
+    <Compile Include="Logic\CheckManager.cs" />
+    <Compile Include="Logic\HistogramLogic.cs" />
     <Compile Include="HistogramViewModel.cs" />
     <Compile Include="IncomeCostsViewModel.cs" />
-    <Compile Include="ListPartViewModel.cs" />
+    <Compile Include="Lists\ListPartViewModel.cs" />
     <Compile Include="Lists\DeviceListViewModel.cs" />
     <Compile Include="RepairViewModel.cs" />
     <Compile Include="ResourseAdd\NewClientViewModel.cs" />
     <Compile Include="ResourseAdd\NewDeviceViewModel.cs" />
-    <Compile Include="ReviewsViewModel.cs" />
+    <Compile Include="ResourseAdd\NewUserViewModel.cs" />
+    <Compile Include="Lists\ReviewsViewModel.cs" />
     <Compile Include="Find\ClientFindingViewModel.cs" />
     <Compile Include="Lists\ClientListViewModel.cs" />
     <Compile Include="Base\FindViewModel.cs" />

@@ -29,11 +29,11 @@ namespace UserControls.InformationControl
             InitializeComponent();
             StatusList = new ObservableCollection<RepairStatus>
                 {
-                    RepairStatus.New,
-                    RepairStatus.InProgress,
-                    RepairStatus.Done,
-                    RepairStatus.Canceled,
-                    RepairStatus.Paid
+                    RepairStatus.Сформований,
+                    RepairStatus.Новий,
+                    RepairStatus.Виконується,
+                    RepairStatus.Виконаний,
+                    RepairStatus.Оплачений
     };
         }
     }

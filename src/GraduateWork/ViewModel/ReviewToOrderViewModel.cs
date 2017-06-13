@@ -38,7 +38,7 @@ namespace ViewModel
                 Part = SelectedPart,
                 Device = Review.Device,
                 OrderDate = DateTime.Now,
-                Status = RepairStatus.New,
+                Status = RepairStatus.Сформований,
                 Worker = Review.Worker
             });
             Symma += SelectedPart.Price + SelectedWork.Price;// частина може бути null

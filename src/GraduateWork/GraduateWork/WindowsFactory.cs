@@ -95,6 +95,10 @@ namespace GraduateWork
                     var clientUserControl = new NewClientUserControl { DataContext = new NewClientViewModel(DataService) };
                     view = new BaseView(clientUserControl, "Новий Клієнт", 400, 300);
                     break;
+                case OpenWindow.NewUser:
+                    var userControl = new NewUserUserControl { DataContext = new NewUserViewModel(DataService) };
+                    view = new BaseView(userControl, "Новий Користувач", 400, 330);
+                    break;
                 case OpenWindow.NewDevice:
                     var deviceUserControl = new NewDeviceUserControl { DataContext = new NewDeviceViewModel(DataService) };
                     view = new BaseView(deviceUserControl, "Новий Пристрій", 400, 300);
