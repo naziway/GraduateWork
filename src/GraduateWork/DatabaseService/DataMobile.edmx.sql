@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/07/2017 14:24:19
+-- Date Created: 06/13/2017 16:25:20
 -- Generated from EDMX file: C:\Users\__it\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\DataMobile.edmx
 -- --------------------------------------------------
 
@@ -194,7 +194,8 @@ CREATE TABLE [dbo].[Sellings] (
     [Status] int  NOT NULL,
     [UserId] int  NOT NULL,
     [ClientId] int  NOT NULL,
-    [PartId] int  NOT NULL
+    [PartId] int  NOT NULL,
+    [Count] int  NOT NULL
 );
 GO
 
