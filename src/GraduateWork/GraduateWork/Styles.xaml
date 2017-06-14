@@ -25,4 +25,75 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
     </Style>
 
+    <Style TargetType="Button"  x:Key="ButtonInsideListBox">
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border 
+          x:Name="Border"  
+          CornerRadius="1" 
+          BorderThickness="1"
+                        Padding="3"
+          Background="#2c3a45"
+          BorderBrush="White">
+                        <TextBlock Style="{DynamicResource ButtonText}" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <Style TargetType="Button"  x:Key="ButtonStyle">
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border 
+          x:Name="Border"  
+          CornerRadius="9" 
+          BorderThickness="1"
+          Background="#2c3a45"
+          BorderBrush="White">
+                        <TextBlock Style="{DynamicResource ButtonText}" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="ButtonText">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+
+
+    <Style TargetType="ComboBox"  x:Key="ComboStyle">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="#2c3a45"/>
+        <!--<Setter Property="ItemTemplate" >
+            <Setter.Value>
+                <ItemContainerTemplate>
+                    <Border 
+          x:Name="Border"  
+          CornerRadius="1" 
+          BorderThickness="0"
+                        Padding="3"
+          Background="#2c3a45"
+          BorderBrush="White">
+                        <TextBlock Style="{DynamicResource ButtonText}" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="{Binding Path=SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}}}"/>
+                    </Border>
+                </ItemContainerTemplate>
+            </Setter.Value>
+        </Setter>-->
+
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+
+
+
+
 </ResourceDictionary>

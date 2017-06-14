@@ -103,7 +103,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <Button Grid.Column="2" Command="{Binding AddRepair}" Content="+" Padding="0,0,0,0" Margin="0,2,0,2" VerticalContentAlignment="Top" FontSize="45"/>
+                    <Button Style="{DynamicResource ButtonStyle}" Grid.Column="2" Command="{Binding AddRepair}" Content="+" Padding="0,0,0,0" Margin="0,2,0,2" VerticalContentAlignment="Top" FontSize="45"/>
 
                 </Grid>
 
@@ -161,7 +161,7 @@
                         <TextBlock  Grid.Column="1" Style="{DynamicResource HeaderValue}" Text="{Binding Symma}"/>
                     </Grid>
                 </Border>
-                <Button Grid.Row="3" Margin="10,1,10,1" Command="{Binding SaveReviewInRepair}" Content="Зберегти результат обстеження"/>
+                <Button Style="{DynamicResource ButtonStyle}" Grid.Row="3" Margin="10,1,10,1" Command="{Binding SaveReviewInRepair}" Content="Зберегти результат обстеження"/>
             </Grid>
         </Border>
 

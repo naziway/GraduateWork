@@ -2,10 +2,9 @@
 {
     public enum RepairStatus
     {
-        New,
-        InProgress,
-        Done,
-        Canceled,
-        Paid
-    }
-}
+        Сформований,
+        Новий,
+        Виконується,
+        Виконаний,
+        Оплачений
+    }}

@@ -9,7 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
 
-        <dxc:ChartControl 
+        <dxc:ChartControl  Background="#2C4355"
                       DataSource="{Binding Items}"
                       CrosshairEnabled="False"
                       ToolTipEnabled="True"

@@ -62,8 +62,8 @@ namespace DatabaseService.Extension
                 Kod = kod,
                 PartId = selling.Part.Id,
                 Status = (int)selling.Status,
-                OrderDate = selling.OrderDate,
-                UserId = selling.User.Id
+                OrderDate = DateTime.Now,
+                UserId = selling.User.Id,Count = selling.Count
             };
         }
         public static Table Convert(this Paid paid)
@@ -83,7 +83,7 @@ namespace DatabaseService.Extension
                 Id = id,
                 Kod = kod,
                 Status = (int)review.Status,
-                OrderDate = review.OrderDate,
+                OrderDate = DateTime.Now,
                 UserId = review.User.Id,
                 DeviceId = review.Device.Id,
                 WorkerId = review.Worker.Id,
@@ -97,7 +97,7 @@ namespace DatabaseService.Extension
                 Id = id,
                 Kod = kod,
                 Status = (int)repair.Status,
-                OrderDate = repair.OrderDate,
+                OrderDate = DateTime.Now,
                 IsWarranty = repair.IsWarranty,
                 RepairDeviceId = repair?.RepairDevice?.Id,
                 DeviceId = repair.Device.Id,

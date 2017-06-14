@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/14/2017 18:27:34
--- Generated from EDMX file: C:\Users\naziway\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\DataMobile.edmx
+-- Date Created: 06/13/2017 16:25:20
+-- Generated from EDMX file: C:\Users\__it\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\DataMobile.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -38,9 +38,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Reviews_To_Device]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_Reviews_To_Device];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Reviews_To_Repair]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_Reviews_To_Repair];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Reviews_To_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_Reviews_To_User];
 GO
@@ -55,6 +52,9 @@ IF OBJECT_ID(N'[dbo].[FK_Sellings_To_Part]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_Sellings_To_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Sellings] DROP CONSTRAINT [FK_Sellings_To_User];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Table_ToUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Table] DROP CONSTRAINT [FK_Table_ToUser];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Users_ToPersonalData]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_Users_ToPersonalData];
@@ -87,6 +87,9 @@ IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Sellings]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Sellings];
+GO
+IF OBJECT_ID(N'[dbo].[Table]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Table];
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
@@ -162,7 +165,7 @@ CREATE TABLE [dbo].[Repairs] (
     [OrderDate] datetime  NOT NULL,
     [Status] int  NOT NULL,
     [IsWarranty] bit  NOT NULL,
-    [RepairDeviceId] int  NOT NULL,
+    [RepairDeviceId] int  NULL,
     [WorkerId] int  NOT NULL,
     [DeviceId] int  NOT NULL,
     [PartId] int  NULL,
@@ -179,7 +182,7 @@ CREATE TABLE [dbo].[Reviews] (
     [UserId] int  NOT NULL,
     [DeviceId] int  NOT NULL,
     [WorkerId] int  NOT NULL,
-    [RepairId] int  NULL
+    [RepairKod] int  NULL
 );
 GO
 
@@ -191,7 +194,17 @@ CREATE TABLE [dbo].[Sellings] (
     [Status] int  NOT NULL,
     [UserId] int  NOT NULL,
     [ClientId] int  NOT NULL,
-    [PartId] int  NOT NULL
+    [PartId] int  NOT NULL,
+    [Count] int  NOT NULL
+);
+GO
+
+-- Creating table 'Table'
+CREATE TABLE [dbo].[Table] (
+    [Id] int  NOT NULL,
+    [DatePaid] datetime  NOT NULL,
+    [UserId] int  NOT NULL,
+    [Salary] float  NOT NULL
 );
 GO
 
@@ -202,7 +215,8 @@ CREATE TABLE [dbo].[Users] (
     [Password] nvarchar(15)  NOT NULL,
     [RegistrationDate] datetime  NOT NULL,
     [UserType] int  NOT NULL,
-    [PersonalDataId] int  NOT NULL
+    [PersonalDataId] int  NOT NULL,
+    [Salary] float  NULL
 );
 GO
 
@@ -264,6 +278,12 @@ GO
 -- Creating primary key on [Id] in table 'Sellings'
 ALTER TABLE [dbo].[Sellings]
 ADD CONSTRAINT [PK_Sellings]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Table'
+ALTER TABLE [dbo].[Table]
+ADD CONSTRAINT [PK_Table]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -433,21 +453,6 @@ ON [dbo].[Repairs]
     ([WorkerId]);
 GO
 
--- Creating foreign key on [RepairId] in table 'Reviews'
-ALTER TABLE [dbo].[Reviews]
-ADD CONSTRAINT [FK_Reviews_To_Repair]
-    FOREIGN KEY ([RepairId])
-    REFERENCES [dbo].[Repairs]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Reviews_To_Repair'
-CREATE INDEX [IX_FK_Reviews_To_Repair]
-ON [dbo].[Reviews]
-    ([RepairId]);
-GO
-
 -- Creating foreign key on [UserId] in table 'Reviews'
 ALTER TABLE [dbo].[Reviews]
 ADD CONSTRAINT [FK_Reviews_To_User]
@@ -490,6 +495,21 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_Sellings_To_User'
 CREATE INDEX [IX_FK_Sellings_To_User]
 ON [dbo].[Sellings]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [UserId] in table 'Table'
+ALTER TABLE [dbo].[Table]
+ADD CONSTRAINT [FK_Table_ToUser]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Table_ToUser'
+CREATE INDEX [IX_FK_Table_ToUser]
+ON [dbo].[Table]
     ([UserId]);
 GO
 

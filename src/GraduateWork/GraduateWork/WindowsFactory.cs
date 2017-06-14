@@ -44,11 +44,10 @@ namespace GraduateWork
             MainWindowViewModel.SetAction(OpenResizeWindow);
             InvokeInMainThread(() =>
             {
-                MainWindowView = new ResizeBaseView(new MainWindowView(MainWindowViewModel), "Головне Вікно", 600, 900);
+                MainWindowView = new ResizeBaseView(new MainWindowView(MainWindowViewModel), "Mobi Doc", 600, 900);
                 MainWindowView.Show();
             });
         }
-
 
         private void OpenResizeWindow(Shared.Enum.OpenWindow windowType)
         {
@@ -71,7 +70,7 @@ namespace GraduateWork
                     break;
                 case OpenWindow.SalaryInfo:
                     var salaryViewModel = new SalaryViewModel(DataService);
-                    view = new ResizeBaseView(new SalaryUserControl { DataContext = salaryViewModel }, "Статистика заробітньої плати", 500, 300);
+                    view = new ResizeBaseView(new SalaryUserControl { DataContext = salaryViewModel }, "Заробітня статистика", 500, 300);
                     break;
                 case OpenWindow.ListReview:
                     var reviewsViewModel = new ReviewsViewModel(DataService);
@@ -95,6 +94,10 @@ namespace GraduateWork
                 case OpenWindow.NewClient:
                     var clientUserControl = new NewClientUserControl { DataContext = new NewClientViewModel(DataService) };
                     view = new BaseView(clientUserControl, "Новий Клієнт", 400, 300);
+                    break;
+                case OpenWindow.NewUser:
+                    var userControl = new NewUserUserControl { DataContext = new NewUserViewModel(DataService) };
+                    view = new BaseView(userControl, "Новий Користувач", 400, 330);
                     break;
                 case OpenWindow.NewDevice:
                     var deviceUserControl = new NewDeviceUserControl { DataContext = new NewDeviceViewModel(DataService) };

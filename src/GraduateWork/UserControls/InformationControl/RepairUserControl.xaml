@@ -8,6 +8,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300">
     <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border 
+          x:Name="Border"  
+          CornerRadius="9" 
+          BorderThickness="1"
+          Background="#2c3a45"
+          BorderBrush="White">
+                            <TextBlock Style="{DynamicResource ButtonText}" HorizontalAlignment="Center" VerticalAlignment="Center"  Text="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ButtonText">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontFamily" Value="TimeNewRoman"/>
@@ -27,6 +48,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" >
             <Grid>
@@ -89,20 +111,20 @@
                         <Setter Property="ContentTemplate" Value="{StaticResource RepairItemDataTemplate }"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding  Status}" Value="New">
+                            <DataTrigger Binding="{Binding  Status}" Value="Сформований">
                                 <Setter Property="Background" Value="OrangeRed"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding  Status}" Value="InProgress">
+                            <DataTrigger Binding="{Binding  Status}" Value="Новий">
                                 <Setter Property="Background" Value="Yellow"/>
                                 <Setter Property="Foreground" Value="Blue"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding  Status}" Value="Done">
+                            <DataTrigger Binding="{Binding  Status}" Value="Виконаний">
                                 <Setter Property="Background" Value="ForestGreen"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding  Status}" Value="Canceled">
+                            <DataTrigger Binding="{Binding  Status}" Value="Оплачений">
                                 <Setter Property="Background" Value="Black"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding  Status}" Value="Paid">
+                            <DataTrigger Binding="{Binding  Status}" Value="Виконується">
                                 <Setter Property="Background" Value="#2c3a45"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -121,5 +143,18 @@
                 <TextBlock  Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Symma}"/>
             </Grid>
         </Border>
+
+
+        <Grid Grid.Row="3" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="Завершити ремонт" />
+            <!-- <Button Grid.Column="1" Content="Оплатити"/>-->
+            <Button Grid.Column="1" Content="Зберегти зміни ремонту" Visibility="Visible"/>
+            
+        </Grid>
     </Grid>
 </UserControl>

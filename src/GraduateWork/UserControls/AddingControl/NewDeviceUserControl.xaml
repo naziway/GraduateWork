@@ -53,30 +53,45 @@
         <Label Grid.Row="4" Grid.Column="0">Серія Телефону</Label>
         <Label Grid.Row="5" Grid.Column="0">Дата Виготовлення</Label>
 
-        <ComboBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Clients}" SelectedItem="{Binding Device.Client}" >
+        <ComboBox Style="{DynamicResource ComboStyle}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="#2c3a45" Grid.Row="0" Grid.Column="1"  ItemsSource="{Binding Clients}" SelectedItem="{Binding Device.Client}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Stretch" Background="#2c3a45" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="2"/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding FirstName}"/>
-                        <TextBlock Grid.Column="2" Text="{Binding LastName}"/>
+                        <TextBlock Style="{DynamicResource ButtonText}" VerticalAlignment="Center" Grid.Column="1" Text="{Binding FirstName}"/>
+                        <TextBlock Style="{DynamicResource ButtonText}" VerticalAlignment="Center" Grid.Column="3" Text="{Binding LastName}"/>
                     </Grid>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Device.Marka}" />
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Device.Model}" />
-        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding DeviceTypes}" SelectedItem="{Binding Device.DeviceType}" />
+        <ComboBox Style="{DynamicResource ComboStyle}" Background="#2c3a45" Foreground="White" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding DeviceTypes}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" SelectedItem="{Binding Device.DeviceType}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch" Background="#2c3a45" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="*"/>
+                           
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{DynamicResource ButtonText}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Text="{Binding .}"/>
+                    
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+           </ComboBox>
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Device.SerialNumber}" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Device.ManufactureDate}" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Device.ManufactureDate,StringFormat=d}" />
 
 
-        <Button Grid.Column="0" Grid.Row="6" Command="{Binding ClearCommand}" Content="Очистити"/>
-        <Button Grid.Column="1" Grid.Row="6" Command="{Binding AddClientCommand}" Content="Додати"/>
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="0" Grid.Row="6" Command="{Binding ClearCommand}" Content="Очистити"/>
+        <Button Style="{DynamicResource ButtonStyle}" Grid.Column="1" Grid.Row="6" Command="{Binding AddClientCommand}" Content="Додати"/>
 
     </Grid>
 </UserControl>

@@ -21,6 +21,7 @@ namespace DatabaseService
         public int UserId { get; set; }
         public int ClientId { get; set; }
         public int PartId { get; set; }
+        public int Count { get; set; }
     
         public virtual Clients Clients { get; set; }
         public virtual Parts Parts { get; set; }

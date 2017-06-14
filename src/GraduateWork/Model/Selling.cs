@@ -14,6 +14,7 @@ namespace Model
         public User User { get; set; }
         public Client Client { get; set; }
         public Part Part { get; set; }
+        public int Count { get; set; }
 
     }
 }

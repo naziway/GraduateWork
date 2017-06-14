@@ -70,7 +70,7 @@
         </Grid.RowDefinitions>
         <userControls:MoveControl Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" ></userControls:MoveControl>
 
-        <Label Style="{DynamicResource HeaderName}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">Панель входу</Label>
+        <Label Style="{DynamicResource HeaderName}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">Вхід</Label>
         <Image  Style="{DynamicResource CloseIcon}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Source="Icons/CloseIcons.png" MouseLeftButtonDown="CloseWindow" />
 
         <Border Style="{StaticResource LabelBorder}"  Grid.Row="2">
@@ -83,13 +83,13 @@
             <Button Background="{x:Null}" Grid.Row="6" Command="{Binding LoginCommand}">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Label Style="{StaticResource TextButton}"  Content="Ввійти"></Label>
+                        <Label Style="{StaticResource TextButton}"  Content="Увійти"></Label>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
         </Border>
         <Border Style="{StaticResource ButtonBorder}" Grid.Row="6"  Visibility="{Binding State}">
-            <Button Background="{x:Null}" Grid.Row="6">
+            <Button Background="{x:Null}" Grid.Row="6" Margin="6,-6,-6,6">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Image Width="56"  VerticalAlignment="Center"  HorizontalAlignment="Center" gif:ImageBehavior.AnimatedSource="Icons/image_1087152.gif" />

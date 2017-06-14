@@ -1,12 +1,13 @@
-﻿using System;
-using DatabaseService;
+﻿using DatabaseService;
 using Model;
 using PropertyChanged;
 using Shared;
+using Shared.Enum;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
-using Shared.Enum;
 
 namespace ViewModel
 {
@@ -15,6 +16,7 @@ namespace ViewModel
     {
         public DataService DataService { get; set; }
         public Review Review { get; set; }
+        public CheckManager CheckManager { get; set; }
         public Part SelectedPart { get; set; }
         public Work SelectedWork { get; set; }
         public double Symma { get; set; }
@@ -27,6 +29,7 @@ namespace ViewModel
         {
             DataService = dataService;
             Review = review;
+            CheckManager = new CheckManager(dataService);
             Parts = new ObservableCollection<Part>(DataService.GetParts());
             Works = new ObservableCollection<Work>(DataService.GetWorks());
         }
@@ -38,7 +41,7 @@ namespace ViewModel
                 Part = SelectedPart,
                 Device = Review.Device,
                 OrderDate = DateTime.Now,
-                Status = RepairStatus.New,
+                Status = RepairStatus.Сформований,
                 Worker = Review.Worker
             });
             Symma += SelectedPart.Price + SelectedWork.Price;// частина може бути null
@@ -47,7 +50,11 @@ namespace ViewModel
         {
             var kod = DataService.AddRepairs(Repairs.ToList());
             if (kod != -1)
+            {
                 await DataService.ChangeReviewStatusAndSetRefToRepairByKod(Review.Id, ReviewStatus.SetLink, kod);
+                Process.Start(CheckManager.CreateRepairCheck(DataService.GetRepairsByKod(kod)));
+            }
+
         });
 
 

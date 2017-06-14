@@ -8,7 +8,7 @@
         SalaryInfo,//+
         OrderInfo,//+
 
-        ListRepairs,//TODO maybe and no
+        ListRepairs,//TODO maybe no
         ListReview,//+
         ListParts,//+
         ListDevices,//+

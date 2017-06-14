@@ -15,7 +15,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Border>
+        <Border Background="#2c3a45">
             <Grid >
                 <Grid.ColumnDefinitions  >
                     <ColumnDefinition Width="2*" />
@@ -27,12 +27,12 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="20" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding Title}"/>
-                <TextBlock Grid.Column="2" Text="{Binding AvailableCount, Converter={StaticResource CountConverter}}"/>
+                <TextBlock Foreground="White" Grid.Column="0" Text="{Binding Title}"/>
+                <TextBlock Foreground="White"  Grid.Column="2" Text="{Binding AvailableCount, Converter={StaticResource CountConverter}}"/>
                 <TextBox   Grid.Column="4" Text="{Binding ChooseCount,UpdateSourceTrigger=PropertyChanged,IsAsync=True}"/>
-                <TextBlock   Grid.Column="5" Text="Сума="/>
-                <TextBlock   Grid.Column="6" Text="{Binding SumPrice}"/>
-                <Button Grid.Column="7" Command="{Binding RemoveBoxItemCommand,RelativeSource={RelativeSource Mode=FindAncestor ,AncestorType={x:Type convertControl:SellingCreatorUserControl}}}" CommandParameter="{Binding Path=.}" Content="-"/>
+                <TextBlock Foreground="White"    Grid.Column="5" Text="Сума="/>
+                <TextBlock  Foreground="White"   Grid.Column="6" Text="{Binding SumPrice}"/>
+                <Button Style="{DynamicResource ButtonInsideListBox}" Grid.Column="7" Command="{Binding RemoveBoxItemCommand,RelativeSource={RelativeSource Mode=FindAncestor ,AncestorType={x:Type convertControl:SellingCreatorUserControl}}}" CommandParameter="{Binding Path=.}" Content="-"/>
             </Grid>
         </Border>
     </Grid>

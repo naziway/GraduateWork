@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="UserControls.ItemsControl.ReviewListBoxItemInReview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UserControls.ItemsControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter  Property="Foreground" Value="#2c3a45" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Код замовлення:"  />
+
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#2c3a45" Grid.Column="1" Text="{Binding Kod}"/>
+
+        <TextBlock  Grid.Column="2" VerticalAlignment="Center" Text="Дата оформлення:"  />
+
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OrderDate, StringFormat=d}"  />
+
+
+        <Button Style="{DynamicResource ButtonInsideListBox}" Grid.Column="4"  Content="Проводиться обстеження" />
+
+        
+    </Grid>
+</UserControl>

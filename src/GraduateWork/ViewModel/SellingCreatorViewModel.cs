@@ -5,6 +5,7 @@ using Shared;
 using Shared.Enum;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
@@ -14,6 +15,7 @@ namespace ViewModel
     public class SellingCreatorViewModel
     {
         public DataService DatabaseService { get; set; }
+        public CheckManager CheckManager { get; set; }
         public ObservableCollection<PartModel> ChooseParts { get; set; } = new ObservableCollection<PartModel>();
         public ObservableCollection<Client> Clients { get; set; }
         public Client SelectedClient { get; set; }
@@ -26,15 +28,20 @@ namespace ViewModel
             if (ChooseParts.Count < 1)
                 return;
 
-            var sellings = ChooseParts.Select(Convert).Select(choosePart => new Selling
+            var sellings = ChooseParts.Select(choosePart => new Selling
             {
-                Part = choosePart,
+                Part = Convert(choosePart),
                 Client = SelectedClient,
                 OrderDate = DateTime.Now,
-                Status = SellingStatus.New
+                Status = SellingStatus.New,
+                Count = choosePart.ChooseCount
             }).ToList();
 
-            await DatabaseService.AddSellings(sellings);
+            int kod = await DatabaseService.AddSellings(sellings);
+            if (kod != -1)
+            {
+                Process.Start(CheckManager.CreateSellCheck(DatabaseService.GetSellingByKod(kod)));
+            }
 
         });
         public ICommand RemoveBoxItemCommand => new CommandWithParameters(part =>
@@ -56,6 +63,7 @@ namespace ViewModel
         public SellingCreatorViewModel(DataService databaseService)
         {
             DatabaseService = databaseService;
+            CheckManager = new CheckManager(databaseService);
             Clients = new ObservableCollection<Client>(DatabaseService.GetClients());
             if (Clients.Any())
                 SelectedClient = Clients.First();
@@ -110,7 +118,7 @@ namespace ViewModel
             Title = part.Title,
             Price = part.Price,
             Marka = part.Marka,
-            Count = part.ChooseCount
+            Count = part.AvailableCount
         };
 
     }
