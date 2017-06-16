@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/13/2017 16:25:20
+-- Date Created: 06/16/2017 12:17:13
 -- Generated from EDMX file: C:\Users\__it\Source\Repos\GraduateWork\src\GraduateWork\DatabaseService\DataMobile.edmx
 -- --------------------------------------------------
 
@@ -20,11 +20,23 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Devices_ToClient]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_Devices_ToClient];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Sellings_To_Client]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Sellings] DROP CONSTRAINT [FK_Sellings_To_Client];
+GO
 IF OBJECT_ID(N'[dbo].[FK_Repairs_To_Device]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Repairs] DROP CONSTRAINT [FK_Repairs_To_Device];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Reviews_To_Device]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_Reviews_To_Device];
+GO
 IF OBJECT_ID(N'[dbo].[FK_Repairs_To_Part]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Repairs] DROP CONSTRAINT [FK_Repairs_To_Part];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Sellings_To_Part]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Sellings] DROP CONSTRAINT [FK_Sellings_To_Part];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Users_ToPersonalData]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_Users_ToPersonalData];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Repairs_To_RepairDevice]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Repairs] DROP CONSTRAINT [FK_Repairs_To_RepairDevice];
@@ -35,29 +47,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Repairs_To_Worker]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Repairs] DROP CONSTRAINT [FK_Repairs_To_Worker];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Reviews_To_Device]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_Reviews_To_Device];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Reviews_To_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_Reviews_To_User];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Reviews_To_Worker]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_Reviews_To_Worker];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Sellings_To_Client]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Sellings] DROP CONSTRAINT [FK_Sellings_To_Client];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Sellings_To_Part]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Sellings] DROP CONSTRAINT [FK_Sellings_To_Part];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Sellings_To_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Sellings] DROP CONSTRAINT [FK_Sellings_To_User];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Table_ToUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Table] DROP CONSTRAINT [FK_Table_ToUser];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Users_ToPersonalData]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_Users_ToPersonalData];
 GO
 
 -- --------------------------------------------------
